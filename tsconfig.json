@@ -23,7 +23,7 @@
         /* Import Alias */
         "baseUrl": "src",
         "paths": {
-            "@/*": ["src/*"]
+            "@/*": ["*"]
         },
 
         /* Emotion React (css prop) */
