@@ -25,8 +25,9 @@
 
         "^(@/assets)(.*)$",
         "^(@/constants)(.*)$",
-
-        "*[./]"
+        "^(@/config)(.*)$",
+        "^(@/utils)(.*)$",
+        "^(@/styles)(.*)$"
     ],
     "importOrderSeparation": true,
     "importOrderSortSpecifiers": false

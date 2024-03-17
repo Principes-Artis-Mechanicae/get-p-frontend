@@ -1,0 +1,7 @@
+{
+    "Import Emotion Styled": {
+        "scope": "typescriptreact",
+        "prefix": ["!styled"],
+        "body": ["import styled from \"@emotion/styled\";"],
+    },
+}
