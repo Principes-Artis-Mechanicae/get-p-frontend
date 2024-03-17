@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 
 function App() {
-    return <></>;
+    return <>Continuous Integration TEST</>;
 }
 
 export default App;
