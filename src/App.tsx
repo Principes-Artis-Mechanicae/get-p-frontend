@@ -1,4 +1,4 @@
-import { Provider, useDispatch } from "react-redux";
+import { Provider } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
 import { MainLayout } from "@/common/layout/MainLayout";

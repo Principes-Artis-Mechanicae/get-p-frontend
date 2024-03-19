@@ -4,7 +4,7 @@ import fs from "fs";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5173;
 const BASE = process.env.BASE || "/";
 const PRODUCTION = process.env.NODE_ENV === "production";
 
