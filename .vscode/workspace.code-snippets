@@ -4,4 +4,25 @@
         "prefix": ["!styled"],
         "body": ["import styled from \"@emotion/styled\";"],
     },
+    "StoryBook" : {
+        "scope":"typescript",
+        "prefix" : ["!story"],
+        "body": [
+            "import type { Meta, StoryObj } from \"@storybook/react\";",
+            "",
+            "const meta = {"
+            "    title: /*여기에 스토리 제목 입력 (/ 를 사용하면 그룹으로 묶입니다!)*/,",
+            "    component: /* 여기에 컴포넌트 입력 */,",
+            "} satisfies Meta<typeof /* 여기에 컴포넌트 입력 */>;",
+            "",
+            "export default meta;"
+            "type Story = StoryObj<typeof meta>;"
+            "",
+            "export const /* 여기에 스토리 이름 입력 */ : Story = {"
+            "    args: {"
+            "       /* 여기에 Props 입력 */",
+            "    },"
+            "};"
+        ]
+    }
 }
