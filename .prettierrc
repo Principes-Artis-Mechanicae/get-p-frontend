@@ -27,7 +27,9 @@
         "^(@/constants)(.*)$",
         "^(@/config)(.*)$",
         "^(@/utils)(.*)$",
-        "^(@/styles)(.*)$"
+        "^(@/styles)(.*)$",
+
+        "^(.*)/(.*)$"
     ],
     "importOrderSeparation": true,
     "importOrderSortSpecifiers": false
