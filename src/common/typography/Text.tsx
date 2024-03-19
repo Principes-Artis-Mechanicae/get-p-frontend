@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export interface IText {
-    size?: "xs" | "s" | "m" | "l" | "xl";
+    size?: "xs" | "s" | "m" | "l" | "xl" | string;
     weight?: "light" | "normal" | "bold";
 }
 
@@ -20,8 +20,10 @@ export const Text = styled.span<IText>`
                 return "18px";
             case "xl":
                 return "24px";
-            default:
+            case undefined:
                 return "16px";
+            default:
+                return props.size;
         }
     }};
 `;
