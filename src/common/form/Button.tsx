@@ -3,7 +3,7 @@ import { place_center } from "@/styles/utils";
 import styled from "@emotion/styled";
 
 export interface IButton {
-    variant: "primary" | "secondary" | "outline" | "disabled";
+    variant: "primary" | "secondary" | "outline" | "disabled" | "side";
 
     width: string;
     height: string;
@@ -27,6 +27,8 @@ export const Button = styled.button<IButton>`
                 return "#fff";
             case "disabled":
                 return "#EBEDEF";
+            case "side":
+                return "#fff";
         }
     }};
 
@@ -40,6 +42,8 @@ export const Button = styled.button<IButton>`
                 return "#476FF1";
             case "disabled":
                 return "#C4C7CC";
+            case "side":
+                return "#021026";
         }
     }};
 
