@@ -1,4 +1,3 @@
-import { Text as T } from "../typography/Text";
 import { Button } from "./Button";
 import { Input } from "./Input";
 import { css } from "@emotion/react";
