@@ -1,5 +1,3 @@
-import { Text } from "@/common/typography/Text";
-
 import { MemberTypeCard } from "./MemberTypeCard";
 import type { Meta, StoryObj } from "@storybook/react";
 
