@@ -10,7 +10,7 @@ export interface IText {
 export const Text = styled.span<IText>`
     font-weight: ${(props) => props.weight ?? "normal"};
 
-    font-color: ${(props) => {
+    color: ${(props) => {
         switch (props.color) {
             case "primary":
                 return "#000";
@@ -21,7 +21,7 @@ export const Text = styled.span<IText>`
             case "placeholder":
                 return "#C4C7CC";
         }
-    }}
+    }};
 
     font-size: ${(props) => {
         switch (props.size) {

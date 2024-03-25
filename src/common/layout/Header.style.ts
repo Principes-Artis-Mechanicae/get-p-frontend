@@ -22,6 +22,7 @@ export const HeaderWrapper = styled.header<IHeaderWrapper>`
     gap: ${(props) => props.gap};
 
     display: inline-flex;
+    justify-content: center;
     align=items: flex-start;
 
     background: #fff;

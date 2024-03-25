@@ -16,6 +16,7 @@ export const FooterWrapper = styled.footer`
 export const FooterContainer = styled.div`
     display: inline-flex;
     align-items: flex-start;
+    word-break: keep-all;
     gap: 1rem;
 `;
 
@@ -23,6 +24,8 @@ export const FooterItem = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    flex-shrink: 0;
+    user-select: none;
     gap: 0.4rem;
 `;
 
