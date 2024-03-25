@@ -10,6 +10,13 @@ export interface IInputElement extends React.ComponentProps<"input"> {
     height: string;
 }
 
+export const InputWrapper = styled.div<IInputWrapper>`
+    width: ${(props) => props.width};
+    height: ${(props) => props.height};
+
+    position: relative;
+`;
+
 export const InputElement = styled.input<IInputElement>`
     width: ${(props) => props.width};
     height: ${(props) => props.height};
@@ -31,11 +38,4 @@ export const InputOption = styled.div`
     position: absolute;
     right: 0;
     top: 0;
-`;
-
-export const InputWrapper = styled.div<IInputWrapper>`
-    width: ${(props) => props.width};
-    height: ${(props) => props.height};
-
-    position: relative;
 `;
