@@ -1,6 +1,6 @@
 export interface INavItem {
     key: number;
-    text: string;
+    text: string | React.ReactElement;
     to: string;
 }
 
@@ -12,17 +12,12 @@ export const navItems: INavItem[] = [
     },
     {
         key: 2,
-        text: "프로젝트 찾기",
+        text: "피플 찾기",
         to: "/",
     },
     {
         key: 3,
-        text: "프로젝트 찾기",
-        to: "/",
-    },
-    {
-        key: 4,
-        text: "프로젝트 찾기",
+        text: "이용 가이드",
         to: "/",
     },
 ];
