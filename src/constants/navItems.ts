@@ -1,6 +1,6 @@
 export interface INavItem {
     key: number;
-    text: string | React.ReactElement;
+    text: string;
     to: string;
 }
 
