@@ -7,24 +7,25 @@ const meta = {
 } satisfies Meta<typeof MemberTypeCard>;
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 export const Client: Story = {
     args: {
         variant: "client",
-        asset: "",
+        imgSrc: "", // 빈 문자열 또는 이미지 경로
         width: "208px",
         height: "208px",
-        children: "의뢰자 회원",
+        label: "의뢰자 회원",
     },
 };
 
 export const People: Story = {
     args: {
         variant: "people",
-        asset: "",
+        imgSrc: "", // 빈 문자열 또는 이미지 경로
         width: "208px",
         height: "208px",
-        children: "피플 회원",
+        label: "피플 회원",
     },
 };

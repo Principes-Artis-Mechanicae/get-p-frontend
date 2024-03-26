@@ -1,43 +1,22 @@
-import { place_center } from "@/styles/utils";
+import { Text } from "@/common/typography/Text";
 
-import styled from "@emotion/styled";
+import { MemberTypeCardImg, MemberTypeCardWrapper } from "./MemberTypeCard.style";
 
 export interface IMemberTypeCard {
     variant: "client" | "people";
-    asset: "";
     width: string;
     height: string;
+    imgSrc: string;
+    label: string;
 }
 
-export const MemberTypeCard = styled.div<IMemberTypeCard>`
-    ${place_center}
-
-    asset: "";
-    width: ${(props) => props.width};
-    height: ${(props) => props.height};
-
-    border-radius: 16px;
-    border: none;
-
-    background-color: ${(props) => {
-        switch (props.variant) {
-            case "client":
-                return "#ECF0FE";
-            case "people":
-                return "#F9FAFA";
-        }
-    }};
-
-    color: ${(props) => {
-        switch (props.variant) {
-            case "client":
-                return "#476FF1";
-            case "people":
-                return "#676F7C";
-        }
-    }};
-
-    &:hover {
-        cursor: pointer;
-    }
-`;
+export const MemberTypeCard: React.FC<IMemberTypeCard> = ({ variant, width, height, imgSrc, label }) => {
+    return (
+        <MemberTypeCardWrapper variant={variant} width={width} height={height}>
+            <MemberTypeCardImg src={imgSrc} />
+            <Text size="m" weight="bold">
+                {label}
+            </Text>
+        </MemberTypeCardWrapper>
+    );
+};
