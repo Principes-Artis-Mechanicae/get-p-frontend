@@ -36,7 +36,8 @@ export const Footer: React.FC = () => {
                 <img src={logo} alt="logo" />
                 <FooterItem>
                     <Text size="s" color="secondary" weight="normal">
-                        상호명(주)겟피 대표이사:KIM BLABLA 개인정보책임관리자:김태우 주소:서울특별시 강남구 테헤란로 415, L7 강남타워 5층
+                        상호명(주)겟피 대표이사:KIM BLABLA 개인정보책임관리자:김태우 주소:서울특별시 강남구 테헤란로
+                        415, L7 강남타워 5층
                     </Text>
                     <Text size="s" color="secondary" weight="normal">
                         사업자등록번호:000-00-00000 통신판매업신고증:제 0000-서울강남-00000 호 직업정보제공사업
