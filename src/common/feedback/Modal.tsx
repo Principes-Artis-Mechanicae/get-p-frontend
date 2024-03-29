@@ -1,4 +1,4 @@
-import { IModalContainer, ModalBackDrop, ModalContainer, ModalController, ModalWrapper } from "./Modal.style";
+import { ModalBackDrop, ModalContainer, ModalController, ModalWrapper } from "./Modal.style";
 
 export interface IModal {
     width: string;
