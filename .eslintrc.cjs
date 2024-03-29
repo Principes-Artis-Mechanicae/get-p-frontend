@@ -29,7 +29,7 @@ module.exports = {
         "@typescript-eslint/no-floating-promises": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
         "prettier/prettier": [
-            'error',
+            "error",
             {
                 endOfLine: "auto",
             },
