@@ -7,6 +7,7 @@ import SignInPage from "@/pages/auth/SignInPage";
 import SignUpPage from "@/pages/auth/SignUpPage";
 
 import "./globals.css";
+import FindPasswordPage from "./pages/auth/FindPasswordPage";
 import { persistor, store } from "./store/store";
 import { PersistGate } from "redux-persist/integration/react";
 
@@ -19,6 +20,7 @@ export default function App() {
                         <Route path="/" element={<MainLayout />}>
                             <Route path="auth/signin" element={<SignInPage />}></Route>
                             <Route path="auth/signup" element={<SignUpPage />}></Route>
+                            <Route path="auth/findpw" element={<FindPasswordPage />}></Route>
                         </Route>
                     </Routes>
                 </PersistGate>

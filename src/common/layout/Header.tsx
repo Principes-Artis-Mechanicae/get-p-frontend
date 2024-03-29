@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { navItems } from "@/constants/navItems";
 
 import { Text } from "../typography/Text";
@@ -15,18 +17,25 @@ export const Header: React.FC<IHeader> = ({ height, padding, gap, containerGap }
                 <HeaderContainer gap={containerGap}>
                     <img src={logo} alt="logo" />
                     {navItems.map((item) => (
-                        <Text key={item.key} size="s" color={item.key === 3 ? "point" : "primary"} weight="bold">
-                            {item.text}
-                        </Text>
+                        <Link to={item.to}>
+                            <Text key={item.key} size="s" color={item.key === 3 ? "point" : "primary"} weight="bold">
+                                {item.text}
+                            </Text>
+                        </Link>
                     ))}
                 </HeaderContainer>
                 <HeaderContainer gap={containerGap}>
-                    <Text size="s" color="primary" weight="bold">
-                        로그인
-                    </Text>
-                    <Text size="s" color="point" weight="bold">
-                        회원가입
-                    </Text>
+                    <Link to="auth/signin">
+                        <Text size="s" color="primary" weight="bold">
+                            로그인
+                        </Text>
+                    </Link>
+
+                    <Link to="auth/signup">
+                        <Text size="s" color="point" weight="bold">
+                            회원가입
+                        </Text>
+                    </Link>
                 </HeaderContainer>
             </HeaderWrapper>
         </>
