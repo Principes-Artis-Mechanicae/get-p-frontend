@@ -23,7 +23,13 @@ export default function FindPasswordPage() {
                 <FindPasswordContainer>
                     <FindPasswordItem>
                         <Label htmlFor="id">아이디</Label>
-                        <Input id="id" width="100%" height="40px" placeholder="이메일을 입력해주세요">
+                        <Input
+                            // error="올바른 이메일인지 다시한번 확인하세요"
+                            id="id"
+                            width="100%"
+                            height="40px"
+                            placeholder="이메일을 입력해주세요"
+                        >
                             <Button variant="side" width="50px" height="38px">
                                 인증
                             </Button>
@@ -37,7 +43,7 @@ export default function FindPasswordPage() {
                             type="password"
                             width="100%"
                             height="40px"
-                            placeholder="새 비밀번호를 입력해주세요"
+                            placeholder="새 비밀번호를 입력해주세요. (영문, 숫자, 특수문자 조합 8-16자)"
                         ></Input>
                     </FindPasswordItem>
 
