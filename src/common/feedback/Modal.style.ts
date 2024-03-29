@@ -1,30 +1,59 @@
 import styled from "@emotion/styled";
 
-export interface IModal {
-    padding: string;
-    gap: string;
+export interface IModalContainer {
+    height: string;
 }
 
-export const ModalWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+export interface IModalWrapper {
+    width: string;
+}
+
+export const ModalBackDrop = styled.div`
+    position: fixed;
+    z-index: 10000;
+
+    width: 100%;
+    height: 100vh;
+
+    background-color: #000;
+    opacity: 0.5;
 `;
 
-export const ModalContainer = styled.div<IModal>`
-    display: flex;
-    padding: ${(props) => props.padding};
-    flex-direction: column;
-    align-items: center;
-    gap: ${(props) => props.gap};
-    border-radius: 0.75rem;
+export const ModalController = styled.div<{ width: string }>`
+    width: ${(props) => props.width};
+    height: 40px;
+
+    img {
+        width: 40px;
+        height: 40px;
+        display: block;
+
+        margin-left: auto;
+        margin-right: 0px;
+    }
+`;
+
+export const ModalContainer = styled.div<IModalContainer>`
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 10001;
+
+    width: 100%;
+    height: ${(props) => props.height};
+
+    border-radius: 12px;
+    padding: 20px;
+
     background-color: #fff;
 `;
 
-export const ModalItems = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-    flex-shrink: 0;
+export const ModalWrapper = styled.div<IModalWrapper>`
+    position: fixed;
+    z-index: 10000;
+
+    width: ${(props) => props.width};
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 `;

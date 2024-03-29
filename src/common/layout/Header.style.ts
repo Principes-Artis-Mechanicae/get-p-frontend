@@ -23,7 +23,7 @@ export const HeaderWrapper = styled.header<IHeaderWrapper>`
 
     display: inline-flex;
     justify-content: center;
-    align=items: flex-start;
+    align-items: flex-start;
 
     background: #fff;
     box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.06);
