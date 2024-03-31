@@ -51,6 +51,8 @@ export const Button = styled.button<IButton>`
         switch (props.variant) {
             case "outline":
                 return "1px solid #476FF1";
+            case "side":
+                return "1px solid rgba(235, 237, 239, 1)";
             default:
                 return "0";
         }

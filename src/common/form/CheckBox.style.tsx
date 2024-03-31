@@ -1,22 +1,9 @@
 import styled from "@emotion/styled";
 
-export interface ICheckBoxContainer {
+export interface ICheck {
     width: string;
     height: string;
 }
-
-export interface ICheck {
-    checkWidth: string;
-    checkHeight: string;
-}
-
-export const CheckboxContainer = styled.div<ICheckBoxContainer>`
-    width: ${(props) => props.width};
-    height: ${(props) => props.height};
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-`;
 
 export const CheckBoxLabel = styled.label`
     display: flex;
@@ -26,8 +13,8 @@ export const CheckBoxLabel = styled.label`
 `;
 
 export const Check = styled.input<ICheck>`
-    width: ${(props) => props.checkWidth};
-    height: ${(props) => props.checkHeight};
+    width: ${(props) => props.width};
+    height: ${(props) => props.height};
     appearance: none;
     background-color: #ebedef;
     background-image: url("/check.png");
