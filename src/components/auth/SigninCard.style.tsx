@@ -1,5 +1,3 @@
-import { CheckBoxContainer } from "@/pages/auth/SignUpInputPage.style";
-
 import { place_center } from "@/styles/utils";
 
 import styled from "@emotion/styled";
