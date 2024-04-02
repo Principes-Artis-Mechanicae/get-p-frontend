@@ -34,6 +34,7 @@ export default function SignUpCompletePage() {
                         variant="secondary"
                         width="440px"
                         height="54px"
+                        font_weight="700"
                         onClick={() => {
                             //dispatch(pageActions.nextPage());
                         }}
@@ -46,6 +47,7 @@ export default function SignUpCompletePage() {
                         variant="primary"
                         width="440px"
                         height="54px"
+                        font_weight="700"
                         onClick={() => {
                             //dispatch(pageActions.nextPage());
                         }}
