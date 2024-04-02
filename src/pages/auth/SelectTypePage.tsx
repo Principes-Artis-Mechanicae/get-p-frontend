@@ -10,6 +10,7 @@ import {
     SelectTypeItem,
     SelectTypePageHeader,
     SelectTypePageWrapper,
+    SelectTypeTextItem,
 } from "./SelectTypePage.style";
 import { pageActions } from "@/store/slice/page.slice";
 
@@ -25,17 +26,17 @@ export default function SelectTypePage() {
                 <Text size="xl" color="primary" weight="bold">
                     을 선택해주세요
                 </Text>
-                <br />
-                <br />
-                <Text size="m" color="secondary" weight="normal">
-                    회원 타입은 프로젝트를 의뢰하는 '의뢰자 회원'과
-                </Text>
-                <br />
-                <Text size="m" color="secondary" weight="normal">
-                    프로젝트에 참여하는 '피플 회원'으로 나누어 집니다.
-                </Text>
             </SelectTypePageHeader>
             <SelectTypeContainer>
+                <SelectTypeTextItem>
+                    <Text size="m" color="secondary" weight="normal">
+                        회원 타입은 프로젝트를 의뢰하는 '의뢰자 회원'과
+                    </Text>
+                    <br />
+                    <Text size="m" color="secondary" weight="normal">
+                        프로젝트에 참여하는 '피플 회원'으로 나누어 집니다.
+                    </Text>
+                </SelectTypeTextItem>
                 <SelectTypeItem>
                     <MemberTypeCard
                         key="clinet-type"
