@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const SelectTypePageWrapper = styled.section`
-    width: min(100%, 500px);
+    width: min(100%, 440px);
     margin: 0px auto;
 `;
 
