@@ -17,8 +17,8 @@ export const Header: React.FC<IHeader> = ({ height, padding, gap, containerGap }
                 <HeaderContainer gap={containerGap}>
                     <img src={logo} alt="logo" />
                     {navItems.map((item) => (
-                        <Link to={item.to}>
-                            <Text key={item.key} size="s" color={item.key === 3 ? "point" : "primary"} weight="bold">
+                        <Link to={item.to} key={item.key}>
+                            <Text size="s" color={item.key === 3 ? "point" : "primary"} weight="bold">
                                 {item.text}
                             </Text>
                         </Link>
