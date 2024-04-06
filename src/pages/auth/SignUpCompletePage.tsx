@@ -18,7 +18,7 @@ export default function SignUpCompletePage() {
             </SignUpCompletePageHeader>
             <SignUpCompleteContainer>
                 <SignUpCompleteItem>
-                    <img src="src\assets\auth\congrats2.png" width="312px" height="230px" />
+                    <img src="/src/assets/auth/congrats2.png" width="312px" height="230px" />
                 </SignUpCompleteItem>
                 <SignUpCompleteTextItem>
                     <Text size="l" color="point" weight="bold">
