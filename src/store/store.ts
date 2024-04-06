@@ -3,12 +3,12 @@ import { persistReducer, persistStore } from "redux-persist";
 import { authSlice } from "./slice/auth.slice";
 import { pageSlice } from "./slice/page.slice";
 import { userInterfaceSlice } from "./slice/userInterface.slice";
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore, combineReducers, Store } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
     key: "root",
-    storage,
+    storage: storage,
     whitelist: ["auth"],
 };
 
@@ -18,10 +18,18 @@ const rootReducer = combineReducers({
     page: pageSlice.reducer,
 });
 
-export const store = configureStore({
-    reducer: persistReducer(persistConfig, rootReducer),
-});
+let store: Store;
+if (import.meta.env.SSR) {
+    store = configureStore({
+        reducer: rootReducer,
+    });
+} else {
+    store = configureStore({
+        reducer: persistReducer(persistConfig, rootReducer),
+    });
+}
+
+export { store };
+export const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;
-
-export const persistor = persistStore(store);

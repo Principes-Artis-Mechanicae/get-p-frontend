@@ -35,11 +35,9 @@ if (!PRODUCTION) {
 }
 
 app.use("*", async (req, res, next) => {
-    // ! Favicon Fix
     if (req.originalUrl === "/favicon.ico") {
-        return res.sendFile(path.resolve("./public/vite.svg"));
+        return res.sendFile(path.resolve("./public/logo.svg"));
     }
-    // ! SSR Render - Do not Edit if you don't know what heare whats going on
     let template, render;
 
     try {
@@ -52,9 +50,11 @@ app.use("*", async (req, res, next) => {
             render = (await import("./dist/server/entry-server.js")).render;
         }
         const rendered = await render({ path: req.originalUrl }, SSR_MANIFEST);
+        console.log(rendered);
         const html = template.replace(`<!--app-html-->`, rendered ?? "");
         res.status(200).setHeader("Content-Type", "text/html").end(html);
     } catch (error) {
+        console.log(error);
         vite.ssrFixStacktrace(error);
         next(error);
     }
