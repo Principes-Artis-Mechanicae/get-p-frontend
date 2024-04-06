@@ -39,7 +39,6 @@ export default function SelectTypePage() {
                 </SelectTypeTextItem>
                 <SelectTypeItem>
                     <MemberTypeCard
-                        key="clinet-type"
                         variant="client"
                         width="208px"
                         height="208px"
@@ -47,7 +46,6 @@ export default function SelectTypePage() {
                         label="의뢰자 회원"
                     ></MemberTypeCard>
                     <MemberTypeCard
-                        key="people-type"
                         variant="people"
                         width="208px"
                         height="208px"
