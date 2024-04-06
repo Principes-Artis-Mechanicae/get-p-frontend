@@ -7,7 +7,6 @@ export interface IButton {
 
     width: string;
     height: string;
-    font_weight?: string;
 }
 
 export const Button = styled.button<IButton>`
@@ -15,8 +14,6 @@ export const Button = styled.button<IButton>`
 
     width: ${(props) => props.width};
     height: ${(props) => props.height};
-
-    font-weight: ${(props) => props.font_weight};
 
     border-radius: 12px;
 

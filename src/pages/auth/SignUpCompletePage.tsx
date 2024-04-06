@@ -17,15 +17,15 @@ export default function SignUpCompletePage() {
                 <Title>가입완료</Title>
             </SignUpCompletePageHeader>
             <SignUpCompleteContainer>
-                {/* <SignUpCompleteItem>
+                <SignUpCompleteItem>
                     <img src="src\assets\auth\congrats2.png" width="312px" height="230px" />
-                </SignUpCompleteItem> */}
+                </SignUpCompleteItem>
                 <SignUpCompleteTextItem>
-                    <Text size="lx" color="point" weight="bold">
+                    <Text size="l" color="point" weight="bold">
                         환영합니다.
                     </Text>
                     <br />
-                    <Text size="lx" color="primary" weight="bold">
+                    <Text size="l" color="primary" weight="bold">
                         가입이 완료되었어요.
                     </Text>
                 </SignUpCompleteTextItem>
@@ -34,12 +34,13 @@ export default function SignUpCompletePage() {
                         variant="secondary"
                         width="440px"
                         height="54px"
-                        font_weight="700"
                         onClick={() => {
                             //dispatch(pageActions.nextPage());
                         }}
                     >
-                        로그인하기
+                        <Text size="s" color="point" weight="bold">
+                            로그인하기
+                        </Text>
                     </Button>
                 </SignUpCompleteItem>
                 <SignUpCompleteItem>
@@ -47,12 +48,13 @@ export default function SignUpCompletePage() {
                         variant="primary"
                         width="440px"
                         height="54px"
-                        font_weight="700"
                         onClick={() => {
                             //dispatch(pageActions.nextPage());
                         }}
                     >
-                        내 정보 등록하러 가기
+                        <Text size="s" color="white" weight="bold">
+                            내 정보 등록하러 가기
+                        </Text>
                     </Button>
                 </SignUpCompleteItem>
             </SignUpCompleteContainer>
