@@ -44,5 +44,5 @@ export const MemberTypeCardWrapper = styled.div<IMemberTypeCardWrapper>`
 `;
 
 export const MemberTypeCardImg = styled.div<IMemberTypeCardImg>`
-    src = ${(props) => props.src}
+    src: ${(props) => props.src};
 `;
