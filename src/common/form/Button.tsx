@@ -52,7 +52,7 @@ export const Button = styled.button<IButton>`
             case "outline":
                 return "1px solid #476FF1";
             case "side":
-                return "1px solid rgba(235, 237, 239, 1)";
+                return "1px solid #EBEDEF";
             default:
                 return "0";
         }
