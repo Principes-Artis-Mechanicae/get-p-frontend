@@ -6,8 +6,10 @@ export interface ITitle {
 
 export const Title: React.FC<ITitle> = ({ children }) => {
     return (
-        <Text size="xl" weight="bold">
-            {children}
-        </Text>
+        <h1>
+            <Text size="xl" weight="bold">
+                {children}
+            </Text>
+        </h1>
     );
 };
