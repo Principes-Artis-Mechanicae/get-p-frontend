@@ -41,17 +41,20 @@ app.use("*", async (req, res, next) => {
     let template, render;
 
     try {
+        console.log("START RENDER ON SERVER SIDE");
         if (!PRODUCTION) {
             template = fs.readFileSync(path.resolve("./index.html"), "utf-8");
             template = await vite.transformIndexHtml(req.originalUrl, template);
             render = (await vite.ssrLoadModule("/src/entry-server.tsx")).render;
         } else {
+            console.log("CALL RENDER FUNCTION");
             template = TEMPLATE;
             render = (await import("./dist/server/entry-server.js")).render;
         }
         const rendered = await render({ path: req.originalUrl }, SSR_MANIFEST);
-        console.log(rendered);
         const html = template.replace(`<!--app-html-->`, rendered ?? "");
+        console.log("RENDERED RESULT ON SERVER SIDE");
+        console.log(rendered);
         res.status(200).setHeader("Content-Type", "text/html").end(html);
     } catch (error) {
         console.log(error);

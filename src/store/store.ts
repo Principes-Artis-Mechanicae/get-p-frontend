@@ -1,14 +1,14 @@
-import { persistReducer, persistStore } from "redux-persist";
+import { PersistorOptions, WebStorage, persistReducer, persistStore } from "redux-persist";
 
+import { persistStorage } from "./persist/persistStorage";
 import { authSlice } from "./slice/auth.slice";
 import { pageSlice } from "./slice/page.slice";
 import { userInterfaceSlice } from "./slice/userInterface.slice";
-import { configureStore, combineReducers, Store } from "@reduxjs/toolkit";
-import storage from "redux-persist/lib/storage";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
 const persistConfig = {
     key: "root",
-    storage: storage,
+    storage: persistStorage as WebStorage,
     whitelist: ["auth"],
 };
 
@@ -18,18 +18,11 @@ const rootReducer = combineReducers({
     page: pageSlice.reducer,
 });
 
-let store: Store;
-if (import.meta.env.SSR) {
-    store = configureStore({
-        reducer: rootReducer,
-    });
-} else {
-    store = configureStore({
-        reducer: persistReducer(persistConfig, rootReducer),
-    });
-}
+export const store = configureStore({
+    reducer: persistReducer(persistConfig, rootReducer),
+});
 
-export { store };
-export const persistor = persistStore(store);
+export const persistor = persistStore(store, { manualPersist: true } as PersistorOptions);
+// export const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;
