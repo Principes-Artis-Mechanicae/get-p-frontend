@@ -19,7 +19,7 @@ export const SigninCardBody = styled.div`
 export const SigninCardWrapper = styled.div`
     width: 430px;
     height: 830px;
-    z-index: 10000;
+    z-index: 1;
 
     border-radius: 12px;
     border: none;
