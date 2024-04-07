@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 
-export const SignUpCompletePageWrapper = styled.section`
+export const SignUpCompleteSectionWrapper = styled.section`
     width: min(100%, 440px);
     margin: 0px auto;
 `;
 
-export const SignUpCompletePageHeader = styled.p`
+export const SignUpCompleteSectionHeader = styled.p`
     margin: 50px 0px;
 
     text-align: center;

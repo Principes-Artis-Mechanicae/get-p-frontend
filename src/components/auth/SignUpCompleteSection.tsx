@@ -5,17 +5,17 @@ import { Title } from "@/common/typography/Title";
 import {
     SignUpCompleteContainer,
     SignUpCompleteItem,
-    SignUpCompletePageHeader,
-    SignUpCompletePageWrapper,
+    SignUpCompleteSectionHeader,
+    SignUpCompleteSectionWrapper,
     SignUpCompleteTextItem,
-} from "./SignUpCompletePage.style";
+} from "./SignUpCompleteSection.style";
 
-export default function SignUpCompletePage() {
+export default function SignUpCompleteSection() {
     return (
-        <SignUpCompletePageWrapper>
-            <SignUpCompletePageHeader>
+        <SignUpCompleteSectionWrapper>
+            <SignUpCompleteSectionHeader>
                 <Title>가입완료</Title>
-            </SignUpCompletePageHeader>
+            </SignUpCompleteSectionHeader>
             <SignUpCompleteContainer>
                 <SignUpCompleteItem>
                     <img src="/src/assets/auth/congrats2.png" width="312px" height="230px" />
@@ -58,6 +58,6 @@ export default function SignUpCompletePage() {
                     </Button>
                 </SignUpCompleteItem>
             </SignUpCompleteContainer>
-        </SignUpCompletePageWrapper>
+        </SignUpCompleteSectionWrapper>
     );
 }

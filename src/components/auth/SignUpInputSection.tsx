@@ -5,23 +5,23 @@ import { Label } from "@/common/form/Label";
 import { Title } from "@/common/typography/Title";
 
 import {
-    SignUpPageWrapper,
-    SignUpPageHeader,
-    SignUpPageContainer,
+    SignUpSectionWrapper,
+    SignUpSectionHeader,
+    SignUpSectionContainer,
     SignUpItem,
     CheckBoxContainer,
     DetailBtn,
-} from "./SignUpInputPage.style";
+} from "./SignUpInputSection.style";
 
-export default function SignUpInputPage() {
+export default function SignUpInputSection() {
     return (
         <>
-            <SignUpPageWrapper>
-                <SignUpPageHeader>
+            <SignUpSectionWrapper>
+                <SignUpSectionHeader>
                     <Title>회원가입</Title>
-                </SignUpPageHeader>
+                </SignUpSectionHeader>
 
-                <SignUpPageContainer>
+                <SignUpSectionContainer>
                     <SignUpItem>
                         <Label htmlFor="id">아이디</Label>
                         <Input id="id" width="100%" height="40px" placeholder="이메일 주소를 입력해주세요">
@@ -78,8 +78,8 @@ export default function SignUpInputPage() {
                             다음으로
                         </Button>
                     </SignUpItem>
-                </SignUpPageContainer>
-            </SignUpPageWrapper>
+                </SignUpSectionContainer>
+            </SignUpSectionWrapper>
         </>
     );
 }

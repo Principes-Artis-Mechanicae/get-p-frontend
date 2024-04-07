@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 
-export const SelectTypePageWrapper = styled.section`
+export const SelectTypeSectionWrapper = styled.section`
     width: min(100%, 440px);
     margin: 40px auto;
 `;
 
-export const SelectTypePageHeader = styled.p`
+export const SelectTypeSectionHeader = styled.p`
     margin: 25px 0px;
 
     text-align: center;
