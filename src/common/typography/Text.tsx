@@ -20,6 +20,8 @@ export const Text = styled.span<IText>`
                 return "#476FF1";
             case "placeholder":
                 return "#C4C7CC";
+            default:
+                return props.color;
         }
     }};
 
