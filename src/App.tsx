@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import React from "react";
+import { useEffect } from "react";
 import { Provider } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
@@ -14,10 +13,10 @@ import "./globals.css";
 import { PersistGate } from "@/store/persist/PersistGate";
 import { persistor, store } from "@/store/store";
 
-export default function App() {
+export default function App({ isClient }: { isClient: boolean }) {
     useEffect(() => {
-        persistor.persist();
-    }, []);
+        if (isClient) persistor.persist();
+    }, [isClient]);
 
     return (
         <>
