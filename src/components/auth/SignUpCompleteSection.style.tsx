@@ -1,13 +1,12 @@
 import styled from "@emotion/styled";
 
 export const SignUpCompleteSectionWrapper = styled.section`
-    width: min(100%, 440px);
+    width: min(100%, 500px);
     margin: 0px auto;
 `;
 
 export const SignUpCompleteSectionHeader = styled.p`
     margin: 50px 0px;
-
     text-align: center;
 `;
 
