@@ -1,4 +1,4 @@
-import { place_center } from "@/styles/utils";
+import { mobile } from "@/styles/breakpoint";
 
 import styled from "@emotion/styled";
 
@@ -6,76 +6,101 @@ export interface ISeek {
     variant: "seek" | "signup";
 }
 
-export const SigninCardBody = styled.div`
-    ${place_center}
-    display: flex;
-    align-items: center;
+export const SignInWrapper = styled.div`
+    position: relative;
+    width: min(100%, 1060px);
 
-    border-radius: 12px;
+    margin: 50px auto;
     border: none;
-    box-shadow: 10px 20px 40px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+
+    background-color: #476ff1;
+    box-shadow: 10px 20px 40px 0px #00000026;
+
+    ${mobile} {
+        background-color: transparent;
+        margin: 30px auto;
+    }
 `;
 
-export const SigninCardWrapper = styled.div`
-    width: 430px;
-    height: 830px;
-    z-index: 1;
+export const SignInBackground = styled.div`
+    display: flex;
+
+    width: 100%;
+    height: 800px;
 
     border-radius: 12px;
-    border: none;
-    box-shadow: 10px 20px 40px 0px rgba(0, 0, 0, 0.15);
-    margin-left: -80px;
-    margin-top: -40px;
 
-    padding: 45px;
+    img {
+        display: block;
+        width: 60%;
+
+        object-fit: contain;
+    }
+    ${mobile} {
+        img {
+            display: none;
+        }
+    }
+`;
+
+export const SignInContainer = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 400px;
+    height: 800px;
+
+    border-radius: 12px;
+    padding: 40px;
 
     background-color: #fff;
+
+    img {
+        margin-bottom: 50px;
+    }
+
+    ${mobile} {
+        right: 50%;
+        transform: translateX(50%);
+        width: 100%;
+
+        padding: 30px;
+    }
 `;
 
-export const SigninHeader = styled.p`
-    margin: 60px 0px;
+export const SignInBody = styled.div`
+    display: block;
 `;
 
-export const SigninContainer = styled.div`
+export const SignInItem = styled.div`
     width: 100%;
+    margin: 20px 0px;
 `;
 
-export const SigninItem = styled.div`
+export const OptionItem = styled.div`
     width: 100%;
-    margin: 30px 0px;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px;
 `;
 
-export const SeekBtn = styled.button<ISeek>`
-    width: 100px;
-    height: 25px;
-
-    font-weight: bold;
-    flex-shrink: 0;
-
-    background-color: transparent;
-    color: ${(props) => {
-        switch (props.variant) {
-            case "seek":
-                return "#676f7c";
-            case "signup":
-                return "#476FF1";
-        }
-    }};
-`;
-
-export const GotoSignup = styled.div`
-    ${place_center}
+export const SignInFooter = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     width: 100%;
     height: 54px;
 
-    margin: 220px 0px;
-
+    padding: 10px;
     border-radius: 12px;
 
-    background-color: #f8f6f8;
-
     color: #000;
-
-    border: none;
+    background-color: #f8f6f8;
 `;
