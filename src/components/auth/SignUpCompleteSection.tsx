@@ -16,6 +16,7 @@ export default function SignUpCompleteSection() {
             <SignUpCompleteSectionHeader>
                 <Title>가입완료</Title>
             </SignUpCompleteSectionHeader>
+
             <SignUpCompleteContainer>
                 <SignUpCompleteItem>
                     <img src="/src/assets/auth/congrats2.png" width="312px" height="230px" />
@@ -32,7 +33,7 @@ export default function SignUpCompleteSection() {
                 <SignUpCompleteItem>
                     <Button
                         variant="secondary"
-                        width="440px"
+                        width="100%"
                         height="54px"
                         onClick={() => {
                             //dispatch(pageActions.nextPage());
@@ -46,7 +47,7 @@ export default function SignUpCompleteSection() {
                 <SignUpCompleteItem>
                     <Button
                         variant="primary"
-                        width="440px"
+                        width="100%"
                         height="54px"
                         onClick={() => {
                             //dispatch(pageActions.nextPage());
