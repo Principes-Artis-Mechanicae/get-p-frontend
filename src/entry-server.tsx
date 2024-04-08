@@ -10,7 +10,7 @@ interface IRenderProps {
 export const render = ({ path }: IRenderProps) => {
     return ReactDOMServer.renderToString(
         <StaticRouter location={path}>
-            <App />
+            <App isClient={false} />
         </StaticRouter>,
     );
 };

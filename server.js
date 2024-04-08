@@ -35,11 +35,9 @@ if (!PRODUCTION) {
 }
 
 app.use("*", async (req, res, next) => {
-    // ! Favicon Fix
     if (req.originalUrl === "/favicon.ico") {
-        return res.sendFile(path.resolve("./public/vite.svg"));
+        return res.sendFile(path.resolve("./public/logo.svg"));
     }
-    // ! SSR Render - Do not Edit if you don't know what heare whats going on
     let template, render;
 
     try {
