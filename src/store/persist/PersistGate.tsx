@@ -57,8 +57,6 @@ export class PersistGate extends PureComponent<Props, State> {
             return this.props.children(this.state.bootstrapped);
         }
 
-        return this.props.children;
-
         if (typeof window === "undefined") return this.props.children;
         return this.state.bootstrapped ? this.props.children : this.props.loading;
     }
