@@ -1,3 +1,6 @@
+import { useCallback } from "react";
+import { useDispatch } from "react-redux";
+
 import { Button } from "@/common/form/Button";
 import { CheckBox } from "@/common/form/CheckBox";
 import { Input } from "@/common/form/Input";
@@ -12,8 +15,16 @@ import {
     CheckBoxContainer,
     DetailBtn,
 } from "./SignUpInputSection.style";
+import { pageActions } from "@/store/slice/page.slice";
+import { RootDispatch } from "@/store/store";
 
 export default function SignUpInputSection() {
+    const dispatch: RootDispatch = useDispatch();
+
+    const handleNextStepBtnClick = useCallback(() => {
+        dispatch(pageActions.nextPage());
+    }, [dispatch]);
+
     return (
         <>
             <SignUpSectionWrapper>
@@ -56,25 +67,25 @@ export default function SignUpInputSection() {
                     <SignUpItem>
                         <CheckBoxContainer>
                             <CheckBox width="20px" height="20px">
-                                {"GET-P 이용약관 (필수)"}
+                                GET-P 이용약관 (필수)
                             </CheckBox>
                             <DetailBtn>상세보기</DetailBtn>
                         </CheckBoxContainer>
 
                         <CheckBoxContainer>
                             <CheckBox width="20px" height="20px">
-                                {"개인정보 수집 및 이용 동의 (필수)"}
+                                개인정보 수집 및 이용 동의 (필수)
                             </CheckBox>
                             <DetailBtn>상세보기</DetailBtn>
                         </CheckBoxContainer>
 
                         <CheckBox width="20px" height="20px">
-                            {"마케팅 정보 수신 (선택)"}
+                            마케팅 정보 수신 (선택)
                         </CheckBox>
                     </SignUpItem>
 
                     <SignUpItem>
-                        <Button variant="primary" width="100%" height="54px">
+                        <Button variant="primary" width="100%" height="54px" onClick={handleNextStepBtnClick}>
                             다음으로
                         </Button>
                     </SignUpItem>
