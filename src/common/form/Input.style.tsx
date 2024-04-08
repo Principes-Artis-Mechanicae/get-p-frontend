@@ -8,6 +8,7 @@ export interface IInputWrapper {
 export interface IInputElement extends React.ComponentProps<"input"> {
     width: string;
     height: string;
+    error?: string;
 }
 
 export const InputWrapper = styled.div<IInputWrapper>`
@@ -28,7 +29,10 @@ export const InputElement = styled.input<IInputElement>`
 
     &:focus {
         outline: none;
-        border-bottom: 1.5px solid #476ff1;
+        border-bottom: ${(props) => {
+            if (props.error) return "1.5px solid #FF0000";
+            else return "1.5px solid #476ff1";
+        }};
     }
 `;
 
@@ -38,4 +42,8 @@ export const InputOption = styled.div`
     position: absolute;
     right: 0;
     top: 0;
+`;
+
+export const InputFeedBack = styled.p`
+    color: #ff0000;
 `;

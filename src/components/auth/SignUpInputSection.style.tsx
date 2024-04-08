@@ -1,16 +1,16 @@
 import styled from "@emotion/styled";
 
-export const SignUpPageWrapper = styled.section`
+export const SignUpSectionWrapper = styled.section`
     width: min(100%, 500px);
     margin: 0px auto;
 `;
 
-export const SignUpPageHeader = styled.p`
+export const SignUpSectionHeader = styled.p`
     margin: 50px 0px;
     text-align: center;
 `;
 
-export const SignUpPageContainer = styled.div`
+export const SignUpSectionContainer = styled.div`
     width: 100%;
 `;
 
@@ -32,5 +32,8 @@ export const DetailBtn = styled.button`
     font-weight: bold;
     text-decoration: underline;
     background-color: transparent;
-    cursor: pointer;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
