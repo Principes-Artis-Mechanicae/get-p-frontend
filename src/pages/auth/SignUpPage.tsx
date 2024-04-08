@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 
-import SelectTypePage from "./SelectTypePage";
-import SignUpCompletePage from "./SignUpCompletePage";
-import SignUpInputPage from "./SignUpInputPage";
+import SelectTypePage from "@/components/auth/SelectTypeSection";
+import SignUpCompletePage from "@/components/auth/SignUpCompleteSection";
+import SignUpInputPage from "@/components/auth/SignUpInputSection";
+
 import { RootState } from "@/store/store";
 
 export default function SignUpPage() {

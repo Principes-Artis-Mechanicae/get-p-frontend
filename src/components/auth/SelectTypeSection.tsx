@@ -8,25 +8,25 @@ import { MemberTypeCard } from "@/components/auth/MemberTypeCard";
 import {
     SelectTypeContainer,
     SelectTypeItem,
-    SelectTypePageHeader,
-    SelectTypePageWrapper,
+    SelectTypeSectionHeader,
+    SelectTypeSectionWrapper,
     SelectTypeTextItem,
-} from "./SelectTypePage.style";
+} from "./SelectTypeSection.style";
 import { pageActions } from "@/store/slice/page.slice";
 
-export default function SelectTypePage() {
+export default function SelectTypeSection() {
     const dispatch = useDispatch();
 
     return (
-        <SelectTypePageWrapper>
-            <SelectTypePageHeader>
+        <SelectTypeSectionWrapper>
+            <SelectTypeSectionHeader>
                 <Text size="xl" color="point" weight="bold">
                     회원타입
                 </Text>
                 <Text size="xl" color="primary" weight="bold">
                     을 선택해주세요
                 </Text>
-            </SelectTypePageHeader>
+            </SelectTypeSectionHeader>
             <SelectTypeContainer>
                 <SelectTypeTextItem>
                     <Text size="m" color="secondary" weight="normal">
@@ -66,6 +66,6 @@ export default function SelectTypePage() {
                     </Button>
                 </SelectTypeItem>
             </SelectTypeContainer>
-        </SelectTypePageWrapper>
+        </SelectTypeSectionWrapper>
     );
 }
