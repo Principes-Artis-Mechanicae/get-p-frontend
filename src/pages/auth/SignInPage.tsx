@@ -1,5 +1,6 @@
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { motion } from "framer-motion";
 
@@ -25,6 +26,9 @@ import {
 export default function SignInPage() {
     const navigate = useNavigate();
 
+    const idRef = useRef<HTMLInputElement>(null);
+    const pwRef = useRef<HTMLInputElement>(null);
+
     const handleFindPasswordBtnClick = useCallback(() => {
         navigate("/auth/findpw");
     }, [navigate]);
@@ -32,6 +36,13 @@ export default function SignInPage() {
     const handleSignUpBtnClick = useCallback(() => {
         navigate("/auth/signup");
     }, [navigate]);
+
+    const handleSignInBtnClick = useCallback(() => {
+        if (!idRef.current?.value) toast.error("아이디를 입력해주세요!");
+        else if (!pwRef.current?.value) toast.error("비밀번호를 입력해주세요!");
+        console.log("id", idRef.current?.value);
+        console.log("pw", pwRef.current?.value);
+    }, []);
 
     return (
         <motion.div
@@ -53,6 +64,7 @@ export default function SignInPage() {
                         <SignInItem>
                             <Label htmlFor="id">아이디</Label>
                             <Input
+                                ref={idRef}
                                 id="id"
                                 type="email"
                                 width="100%"
@@ -64,6 +76,7 @@ export default function SignInPage() {
                         <SignInItem>
                             <Label htmlFor="pw">비밀번호</Label>
                             <Input
+                                ref={pwRef}
                                 id="pw"
                                 type="password"
                                 width="100%"
@@ -73,7 +86,7 @@ export default function SignInPage() {
                         </SignInItem>
 
                         <SignInItem>
-                            <Button variant="primary" width="100%" height="54px">
+                            <Button variant="primary" width="100%" height="54px" onClick={handleSignInBtnClick}>
                                 로그인
                             </Button>
                         </SignInItem>
