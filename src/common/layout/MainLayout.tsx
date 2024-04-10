@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import { Bounce, ToastContainer } from "react-toastify";
 
 import { Footer } from "./Footer";
 import { Header } from "./Header";
@@ -14,6 +15,20 @@ export const Main = styled.main`
 export const MainLayout = () => {
     return (
         <>
+            <ToastContainer
+                position="top-center"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Bounce}
+            />
+
             <Header />
             <Main>
                 <Outlet />

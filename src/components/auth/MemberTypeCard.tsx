@@ -8,11 +8,20 @@ export interface IMemberTypeCard extends React.ComponentProps<"button"> {
     height: string;
     imgSrc: string;
     label: string;
+    selected: boolean; // (임시) 선택된 스타일
 }
 
-export const MemberTypeCard: React.FC<IMemberTypeCard> = ({ variant, width, height, imgSrc, label, ...rest }) => {
+export const MemberTypeCard: React.FC<IMemberTypeCard> = ({
+    variant,
+    width,
+    height,
+    imgSrc,
+    label,
+    selected = false,
+    ...rest
+}) => {
     return (
-        <MemberTypeCardWrapper variant={variant} width={width} height={height} {...rest}>
+        <MemberTypeCardWrapper variant={variant} width={width} height={height} selected={selected} {...rest}>
             <MemberTypeCardImg src={imgSrc} />
             <Text size="m" weight="bold">
                 {label}

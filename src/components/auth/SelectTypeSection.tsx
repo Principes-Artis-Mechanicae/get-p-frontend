@@ -1,5 +1,6 @@
 import { useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
 
 import { motion } from "framer-motion";
 
@@ -16,13 +17,23 @@ import {
     SelectTypeTextItem,
 } from "./SelectTypeSection.style";
 import { signUpAction } from "@/store/slice/signup.slice";
-import { RootDispatch } from "@/store/store";
+import { RootDispatch, RootState } from "@/store/store";
 
 export default function SelectTypeSection() {
     const dispatch: RootDispatch = useDispatch();
+    const { signUpMemberType } = useSelector((state: RootState) => state.signUp);
 
     const handleNextBtnClick = useCallback(() => {
-        dispatch(signUpAction.nextSignUpSection());
+        if (!signUpMemberType) toast.error("회원 타입을 선택해주세요!");
+        else dispatch(signUpAction.nextSignUpSection());
+    }, [dispatch, signUpMemberType]);
+
+    const handleClientBtnClick = useCallback(() => {
+        dispatch(signUpAction.setSignUpMemberType("ROLE_CLIENT"));
+    }, [dispatch]);
+
+    const handlePeopleBtnClick = useCallback(() => {
+        dispatch(signUpAction.setSignUpMemberType("ROLE_PEOPLE"));
     }, [dispatch]);
 
     return (
@@ -60,6 +71,8 @@ export default function SelectTypeSection() {
                             height="208px"
                             imgSrc=""
                             label="의뢰자 회원"
+                            onClick={handleClientBtnClick}
+                            selected={signUpMemberType === "ROLE_CLIENT"}
                         ></MemberTypeCard>
                         <MemberTypeCard
                             variant="people"
@@ -67,11 +80,18 @@ export default function SelectTypeSection() {
                             height="208px"
                             imgSrc=""
                             label="피플 회원"
+                            onClick={handlePeopleBtnClick}
+                            selected={signUpMemberType === "ROLE_PEOPLE"}
                         ></MemberTypeCard>
                     </SelectTypeItem>
 
                     <SelectTypeItem>
-                        <Button variant="disabled" width="100%" height="54px" onClick={handleNextBtnClick}>
+                        <Button
+                            variant={signUpMemberType ? "primary" : "disabled"}
+                            width="100%"
+                            height="54px"
+                            onClick={handleNextBtnClick}
+                        >
                             완료하기
                         </Button>
                     </SelectTypeItem>
