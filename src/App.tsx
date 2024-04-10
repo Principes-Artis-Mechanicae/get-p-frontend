@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { Provider } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
+import { AnimatePresence } from "framer-motion";
+
 import { MainLayout } from "@/common/layout/MainLayout";
 
 import HomePage from "@/pages/HomePage";
@@ -22,14 +24,16 @@ export default function App({ isClient }: { isClient: boolean }) {
         <>
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
-                    <Routes>
-                        <Route path="/" element={<MainLayout />}>
-                            <Route path="/" element={<HomePage />}></Route>
-                            <Route path="auth/signin" element={<SignInPage />}></Route>
-                            <Route path="auth/signup" element={<SignUpPage />}></Route>
-                            <Route path="auth/findpw" element={<FindPasswordPage />}></Route>
-                        </Route>
-                    </Routes>
+                    <AnimatePresence>
+                        <Routes>
+                            <Route path="/" element={<MainLayout />}>
+                                <Route path="/" element={<HomePage />}></Route>
+                                <Route path="auth/signin" element={<SignInPage />}></Route>
+                                <Route path="auth/signup" element={<SignUpPage />}></Route>
+                                <Route path="auth/findpw" element={<FindPasswordPage />}></Route>
+                            </Route>
+                        </Routes>
+                    </AnimatePresence>
                 </PersistGate>
             </Provider>
         </>
