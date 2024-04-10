@@ -5,7 +5,6 @@ export interface ISignUpState {
     signUpMemberType: string | null;
     signUpEmailValue: string | null;
     signUpPasswordValue: string | null;
-    signUpPasswordVerifyValue: string | null;
     signUpAgreementValue: boolean;
 }
 
@@ -14,7 +13,6 @@ const initialState: ISignUpState = {
     signUpMemberType: null,
     signUpEmailValue: null,
     signUpPasswordValue: null,
-    signUpPasswordVerifyValue: null,
     signUpAgreementValue: false,
 };
 
@@ -28,7 +26,6 @@ export const signUpSlice = createSlice({
             state.signUpMemberType = null;
             state.signUpEmailValue = null;
             state.signUpPasswordValue = null;
-            state.signUpPasswordVerifyValue = null;
             state.signUpAgreementValue = false;
         },
 
@@ -48,9 +45,6 @@ export const signUpSlice = createSlice({
         setSignUpPasswordValue: (state, action: PayloadAction<string>) => {
             state.signUpPasswordValue = action.payload;
         },
-        setSignUpPasswordVerifyValue: (state, action: PayloadAction<string>) => {
-            state.signUpPasswordVerifyValue = action.payload;
-        },
         setSignUpAgreementValue: (state, action: PayloadAction<boolean>) => {
             state.signUpAgreementValue = action.payload;
         },
@@ -58,3 +52,9 @@ export const signUpSlice = createSlice({
 });
 
 export const signUpAction = signUpSlice.actions;
+
+export const signUpThunkAction = () => {
+    return async () => {
+        // 회원가입 POST 요청
+    };
+};

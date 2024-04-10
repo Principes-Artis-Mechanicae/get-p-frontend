@@ -17,6 +17,7 @@ export const Client: Story = {
         width: "208px",
         height: "208px",
         label: "의뢰자 회원",
+        selected: true,
     },
 };
 
@@ -27,5 +28,6 @@ export const People: Story = {
         width: "208px",
         height: "208px",
         label: "피플 회원",
+        selected: true,
     },
 };
