@@ -2,7 +2,7 @@ import { PersistorOptions, WebStorage, persistReducer, persistStore } from "redu
 
 import { persistStorage } from "./persist/persistStorage";
 import { authSlice } from "./slice/auth.slice";
-import { pageSlice } from "./slice/page.slice";
+import { signUpSlice } from "./slice/signup.slice";
 import { uiSlice } from "./slice/ui.slice";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
@@ -15,7 +15,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
     auth: authSlice.reducer,
     ui: uiSlice.reducer,
-    page: pageSlice.reducer,
+
+    signUp: signUpSlice.reducer,
 });
 
 export const store = configureStore({
