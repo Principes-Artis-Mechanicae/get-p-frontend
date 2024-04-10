@@ -1,3 +1,4 @@
+import { RootDispatch } from "../store";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface ISignUpState {
@@ -54,7 +55,9 @@ export const signUpSlice = createSlice({
 export const signUpAction = signUpSlice.actions;
 
 export const signUpThunkAction = () => {
-    return async () => {
+    return (dispatch: RootDispatch) => {
         // 회원가입 POST 요청
+
+        dispatch(signUpAction.initalizeState());
     };
 };

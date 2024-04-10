@@ -1,3 +1,6 @@
+import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { motion } from "framer-motion";
 
 import { Button } from "@/common/form/Button";
@@ -20,6 +23,16 @@ import {
 } from "./SignInPage.style";
 
 export default function SignInPage() {
+    const navigate = useNavigate();
+
+    const handleFindPasswordBtnClick = useCallback(() => {
+        navigate("/auth/findpw");
+    }, [navigate]);
+
+    const handleSignUpBtnClick = useCallback(() => {
+        navigate("/auth/signup");
+    }, [navigate]);
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -69,7 +82,7 @@ export default function SignInPage() {
                             <CheckBox width="20px" height="20px">
                                 <Text size="s">로그인 유지</Text>
                             </CheckBox>
-                            <Button variant="link" width="100px" height="20px">
+                            <Button variant="link" width="100px" height="20px" onClick={handleFindPasswordBtnClick}>
                                 <Text size="s" weight="bold" color="#676F7C">
                                     비밀번호 찾기
                                 </Text>
@@ -79,7 +92,7 @@ export default function SignInPage() {
 
                     <SignInFooter>
                         <Text size="s">아직 GET-P 회원이 아니신가요?</Text>
-                        <Button variant="link" width="80px" height="25px">
+                        <Button variant="link" width="80px" height="25px" onClick={handleSignUpBtnClick}>
                             <Text size="s" weight="bold" color="#476FF1">
                                 회원가입
                             </Text>
