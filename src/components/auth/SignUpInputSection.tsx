@@ -86,6 +86,7 @@ export default function SignUpInputSection() {
 
         if (!(termsAgreementRef.current?.checked && infoAgreementRef.current?.checked)) {
             toast.error("이용약관 및 개인정보 수집에 동의해주세요!");
+            return;
         } else {
             dispatch(signUpAction.setSignUpAgreementValue(true));
         }
@@ -96,10 +97,10 @@ export default function SignUpInputSection() {
     return (
         <>
             <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                initial={{ x: -200, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 1 }}
+                transition={{ duration: 0.5 }}
             >
                 <SignUpSectionWrapper>
                     <SignUpSectionHeader>

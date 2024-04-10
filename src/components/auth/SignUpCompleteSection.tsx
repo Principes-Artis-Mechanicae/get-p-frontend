@@ -23,20 +23,21 @@ export default function SignUpCompleteSection() {
     const dispatch: RootDispatch = useDispatch();
 
     const handleLoginBtnClick = useCallback(() => {
-        dispatch(signUpAction.initalizeState());
+        dispatch(signUpAction.initializeSection());
         navigate("/auth/signin");
     }, [navigate, dispatch]);
 
     const handleRegisterInfoBtnClick = useCallback(() => {
+        dispatch(signUpAction.initializeSection());
         navigate("/");
-    }, [navigate]);
+    }, [navigate, dispatch]);
 
     return (
         <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ x: -200, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.5 }}
         >
             <SignUpCompleteSectionWrapper>
                 <SignUpCompleteSectionHeader>

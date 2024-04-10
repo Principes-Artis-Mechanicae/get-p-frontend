@@ -23,13 +23,15 @@ export const signUpSlice = createSlice({
 
     reducers: {
         initalizeState: (state) => {
-            state.signUpSectionIndex = 1;
             state.signUpMemberType = null;
             state.signUpEmailValue = null;
             state.signUpPasswordValue = null;
             state.signUpAgreementValue = false;
         },
 
+        initializeSection: (state) => {
+            state.signUpSectionIndex = 1;
+        },
         nextSignUpSection: (state) => {
             state.signUpSectionIndex++;
         },
@@ -58,6 +60,7 @@ export const signUpThunkAction = () => {
     return (dispatch: RootDispatch) => {
         // 회원가입 POST 요청
 
+        dispatch(signUpAction.nextSignUpSection());
         dispatch(signUpAction.initalizeState());
     };
 };
