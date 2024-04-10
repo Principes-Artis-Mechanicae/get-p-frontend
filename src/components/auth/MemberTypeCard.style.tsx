@@ -12,7 +12,7 @@ export interface IMemberTypeCardImg {
     src: string;
 }
 
-export const MemberTypeCardWrapper = styled.div<IMemberTypeCardWrapper>`
+export const MemberTypeCardWrapper = styled.button<IMemberTypeCardWrapper>`
     ${place_center}
     width: ${(props) => props.width};
     height: ${(props) => props.height};
