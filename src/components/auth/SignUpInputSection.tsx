@@ -1,13 +1,15 @@
 import { ChangeEvent, useCallback, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 import { motion } from "framer-motion";
 
+import { Modal } from "@/common/feedback/Modal";
 import { Button } from "@/common/form/Button";
 import { CheckBox } from "@/common/form/CheckBox";
 import { Input } from "@/common/form/Input";
 import { Label } from "@/common/form/Label";
+import { Paragraph } from "@/common/typography/Paragraph";
 import { Text } from "@/common/typography/Text";
 import { Title } from "@/common/typography/Title";
 
@@ -24,10 +26,12 @@ import {
     DetailBtn,
 } from "./SignUpInputSection.style";
 import { signUpAction, signUpThunkAction } from "@/store/slice/signup.slice";
-import { RootDispatch } from "@/store/store";
+import { uiActions } from "@/store/slice/ui.slice";
+import { RootDispatch, RootState } from "@/store/store";
 
 export default function SignUpInputSection() {
     const dispatch: RootDispatch = useDispatch();
+    const { isModalOpened } = useSelector((state: RootState) => state.ui);
 
     const emailRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
@@ -66,6 +70,10 @@ export default function SignUpInputSection() {
         [password],
     );
 
+    const handleVerificationFailBtnClick = useCallback(() => {
+        dispatch(uiActions.showModal());
+    }, [dispatch]);
+
     const handleNextStepBtnClick = useCallback(() => {
         if (!emailRef.current?.value) {
             toast.error("이메일을 입력해주세요!");
@@ -102,6 +110,21 @@ export default function SignUpInputSection() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
             >
+                {isModalOpened && (
+                    <Modal width="350px" height="300px">
+                        <Title>
+                            <Text size="l" weight="bold">
+                                이메일을 받지 못하셨나요 ?
+                            </Text>
+                        </Title>
+
+                        <Paragraph>
+                            <Text>1. 이메일을 올바르게 입력했는지 다시 확인해 보세요.</Text>
+                            <Text>2. 스팸함 또는 휴지통을 확인해 보세요.</Text>
+                        </Paragraph>
+                    </Modal>
+                )}
+
                 <SignUpSectionWrapper>
                     <SignUpSectionHeader>
                         <Title>회원가입</Title>
@@ -140,7 +163,12 @@ export default function SignUpInputSection() {
                                             </Text>
                                         </Button>
                                     </Input>
-                                    <Button variant="link" width="auto" height="25px">
+                                    <Button
+                                        variant="link"
+                                        width="auto"
+                                        height="25px"
+                                        onClick={handleVerificationFailBtnClick}
+                                    >
                                         <Text size="xs" weight="bold">
                                             인증번호를 받지 못하셨나요?
                                         </Text>

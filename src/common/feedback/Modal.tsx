@@ -1,4 +1,9 @@
+import { useCallback } from "react";
+import { useDispatch } from "react-redux";
+
 import { ModalBackDrop, ModalContainer, ModalController, ModalWrapper } from "./Modal.style";
+import { uiActions } from "@/store/slice/ui.slice";
+import { RootDispatch } from "@/store/store";
 
 export interface IModal {
     width: string;
@@ -7,14 +12,20 @@ export interface IModal {
 }
 
 export const Modal: React.FC<IModal> = ({ width, height, children }) => {
+    const dispatch: RootDispatch = useDispatch();
+
+    const handleModalClose = useCallback(() => {
+        dispatch(uiActions.hideModal());
+    }, [dispatch]);
+
     return (
         <>
-            <ModalBackDrop />
+            <ModalBackDrop onClick={handleModalClose} />
             <ModalWrapper width={width}>
-                <ModalController width={width}>
+                <ModalController width={width} onClick={handleModalClose}>
                     <img src="/close.svg" alt="" />
                 </ModalController>
-                <ModalContainer height={height}>{children}</ModalContainer>
+                <ModalContainer>{children}</ModalContainer>
             </ModalWrapper>
         </>
     );
