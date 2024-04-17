@@ -11,7 +11,7 @@ export interface IModal {
     children?: React.ReactNode;
 }
 
-export const Modal: React.FC<IModal> = ({ width, height, children }) => {
+export const Modal: React.FC<IModal> = ({ width, children }) => {
     const dispatch: RootDispatch = useDispatch();
 
     const handleModalClose = useCallback(() => {
