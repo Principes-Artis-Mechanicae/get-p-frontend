@@ -2,7 +2,9 @@ import { Z_MODAL_BACKDROP, Z_MODAL_CONTAINER, Z_MODAL_WRAPPER } from "@/styles/z
 
 import styled from "@emotion/styled";
 
-export interface IModalContainer {}
+// export interface IModalContainer {
+//
+// }
 
 export interface IModalWrapper {
     width: string;
@@ -41,7 +43,7 @@ export const ModalController = styled.button<{ width: string }>`
     }
 `;
 
-export const ModalContainer = styled.div<IModalContainer>`
+export const ModalContainer = styled.div`
     box-sizing: border-box;
 
     z-index: ${Z_MODAL_CONTAINER};
