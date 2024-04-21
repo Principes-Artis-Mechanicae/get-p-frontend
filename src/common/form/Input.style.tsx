@@ -8,7 +8,7 @@ export interface IInputWrapper {
 export interface IInputElement extends React.ComponentProps<"input"> {
     width: string;
     height: string;
-    error?: string;
+    error?: string | null;
 }
 
 export const InputWrapper = styled.div<IInputWrapper>`

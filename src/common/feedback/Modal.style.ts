@@ -1,8 +1,10 @@
+import { Z_MODAL_BACKDROP, Z_MODAL_CONTAINER, Z_MODAL_WRAPPER } from "@/styles/zindex";
+
 import styled from "@emotion/styled";
 
-export interface IModalContainer {
-    height: string;
-}
+// export interface IModalContainer {
+//
+// }
 
 export interface IModalWrapper {
     width: string;
@@ -10,7 +12,8 @@ export interface IModalWrapper {
 
 export const ModalBackDrop = styled.div`
     position: fixed;
-    z-index: 10000;
+    inset: 0;
+    z-index: ${Z_MODAL_BACKDROP};
 
     width: 100%;
     height: 100vh;
@@ -19,9 +22,12 @@ export const ModalBackDrop = styled.div`
     opacity: 0.5;
 `;
 
-export const ModalController = styled.div<{ width: string }>`
+export const ModalController = styled.button<{ width: string }>`
+    display: block;
     width: ${(props) => props.width};
     height: 40px;
+
+    background-color: transparent;
 
     img {
         width: 40px;
@@ -30,16 +36,19 @@ export const ModalController = styled.div<{ width: string }>`
 
         margin-left: auto;
         margin-right: 0px;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 `;
 
-export const ModalContainer = styled.div<IModalContainer>`
+export const ModalContainer = styled.div`
     box-sizing: border-box;
-    position: fixed;
-    z-index: 10001;
+
+    z-index: ${Z_MODAL_CONTAINER};
 
     width: 100%;
-    height: ${(props) => props.height};
 
     border-radius: 12px;
     padding: 20px;
@@ -49,11 +58,12 @@ export const ModalContainer = styled.div<IModalContainer>`
 
 export const ModalWrapper = styled.div<IModalWrapper>`
     position: fixed;
-    z-index: 10000;
+
+    z-index: ${Z_MODAL_WRAPPER};
 
     width: ${(props) => props.width};
 
-    left: 50%;
     top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
 `;

@@ -6,19 +6,20 @@ export interface IMemberTypeCardWrapper {
     variant: "client" | "people";
     width: string;
     height: string;
+    selected: boolean; // (임시) 선택된 스타일
 }
 
 export interface IMemberTypeCardImg {
     src: string;
 }
 
-export const MemberTypeCardWrapper = styled.div<IMemberTypeCardWrapper>`
+export const MemberTypeCardWrapper = styled.button<IMemberTypeCardWrapper>`
     ${place_center}
     width: ${(props) => props.width};
     height: ${(props) => props.height};
 
     border-radius: 16px;
-    border: none;
+    border: ${(props) => (props.selected ? "2px solid #476ff1" : "0px")}; // (임시) 선택된 스타일
 
     background-color: ${(props) => {
         switch (props.variant) {
