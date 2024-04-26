@@ -15,6 +15,8 @@ import { Title } from "@/common/typography/Title";
 
 import { useInputValidation } from "@/hooks/useInputValidation";
 
+import { authService } from "@/services/auth/auth.service";
+
 import { REGEXP_EMAIL, REGEXP_PASSWORD } from "@/constants/regex";
 
 import {
@@ -57,7 +59,7 @@ export default function SignUpInputSection() {
     const handleEmailVerificationBtnClick = useCallback(() => {
         if (!REGEXP_EMAIL.test(email)) toast.error("올바른 형식이 아닙니다!");
         else {
-            toast.info("인증 이메일이 발송되었습니다");
+            authService.verifyEmail({ email });
             setIsEmailVerificationFieldVisible(true);
         }
     }, [email]);
