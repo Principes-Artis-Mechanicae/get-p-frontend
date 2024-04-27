@@ -11,7 +11,8 @@ export const signInThunkAction = (email: string, password: string, navigate: Nav
             email,
             password,
         });
-        navigate("/");
+
+        console.log(response);
 
         const { accessToken, refreshToken } = response.data.data;
 
@@ -21,6 +22,7 @@ export const signInThunkAction = (email: string, password: string, navigate: Nav
                 refreshToken,
             }),
         );
+        navigate("/");
     };
 };
 

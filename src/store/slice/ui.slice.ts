@@ -20,6 +20,9 @@ const uiSlice = createSlice({
             if (state.isNavAsideOpened) state.isNavAsideOpened = false;
             else state.isNavAsideOpened = true;
         },
+        closeNavAside: (state) => {
+            state.isNavAsideOpened = false;
+        },
         showModal: (state) => {
             state.isModalOpened = true;
         },
