@@ -79,38 +79,20 @@ export default function SignUpInputSection() {
     }, [dispatch]);
 
     const handleNextStepBtnClick = useCallback(() => {
-        if (!emailRef.current?.value) {
-            toast.error("이메일을 입력해주세요!");
-            return;
-        } else {
-            dispatch(signUpAction.setSignUpEmailValue(emailRef.current.value));
-        }
-
-        if (!passwordRef.current?.value) {
-            toast.error("비밀번호를 입력해주세요!");
-            return;
-        } else if (passwordRef.current.value !== passwordCheckRef.current?.value) {
+        if (!emailRef.current?.value) toast.error("이메일을 입력해주세요!");
+        else if (!passwordRef.current?.value) toast.error("비밀번호를 입력해주세요!");
+        else if (passwordRef.current.value !== passwordCheckRef.current?.value)
             toast.error("비밀번호가 일치하지 않습니다!");
-            return;
-        } else {
-            dispatch(signUpAction.setSignUpPasswordValue(passwordRef.current.value));
-        }
-
-        if (!(termsAgreementRef.current?.checked && infoAgreementRef.current?.checked)) {
+        else if (!(termsAgreementRef.current?.checked && infoAgreementRef.current?.checked))
             toast.error("이용약관 및 개인정보 수집에 동의해주세요!");
-            return;
-        } else {
+        else if (!verificationRef.current?.value) toast.error("인증 번호를 입력해주세요!");
+        else {
+            dispatch(signUpAction.setSignUpEmailValue(emailRef.current.value));
+            dispatch(signUpAction.setSignUpPasswordValue(passwordRef.current.value));
             dispatch(signUpAction.setSignUpAgreementValue(true));
-        }
-
-        if (!verificationRef.current?.value) {
-            toast.error("인증 번호를 입력해주세요!");
-            return;
-        } else {
             dispatch(signUpAction.setVerificationCode(verificationRef.current.value));
+            dispatch(signUpThunkAction());
         }
-
-        dispatch(signUpThunkAction());
     }, [dispatch]);
 
     return (
