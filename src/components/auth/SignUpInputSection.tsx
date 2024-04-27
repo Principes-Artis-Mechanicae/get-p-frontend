@@ -15,6 +15,8 @@ import { Title } from "@/common/typography/Title";
 
 import { useInputValidation } from "@/hooks/useInputValidation";
 
+import { authService } from "@/services/auth/auth.service";
+
 import { REGEXP_EMAIL, REGEXP_PASSWORD } from "@/constants/regex";
 
 import {
@@ -25,9 +27,10 @@ import {
     CheckBoxContainer,
     DetailBtn,
 } from "./SignUpInputSection.style";
-import { signUpAction, signUpThunkAction } from "@/store/slice/signup.slice";
+import { signUpAction } from "@/store/slice/signup.slice";
 import { uiActions } from "@/store/slice/ui.slice";
 import { RootDispatch, RootState } from "@/store/store";
+import { signUpThunkAction } from "@/store/thunk/signup.thunk";
 
 export default function SignUpInputSection() {
     const dispatch: RootDispatch = useDispatch();
@@ -38,6 +41,7 @@ export default function SignUpInputSection() {
     const passwordCheckRef = useRef<HTMLInputElement>(null);
     const termsAgreementRef = useRef<HTMLInputElement>(null);
     const infoAgreementRef = useRef<HTMLInputElement>(null);
+    const verificationRef = useRef<HTMLInputElement>(null);
 
     const [isEmailVerificationFieldVisible, setIsEmailVerificationFieldVisible] = useState<boolean>(false);
     const [isPasswordCorrect, setIsPasswordCorrect] = useState<boolean>(false);
@@ -57,7 +61,7 @@ export default function SignUpInputSection() {
     const handleEmailVerificationBtnClick = useCallback(() => {
         if (!REGEXP_EMAIL.test(email)) toast.error("올바른 형식이 아닙니다!");
         else {
-            toast.info("인증 이메일이 발송되었습니다");
+            authService.verifyEmail({ email });
             setIsEmailVerificationFieldVisible(true);
         }
     }, [email]);
@@ -75,31 +79,20 @@ export default function SignUpInputSection() {
     }, [dispatch]);
 
     const handleNextStepBtnClick = useCallback(() => {
-        if (!emailRef.current?.value) {
-            toast.error("이메일을 입력해주세요!");
-            return;
-        } else {
-            dispatch(signUpAction.setSignUpEmailValue(emailRef.current.value));
-        }
-
-        if (!passwordRef.current?.value) {
-            toast.error("비밀번호를 입력해주세요!");
-            return;
-        } else if (passwordRef.current.value !== passwordCheckRef.current?.value) {
+        if (!emailRef.current?.value) toast.error("이메일을 입력해주세요!");
+        else if (!passwordRef.current?.value) toast.error("비밀번호를 입력해주세요!");
+        else if (passwordRef.current.value !== passwordCheckRef.current?.value)
             toast.error("비밀번호가 일치하지 않습니다!");
-            return;
-        } else {
-            dispatch(signUpAction.setSignUpPasswordValue(passwordRef.current.value));
-        }
-
-        if (!(termsAgreementRef.current?.checked && infoAgreementRef.current?.checked)) {
+        else if (!(termsAgreementRef.current?.checked && infoAgreementRef.current?.checked))
             toast.error("이용약관 및 개인정보 수집에 동의해주세요!");
-            return;
-        } else {
+        else if (!verificationRef.current?.value) toast.error("인증 번호를 입력해주세요!");
+        else {
+            dispatch(signUpAction.setSignUpEmailValue(emailRef.current.value));
+            dispatch(signUpAction.setSignUpPasswordValue(passwordRef.current.value));
             dispatch(signUpAction.setSignUpAgreementValue(true));
+            dispatch(signUpAction.setVerificationCode(verificationRef.current.value));
+            dispatch(signUpThunkAction());
         }
-
-        dispatch(signUpThunkAction());
     }, [dispatch]);
 
     return (
@@ -156,7 +149,13 @@ export default function SignUpInputSection() {
                         {isEmailVerificationFieldVisible && (
                             <>
                                 <SignUpItem>
-                                    <Input id="id" width="100%" height="40px" placeholder="인증번호를 입력해주세요">
+                                    <Input
+                                        ref={verificationRef}
+                                        id="id"
+                                        width="100%"
+                                        height="40px"
+                                        placeholder="인증번호를 입력해주세요"
+                                    >
                                         <Button variant="side" width="50px" height="38px">
                                             <Text weight="bold" color="point">
                                                 4:00

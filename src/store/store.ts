@@ -1,8 +1,8 @@
 import { persistReducer, persistStore } from "redux-persist";
 
-import { authSlice } from "./slice/auth.slice";
-import { signUpSlice } from "./slice/signup.slice";
-import { uiSlice } from "./slice/ui.slice";
+import { authReducer } from "./slice/auth.slice";
+import { signUpReducer } from "./slice/signup.slice";
+import { uiReducer } from "./slice/ui.slice";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 
@@ -13,10 +13,10 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-    auth: authSlice.reducer,
-    ui: uiSlice.reducer,
+    auth: authReducer,
+    ui: uiReducer,
 
-    signUp: signUpSlice.reducer,
+    signUp: signUpReducer,
 });
 
 export const store = configureStore({
@@ -27,3 +27,4 @@ export const persistor = persistStore(store);
 
 export type RootDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
+export type GetState = typeof store.getState;

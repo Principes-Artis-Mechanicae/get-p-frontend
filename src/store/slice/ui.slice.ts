@@ -10,7 +10,7 @@ const initialState: IUserInterfaceState = {
     isModalOpened: false,
 };
 
-export const uiSlice = createSlice({
+const uiSlice = createSlice({
     name: "getp/user-interface",
 
     initialState,
@@ -19,6 +19,9 @@ export const uiSlice = createSlice({
         toggleNavAside: (state) => {
             if (state.isNavAsideOpened) state.isNavAsideOpened = false;
             else state.isNavAsideOpened = true;
+        },
+        closeNavAside: (state) => {
+            state.isNavAsideOpened = false;
         },
         showModal: (state) => {
             state.isModalOpened = true;
@@ -30,3 +33,4 @@ export const uiSlice = createSlice({
 });
 
 export const uiActions = uiSlice.actions;
+export const uiReducer = uiSlice.reducer;
