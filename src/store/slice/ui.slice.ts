@@ -10,7 +10,7 @@ const initialState: IUserInterfaceState = {
     isModalOpened: false,
 };
 
-export const uiSlice = createSlice({
+const uiSlice = createSlice({
     name: "getp/user-interface",
 
     initialState,
@@ -30,3 +30,4 @@ export const uiSlice = createSlice({
 });
 
 export const uiActions = uiSlice.actions;
+export const uiReducer = uiSlice.reducer;

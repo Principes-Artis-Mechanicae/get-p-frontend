@@ -27,9 +27,10 @@ import {
     CheckBoxContainer,
     DetailBtn,
 } from "./SignUpInputSection.style";
-import { signUpAction, signUpThunkAction } from "@/store/slice/signup.slice";
+import { signUpAction } from "@/store/slice/signup.slice";
 import { uiActions } from "@/store/slice/ui.slice";
 import { RootDispatch, RootState } from "@/store/store";
+import { signUpThunkAction } from "@/store/thunk/signup.thunk";
 
 export default function SignUpInputSection() {
     const dispatch: RootDispatch = useDispatch();
@@ -40,6 +41,7 @@ export default function SignUpInputSection() {
     const passwordCheckRef = useRef<HTMLInputElement>(null);
     const termsAgreementRef = useRef<HTMLInputElement>(null);
     const infoAgreementRef = useRef<HTMLInputElement>(null);
+    const verificationRef = useRef<HTMLInputElement>(null);
 
     const [isEmailVerificationFieldVisible, setIsEmailVerificationFieldVisible] = useState<boolean>(false);
     const [isPasswordCorrect, setIsPasswordCorrect] = useState<boolean>(false);
@@ -101,6 +103,13 @@ export default function SignUpInputSection() {
             dispatch(signUpAction.setSignUpAgreementValue(true));
         }
 
+        if (!verificationRef.current?.value) {
+            toast.error("인증 번호를 입력해주세요!");
+            return;
+        } else {
+            dispatch(signUpAction.setVerificationCode(verificationRef.current.value));
+        }
+
         dispatch(signUpThunkAction());
     }, [dispatch]);
 
@@ -158,7 +167,13 @@ export default function SignUpInputSection() {
                         {isEmailVerificationFieldVisible && (
                             <>
                                 <SignUpItem>
-                                    <Input id="id" width="100%" height="40px" placeholder="인증번호를 입력해주세요">
+                                    <Input
+                                        ref={verificationRef}
+                                        id="id"
+                                        width="100%"
+                                        height="40px"
+                                        placeholder="인증번호를 입력해주세요"
+                                    >
                                         <Button variant="side" width="50px" height="38px">
                                             <Text weight="bold" color="point">
                                                 4:00
