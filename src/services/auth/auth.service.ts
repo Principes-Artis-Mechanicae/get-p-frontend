@@ -1,4 +1,3 @@
-import { redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { AxiosError } from "axios";
@@ -20,7 +19,6 @@ import {
     SignUpResponseBody,
     VerifyEmailRequestBody,
 } from "./auth.types";
-import { store } from "@/store/store";
 
 export const authService = {
     signIn: async (body: SignInRequestBody) => {
