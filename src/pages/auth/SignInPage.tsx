@@ -1,4 +1,5 @@
 import { useCallback, useRef } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -22,9 +23,12 @@ import {
     SignInBody,
     SignInFooter,
 } from "./SignInPage.style";
+import { RootDispatch } from "@/store/store";
+import { signInThunkAction } from "@/store/thunk/auth.thunk";
 
 export default function SignInPage() {
     const navigate = useNavigate();
+    const dispatch: RootDispatch = useDispatch();
 
     const idRef = useRef<HTMLInputElement>(null);
     const pwRef = useRef<HTMLInputElement>(null);
@@ -40,9 +44,8 @@ export default function SignInPage() {
     const handleSignInBtnClick = useCallback(() => {
         if (!idRef.current?.value) toast.error("아이디를 입력해주세요!");
         else if (!pwRef.current?.value) toast.error("비밀번호를 입력해주세요!");
-        console.log("id", idRef.current?.value);
-        console.log("pw", pwRef.current?.value);
-    }, []);
+        else dispatch(signInThunkAction(idRef.current.value, pwRef.current.value, navigate));
+    }, [dispatch, navigate]);
 
     return (
         <motion.div

@@ -1,5 +1,43 @@
-import { RootDispatch } from "../store";
+import { NavigateFunction } from "react-router-dom";
+
+import { authService } from "@/services/auth/auth.service";
+
+import { authAction } from "../slice/auth.slice";
+import { GetState, RootDispatch } from "../store";
+
+export const signInThunkAction = (email: string, password: string, navigate: NavigateFunction) => {
+    return async (dispatch: RootDispatch) => {
+        const response = await authService.signIn({
+            email,
+            password,
+        });
+        navigate("/");
+
+        const { accessToken, refreshToken } = response.data.data;
+
+        dispatch(
+            authAction.signIn({
+                accessToken,
+                refreshToken,
+            }),
+        );
+    };
+};
 
 export const reissueTokenThunkAction = () => {
-    return async (dispatch: RootDispatch) => {};
+    return async (dispatch: RootDispatch, getState: GetState) => {
+        const { refreshToken } = getState().auth;
+
+        const response = await authService.reissueToken(refreshToken as string);
+
+        const newAccessToken = response.accessToken;
+        const newRefreshToken = response.refreshToken;
+
+        dispatch(
+            authAction.signIn({
+                accessToken: newAccessToken,
+                refreshToken: newRefreshToken,
+            }),
+        );
+    };
 };
