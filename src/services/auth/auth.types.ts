@@ -26,7 +26,7 @@ export interface SignUpRequestBody {
     email: string;
     password: string;
     verificationCode: string;
-    serviceTerms: ServiceTerms;
+    serviceTerms: ServiceTerms[];
     memberType: MemberType;
 }
 
@@ -49,4 +49,13 @@ export interface SignUpResponseBody {
 
 export interface VerifyEmailRequestBody {
     email: string;
+}
+
+export interface ReissueTokenResponseBody {
+    status: number;
+    data: {
+        grantType: string;
+        accessToken: string;
+        refreshToken: string;
+    };
 }
