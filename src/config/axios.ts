@@ -21,7 +21,7 @@ api.interceptors.request.use(
     (config) => {
         const accessToken = store.getState().auth.accessToken as string;
 
-        if (isExpired(accessToken)) {
+        if (accessToken !== null && isExpired(accessToken)) {
             store.dispatch(reissueTokenThunkAction());
         }
 
