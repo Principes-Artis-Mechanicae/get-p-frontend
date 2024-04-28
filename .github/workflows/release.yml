@@ -31,6 +31,7 @@ jobs:
         - name: Release Beta Server
           run: |
             netlify deploy \
+                --prod \
                 --dir dist \
                 --site ${{ secrets.NETLIFY_SITE_ID }} \
                 --auth ${{ secrets.NETLIFY_API_TOKEN }}
