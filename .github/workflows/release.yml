@@ -25,10 +25,8 @@ jobs:
           run: npm ci
 
         - name: Build Project
-          run: npm run build
+          run: VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }} npm run build
 
-        - name: Configure ENV Variables
-          run: netlify env:set VITE_API_BASE_URL ${{ secrets.VITE_API_BASE_URL }}
 
         - name: Release Beta Server
           run: |
