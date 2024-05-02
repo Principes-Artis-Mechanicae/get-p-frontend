@@ -1,3 +1,5 @@
+import { mobile } from "@/styles/breakpoint";
+
 import styled from "@emotion/styled";
 
 export interface ITechStackSelector {
@@ -8,6 +10,10 @@ export interface ITechStackSelector {
 export const TechStackSelectorWrapper = styled.div<ITechStackSelector>`
     width: ${(props) => props.width};
     height: ${(props) => props.height};
+
+    ${mobile} {
+        height: 600px;
+    }
 `;
 
 export const TechStackSearchInput = styled.input`
@@ -48,6 +54,11 @@ export const TechStackSelectorContainer = styled.div`
 
     border-radius: 10px;
     border: 1px solid #ebedef;
+
+    ${mobile} {
+        flex-direction: column;
+        height: 100%;
+    }
 `;
 
 export const TechStackSelectorGroupContainer = styled.div`
@@ -55,6 +66,11 @@ export const TechStackSelectorGroupContainer = styled.div`
     height: 100%;
 
     overflow: scroll;
+
+    ${mobile} {
+        width: 100%;
+        height: 55%;
+    }
 `;
 
 export const TechStackGroup = styled.div`
@@ -84,4 +100,9 @@ export const SelectedTechStacks = styled.div`
     padding: 20px;
 
     overflow: scroll;
+
+    ${mobile} {
+        width: 100%;
+        height: 45%;
+    }
 `;

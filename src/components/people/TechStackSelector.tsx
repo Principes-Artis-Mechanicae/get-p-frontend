@@ -1,3 +1,5 @@
+import { ChangeEvent, useCallback } from "react";
+
 import searchIcon from "@/assets/people/search.svg";
 
 import { ITechStack } from "@/constants/techstack";
@@ -23,10 +25,17 @@ export interface ITechStackSelector {
 export const TechStackSelector: React.FC<ITechStackSelector> = ({ width, height, techStack }) => {
     const { state } = useTechStack();
 
+    const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+        /**
+         * 검색시 필터기능 구현 필요 !!!
+         */
+        console.log(e.target.value);
+    }, []);
+
     return (
         <TechStackSelectorWrapper width={width} height={height}>
             <SearchIcon src={searchIcon} />
-            <TechStackSearchInput placeholder="기술 검색" />
+            <TechStackSearchInput placeholder="기술 검색" onChange={handleChange} />
 
             <TechStackSelectorContainer>
                 <TechStackSelectorGroupContainer>
