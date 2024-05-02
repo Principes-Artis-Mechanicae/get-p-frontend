@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import searchIcon from "@/assets/people/search.svg";
 
 import { ITechStack } from "@/constants/techstack";

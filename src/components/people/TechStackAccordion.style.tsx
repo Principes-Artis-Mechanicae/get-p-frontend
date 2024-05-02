@@ -4,6 +4,10 @@ export interface ITechStackAccordionWrapper {
     width: string;
 }
 
+export interface ITechStackAccordionItem {
+    isSelected: boolean;
+}
+
 export const TechStackAccordionButton = styled.button`
     display: flex;
     justify-content: space-between;
@@ -38,7 +42,7 @@ export const TechStackAccordionContainer = styled.div`
     background-color: #fff;
 `;
 
-export const TechStackAccortionItem = styled.div`
+export const TechStackAccordionItem = styled.div<ITechStackAccordionItem>`
     display: flex;
     align-items: center;
 
@@ -46,6 +50,16 @@ export const TechStackAccortionItem = styled.div`
     height: 56px;
 
     padding: 0px 30px;
+
+    font-weight: ${(props) => {
+        if (props.isSelected) return "bold";
+        else return "normal";
+    }};
+
+    color: ${(props) => {
+        if (props.isSelected) return "#476FF1";
+        else return "#000";
+    }};
 
     &:hover {
         cursor: pointer;

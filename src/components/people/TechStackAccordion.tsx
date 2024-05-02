@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { Paragraph } from "@/common/typography/Paragraph";
-
 import chevronIcon from "@/assets/people/chevron.svg";
 
 import {
@@ -10,7 +8,7 @@ import {
     TechStackAccordionButton,
     TechStackAccordionContainer,
     TechStackAccordionWrapper,
-    TechStackAccortionItem,
+    TechStackAccordionItem,
 } from "./TechStackAccordion.style";
 import { useTechStack } from "@/contexts/TechStackContext";
 
@@ -28,7 +26,7 @@ export const TechStackAccordion: React.FC<ITechStackAccordionGroup> = ({ width, 
 
     const [isOpened, setIsOpened] = useState<boolean>(false);
 
-    const { dispatch } = useTechStack();
+    const { state, dispatch } = useTechStack();
 
     const handleClick = useCallback(() => {
         setIsOpened((isOpened) => !isOpened);
@@ -36,12 +34,9 @@ export const TechStackAccordion: React.FC<ITechStackAccordionGroup> = ({ width, 
 
     const handleItemClick = useCallback(
         (e: React.MouseEvent<HTMLDivElement>) => {
-            console.log(e.currentTarget.innerText);
             dispatch({
                 type: "TOGGLE_TECH_STACK",
                 payload: {
-                    groupId: 1,
-                    itemId: 1,
                     value: e.currentTarget.innerText,
                 },
             });
@@ -72,7 +67,14 @@ export const TechStackAccordion: React.FC<ITechStackAccordionGroup> = ({ width, 
 
             <TechStackAccordionContainer ref={containerRef}>
                 {groupItems.map((item) => {
-                    return <TechStackAccortionItem onClick={handleItemClick}>{item}</TechStackAccortionItem>;
+                    return (
+                        <TechStackAccordionItem
+                            isSelected={state.selected.findIndex((selectedItem) => selectedItem.value === item) !== -1}
+                            onClick={handleItemClick}
+                        >
+                            {item}
+                        </TechStackAccordionItem>
+                    );
                 })}
             </TechStackAccordionContainer>
         </TechStackAccordionWrapper>
