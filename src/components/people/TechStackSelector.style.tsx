@@ -4,16 +4,14 @@ import styled from "@emotion/styled";
 
 export interface ITechStackSelector {
     width: string;
+}
+
+export interface ITechStackSelectorContainer {
     height: string;
 }
 
 export const TechStackSelectorWrapper = styled.div<ITechStackSelector>`
     width: ${(props) => props.width};
-    height: ${(props) => props.height};
-
-    ${mobile} {
-        height: 600px;
-    }
 `;
 
 export const TechStackSearchInput = styled.input`
@@ -46,18 +44,19 @@ export const SearchIcon = styled.img`
     padding: 7.5px;
 `;
 
-export const TechStackSelectorContainer = styled.div`
+export const TechStackSelectorContainer = styled.div<ITechStackSelectorContainer>`
     display: flex;
 
     width: 100%;
-    height: 305px;
+    height: ${(props) => props.height};
 
     border-radius: 10px;
     border: 1px solid #ebedef;
 
     ${mobile} {
         flex-direction: column;
-        height: 100%;
+        height: 600px;
+    }
     }
 `;
 

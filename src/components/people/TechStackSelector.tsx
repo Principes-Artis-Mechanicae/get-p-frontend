@@ -33,11 +33,11 @@ export const TechStackSelector: React.FC<ITechStackSelector> = ({ width, height,
     }, []);
 
     return (
-        <TechStackSelectorWrapper width={width} height={height}>
+        <TechStackSelectorWrapper width={width}>
             <SearchIcon src={searchIcon} />
             <TechStackSearchInput placeholder="기술 검색" onChange={handleChange} />
 
-            <TechStackSelectorContainer>
+            <TechStackSelectorContainer height={height}>
                 <TechStackSelectorGroupContainer>
                     {techStack.map((stack) => {
                         return (
