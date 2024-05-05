@@ -17,7 +17,6 @@ export interface IPeopleCard {
     hashtags: string[];
     completeProjectsCount: number;
     comment: string;
-    // interestsCount: number;
 }
 
 export const PeopleCard: React.FC<IPeopleCard> = ({
@@ -29,7 +28,6 @@ export const PeopleCard: React.FC<IPeopleCard> = ({
     hashtags,
     completeProjectsCount,
     comment,
-    // interestsCount,
 }) => {
     return (
         <PeopleCardWrapper width={width} height={height}>

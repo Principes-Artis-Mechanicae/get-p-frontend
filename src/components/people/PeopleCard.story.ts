@@ -20,6 +20,5 @@ export const People: Story = {
         activityArea: "대구광역시 동구",
         hashtags: ["#ㅇㅇ", "#안녕하세요ㅋㅋ"],
         completeProjectsCount: 5,
-        // interestsCount: 3,
     },
 };
