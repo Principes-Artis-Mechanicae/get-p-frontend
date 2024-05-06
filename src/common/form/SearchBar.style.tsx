@@ -18,6 +18,9 @@ export const SearchInput = styled.input`
     padding: 0px 20px;
 
     background-color: #f9fafa;
+    &:focus {
+        outline-color: #476ff1;
+    }
 `;
 
 export const SearchIconContainer = styled.div`
