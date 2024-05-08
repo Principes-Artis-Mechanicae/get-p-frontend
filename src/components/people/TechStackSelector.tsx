@@ -26,9 +26,12 @@ export const TechStackSelector: React.FC<ITechStackSelector> = ({ width, height,
     const { state } = useTechStack();
 
     const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-        /**
-         * 검색시 필터기능 구현 필요 !!!
-         */
+        if (e.target.value !== "") {
+            //
+        } else {
+            //
+        }
+
         console.log(e.target.value);
     }, []);
 
@@ -43,6 +46,7 @@ export const TechStackSelector: React.FC<ITechStackSelector> = ({ width, height,
                         return (
                             <TechStackAccordion
                                 width="100%"
+                                groupId={stack.groupId}
                                 groupName={stack.groupName}
                                 groupItems={stack.groupItems}
                             ></TechStackAccordion>
