@@ -1,5 +1,4 @@
-/* eslint-disable no-case-declarations */
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useReducer } from "react";
 
 import { techStack } from "@/constants/techstack";
 
@@ -13,7 +12,7 @@ export interface AccordionState {
 }
 
 export interface AccordionAction {
-    type: "OPEN_ALL" | "CLOSE_ALL" | "OPEN_BY_GROUP_ID" | "CLOSE_BY_GROUP_ID";
+    type: "OPEN_ALL" | "CLOSE_ALL" | "OPEN_BY_GROUP_ID" | "CLOSE_BY_GROUP_ID" | "TOGGLE_BY_GROUP_ID";
     payload: number;
 }
 
@@ -26,7 +25,7 @@ const accordionState: AccordionState = {
     }),
 };
 
-const AccordionContext = createContext<{
+export const AccordionContext = createContext<{
     state: AccordionState;
     dispatch: React.Dispatch<AccordionAction>;
 }>({
@@ -35,6 +34,8 @@ const AccordionContext = createContext<{
 });
 
 const reducer: React.Reducer<AccordionState, AccordionAction> = (state, action) => {
+    console.log(state, action);
+
     let updatedGroups: IGroup[];
 
     switch (action.type) {
@@ -84,6 +85,20 @@ const reducer: React.Reducer<AccordionState, AccordionAction> = (state, action) 
                 ...state,
                 groups: updatedGroups,
             };
+        case "TOGGLE_BY_GROUP_ID":
+            updatedGroups = state.groups.map((group) => {
+                if (action.payload === group.id) {
+                    return {
+                        id: group.id,
+                        isOpened: !group.isOpened,
+                    };
+                }
+                return group;
+            });
+            return {
+                ...state,
+                groups: updatedGroups,
+            };
         default:
             return state;
     }
@@ -102,11 +117,4 @@ export const AccordionProvider = ({ children }: { children: React.ReactNode }) =
             {children}
         </AccordionContext.Provider>
     );
-};
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const useAccordion = () => {
-    const context = useContext(AccordionContext);
-    if (!context) throw new Error("useAccordion 은 AccordionProvider 내부에서 사용되어야 합니다");
-    return context;
 };
