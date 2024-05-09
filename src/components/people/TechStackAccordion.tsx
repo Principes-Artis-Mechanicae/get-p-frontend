@@ -1,4 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
+
+import { useAccordion } from "@/hooks/useAccordion";
+import { useTechStack } from "@/hooks/useTechStack";
 
 import chevronIcon from "@/assets/people/chevron.svg";
 
@@ -10,8 +13,6 @@ import {
     TechStackAccordionWrapper,
     TechStackAccordionItem,
 } from "./TechStackAccordion.style";
-import { useAccordion } from "@/contexts/AccordionContext";
-import { useTechStack } from "@/contexts/TechStackContext";
 
 export interface ITechStackAccordionGroup {
     groupId: number;
@@ -31,7 +32,7 @@ export const TechStackAccordion: React.FC<ITechStackAccordionGroup> = ({ width, 
 
     const handleClick = useCallback(() => {
         accordionDispatch({
-            type: "OPEN_BY_GROUP_ID",
+            type: "TOGGLE_BY_GROUP_ID",
             payload: groupId,
         });
     }, [accordionDispatch, groupId]);
@@ -49,8 +50,10 @@ export const TechStackAccordion: React.FC<ITechStackAccordionGroup> = ({ width, 
     );
 
     useEffect(() => {
+        const group = accordionState.groups.find((group) => group.id === groupId);
+
         if (containerRef.current && buttonRef.current && iconRef.current) {
-            if (accordionState.groups[groupId].isOpened) {
+            if (group?.isOpened === true) {
                 containerRef.current.style.maxHeight = `${groupItems.length * 56}px`;
                 buttonRef.current.style.backgroundColor = `#F8F6F8`;
                 iconRef.current.style.transform = `rotate(180deg)`;
@@ -70,18 +73,21 @@ export const TechStackAccordion: React.FC<ITechStackAccordionGroup> = ({ width, 
             </TechStackAccordionButton>
 
             <TechStackAccordionContainer ref={containerRef}>
-                {groupItems.map((item) => {
-                    return (
-                        <TechStackAccordionItem
-                            isSelected={
-                                techStackState.selected.findIndex((selectedItem) => selectedItem.value === item) !== -1
-                            }
-                            onClick={handleItemClick}
-                        >
-                            {item}
-                        </TechStackAccordionItem>
-                    );
-                })}
+                {groupItems
+                    .filter((item) => item !== "")
+                    .map((item) => {
+                        return (
+                            <TechStackAccordionItem
+                                isSelected={
+                                    techStackState.selected.findIndex((selectedItem) => selectedItem.value === item) !==
+                                    -1
+                                }
+                                onClick={handleItemClick}
+                            >
+                                {item}
+                            </TechStackAccordionItem>
+                        );
+                    })}
             </TechStackAccordionContainer>
         </TechStackAccordionWrapper>
     );
