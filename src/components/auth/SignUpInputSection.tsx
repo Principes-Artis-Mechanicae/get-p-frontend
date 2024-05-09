@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useRef, useState } from "react";
+import { ChangeEvent, useCallback, useRef, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
@@ -45,6 +45,8 @@ export default function SignUpInputSection() {
 
     const [isEmailVerificationFieldVisible, setIsEmailVerificationFieldVisible] = useState<boolean>(false);
     const [isPasswordCorrect, setIsPasswordCorrect] = useState<boolean>(false);
+    const [timer, setTimer] = useState<number>(240);
+    const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
 
     const {
         value: email,
@@ -58,13 +60,35 @@ export default function SignUpInputSection() {
         onChange: onPasswordChange,
     } = useInputValidation(REGEXP_PASSWORD);
 
+    const startTimer = () => {
+        setTimer(240);
+        setIsTimerRunning(true);
+        const intervalId = setInterval(() => {
+            setTimer((prevTimer) => {
+                if (prevTimer === 0) {
+                    clearInterval(intervalId);
+                    return 0;
+                }
+                return prevTimer - 1;
+            });
+        }, 1000);
+    };
+
+    const formatTime = (time: number): string => {
+        const minutes = Math.floor(time / 60);
+        const seconds = time % 60;
+        return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    };
+
     const handleEmailVerificationBtnClick = useCallback(() => {
         if (!REGEXP_EMAIL.test(email)) toast.error("올바른 형식이 아닙니다!");
         else {
             authService.verifyEmail({ email });
             setIsEmailVerificationFieldVisible(true);
         }
-    }, [email]);
+
+        startTimer();
+    }, [email, isTimerRunning]);
 
     const handlePasswordChange = useCallback(
         (e: ChangeEvent<HTMLInputElement>) => {
@@ -157,9 +181,11 @@ export default function SignUpInputSection() {
                                         placeholder="인증번호를 입력해주세요"
                                     >
                                         <Button variant="side" width="50px" height="38px">
-                                            <Text weight="bold" color="point">
-                                                4:00
-                                            </Text>
+                                            {isTimerRunning && (
+                                                <Text weight="bold" color="point">
+                                                    {formatTime(timer)}
+                                                </Text>
+                                            )}
                                         </Button>
                                     </Input>
                                     <Button
