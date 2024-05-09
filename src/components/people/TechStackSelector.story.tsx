@@ -1,6 +1,7 @@
 import { techStack } from "@/constants/techstack";
 
 import { TechStackSelector } from "./TechStackSelector";
+import { AccordionProvider } from "@/contexts/AccordionContext";
 import { TechStackProvider } from "@/contexts/TechStackContext";
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -21,7 +22,9 @@ export const Default: Story = {
     render: ({ techStack, width, height }) => {
         return (
             <TechStackProvider>
-                <TechStackSelector techStack={techStack} width={width} height={height} />
+                <AccordionProvider>
+                    <TechStackSelector techStack={techStack} width={width} height={height} />
+                </AccordionProvider>
             </TechStackProvider>
         );
     },
