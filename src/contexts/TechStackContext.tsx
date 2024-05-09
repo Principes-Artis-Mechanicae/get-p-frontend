@@ -1,5 +1,5 @@
 /* eslint-disable no-case-declarations */
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useReducer } from "react";
 
 export interface TechStackItem {
     value: string;
@@ -18,7 +18,7 @@ const techStackState: TechStackState = {
     selected: [],
 };
 
-const TechStackContext = createContext<{
+export const TechStackContext = createContext<{
     state: TechStackState;
     dispatch: React.Dispatch<TechStackAction>;
 }>({
@@ -65,11 +65,4 @@ export const TechStackProvider = ({ children }: { children: React.ReactNode }) =
     const [state, dispatch] = useReducer(reducer, techStackState);
 
     return <TechStackContext.Provider value={{ state, dispatch }}>{children}</TechStackContext.Provider>;
-};
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const useTechStack = () => {
-    const context = useContext(TechStackContext);
-    if (!context) throw new Error("useTechStack 은 TechStackProvider 내부에서 사용되어야 합니다");
-    return context;
 };
