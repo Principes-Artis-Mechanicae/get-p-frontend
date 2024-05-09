@@ -1,4 +1,7 @@
-import { ChangeEvent, useCallback } from "react";
+import { ChangeEvent, useCallback, useState } from "react";
+
+import { useAccordion } from "@/hooks/useAccordion";
+import { useTechStack } from "@/hooks/useTechStack";
 
 import searchIcon from "@/assets/people/search.svg";
 
@@ -14,7 +17,6 @@ import {
     TechStackSelectorGroupContainer,
     TechStackSelectorWrapper,
 } from "./TechStackSelector.style";
-import { useTechStack } from "@/contexts/TechStackContext";
 
 export interface ITechStackSelector {
     techStack: ITechStack[];
@@ -23,17 +25,28 @@ export interface ITechStackSelector {
 }
 
 export const TechStackSelector: React.FC<ITechStackSelector> = ({ width, height, techStack }) => {
+    const [searchInput, setSearchInput] = useState<string>("");
+
     const { state } = useTechStack();
+    const { dispatch: accordionDispatch } = useAccordion();
 
-    const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-        if (e.target.value !== "") {
-            //
-        } else {
-            //
-        }
-
-        console.log(e.target.value);
-    }, []);
+    const handleChange = useCallback(
+        (e: ChangeEvent<HTMLInputElement>) => {
+            if (e.target.value !== "") {
+                accordionDispatch({
+                    type: "OPEN_ALL",
+                    payload: NaN,
+                });
+            } else {
+                accordionDispatch({
+                    type: "CLOSE_ALL",
+                    payload: NaN,
+                });
+            }
+            setSearchInput(e.target.value);
+        },
+        [accordionDispatch],
+    );
 
     return (
         <TechStackSelectorWrapper width={width}>
@@ -42,16 +55,27 @@ export const TechStackSelector: React.FC<ITechStackSelector> = ({ width, height,
 
             <TechStackSelectorContainer height={height}>
                 <TechStackSelectorGroupContainer>
-                    {techStack.map((stack) => {
-                        return (
-                            <TechStackAccordion
-                                width="100%"
-                                groupId={stack.groupId}
-                                groupName={stack.groupName}
-                                groupItems={stack.groupItems}
-                            ></TechStackAccordion>
-                        );
-                    })}
+                    {techStack
+                        .map((stack) => {
+                            return {
+                                groupId: stack.groupId,
+                                groupName: stack.groupName,
+                                groupItems: stack.groupItems.map((item) => {
+                                    if (item.includes(searchInput)) return item;
+                                    return "";
+                                }),
+                            };
+                        })
+                        .map((stack) => {
+                            return (
+                                <TechStackAccordion
+                                    width="100%"
+                                    groupId={stack.groupId}
+                                    groupName={stack.groupName}
+                                    groupItems={stack.groupItems}
+                                ></TechStackAccordion>
+                            );
+                        })}
                 </TechStackSelectorGroupContainer>
 
                 <SelectedTechStacks>
