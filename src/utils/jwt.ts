@@ -1,8 +1,10 @@
 import { jwtDecode } from "jwt-decode";
 
+import { MemberType } from "@/types/role.enum";
+
 export interface JwtPayload {
     sub: string;
-    auth: "ROLE_PEOPLE" | "ROLE_CLIENT";
+    auth: MemberType;
     exp: number;
 }
 

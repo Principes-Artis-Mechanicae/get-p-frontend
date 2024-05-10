@@ -1,3 +1,5 @@
+import { MemberType } from "@/services/auth/auth.types";
+
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface ISignUpState {
@@ -41,7 +43,7 @@ const signUpSlice = createSlice({
             state.signUpSectionIndex--;
         },
 
-        setSignUpMemberType: (state, action: PayloadAction<"ROLE_PEOPLE" | "ROLE_CLIENT">) => {
+        setSignUpMemberType: (state, action: PayloadAction<MemberType>) => {
             state.signUpMemberType = action.payload;
         },
         setSignUpEmailValue: (state, action: PayloadAction<string>) => {
