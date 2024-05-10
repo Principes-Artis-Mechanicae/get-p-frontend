@@ -9,6 +9,8 @@ import { Text } from "@/common/typography/Text";
 
 import { MemberTypeCard } from "@/components/auth/MemberTypeCard";
 
+import { MemberType } from "@/services/auth/auth.types";
+
 import {
     SelectTypeContainer,
     SelectTypeItem,
@@ -29,11 +31,11 @@ export default function SelectTypeSection() {
     }, [dispatch, signUpMemberType]);
 
     const handleClientBtnClick = useCallback(() => {
-        dispatch(signUpAction.setSignUpMemberType("ROLE_CLIENT"));
+        dispatch(signUpAction.setSignUpMemberType(MemberType.ROLE_CLIENT));
     }, [dispatch]);
 
     const handlePeopleBtnClick = useCallback(() => {
-        dispatch(signUpAction.setSignUpMemberType("ROLE_PEOPLE"));
+        dispatch(signUpAction.setSignUpMemberType(MemberType.ROLE_PEOPLE));
     }, [dispatch]);
 
     return (

@@ -1,63 +1,58 @@
 import { useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 import { navItems } from "@/constants/navItems";
 
-import { Button } from "../form/Button";
+import { ProfileDropDown } from "../display/ProfileDropDown";
 import { AuthGuard } from "../guard/AuthGuard";
-import { Text } from "../typography/Text";
 import { NavAsideButton } from "./NavAsideButton";
-import { NavBarContainer, NavBarHeadItem, NavBarWrapper } from "./NavBar.style";
+import { NavBarContainer, NavBarHeadItem, NavBarItems, NavBarWrapper } from "./NavBar.style";
 import { NavBarItem } from "./NavBarItem";
-import { authAction } from "@/store/slice/auth.slice";
-import { uiActions } from "@/store/slice/ui.slice";
-import { RootDispatch } from "@/store/store";
+import { NavProfileItem } from "./NavProfileItem";
+import { RootState } from "@/store/store";
 
 export const NavBar = () => {
     const navigate = useNavigate();
-    const dispatch: RootDispatch = useDispatch();
+    const { isProfileDropDownOpened } = useSelector((state: RootState) => state.ui);
 
     const handleHomeClick = useCallback(() => {
         navigate("/");
     }, [navigate]);
 
-    const handleLogoutBtnClick = useCallback(() => {
-        dispatch(authAction.signOut());
-        dispatch(uiActions.closeNavAside());
-        toast.info("로그아웃 되었습니다");
-        navigate("/");
-    }, [dispatch, navigate]);
-
     return (
         <>
             <NavBarWrapper>
                 <NavBarContainer>
-                    <NavBarHeadItem src="/logo.svg" onClick={handleHomeClick} />
+                    <NavBarItems style={{ gap: "25px" }}>
+                        <NavBarHeadItem src="/logo.svg" onClick={handleHomeClick} />
 
-                    {navItems.map((element, index) => {
-                        return (
-                            <NavBarItem key={index} to={element.to}>
-                                {element.text}
+                        {navItems.map((element, index) => {
+                            return (
+                                <NavBarItem key={index} to={element.to}>
+                                    {element.text}
+                                </NavBarItem>
+                            );
+                        })}
+                    </NavBarItems>
+
+                    <NavBarItems>
+                        <AuthGuard forLoginUser={false}>
+                            <NavBarItem to="/auth/signin" style={{ margin: "0px 10px" }}>
+                                로그인
                             </NavBarItem>
-                        );
-                    })}
+                            <NavBarItem to="/auth/signup" style={{ margin: "0px 10px" }}>
+                                회원가입
+                            </NavBarItem>
+                        </AuthGuard>
 
-                    <li style={{ flexGrow: 1, listStyle: "none" }} />
+                        <AuthGuard forLoginUser={true}>
+                            <NavProfileItem imgSrc="" />
+                            {isProfileDropDownOpened && <ProfileDropDown />}
+                        </AuthGuard>
 
-                    <AuthGuard forLoginUser={false}>
-                        <NavBarItem to="/auth/signin">로그인</NavBarItem>
-                        <NavBarItem to="/auth/signup">회원가입</NavBarItem>
-                    </AuthGuard>
-
-                    <AuthGuard forLoginUser={true}>
-                        <Button variant="link" width="auto" height="50px" onClick={handleLogoutBtnClick}>
-                            <Text weight="bold">로그아웃</Text>
-                        </Button>
-                    </AuthGuard>
-
-                    <NavAsideButton />
+                        <NavAsideButton />
+                    </NavBarItems>
                 </NavBarContainer>
             </NavBarWrapper>
         </>
