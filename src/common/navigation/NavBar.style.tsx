@@ -21,14 +21,20 @@ export const NavBarWrapper = styled.nav`
 `;
 
 export const NavBarContainer = styled.ul`
+    position: relative;
+
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 25px;
 
     width: min(100%, 1100px);
     height: 100%;
 
     margin: 0px auto;
+`;
+
+export const NavBarItems = styled.div`
+    display: flex;
 `;
 
 export const NavBarHeadItem = styled.img`
