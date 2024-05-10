@@ -2,10 +2,10 @@ name: Deploy on Beta Server (Netlify)
 
 on:
     pull_request:
-        branches: [develop]
+        branches: [release]
         types: [closed]
     push:
-        branches: [develop]
+        branches: [release]
 
 jobs:
     build:
@@ -34,15 +34,3 @@ jobs:
                       --dir dist \
                       --site ${{ secrets.NETLIFY_SITE_ID }} \
                       --auth ${{ secrets.NETLIFY_API_TOKEN }}
-
-    storybook:
-        runs-on: ubuntu-latest
-        needs: build
-
-        steps:
-            - uses: actions/checkout@v1
-            - run: yarn
-
-            - uses: chromaui/action@v1
-              with:
-                  projectToken: ${{ secrets.STORYBOOK_TOKEN }}
