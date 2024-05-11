@@ -19,7 +19,7 @@ import { authService } from "@/services/auth/auth.service";
 
 import { REGEXP_EMAIL, REGEXP_PASSWORD } from "@/constants/regex";
 
-import { formatTime } from "@/styles/utils";
+import { formatTime } from "@/utils/formatTime";
 
 import {
     SignUpSectionWrapper,
@@ -123,7 +123,7 @@ export default function SignUpInputSection() {
                 transition={{ duration: 0.5 }}
             >
                 {isModalOpened && (
-                    <Modal width="350px" height="300px">
+                    <Modal width="400px" height="300px">
                         <Title>
                             <Text size="l" weight="bold">
                                 이메일을 받지 못하셨나요 ?
@@ -132,6 +132,8 @@ export default function SignUpInputSection() {
 
                         <Paragraph>
                             <Text>1. 이메일을 올바르게 입력했는지 다시 확인해 보세요.</Text>
+                        </Paragraph>
+                        <Paragraph>
                             <Text>2. 스팸함 또는 휴지통을 확인해 보세요.</Text>
                         </Paragraph>
                     </Modal>
