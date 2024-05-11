@@ -19,6 +19,8 @@ import { authService } from "@/services/auth/auth.service";
 
 import { REGEXP_EMAIL, REGEXP_PASSWORD } from "@/constants/regex";
 
+import { formatTime } from "@/styles/utils";
+
 import {
     SignUpSectionWrapper,
     SignUpSectionHeader,
@@ -74,20 +76,13 @@ export default function SignUpInputSection() {
         }, 1000);
     };
 
-    const formatTime = (time: number): string => {
-        const minutes = Math.floor(time / 60);
-        const seconds = time % 60;
-        return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-    };
-
     const handleEmailVerificationBtnClick = useCallback(() => {
         if (!REGEXP_EMAIL.test(email)) toast.error("올바른 형식이 아닙니다!");
         else {
             authService.verifyEmail({ email });
             setIsEmailVerificationFieldVisible(true);
+            startTimer();
         }
-
-        startTimer();
     }, [email]);
 
     const handlePasswordChange = useCallback(
