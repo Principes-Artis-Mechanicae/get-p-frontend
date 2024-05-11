@@ -1,4 +1,4 @@
-name: Deploy on Beta Server (Netlify)
+name: Deploy Storybook
 
 on:
     pull_request:
