@@ -88,7 +88,7 @@ export default function SignUpInputSection() {
         }
 
         startTimer();
-    }, [email, isTimerRunning]);
+    }, [email]);
 
     const handlePasswordChange = useCallback(
         (e: ChangeEvent<HTMLInputElement>) => {
