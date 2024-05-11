@@ -28,7 +28,13 @@ module.exports = {
         "@typescript-eslint/no-misused-promises": "off",
         "@typescript-eslint/no-floating-promises": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
+        "prettier/prettier": [
+            "error",
+            {
+                endOfLine: "auto",
+            },
+        ],
     },
 
-    ignorePatterns: ["server.js", ".eslintrc.cjs"],
+    ignorePatterns: ["server.js", ".eslintrc.cjs", "ssr.js"],
 };

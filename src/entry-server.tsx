@@ -1,3 +1,4 @@
+/*
 import ReactDOMServer from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
 
@@ -10,7 +11,8 @@ interface IRenderProps {
 export const render = ({ path }: IRenderProps) => {
     return ReactDOMServer.renderToString(
         <StaticRouter location={path}>
-            <App />
+            <App isClient={false} />
         </StaticRouter>,
     );
 };
+*/

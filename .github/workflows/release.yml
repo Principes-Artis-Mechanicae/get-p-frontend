@@ -1,0 +1,36 @@
+name: Deploy on Beta Server (Netlify)
+
+on:
+    pull_request:
+        branches: [release]
+        types: [closed]
+    push:
+        branches: [release]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Install NodeJS
+              uses: actions/setup-node@v4
+
+            - name: Code Checkout
+              uses: actions/checkout@v4
+
+            - name: Configure Netlify
+              run: npm install netlify-cli -g
+
+            - name: Install Dependencies
+              run: npm ci
+
+            - name: Build Project
+              run: VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }} npm run build
+
+            - name: Release Beta Server
+              run: |
+                  netlify deploy \
+                      --prod \
+                      --dir dist \
+                      --site ${{ secrets.NETLIFY_SITE_ID }} \
+                      --auth ${{ secrets.NETLIFY_API_TOKEN }}

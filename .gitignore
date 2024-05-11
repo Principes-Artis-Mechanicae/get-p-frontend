@@ -11,6 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
+/storybook-static
 
 # Editor directories and files
 # .vscode/*
@@ -24,3 +25,8 @@ dist-ssr
 *.sw?
 
 *storybook.log
+
+
+.env
+# Local Netlify folder
+.netlify
