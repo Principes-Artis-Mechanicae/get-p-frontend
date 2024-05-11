@@ -19,6 +19,8 @@ import { authService } from "@/services/auth/auth.service";
 
 import { REGEXP_EMAIL, REGEXP_PASSWORD } from "@/constants/regex";
 
+import { formatTime } from "@/utils/formatTime";
+
 import {
     SignUpSectionWrapper,
     SignUpSectionHeader,
@@ -45,6 +47,8 @@ export default function SignUpInputSection() {
 
     const [isEmailVerificationFieldVisible, setIsEmailVerificationFieldVisible] = useState<boolean>(false);
     const [isPasswordCorrect, setIsPasswordCorrect] = useState<boolean>(false);
+    const [timer, setTimer] = useState<number>(240);
+    const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
 
     const {
         value: email,
@@ -58,11 +62,26 @@ export default function SignUpInputSection() {
         onChange: onPasswordChange,
     } = useInputValidation(REGEXP_PASSWORD);
 
+    const startTimer = () => {
+        setTimer(240);
+        setIsTimerRunning(true);
+        const intervalId = setInterval(() => {
+            setTimer((prevTimer) => {
+                if (prevTimer === 0) {
+                    clearInterval(intervalId);
+                    return 0;
+                }
+                return prevTimer - 1;
+            });
+        }, 1000);
+    };
+
     const handleEmailVerificationBtnClick = useCallback(() => {
         if (!REGEXP_EMAIL.test(email)) toast.error("올바른 형식이 아닙니다!");
         else {
             authService.verifyEmail({ email });
             setIsEmailVerificationFieldVisible(true);
+            startTimer();
         }
     }, [email]);
 
@@ -104,7 +123,7 @@ export default function SignUpInputSection() {
                 transition={{ duration: 0.5 }}
             >
                 {isModalOpened && (
-                    <Modal width="350px" height="300px">
+                    <Modal width="400px" height="300px">
                         <Title>
                             <Text size="l" weight="bold">
                                 이메일을 받지 못하셨나요 ?
@@ -113,6 +132,8 @@ export default function SignUpInputSection() {
 
                         <Paragraph>
                             <Text>1. 이메일을 올바르게 입력했는지 다시 확인해 보세요.</Text>
+                        </Paragraph>
+                        <Paragraph>
                             <Text>2. 스팸함 또는 휴지통을 확인해 보세요.</Text>
                         </Paragraph>
                     </Modal>
@@ -157,9 +178,11 @@ export default function SignUpInputSection() {
                                         placeholder="인증번호를 입력해주세요"
                                     >
                                         <Button variant="side" width="50px" height="38px">
-                                            <Text weight="bold" color="point">
-                                                4:00
-                                            </Text>
+                                            {isTimerRunning && (
+                                                <Text weight="bold" color="point">
+                                                    {formatTime(timer)}
+                                                </Text>
+                                            )}
                                         </Button>
                                     </Input>
                                     <Button

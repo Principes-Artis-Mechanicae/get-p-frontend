@@ -6,7 +6,6 @@ import styled from "@emotion/styled";
 export const NavAsideButtonWrapper = styled.li`
     display: none;
     width: 40px;
-    height: 100%;
 
     list-style: none;
     &:hover {

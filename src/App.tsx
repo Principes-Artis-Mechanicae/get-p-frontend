@@ -6,10 +6,10 @@ import { AnimatePresence } from "framer-motion";
 
 import { MainLayout } from "@/common/layout/MainLayout";
 
-import HomePage from "@/pages/HomePage";
 import FindPasswordPage from "@/pages/auth/FindPasswordPage";
 import SignInPage from "@/pages/auth/SignInPage";
 import SignUpPage from "@/pages/auth/SignUpPage";
+import HomePage from "@/pages/home/HomePage";
 
 import "./globals.css";
 import { persistor, store } from "@/store/store";
