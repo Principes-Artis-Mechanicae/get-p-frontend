@@ -88,7 +88,6 @@ export const PeopleSearchCheckBox = styled.div`
     align-items: center;
     gap: 6px;
     cursor: pointer;
-    /* color: ${(props) => (props.selected ? "#476ff1" : "#ECF0FE")}; */
 `;
 
 export const PeopleSearchOptionContainer = styled.div`
