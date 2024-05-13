@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { PageButton, PaginationWrapper } from "./Pagination.style";
 
@@ -11,35 +12,22 @@ export interface IPagination {
 
 export const Pagination: React.FC<IPagination> = ({ totalItems, itemCountPerPage, pageCount, currentPage }) => {
     const totalPages = Math.ceil(totalItems / itemCountPerPage);
-    const [page, setPage] = useState<number>(currentPage);
+    // const [page, setPage] = useState<number>(currentPage);
     const [pageBegin, setPageBegin] = useState<number>(1);
-    const [pageState, setPageState] = useState({
-        noPrev: pageBegin === 1,
-        noNext: pageBegin + pageCount - 1 >= totalPages,
-    });
+    const noPrev = pageBegin === 1;
+    const noNext = pageBegin + pageCount - 1 >= totalPages;
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const newPageState = {
-            noPrev: pageBegin === 1,
-            noNext: pageBegin + pageCount - 1 >= totalPages,
-        };
-        setPageState(() => newPageState);
-    }, [pageBegin, pageCount, totalPages]);
-
-    useEffect(() => {
-        const newPageBegin = Math.floor((page - 1) / pageCount) * pageCount + 1;
-        setPageBegin(() => newPageBegin);
-        console.log(`currentpage = ${page}`);
-    }, [page, pageCount]);
-
-    const handlePageBtnClick = useCallback((pageNum: number) => {
-        setPage(pageNum);
-    }, []);
+        if (currentPage === pageBegin + pageCount) setPageBegin((prev) => prev + pageCount);
+        if (currentPage < pageBegin) setPageBegin((prev) => prev - pageCount);
+        // console.log(`pageBegin = ${pageBegin}`);
+    }, [currentPage, pageCount, pageBegin]);
 
     return (
         <PaginationWrapper>
-            {!pageState.noPrev && (
-                <PageButton onClick={() => handlePageBtnClick(pageBegin - 1)} active={false}>
+            {!noPrev && (
+                <PageButton onClick={() => navigate(`/peopleList?page=${pageBegin - 1}`)} active={false}>
                     {"<"}
                 </PageButton>
             )}
@@ -49,8 +37,8 @@ export const Pagination: React.FC<IPagination> = ({ totalItems, itemCountPerPage
                         {value <= totalPages && (
                             <PageButton
                                 key={pageBegin + index}
-                                onClick={() => handlePageBtnClick(value)}
-                                active={page === pageBegin + index}
+                                onClick={() => navigate(`/peopleList?page=${value}`)}
+                                active={currentPage === pageBegin + index}
                             >
                                 {pageBegin + index}
                             </PageButton>
@@ -58,8 +46,8 @@ export const Pagination: React.FC<IPagination> = ({ totalItems, itemCountPerPage
                     </>
                 );
             })}
-            {!pageState.noNext && (
-                <PageButton onClick={() => handlePageBtnClick(pageBegin + pageCount)} active={false}>
+            {!noNext && (
+                <PageButton onClick={() => navigate(`/peopleList?page=${pageBegin + pageCount}`)} active={false}>
                     {">"}
                 </PageButton>
             )}
