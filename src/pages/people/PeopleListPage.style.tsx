@@ -9,3 +9,15 @@ export const PeopleListWrapper = styled.section`
     justify-content: center;
     align-items: center;
 `;
+
+export const PeopleListContainer = styled.section`
+    width: auto;
+    margin: 40px auto;
+
+    gap: 24px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+`;
