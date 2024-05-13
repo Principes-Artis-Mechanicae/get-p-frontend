@@ -11,8 +11,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        currentPage: 3,
-        pageBegin: 1,
-        pageLength: 10,
+        totalItems: 125,
+        itemCountPerPage: 5,
+        pageCount: 10,
+        currentPage: 1,
     },
 };
