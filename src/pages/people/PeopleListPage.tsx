@@ -11,7 +11,7 @@ import { IPeopleInfo, PeopleInfos } from "@/constants/peopleInfo";
 import { PeopleListContainer, PeopleListWrapper } from "./PeopleListPage.style";
 
 export default function PeopleListPage() {
-    const [totalItems, setTotalItems] = useState(100);
+    const [totalItems] = useState(100);
     const [people, setPeople] = useState<IPeopleInfo[] | null>(null);
     const [searchParams] = useSearchParams();
     const itemCountPerPage = 6;
