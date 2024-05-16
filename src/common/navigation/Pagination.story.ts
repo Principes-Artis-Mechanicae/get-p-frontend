@@ -15,5 +15,6 @@ export const Default: Story = {
         itemCountPerPage: 5,
         pageCount: 10,
         currentPage: 1,
+        basePath: "/example",
     },
 };
