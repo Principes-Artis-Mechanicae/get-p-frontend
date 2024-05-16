@@ -9,8 +9,8 @@ import {
 } from "./PeopleCard.style";
 
 export interface IPeopleCard {
-    width: string;
-    height: string;
+    width?: string;
+    height?: string;
     profileImageUri: string;
     nickname: string;
     activityArea: string;
@@ -20,8 +20,8 @@ export interface IPeopleCard {
 }
 
 export const PeopleCard: React.FC<IPeopleCard> = ({
-    width,
-    height,
+    width = "522px",
+    height = "110px",
     profileImageUri,
     nickname,
     activityArea,

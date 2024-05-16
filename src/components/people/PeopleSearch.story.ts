@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>;
 
 export const PeopleSearchBar: Story = {
     args: {
-        width: "1068px",
+        width: "1080px",
         height: "110px",
     },
 };
