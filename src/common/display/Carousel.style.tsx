@@ -8,7 +8,7 @@ export interface ICarouselContainer {
 
 export const CarouselWrapper = styled.section`
     width: 100%;
-    height: 340px;
+    height: auto;
 
     background-color: gray;
 
@@ -16,13 +16,13 @@ export const CarouselWrapper = styled.section`
 `;
 
 export const CarouselContainer = styled.div<ICarouselContainer>`
-    margin-top: ${nav_height};
-
     display: flex;
     width: ${(props) => `${(props.size + 1) * 100}vw`};
     height: ${`calc(340px - ${nav_height})`};
 
     overflow: hidden;
+
+    transition: transform 1s ease-in-out;
 `;
 
 export const CarouselItem = styled.img`
@@ -33,6 +33,4 @@ export const CarouselItem = styled.img`
     height: 100%;
 
     object-fit: cover;
-
-    /* filter: blur(10px) brightness(0.7); */
 `;

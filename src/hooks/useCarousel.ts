@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect, useState } from "react";
+import { useRef, useLayoutEffect, useState, useCallback } from "react";
 
 export const useCarousel = (imgSrcList: string[], interval: number) => {
     const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -6,25 +6,35 @@ export const useCarousel = (imgSrcList: string[], interval: number) => {
 
     const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
 
-    useLayoutEffect(() => {
-        intervalRef.current = setInterval(() => {
+    const handleSlide = useCallback(
+        (index: number) => {
             if (!carouselRef.current) return;
 
-            carouselRef.current.style.transition = `transform 1s ease-in-out`;
-            carouselRef.current.style.transform = `translateX(${currentSlideIndex * -100}vw)`;
-            setCurrentSlideIndex((currentSlideIndex) => currentSlideIndex + 1);
+            if (index >= imgSrcList.length) setCurrentSlideIndex(() => 0);
+            else setCurrentSlideIndex(() => index);
 
-            if (imgSrcList.length + 1 === currentSlideIndex) {
-                carouselRef.current.style.transition = ``;
-                carouselRef.current.style.transform = `translateX(0vw)`;
-                setCurrentSlideIndex(() => 0);
-            }
+            carouselRef.current.style.transform = `translateX(${currentSlideIndex * -100}vw)`;
+        },
+        [currentSlideIndex, imgSrcList.length],
+    );
+
+    const handlePrevSlide = useCallback(() => {
+        handleSlide(currentSlideIndex - 1);
+    }, [currentSlideIndex, handleSlide]);
+
+    const handleNextSlide = useCallback(() => {
+        handleSlide(currentSlideIndex + 1);
+    }, [currentSlideIndex, handleSlide]);
+
+    useLayoutEffect(() => {
+        intervalRef.current = setInterval(() => {
+            handleSlide(currentSlideIndex + 1);
         }, 1000 * interval);
 
         return () => {
             intervalRef.current && clearInterval(intervalRef.current);
         };
-    }, [currentSlideIndex, imgSrcList.length, interval]);
+    }, [currentSlideIndex, handleSlide, interval]);
 
-    return { carouselRef, setCurrentSlideIndex };
+    return { carouselRef, handlePrevSlide, handleNextSlide, handleSlide };
 };
