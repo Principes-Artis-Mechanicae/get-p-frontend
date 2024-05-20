@@ -17,7 +17,7 @@ export const Pagination: React.FC<IPagination> = ({
     currentPage,
     basePath,
 }) => {
-    const { pageBegin, noPrev, noNext, totalPages, gotoPrev, gotoNext, gotoPage } = usePagination({
+    const { pageBegin, isPrevBtnVisible, isNextBtnVisible, totalPages, gotoPrev, gotoNext, gotoPage } = usePagination({
         totalItems,
         itemCountPerPage,
         pageCount,
@@ -27,7 +27,7 @@ export const Pagination: React.FC<IPagination> = ({
 
     return (
         <PaginationWrapper>
-            {!noPrev && (
+            {!isPrevBtnVisible && (
                 <PageButton onClick={gotoPrev} active={false}>
                     {"<"}
                 </PageButton>
@@ -47,7 +47,7 @@ export const Pagination: React.FC<IPagination> = ({
                     </>
                 );
             })}
-            {!noNext && (
+            {!isNextBtnVisible && (
                 <PageButton onClick={gotoNext} active={false}>
                     {">"}
                 </PageButton>
