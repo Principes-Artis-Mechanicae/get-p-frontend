@@ -7,6 +7,7 @@ import {
     PeopleCardHeader,
     PeopleCardComment,
 } from "./PeopleCard.style";
+import { useMediaQuery } from "@mui/material";
 
 export interface IPeopleCard {
     width?: string;
@@ -29,8 +30,10 @@ export const PeopleCard: React.FC<IPeopleCard> = ({
     completeProjectsCount,
     comment,
 }) => {
+    const isTabletOrMobile = useMediaQuery("(max-width: 1200px)");
+
     return (
-        <PeopleCardWrapper width={width} height={height}>
+        <PeopleCardWrapper width={isTabletOrMobile ? "100%" : width} height={height}>
             <PeopleCardImg src={profileImageUri} />
             <PeopleCardContainer>
                 <PeopleCardHeader>
@@ -45,7 +48,7 @@ export const PeopleCard: React.FC<IPeopleCard> = ({
                     {nickname}
                 </Text>
                 <Text size="s" color="secondary" weight="light">
-                    <PeopleCardComment>{comment}</PeopleCardComment>
+                    <PeopleCardComment width={isTabletOrMobile ? "auto" : "375px"}>{comment}</PeopleCardComment>
                 </Text>
                 <Text size="s" color="#BDA7BC" weight="light">
                     {hashtags}
