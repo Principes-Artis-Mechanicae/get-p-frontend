@@ -24,8 +24,8 @@ export default function App() {
                     <PersistGate loading={null} persistor={persistor}>
                         <AnimatePresence>
                             <Routes>
+                                <Route index element={<HomePage />}></Route>
                                 <Route path="/" element={<MainLayout />}>
-                                    <Route path="/" element={<HomePage />}></Route>
                                     <Route path="auth/signin" element={<SignInPage />}></Route>
                                     <Route path="auth/signup" element={<SignUpPage />}></Route>
                                     <Route path="auth/findpw" element={<FindPasswordPage />}></Route>

@@ -3,7 +3,7 @@ import { place_center } from "@/styles/utils";
 import styled from "@emotion/styled";
 
 export interface IButton {
-    variant: "primary" | "secondary" | "outline" | "disabled" | "side" | "link";
+    variant: "primary" | "secondary" | "outline" | "disabled" | "side" | "link" | "rounded";
 
     width: string;
     height: string;
@@ -31,6 +31,8 @@ export const Button = styled.button<IButton>`
                 return "#fff";
             case "link":
                 return "transparent";
+            case "rounded":
+                return "#fff";
         }
     }};
 
@@ -48,6 +50,8 @@ export const Button = styled.button<IButton>`
                 return "#021026";
             case "link":
                 return "#000";
+            case "rounded":
+                return "#021026";
         }
     }};
 
@@ -59,6 +63,20 @@ export const Button = styled.button<IButton>`
                 return "1px solid #EBEDEF";
             default:
                 return "0";
+        }
+    }};
+
+    border-radius: ${(props) => {
+        switch (props.variant) {
+            case "rounded":
+                return "50%";
+        }
+    }};
+
+    box-shadow: ${(props) => {
+        switch (props.variant) {
+            case "rounded":
+                return "0px 3px 20px 0px #00000029";
         }
     }};
 
