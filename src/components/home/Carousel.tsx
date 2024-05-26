@@ -4,6 +4,8 @@ import { FaChevronRight } from "react-icons/fa6";
 
 import { Button } from "@/common/form/Button";
 
+import { mobile, tablet } from "@/styles/breakpoint";
+
 import {
     CarouselBackDropWrapper,
     CarouselControllerWrapper,
@@ -42,6 +44,12 @@ export const Carousel: React.FC<ICarousel> = ({ carouselImgSrc }) => {
                 <Swiper
                     css={css`
                         height: 340px;
+                        ${tablet} {
+                            height: 280px; // -60px
+                        }
+                        ${mobile} {
+                            height: 170px; // -30px
+                        }
                     `}
                     autoplay={true}
                     spaceBetween={0}
@@ -69,6 +77,12 @@ export const Carousel: React.FC<ICarousel> = ({ carouselImgSrc }) => {
                 <Swiper
                     css={css`
                         height: 340px;
+                        ${tablet} {
+                            height: 280px;
+                        }
+                        ${mobile} {
+                            height: 250px;
+                        }
                     `}
                     autoplay={true}
                     spaceBetween={0}

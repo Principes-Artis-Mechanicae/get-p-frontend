@@ -1,4 +1,4 @@
-import { mobile } from "@/styles/breakpoint";
+import { mobile, tablet } from "@/styles/breakpoint";
 
 import styled from "@emotion/styled";
 
@@ -7,6 +7,13 @@ export const CarouselWrapper = styled.div`
 
     width: 100%;
     height: 440px;
+
+    ${tablet} {
+        height: calc(440px - 90px);
+    }
+    ${mobile} {
+        height: calc(440px - 200px);
+    }
 `;
 
 export const CarouselItem = styled.img`
@@ -26,14 +33,22 @@ export const CarouselBackDropWrapper = styled.div`
 
 export const CarouselItemWrapper = styled.div`
     position: relative;
-    top: -250px;
+    top: -280px;
+
+    display: flex;
+    align-items: center;
 
     width: min(80%, 1100px);
     height: 340px;
 
     margin: 0px auto;
 
-    background-color: #fff;
+    ${tablet} {
+        top: -320px;
+    }
+    ${mobile} {
+        top: -350px;
+    }
 `;
 
 export const CarouselControllerWrapper = styled.div`
