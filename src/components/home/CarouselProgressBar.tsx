@@ -5,20 +5,17 @@ import {
     CarouselProgressBarContainer,
     CarouselProgressBarWrapper,
     ICarouselProgressBarContainer,
-    ICarouselProgressBarWrapper,
 } from "./CarouselProgressBar.style";
 
-export interface ICarouselProgressBar extends ICarouselProgressBarWrapper, ICarouselProgressBarContainer {
-    //
-}
+export type ICarouselProgressBar = ICarouselProgressBarContainer;
 
 export const CarouselProgressBar: React.FC<ICarouselProgressBar> = ({ currentSlide, maxCarouselSlide }) => {
     return (
         <CarouselProgressBarWrapper>
             <CarouselProgressBadge>
-                <Text>1</Text>
+                <Text>{currentSlide}</Text>
                 <Text>/</Text>
-                <Text>5</Text>
+                <Text>{maxCarouselSlide}</Text>
             </CarouselProgressBadge>
             <CarouselProgressBarContainer currentSlide={currentSlide} maxCarouselSlide={maxCarouselSlide} />
         </CarouselProgressBarWrapper>

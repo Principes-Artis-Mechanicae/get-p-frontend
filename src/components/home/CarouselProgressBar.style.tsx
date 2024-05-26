@@ -2,14 +2,12 @@ import { place_center } from "@/styles/utils";
 
 import styled from "@emotion/styled";
 
-export interface ICarouselProgressBarWrapper {}
-
 export interface ICarouselProgressBarContainer {
     currentSlide: number;
     maxCarouselSlide: number;
 }
 
-export const CarouselProgressBarWrapper = styled.div<ICarouselProgressBarWrapper>`
+export const CarouselProgressBarWrapper = styled.div`
     position: absolute;
     bottom: 60px;
     z-index: 2;

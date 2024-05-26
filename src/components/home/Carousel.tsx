@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa6";
 
@@ -27,12 +27,12 @@ export const Carousel: React.FC<ICarousel> = ({ carouselImgSrc }) => {
     const backdropSwiperRef = useRef<ISwiper | null>(null);
     const mainSwiperRef = useRef<ISwiper | null>(null);
 
-    const [currentSlide, setCurrentSlide] = useState<number>(1);
+    // const [currentSlide, setCurrentSlide] = useState<number>(1);
 
     const handleSlideChange = (swiper: ISwiper) => {
         if (backdropSwiperRef.current && mainSwiperRef.current) {
             const currentIndex = swiper.activeIndex;
-            setCurrentSlide(currentIndex);
+            // setCurrentSlide(currentIndex);
             backdropSwiperRef.current.slideTo(currentIndex);
             mainSwiperRef.current.slideTo(currentIndex);
         }
