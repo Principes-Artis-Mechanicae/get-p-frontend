@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa6";
 
@@ -12,6 +12,7 @@ import {
     CarouselItemWrapper,
     CarouselWrapper,
 } from "./Carousel.style";
+// import { CarouselProgressBar } from "./CarouselProgressBar";
 import { css } from "@emotion/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as ISwiper } from "swiper/types";
@@ -24,9 +25,12 @@ export const Carousel: React.FC<ICarousel> = ({ carouselImgSrc }) => {
     const backdropSwiperRef = useRef<ISwiper | null>(null);
     const mainSwiperRef = useRef<ISwiper | null>(null);
 
+    const [currentSlide, setCurrentSlide] = useState<number>(1);
+
     const handleSlideChange = (swiper: ISwiper) => {
         if (backdropSwiperRef.current && mainSwiperRef.current) {
             const currentIndex = swiper.activeIndex;
+            setCurrentSlide(currentIndex);
             backdropSwiperRef.current.slideTo(currentIndex);
             mainSwiperRef.current.slideTo(currentIndex);
         }
@@ -88,6 +92,8 @@ export const Carousel: React.FC<ICarousel> = ({ carouselImgSrc }) => {
                         );
                     })}
                 </Swiper>
+
+                {/* <CarouselProgressBar currentSlide={currentSlide} maxCarouselSlide={carouselImgSrc.length} /> */}
 
                 <CarouselControllerWrapper>
                     <CarouselControllerContainer>
