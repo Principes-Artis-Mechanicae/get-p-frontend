@@ -16,6 +16,7 @@ import {
 } from "./Carousel.style";
 // import { CarouselProgressBar } from "./CarouselProgressBar";
 import { css } from "@emotion/react";
+import { Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as ISwiper } from "swiper/types";
 
@@ -75,6 +76,8 @@ export const Carousel: React.FC<ICarousel> = ({ carouselImgSrc }) => {
 
             <CarouselItemWrapper>
                 <Swiper
+                    modules={[Scrollbar]}
+                    scrollbar={{ hide: false }}
                     css={css`
                         height: 340px;
                         ${tablet} {
