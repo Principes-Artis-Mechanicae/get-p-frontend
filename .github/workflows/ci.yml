@@ -19,7 +19,7 @@ jobs:
               with:
                   node-version: ${{env.NODE_VERSION}}
             - name: Code Checkout
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
             - name: Install Dependencies
               run: npm ci
             - name: Typescript Compile
@@ -35,7 +35,7 @@ jobs:
               with:
                   node-version: ${{env.NODE_VERSION}}
             - name: Code Checkout
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
             - name: Install Dependencies
               run: npm ci
             - name: Lint Code
