@@ -10,9 +10,9 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v1
+            - uses: actions/checkout@v4
             - run: yarn
 
-            - uses: chromaui/action@v1
+            - uses: chromaui/action@v11
               with:
                   projectToken: ${{ secrets.STORYBOOK_TOKEN }}
