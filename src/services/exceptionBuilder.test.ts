@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { ExceptionFilter } from "./exceptionBuilder";
 
 test("exceptionBuilder builder 테스트", () => {
