@@ -45,9 +45,11 @@ export const PeopleCardHeader = styled.div`
     width: 100%;
 `;
 
-export const PeopleCardComment = styled.div`
-    width: 370px;
-    white-space: nowrap;
+export const PeopleCardComment = styled.div<{ width: string }>`
+    width: ${(props) => props.width};
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 두 줄로 제한 */
+    -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
 `;

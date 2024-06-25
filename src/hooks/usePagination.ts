@@ -11,8 +11,8 @@ interface PaginationOptions {
 
 interface PaginationResult {
     pageBegin: number;
-    noPrev: boolean;
-    noNext: boolean;
+    isPrevBtnVisible: boolean;
+    isNextBtnVisible: boolean;
     totalPages: number;
     gotoPrev: () => void;
     gotoNext: () => void;
@@ -28,8 +28,8 @@ const usePagination = ({
 }: PaginationOptions): PaginationResult => {
     const totalPages = Math.ceil(totalItems / itemCountPerPage);
     const [pageBegin, setPageBegin] = useState(1);
-    const noPrev = pageBegin === 1;
-    const noNext = pageBegin + pageCount - 1 >= totalPages;
+    const isPrevBtnVisible = pageBegin === 1;
+    const isNextBtnVisible = pageBegin + pageCount - 1 >= totalPages;
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -38,13 +38,13 @@ const usePagination = ({
     }, [currentPage, pageCount, pageBegin]);
 
     const gotoPrev = () => {
-        if (!noPrev) {
+        if (!isPrevBtnVisible) {
             navigate(`${basePath}?page=${pageBegin - 1}`);
         }
     };
 
     const gotoNext = () => {
-        if (!noNext) {
+        if (!isNextBtnVisible) {
             navigate(`${basePath}?page=${pageBegin + pageCount}`);
         }
     };
@@ -53,7 +53,7 @@ const usePagination = ({
         navigate(`${basePath}?page=${pageNumber}`);
     };
 
-    return { pageBegin, noPrev, noNext, totalPages, gotoPrev, gotoNext, gotoPage };
+    return { pageBegin, isPrevBtnVisible, isNextBtnVisible, totalPages, gotoPrev, gotoNext, gotoPage };
 };
 
 export default usePagination;
