@@ -1,4 +1,5 @@
 import { mobile } from "@/styles/breakpoint";
+import { nav_height } from "@/styles/variables";
 import { Z_NAVBAR } from "@/styles/zindex";
 
 import styled from "@emotion/styled";
@@ -8,7 +9,7 @@ export const NavBarWrapper = styled.nav`
     z-index: ${Z_NAVBAR};
 
     width: 100%;
-    height: 80px;
+    height: ${nav_height};
 
     padding: 0px 100px;
 
