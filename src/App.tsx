@@ -12,6 +12,7 @@ import SignUpPage from "@/pages/auth/SignUpPage";
 import HomePage from "@/pages/home/HomePage";
 
 import "./globals.css";
+import PeopleListPage from "./pages/people/PeopleListPage";
 import { persistor, store } from "@/store/store";
 import { PersistGate } from "redux-persist/lib/integration/react";
 
@@ -23,11 +24,12 @@ export default function App() {
                     <PersistGate loading={null} persistor={persistor}>
                         <AnimatePresence>
                             <Routes>
+                                <Route index element={<HomePage />}></Route>
                                 <Route path="/" element={<MainLayout />}>
-                                    <Route path="/" element={<HomePage />}></Route>
                                     <Route path="auth/signin" element={<SignInPage />}></Route>
                                     <Route path="auth/signup" element={<SignUpPage />}></Route>
                                     <Route path="auth/findpw" element={<FindPasswordPage />}></Route>
+                                    <Route path="peopleList" element={<PeopleListPage />}></Route>
                                 </Route>
                             </Routes>
                         </AnimatePresence>
