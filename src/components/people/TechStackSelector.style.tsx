@@ -11,6 +11,7 @@ export interface ITechStackSelectorContainer {
 }
 
 export const TechStackSelectorWrapper = styled.div<ITechStackSelector>`
+    position: relative;
     width: ${(props) => props.width};
 `;
 
@@ -34,12 +35,13 @@ export const SearchIcon = styled.img`
     z-index: 1;
     position: absolute;
 
-    left: 20px;
+    left: 10px;
+    top: 5px;
 
     display: block;
 
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
 
     padding: 7.5px;
 `;
