@@ -12,6 +12,7 @@ import SignUpPage from "@/pages/auth/SignUpPage";
 import HomePage from "@/pages/home/HomePage";
 
 import "./globals.css";
+import PeopleInfoRegisterPage from "./pages/people/PeopleInfoRegisterPage";
 import PeopleListPage from "./pages/people/PeopleListPage";
 import PeopleProfileEditPage from "./pages/people/PeopleProfileEditPage";
 import { persistor, store } from "@/store/store";
@@ -33,6 +34,7 @@ export default function App() {
                                     <Route path="auth/findpw" element={<FindPasswordPage />} />
 
                                     <Route path="people" element={<PeopleListPage />} />
+                                    <Route path="people/register" element={<PeopleInfoRegisterPage />}></Route>
                                     <Route path="people/edit" element={<PeopleProfileEditPage />} />
                                 </Route>
                             </Routes>
