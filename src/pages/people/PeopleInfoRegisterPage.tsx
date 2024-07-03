@@ -18,7 +18,7 @@ export default function PeopleInfoRegisterPage() {
     return (
         <PeopleInfoRegisterWrapper>
             <PeopleInfoRegisterHeader>
-                <Title>피플 정보 수정</Title>
+                <Title>피플 정보 등록</Title>
                 <br />
                 <Text size="16px" weight="bold" color="point">
                     GET-P
@@ -61,10 +61,10 @@ export default function PeopleInfoRegisterPage() {
                 <PeopleInfoRegisterItem>
                     <Label htmlFor="typeButton">피플유형</Label>
                     <PeopleTypeButtonWrapper id="typeButton">
-                        <Button variant="outline" width="48%" height="54px">
+                        <Button variant="outline" width="50%" height="54px">
                             개인
                         </Button>
-                        <Button variant="outline" width="48%" height="54px">
+                        <Button variant="outline" width="50%" height="54px">
                             팀
                         </Button>
                     </PeopleTypeButtonWrapper>
