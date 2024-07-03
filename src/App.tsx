@@ -12,11 +12,10 @@ import SignUpPage from "@/pages/auth/SignUpPage";
 import EditClientPage from "@/pages/client/EditClientPage";
 import RegisterClientPage from "@/pages/client/RegisterClientPage";
 import HomePage from "@/pages/home/HomePage";
-import PeopleListPage from "@/pages/people/PeopleListPage";
+import PeopleDetailPage from "@/pages/people/PeopleDetailPage";
 import PeopleInfoRegisterPage from "@/pages/people/PeopleInfoRegisterPage";
 import PeopleListPage from "@/pages/people/PeopleListPage";
 import PeopleProfileEditPage from "@/pages/people/PeopleProfileEditPage";
-import PeopleDetailPage from "./pages/people/PeopleDetailPage";
 
 import { persistor, store } from "@/store/store";
 import { PersistGate } from "redux-persist/lib/integration/react";
@@ -40,7 +39,7 @@ export default function App() {
                                     <Route path="people/:id" element={<PeopleDetailPage />}></Route>
                                     <Route path="people/register" element={<PeopleInfoRegisterPage />}></Route>
                                     <Route path="people/edit" element={<PeopleProfileEditPage />} />
-        
+
                                     <Route path="client/register" element={<RegisterClientPage />} />
                                     <Route path="client/edit" element={<EditClientPage />} />
                                 </Route>
