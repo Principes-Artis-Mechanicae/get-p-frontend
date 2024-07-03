@@ -5,6 +5,8 @@ export interface ITextAreaElement {
 
     width: string;
     height: string;
+    readOnly?: boolean;
+    value?: string;
 }
 
 export const TextAreaContainer = styled.div`

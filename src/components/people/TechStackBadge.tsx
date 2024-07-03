@@ -10,9 +10,10 @@ import { TechStackBadgeCloseIcon, TechStackBadgeWrapper } from "./TechStackBadge
 
 export interface ITechStackBadge {
     text: string;
+    isInput: boolean;
 }
 
-export const TechStackBadge: React.FC<ITechStackBadge> = ({ text }) => {
+export const TechStackBadge: React.FC<ITechStackBadge> = ({ text, isInput }) => {
     const { dispatch } = useTechStack();
 
     const handleBadgeClick = useCallback(() => {
@@ -29,7 +30,7 @@ export const TechStackBadge: React.FC<ITechStackBadge> = ({ text }) => {
             <Paragraph size="m" weight="bold">
                 {text}
             </Paragraph>
-            <TechStackBadgeCloseIcon src={closeIcon} onClick={handleBadgeClick} />
+            {isInput ? <TechStackBadgeCloseIcon src={closeIcon} onClick={handleBadgeClick} /> : null}
         </TechStackBadgeWrapper>
     );
 };

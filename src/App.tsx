@@ -12,12 +12,10 @@ import SignUpPage from "@/pages/auth/SignUpPage";
 import EditClientPage from "@/pages/client/EditClientPage";
 import RegisterClientPage from "@/pages/client/RegisterClientPage";
 import HomePage from "@/pages/home/HomePage";
-import PeopleListPage from "@/pages/people/PeopleListPage";
+import PeopleDetailPage from "@/pages/people/PeopleDetailPage";
 import PeopleInfoRegisterPage from "@/pages/people/PeopleInfoRegisterPage";
 import PeopleListPage from "@/pages/people/PeopleListPage";
 import PeopleProfileEditPage from "@/pages/people/PeopleProfileEditPage";
-
-import "./globals.css";
 
 import { persistor, store } from "@/store/store";
 import { PersistGate } from "redux-persist/lib/integration/react";
@@ -36,16 +34,12 @@ export default function App() {
                                     <Route path="auth/signin" element={<SignInPage />}></Route>
                                     <Route path="auth/signup" element={<SignUpPage />}></Route>
                                     <Route path="auth/findpw" element={<FindPasswordPage />}></Route>
-                                    <Route path="peopleList" element={<PeopleListPage />}></Route>
-
-                                    <Route path="auth/signin" element={<SignInPage />} />
-                                    <Route path="auth/signup" element={<SignUpPage />} />
-                                    <Route path="auth/findpw" element={<FindPasswordPage />} />
 
                                     <Route path="people" element={<PeopleListPage />} />
+                                    <Route path="people/:id" element={<PeopleDetailPage />}></Route>
                                     <Route path="people/register" element={<PeopleInfoRegisterPage />}></Route>
                                     <Route path="people/edit" element={<PeopleProfileEditPage />} />
-        
+
                                     <Route path="client/register" element={<RegisterClientPage />} />
                                     <Route path="client/edit" element={<EditClientPage />} />
                                 </Route>
