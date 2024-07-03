@@ -7,16 +7,22 @@ import { ChangeEvent, useCallback, useEffect, useState } from "react";
  */
 export const useInputValidation = (regex: RegExp) => {
     const [value, setValue] = useState<string>("");
-    const [isValid, setIsValid] = useState<boolean>(false);
+    const [isValid, setIsValid] = useState<boolean>(true);
+    const [validationCheck, setValidationCheck] = useState<boolean>(false);
 
-    const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value);
-    }, []);
+    const onChange = useCallback(
+        (e: ChangeEvent<HTMLInputElement>) => {
+            !validationCheck && setValidationCheck(true);
+            setValue(e.target.value);
+        },
+        [validationCheck],
+    );
 
     useEffect(() => {
+        if (!validationCheck) return;
         if (regex.test(value)) setIsValid(true);
         else setIsValid(false);
-    }, [regex, value]);
+    }, [regex, value, validationCheck]);
 
     return { value, isValid, onChange };
 };
