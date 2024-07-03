@@ -17,6 +17,7 @@ import PeopleInfoRegisterPage from "@/pages/people/PeopleInfoRegisterPage";
 import PeopleListPage from "@/pages/people/PeopleListPage";
 import PeopleProfileEditPage from "@/pages/people/PeopleProfileEditPage";
 
+import "./globals.css";
 import { persistor, store } from "@/store/store";
 import { PersistGate } from "redux-persist/lib/integration/react";
 
