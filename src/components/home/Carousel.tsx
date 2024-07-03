@@ -77,7 +77,7 @@ export const Carousel: React.FC<ICarousel> = ({ carouselImgSrc }) => {
             <CarouselItemWrapper>
                 <Swiper
                     modules={[Scrollbar]}
-                    scrollbar={{ hide: false }}
+                    // scrollbar={{ hide: false }}
                     css={css`
                         height: 340px;
                         ${tablet} {

@@ -5,7 +5,17 @@ export interface ITextAreaElement {
 
     width: string;
     height: string;
+    readOnly?: boolean;
+    value?: string;
 }
+
+export const TextAreaContainer = styled.div`
+    width: 700px;
+
+    display: flex;
+
+    border-bottom: 1px solid #ebedef;
+`;
 
 export const TextAreaElement = styled.textarea<ITextAreaElement>`
     width: ${(props) => props.width};
@@ -20,14 +30,7 @@ export const TextAreaElement = styled.textarea<ITextAreaElement>`
         }
     }};
 
-    font-size: ${(props) => {
-        switch (props.variant) {
-            case "primary":
-                return "12px";
-            case "secondary":
-                return "16px";
-        }
-    }};
+    font-size: 16px;
 
     border: none;
     border-radius: 12px;
@@ -39,4 +42,19 @@ export const TextAreaElement = styled.textarea<ITextAreaElement>`
     &:focus {
         outline: none;
     }
+`;
+
+export const TextDeleteButton = styled.button`
+    width: 24px;
+    height: 24px;
+
+    background-color: transparent;
+    background-image: url("/text_delete_btn.png");
+
+    border: none;
+    border-radius: 50%;
+
+    margin: auto 0 10px auto;
+
+    cursor: pointer;
 `;

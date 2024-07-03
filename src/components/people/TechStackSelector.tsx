@@ -80,7 +80,7 @@ export const TechStackSelector: React.FC<ITechStackSelector> = ({ width, height,
 
                 <SelectedTechStacks>
                     {state.selected.map((techStack) => {
-                        return <TechStackBadge text={techStack.value} />;
+                        return <TechStackBadge text={techStack.value} isInput={true} />;
                     })}
                 </SelectedTechStacks>
             </TechStackSelectorContainer>

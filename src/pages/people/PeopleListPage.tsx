@@ -50,7 +50,7 @@ export default function PeopleListPage() {
                 itemCountPerPage={itemCountPerPage}
                 pageCount={pageCount}
                 currentPage={page && parseInt(page) > 0 ? parseInt(page) : 1}
-                basePath="/peopleList"
+                basePath="/people"
             />
         </PeopleListWrapper>
     );
