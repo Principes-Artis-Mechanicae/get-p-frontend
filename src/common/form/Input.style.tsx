@@ -9,6 +9,7 @@ export interface IInputElement extends React.ComponentProps<"input"> {
     width: string;
     height: string;
     error?: string | null;
+    disabled?: boolean;
 }
 
 export const InputWrapper = styled.div<IInputWrapper>`
@@ -33,6 +34,12 @@ export const InputElement = styled.input<IInputElement>`
             if (props.error) return "1.5px solid #FF0000";
             else return "1.5px solid #476ff1";
         }};
+    }
+
+    &:disabled {
+        font-size: 16px;
+        color: #000;
+        background-color: transparent;
     }
 `;
 

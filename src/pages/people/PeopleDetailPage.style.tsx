@@ -34,7 +34,7 @@ export const ProfileContainer = styled.div`
     ${mobile} {
         width: 100%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
 
         margin-top: 0px;
     }

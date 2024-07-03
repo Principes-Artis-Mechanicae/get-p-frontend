@@ -31,7 +31,7 @@ export default function App() {
                                     <Route path="auth/signup" element={<SignUpPage />}></Route>
                                     <Route path="auth/findpw" element={<FindPasswordPage />}></Route>
                                     <Route path="people/peopleList" element={<PeopleListPage />}></Route>
-                                    <Route path="people/peopleDetail" element={<PeopleDetailPage />}></Route>
+                                    <Route path="people/:id" element={<PeopleDetailPage />}></Route>
                                 </Route>
                             </Routes>
                         </AnimatePresence>

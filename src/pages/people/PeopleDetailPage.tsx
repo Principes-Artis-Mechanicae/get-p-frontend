@@ -1,9 +1,10 @@
-import { useMediaQuery } from "react-responsive";
-
+import { Input } from "@/common/form/Input";
 import { Text } from "@/common/typography/Text";
 
 import { Profile } from "@/components/people/Profile";
 import { TechStackBadge } from "@/components/people/TechStackBadge";
+
+import { mobile } from "@/styles/breakpoint";
 
 import {
     PeopleDetailWrapper,
@@ -18,21 +19,32 @@ import {
     PortfolioCard,
     PortfolioContainer,
 } from "./PeopleDetailPage.style";
+import styled from "@emotion/styled";
+
+const ResponsivePCHeading = styled.h1`
+    display: flex;
+
+    ${mobile} {
+        display: none;
+    }
+`;
+
+const ResponsiveMobileHeading = styled.h1`
+    display: none;
+
+    ${mobile} {
+        display: block;
+    }
+`;
 
 const PeopleDetailPage = () => {
-    const isMobile = useMediaQuery({
-        query: "(max-width:768px)",
-    });
-
     return (
         <PeopleDetailWrapper>
-            {isMobile && (
-                <h1>
-                    <Text size="l" color="point" weight="bold">
-                        피플 상세 조회
-                    </Text>
-                </h1>
-            )}
+            <ResponsiveMobileHeading>
+                <Text size="l" color="point" weight="bold">
+                    피플 상세 조회
+                </Text>
+            </ResponsiveMobileHeading>
             <ProfileContainer>
                 <Profile width="100%" height="283px" nickname="People01" likeCount={14} completeProjectsCount={2} />
                 <HashtagWrapper>
@@ -47,24 +59,22 @@ const PeopleDetailPage = () => {
                 </HashtagWrapper>
             </ProfileContainer>
             <InfoContainer>
-                {!isMobile && (
-                    <h1>
-                        <Text size="l" color="point" weight="bold">
-                            피플 상세 조회
-                        </Text>
-                    </h1>
-                )}
+                <ResponsivePCHeading>
+                    <Text size="l" color="point" weight="bold">
+                        피플 상세 조회
+                    </Text>
+                </ResponsivePCHeading>
                 <TextboxContainer>
                     <Text size="xs" color="secondary" weight="bold">
                         닉네임
                     </Text>
-                    <Textbox width="100%">People01</Textbox>
+                    <Input width="100%" height="45px" disabled={true} value={"People01"} />
                 </TextboxContainer>
                 <TextboxContainer>
                     <Text size="xs" color="secondary" weight="bold">
                         피플 유형
                     </Text>
-                    <Textbox width="100%">개인</Textbox>
+                    <Input width="100%" height="45px" disabled={true} value={"개인"} />
                 </TextboxContainer>
                 <TextboxContainer>
                     <Text size="xs" color="secondary" weight="bold">
@@ -81,13 +91,13 @@ const PeopleDetailPage = () => {
                     <Text size="xs" color="secondary" weight="bold">
                         활동지역
                     </Text>
-                    <Textbox width="100%">대구광역시 북구</Textbox>
+                    <Input width="100%" height="45px" disabled={true} value={"대구광역시 북구"} />
                 </TextboxContainer>
                 <TextboxContainer>
                     <Text size="xs" color="secondary" weight="bold">
                         학력
                     </Text>
-                    <Textbox width="100%">경북대학교 대구캠퍼스</Textbox>
+                    <Input width="100%" height="45px" disabled={true} value={"경북대학교 대구캠퍼스"} />
                 </TextboxContainer>
                 <TextboxContainer>
                     <Text size="xs" color="secondary" weight="bold">
