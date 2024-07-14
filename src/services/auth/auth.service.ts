@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 
 import { AxiosError } from "axios";
 
-import { api } from "@/config/axios";
+import { API_BASE_URL, api } from "@/config/axios";
 
 import {
     EmailAlreadyExistException,
@@ -113,7 +113,7 @@ export const authService = {
     },
 
     reissueToken: async (refreshToken: string) => {
-        const response = await fetch("/auth/reissue", {
+        const response = await fetch(API_BASE_URL + "auth/reissue", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
