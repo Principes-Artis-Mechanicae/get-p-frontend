@@ -3,6 +3,8 @@ import { MemberType } from "@/services/auth/auth.types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface IAuthState {
+    isAuthenticated: boolean;
+
     accessToken: string | null;
     refreshToken: string | null;
 
@@ -12,6 +14,8 @@ export interface IAuthState {
 }
 
 const initialState: IAuthState = {
+    isAuthenticated: false,
+
     accessToken: null,
     refreshToken: null,
 
@@ -26,6 +30,8 @@ const authSlice = createSlice({
 
     reducers: {
         signIn: (state, action: PayloadAction<IAuthState>) => {
+            state.isAuthenticated = true;
+
             state.email = action.payload.email;
             state.nickname = action.payload.nickname;
             state.memberType = action.payload.memberType;
@@ -34,6 +40,8 @@ const authSlice = createSlice({
             state.refreshToken = action.payload.refreshToken;
         },
         signOut: (state) => {
+            state.isAuthenticated = false;
+
             state.accessToken = null;
             state.refreshToken = null;
         },
