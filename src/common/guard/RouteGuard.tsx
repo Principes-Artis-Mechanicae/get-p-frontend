@@ -6,18 +6,21 @@ import { MemberType } from "@/services/auth/auth.types";
 
 import { RootState } from "@/store/store";
 
-export interface IProtectedRoute {
+export interface ProtectedRouteProps {
     role: MemberType;
-    redirect: string;
     children: React.ReactNode;
 }
 
-export const ProtectedRoute: React.FC<IProtectedRoute> = ({ role, redirect, children }) => {
-    const { memberType } = useSelector((state: RootState) => state.auth);
+export const RouteGuard = ({ role, children }: ProtectedRouteProps) => {
+    const { isAuthenticated, memberType } = useSelector((state: RootState) => state.auth);
 
+    if (!isAuthenticated) {
+        toast.error("로그인 후 이용해주세요");
+        return <Navigate to="/auth/signin" />;
+    }
     if (memberType !== role) {
         toast.error("권한이 없습니다");
-        return <Navigate to={redirect} />;
+        return <Navigate to="/" />;
     }
 
     return children;
