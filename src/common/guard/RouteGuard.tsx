@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate, Route } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { MemberType } from "@/services/auth/auth.types";
@@ -11,6 +11,11 @@ export interface ProtectedRouteProps {
     children: React.ReactNode;
 }
 
+/**
+ * role 이 로그인된 사용자 memberType 과 일치하는 경우 children 하위 컴포넌트를 렌더링 합니다
+ * 로그인이 되지 않은 상요자는 로그인페이지로 리다이렉트 됩니다
+ * 권한이 없는 경우 홈 페이지로 리다이렉트 됩니다
+ */
 export const RouteGuard = ({ role, children }: ProtectedRouteProps) => {
     const { isAuthenticated, memberType } = useSelector((state: RootState) => state.auth);
 
