@@ -1,3 +1,3 @@
-import { readPeople } from "./people/handlers";
+import { createPeople, readPeople } from "./people/handlers";
 
-export const handlers = [readPeople];
+export const handlers = [readPeople, createPeople];

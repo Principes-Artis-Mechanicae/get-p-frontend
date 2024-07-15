@@ -32,3 +32,31 @@ export const readPeople = http.get("https://api.princip.es/get-p/v2/people", ({ 
         },
     });
 });
+
+export const createPeople = http.post("https://api.princip.es/get-p/v2/people", async ({ request }) => {
+    const requestBody = await request.json();
+
+    const newPeople = {
+        peopleId: peopleData.at(-1).peopleId + 1,
+        nickname: requestBody.nickname,
+        peopleType: requestBody.peopleType,
+        profileImageUri: requestBody.profileImageUri,
+        profile: {
+            activityArea: "대구광역시 북구",
+            hashtags: [
+                {
+                    value: "#HASHTAG",
+                },
+            ],
+        },
+    };
+
+    peopleData.push(newPeople);
+
+    return HttpResponse.json({
+        status: 201,
+        data: {
+            peopleId: newPeople.peopleId,
+        },
+    });
+});
