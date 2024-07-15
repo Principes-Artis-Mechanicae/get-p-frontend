@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
@@ -32,13 +32,20 @@ import { uiActions } from "@/store/slice/ui.slice";
 import { RootState } from "@/store/store";
 
 export const ProfileDropDown: React.FC = () => {
-    const { memberType, nickname, email } = useSelector((state: RootState) => state.auth);
+    const navigate = useNavigate();
+
+    const { memberType, nickname, email, profileImageUri } = useSelector((state: RootState) => state.auth);
     const dispatch = useDispatch();
 
     const handleSignOutBtnClick = useCallback(() => {
         dispatch(authAction.signOut());
         dispatch(uiActions.closeNavDropDown());
     }, [dispatch]);
+
+    const handleProfileEditBtnClick = useCallback(() => {
+        if (memberType === MemberType.ROLE_CLIENT) navigate("/client/edit");
+        else if (memberType === MemberType.ROLE_PEOPLE) navigate("/people/edit");
+    }, [navigate, memberType]);
 
     return (
         <motion.div
@@ -50,7 +57,7 @@ export const ProfileDropDown: React.FC = () => {
             <ProfileDropDownWrapper>
                 <ProfileContainer>
                     <ProfileImgContainer>
-                        <ProfileImg src={profileImg}></ProfileImg>
+                        <ProfileImg src={profileImageUri ?? profileImg}></ProfileImg>
                         <ProfileTag>
                             <Text size="xs">{memberType === MemberType.ROLE_PEOPLE ? "피플" : "의뢰자"}</Text>
                         </ProfileTag>
@@ -67,7 +74,7 @@ export const ProfileDropDown: React.FC = () => {
                         </Paragraph>
                     </ProfileInfoContainer>
 
-                    <ProfileEditBtn>
+                    <ProfileEditBtn onClick={handleProfileEditBtnClick}>
                         <ProfileEditImgContainer>
                             <ProfileEditImg src={editIcon} />
                         </ProfileEditImgContainer>
