@@ -1,9 +1,3 @@
-import { HttpResponse, http } from "msw";
+import { readPeople } from "./people/handlers";
 
-export const handlers = [
-    http.get("https://api.princip.es/get-p/v2/", () => {
-        return HttpResponse.json({
-            data: "msw response!",
-        });
-    }),
-];
+export const handlers = [readPeople];
