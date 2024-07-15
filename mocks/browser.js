@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { handlers } from "./handlers";
 import { setupWorker } from "msw/browser";
 
