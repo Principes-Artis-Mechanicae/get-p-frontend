@@ -11,6 +11,8 @@ export interface IAuthState {
     email: string | null;
     nickname: string | null;
     memberType: MemberType | null;
+
+    profileImageUri: string | null;
 }
 
 const initialState: IAuthState = {
@@ -22,6 +24,8 @@ const initialState: IAuthState = {
     email: null,
     nickname: null,
     memberType: null,
+
+    profileImageUri: null,
 };
 
 const authSlice = createSlice({
@@ -29,7 +33,7 @@ const authSlice = createSlice({
     initialState,
 
     reducers: {
-        signIn: (state, action: PayloadAction<IAuthState>) => {
+        signIn: (state, action: PayloadAction<Omit<IAuthState, "isAuthenticated">>) => {
             state.isAuthenticated = true;
 
             state.email = action.payload.email;
@@ -38,6 +42,7 @@ const authSlice = createSlice({
 
             state.accessToken = action.payload.accessToken;
             state.refreshToken = action.payload.refreshToken;
+            state.profileImageUri = action.payload.profileImageUri;
         },
         signOut: (state) => {
             state.isAuthenticated = false;

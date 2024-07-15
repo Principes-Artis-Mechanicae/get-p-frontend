@@ -22,7 +22,7 @@ export const signInThunkAction = (email: string, password: string, navigate: Nav
         );
 
         const memberResponse = await memberService.readMemberProfile();
-        const { nickname, memberType } = memberResponse.data.data;
+        const { nickname, memberType, profileImageUri } = memberResponse.data.data;
 
         dispatch(
             authAction.signIn({
@@ -31,6 +31,7 @@ export const signInThunkAction = (email: string, password: string, navigate: Nav
                 memberType,
                 accessToken,
                 refreshToken,
+                profileImageUri,
             }),
         );
 
