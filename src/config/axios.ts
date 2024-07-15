@@ -2,10 +2,10 @@ import { toast } from "react-toastify";
 
 import axios, { AxiosError } from "axios";
 
-import { isExpired } from "@/utils/jwt";
-
+// import { isExpired } from "@/utils/jwt";
 import { store } from "@/store/store";
-import { reissueTokenThunkAction } from "@/store/thunk/auth.thunk";
+
+// import { reissueTokenThunkAction } from "@/store/thunk/auth.thunk";
 
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
 
@@ -23,9 +23,9 @@ api.interceptors.request.use(
     async (config) => {
         const accessToken = store.getState().auth.accessToken as string;
 
-        if (accessToken !== null && isExpired(accessToken)) {
-            store.dispatch(reissueTokenThunkAction());
-        }
+        // if (accessToken !== null && isExpired(accessToken)) {
+        //     store.dispatch(reissueTokenThunkAction());
+        // }
 
         config.headers["Authorization"] = `Bearer ${accessToken}`;
         return config;
