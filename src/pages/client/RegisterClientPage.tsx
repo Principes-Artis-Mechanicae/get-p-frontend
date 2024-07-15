@@ -1,7 +1,7 @@
+import { Profile } from "@/common/display/Profile";
 import { Button } from "@/common/form/Button";
 import { Input } from "@/common/form/Input";
 import { Label } from "@/common/form/Label";
-import { Profile } from "@/common/form/Profile";
 import { Paragraph } from "@/common/typography/Paragraph";
 import { Text } from "@/common/typography/Text";
 import { Title } from "@/common/typography/Title";
