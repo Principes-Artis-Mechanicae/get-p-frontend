@@ -18,7 +18,9 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use(
-    (config) => {
+    // TODO : 토큰 재발급 로직 수정 필요
+    // eslint-disable-next-line @typescript-eslint/require-await
+    async (config) => {
         const accessToken = store.getState().auth.accessToken as string;
 
         if (accessToken !== null && isExpired(accessToken)) {
