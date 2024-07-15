@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Navigate, Route } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { MemberType } from "@/services/auth/auth.types";
