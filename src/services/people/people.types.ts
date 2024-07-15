@@ -1,3 +1,8 @@
+export enum PeopleType {
+    INDIVIDUAL = "INDIVIDUAL",
+    TEAM = "TEAM",
+}
+
 export interface PeopleData {
     peopleId: number;
     nickname: string;
@@ -30,5 +35,20 @@ export interface ReadPeopleResponseBody {
                 direction: string;
             };
         };
+    };
+}
+
+export interface RegisterPeopleRequestBody {
+    nickname: string;
+    email: string;
+    phoneNumber: string;
+    peopleType: PeopleType;
+    profileImageUri: string;
+}
+
+export interface RegisterPeopleResponseBody {
+    status: number;
+    data: {
+        peopleId: number;
     };
 }
