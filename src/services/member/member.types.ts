@@ -6,6 +6,7 @@ export interface MemberProfileResponseBody {
         memberId: number;
         email: string;
         nickname: string;
+        profileImageUri: string;
         memberType: MemberType;
         createdAt: string;
         updatedAt: string;
