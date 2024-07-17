@@ -112,12 +112,13 @@ export const authService = {
         });
     },
 
-    reissueToken: async (refreshToken: string) => {
+    reissueToken: async (accessToken: string, refreshToken: string) => {
         const response = await fetch(API_BASE_URL + "auth/reissue", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${refreshToken}`,
+                Authorization: `Bearer ${accessToken}`,
+                "Refresh-Token": `Bearer ${refreshToken}`,
             },
         });
 
