@@ -2,10 +2,12 @@ import { toast } from "react-toastify";
 
 import axios, { AxiosError } from "axios";
 
-// import { isExpired } from "@/utils/jwt";
-import { store } from "@/store/store";
+import { authService } from "@/services/auth/auth.service";
 
-// import { reissueTokenThunkAction } from "@/store/thunk/auth.thunk";
+import { isExpired } from "@/utils/jwt";
+
+import { authAction } from "@/store/slice/auth.slice";
+import { store } from "@/store/store";
 
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
 
@@ -18,16 +20,27 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use(
-    // TODO : 토큰 재발급 로직 수정 필요
-    // eslint-disable-next-line @typescript-eslint/require-await
     async (config) => {
-        const accessToken = store.getState().auth.accessToken as string;
+        const { accessToken, refreshToken } = store.getState().auth;
 
-        // if (accessToken !== null && isExpired(accessToken)) {
-        //     store.dispatch(reissueTokenThunkAction());
-        // }
+        if (accessToken !== null && refreshToken !== null && isExpired(accessToken)) {
+            const { accessToken: newAccessToken, refreshToken: newRefreshToken } = await authService.reissueToken(
+                accessToken,
+                refreshToken,
+            );
 
-        config.headers["Authorization"] = `Bearer ${accessToken}`;
+            store.dispatch(
+                authAction.reissueToken({
+                    accessToken: newAccessToken,
+                    refreshToken: newRefreshToken,
+                }),
+            );
+
+            config.headers["Authorization"] = `Bearer ${newAccessToken}`;
+            return config;
+        }
+
+        config.headers["Authorization"] = `Bearer ${accessToken as string}`;
         return config;
     },
     (error: AxiosError) => {
