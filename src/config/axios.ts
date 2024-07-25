@@ -13,7 +13,7 @@ export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
 
 export const api = axios.create({
     baseURL: API_BASE_URL,
-    timeout: 5000,
+    // timeout: 5000,
     headers: {
         "Content-Type": "application/json",
     },
@@ -22,12 +22,11 @@ export const api = axios.create({
 api.interceptors.request.use(
     async (config) => {
         const { accessToken, refreshToken } = store.getState().auth;
+        if (accessToken === null || refreshToken === null) return config;
 
-        if (accessToken !== null && refreshToken !== null && isExpired(accessToken)) {
-            const { accessToken: newAccessToken, refreshToken: newRefreshToken } = await authService.reissueToken(
-                accessToken,
-                refreshToken,
-            );
+        if (isExpired(accessToken)) {
+            const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
+                await authService.reissueToken(accessToken);
 
             store.dispatch(
                 authAction.reissueToken({
@@ -39,8 +38,7 @@ api.interceptors.request.use(
             config.headers["Authorization"] = `Bearer ${newAccessToken}`;
             return config;
         }
-
-        config.headers["Authorization"] = `Bearer ${accessToken as string}`;
+        config.headers["Authorization"] = `Bearer ${accessToken}`;
         return config;
     },
     (error: AxiosError) => {
