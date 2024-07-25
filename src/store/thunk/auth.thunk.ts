@@ -4,7 +4,7 @@ import { authService } from "@/services/auth/auth.service";
 import { memberService } from "@/services/member/member.service";
 
 import { authAction } from "../slice/auth.slice";
-import { GetState, RootDispatch } from "../store";
+import { RootDispatch } from "../store";
 
 export const signInThunkAction = (email: string, password: string, navigate: NavigateFunction) => {
     return async (dispatch: RootDispatch) => {
@@ -36,23 +36,5 @@ export const signInThunkAction = (email: string, password: string, navigate: Nav
         );
 
         navigate("/");
-    };
-};
-
-export const reissueTokenThunkAction = () => {
-    return async (dispatch: RootDispatch, getState: GetState) => {
-        const { refreshToken } = getState().auth;
-
-        const response = await authService.reissueToken(refreshToken as string);
-
-        const newAccessToken = response.accessToken;
-        const newRefreshToken = response.refreshToken;
-
-        dispatch(
-            authAction.reissueToken({
-                accessToken: newAccessToken,
-                refreshToken: newRefreshToken,
-            }),
-        );
     };
 };

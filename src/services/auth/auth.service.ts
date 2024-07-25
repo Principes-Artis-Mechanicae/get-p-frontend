@@ -117,7 +117,7 @@ export const authService = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${refreshToken}`,
+                "Refresh-Token": `Bearer ${refreshToken}`,
             },
         });
 
