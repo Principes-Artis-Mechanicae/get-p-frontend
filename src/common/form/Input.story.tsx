@@ -1,3 +1,7 @@
+import { useInputValidation } from "@/hooks/useInputValidation";
+
+import { REGEXP_PASSWORD } from "@/constants/regex";
+
 import { Button } from "./Button";
 import { Input } from "./Input";
 import { css } from "@emotion/react";
@@ -26,6 +30,21 @@ export const Password: Story = {
         width: "300px",
         height: "45px",
         placeholder: "비밀번호를 입력해주세요",
+    },
+    render: (args) => {
+        const { value, isValid, onChange } = useInputValidation(REGEXP_PASSWORD);
+
+        return (
+            <Input
+                type={args.type}
+                onChange={onChange}
+                value={value}
+                width={args.width}
+                height={args.height}
+                placeholder={args.placeholder}
+                error={isValid ? "" : "비밀번호는 영문,숫자,특수문자로 조합된 8-20자 이어야 합니다"}
+            />
+        );
     },
 };
 
