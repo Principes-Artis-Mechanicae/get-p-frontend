@@ -30,14 +30,14 @@ export default function PeopleListPage() {
 
         peopleService.readPeople(currentPage, itemCountPerPage).then((value) => {
             setPeople(value.content);
-            setPageInfo({
-                ...pageInfo,
+            setPageInfo((prevPageInfo) => ({
+                ...prevPageInfo,
                 totalItems: value.pageInfo.totalElements,
                 itemCountPerPage: value.pageInfo.size,
                 pageCount: 10,
                 currentPage: value.pageInfo.number,
                 basePath: "/people",
-            });
+            }));
         });
     }, [searchParams]);
 
