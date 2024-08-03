@@ -2,9 +2,12 @@ export const peopleData = [
     {
         peopleId: 1,
         nickname: "knu12370",
+        profileImageUri: "/src/assets/people/img_profile_default.png",
         peopleType: "INDIVIDUAL",
-        profileImageUri: "/images/1/profile/image.jpeg",
+        completedProjectsCount: 0,
+        likesCount: 0,
         profile: {
+            introduction: "반갑습니다",
             activityArea: "대구광역시 달서구",
             hashtags: [
                 {
@@ -17,16 +20,17 @@ export const peopleData = [
                     value: "#DISCORD",
                 },
             ],
-            completedProjectsCount: 0,
-            interestsCount: 0,
         },
     },
     {
         peopleId: 2,
         nickname: "knu12370",
+        profileImageUri: "/src/assets/people/img_profile_default.png",
         peopleType: "INDIVIDUAL",
-        profileImageUri: "/images/1/profile/image.jpeg",
+        completedProjectsCount: 0,
+        likesCount: 0,
         profile: {
+            introduction: "반갑습니다.",
             activityArea: "대구광역시 달서구",
             hashtags: [
                 {
@@ -39,16 +43,17 @@ export const peopleData = [
                     value: "#DISCORD",
                 },
             ],
-            completedProjectsCount: 0,
-            interestsCount: 0,
         },
     },
     {
         peopleId: 3,
         nickname: "knu12370",
+        profileImageUri: "/src/assets/people/img_profile_default.png",
         peopleType: "INDIVIDUAL",
-        profileImageUri: "/images/1/profile/image.jpeg",
+        completedProjectsCount: 0,
+        likesCount: 0,
         profile: {
+            introduction: "반갑습니다.",
             activityArea: "대구광역시 달서구",
             hashtags: [
                 {
@@ -61,8 +66,6 @@ export const peopleData = [
                     value: "#DISCORD",
                 },
             ],
-            completedProjectsCount: 0,
-            interestsCount: 0,
         },
     },
 ];

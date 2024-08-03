@@ -15,9 +15,11 @@ export interface IPeopleCard {
     profileImageUri: string;
     nickname: string;
     activityArea: string;
-    hashtags: string[];
+    hashtags: {
+        value: string;
+    }[];
     completeProjectsCount: number;
-    comment: string;
+    introduction: string;
 }
 
 export const PeopleCard: React.FC<IPeopleCard> = ({
@@ -28,13 +30,13 @@ export const PeopleCard: React.FC<IPeopleCard> = ({
     activityArea,
     hashtags,
     completeProjectsCount,
-    comment,
+    introduction,
 }) => {
     const isTabletOrMobile = useMediaQuery("(max-width: 1200px)");
 
     return (
         <PeopleCardWrapper width={isTabletOrMobile ? "100%" : width} height={height}>
-            <PeopleCardImg src={profileImageUri} />
+            <PeopleCardImg src={profileImageUri ?? "/src/assets/people/img_profile_default.png"} />
             <PeopleCardContainer>
                 <PeopleCardHeader>
                     <Text size="s" color="point" weight="bold">
@@ -48,10 +50,10 @@ export const PeopleCard: React.FC<IPeopleCard> = ({
                     {nickname}
                 </Text>
                 <Text size="s" color="secondary" weight="light">
-                    <PeopleCardComment width={isTabletOrMobile ? "auto" : "375px"}>{comment}</PeopleCardComment>
+                    <PeopleCardComment width={isTabletOrMobile ? "auto" : "375px"}>{introduction}</PeopleCardComment>
                 </Text>
                 <Text size="s" color="#BDA7BC" weight="light">
-                    {hashtags}
+                    {hashtags.map((hashtag) => `${hashtag.value}`).join(" ")}
                 </Text>
             </PeopleCardContainer>
         </PeopleCardWrapper>

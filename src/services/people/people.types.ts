@@ -1,13 +1,15 @@
 export interface PeopleData {
     peopleId: number;
     nickname: string;
-    peopleType: "INDIVIDUAL";
     profileImageUri: string;
+    peopleType: "INDIVIDUAL";
+    completedProjectsCount: number;
+    likesCount: number;
+
     profile: {
+        introduction: string;
         activityArea: string;
         hashtags: { value: string }[];
-        completedProjectsCount: number;
-        interestsCount: number;
     };
 }
 
