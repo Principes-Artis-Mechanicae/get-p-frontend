@@ -36,7 +36,7 @@ export const PeopleCard: React.FC<IPeopleCard> = ({
 
     return (
         <PeopleCardWrapper width={isTabletOrMobile ? "100%" : width} height={height}>
-            <PeopleCardImg src={profileImageUri ?? "/src/assets/people/img_profile_default.png"} />
+            <PeopleCardImg src={profileImageUri} />
             <PeopleCardContainer>
                 <PeopleCardHeader>
                     <Text size="s" color="point" weight="bold">

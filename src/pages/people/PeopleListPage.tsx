@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { Pagination } from "@/common/navigation/Pagination";
+import { IPagination, Pagination } from "@/common/navigation/Pagination";
 
 import { PeopleCard } from "@/components/people/PeopleCard";
 import { PeopleSearch } from "@/components/people/PeopleSearch";
@@ -12,23 +12,34 @@ import { PeopleData } from "@/services/people/people.types";
 import { PeopleListContainer, PeopleListWrapper } from "./PeopleListPage.style";
 
 export default function PeopleListPage() {
-    const [totalItems] = useState(100);
     const [people, setPeople] = useState<PeopleData[] | null>(null);
+
     const [searchParams] = useSearchParams();
-    const itemCountPerPage = 6;
-    const pageCount = 10;
-    const page = parseInt(searchParams.get("page") ?? "0");
+    const [pageInfo, setPageInfo] = useState<IPagination>({
+        totalItems: 10,
+        itemCountPerPage: 10,
+        pageCount: 10,
+        currentPage: parseInt(searchParams.get("page") ?? "1"),
+        basePath: "/people",
+    });
 
+    // searchParams가 바뀔 때 마다 새로운 페이지로 api 호출함.
     useEffect(() => {
-        // window.scrollTo(0, 0); // 페이지 이동 시 스크롤 위치 맨 위로 초기화
-        /* api 호출 및 데이터(totalItems, people) 저장 */
+        const currentPage = parseInt(searchParams.get("page") ?? "1");
+        const itemCountPerPage = parseInt(searchParams.get("size") ?? "10");
 
-        // setPeople(PeopleInfos.slice(0, itemCountPerPage));
-        peopleService.readPeople(page, pageCount).then((value) => {
+        peopleService.readPeople(currentPage, itemCountPerPage).then((value) => {
             setPeople(value.content);
-            console.log(value.content);
+            setPageInfo({
+                ...pageInfo,
+                totalItems: value.pageInfo.totalElements,
+                itemCountPerPage: value.pageInfo.size,
+                pageCount: 10,
+                currentPage: value.pageInfo.number,
+                basePath: "/people",
+            });
         });
-    }, [page]);
+    }, [searchParams]);
 
     return (
         <PeopleListWrapper>
@@ -42,7 +53,6 @@ export default function PeopleListPage() {
                                 height="auto"
                                 profileImageUri={person.profileImageUri}
                                 nickname={person.nickname}
-                                // introduction={person.profile.introduction}
                                 introduction={person.profile.introduction}
                                 activityArea={person.profile.activityArea}
                                 hashtags={person.profile.hashtags}
@@ -53,10 +63,10 @@ export default function PeopleListPage() {
                 )}
             </PeopleListContainer>
             <Pagination
-                totalItems={totalItems}
-                itemCountPerPage={itemCountPerPage}
-                pageCount={pageCount}
-                currentPage={page && page > 0 ? page : 1}
+                totalItems={pageInfo.totalItems}
+                itemCountPerPage={pageInfo.itemCountPerPage}
+                pageCount={pageInfo.pageCount}
+                currentPage={pageInfo.currentPage && pageInfo.currentPage > 0 ? pageInfo.currentPage : 1}
                 basePath="/people"
             />
         </PeopleListWrapper>
