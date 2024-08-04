@@ -8,15 +8,16 @@ import { ProfileWrapper, ProfileContainer, ProfileLike, ProfileProject, ProfileI
 export interface IProfile {
     width: string;
     height: string;
+    imgSrc?: string;
     nickname: string;
     likeCount: number;
     completeProjectsCount: number;
 }
 
-export const Profile: React.FC<IProfile> = ({ width, height, nickname, likeCount, completeProjectsCount }) => {
+export const Profile: React.FC<IProfile> = ({ width, height, imgSrc, nickname, likeCount, completeProjectsCount }) => {
     return (
         <ProfileWrapper width={width} height={height}>
-            <ProfileImg src={profileImg}></ProfileImg>
+            <ProfileImg src={imgSrc ? imgSrc : profileImg} alt={nickname} />
             <ProfileContainer>
                 <Text size="m" color="primary" weight="bold">
                     {nickname}
