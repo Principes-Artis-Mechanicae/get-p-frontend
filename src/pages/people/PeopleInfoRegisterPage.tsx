@@ -5,6 +5,8 @@ import { Label } from "@/common/form/Label";
 import { Text } from "@/common/typography/Text";
 import { Title } from "@/common/typography/Title";
 
+import { usePeopleInfoRegister } from "@/services/people/hooks/usePeopleInfoRegister";
+
 import {
     PeopleInfoRegisterWrapper,
     PeopleInfoRegisterHeader,
@@ -15,6 +17,9 @@ import {
 } from "./PeopleInfoRegisterPage.style";
 
 export default function PeopleInfoRegisterPage() {
+    const { nicknameRef, emailRef, phoneNumberRef, handleIndividualClick, handleTeamClick, handleNextClick } =
+        usePeopleInfoRegister();
+
     return (
         <PeopleInfoRegisterWrapper>
             <PeopleInfoRegisterHeader>
@@ -35,12 +40,19 @@ export default function PeopleInfoRegisterPage() {
             <PeopleInfoRegisterContainer>
                 <PeopleInfoRegisterItem>
                     <Label htmlFor="nickname">닉네임(필수)</Label>
-                    <Input id="nickname" width="100%" height="40px" placeholder="닉네임을 입력해주세요."></Input>
+                    <Input
+                        ref={nicknameRef}
+                        id="nickname"
+                        width="100%"
+                        height="40px"
+                        placeholder="닉네임을 입력해주세요."
+                    ></Input>
                 </PeopleInfoRegisterItem>
 
                 <PeopleInfoRegisterItem>
                     <Label htmlFor="phoneNumber">전화번호(필수)</Label>
                     <Input
+                        ref={phoneNumberRef}
                         id="phoneNumber"
                         width="100%"
                         height="40px"
@@ -51,6 +63,7 @@ export default function PeopleInfoRegisterPage() {
                 <PeopleInfoRegisterItem>
                     <Label htmlFor="e-mail">이메일(선택)</Label>
                     <Input
+                        ref={emailRef}
                         id="e-mail"
                         width="100%"
                         height="40px"
@@ -61,17 +74,17 @@ export default function PeopleInfoRegisterPage() {
                 <PeopleInfoRegisterItem>
                     <Label htmlFor="typeButton">피플유형</Label>
                     <PeopleTypeButtonWrapper id="typeButton">
-                        <Button variant="outline" width="50%" height="54px">
+                        <Button variant="outline" width="50%" height="54px" onClick={handleIndividualClick}>
                             개인
                         </Button>
-                        <Button variant="outline" width="50%" height="54px">
+                        <Button variant="outline" width="50%" height="54px" onClick={handleTeamClick}>
                             팀
                         </Button>
                     </PeopleTypeButtonWrapper>
                 </PeopleInfoRegisterItem>
 
                 <PeopleInfoRegisterItem>
-                    <Button variant="primary" width="100%" height="54px">
+                    <Button variant="primary" width="100%" height="54px" onClick={handleNextClick}>
                         다음으로
                     </Button>
                 </PeopleInfoRegisterItem>
