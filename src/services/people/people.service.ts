@@ -6,6 +6,7 @@ import { api } from "@/config/axios";
 
 import {
     ReadPeopleResponseBody,
+    ReadPeopleDetailResponseBody,
     RegisterPeopleInfoRequestBody,
     RegisterPeopleProfileRequestBody,
     RegisterPeopleProfileResponseBody,
@@ -49,5 +50,12 @@ export const peopleService = {
             success: "피플 프로필 등록 성공!",
             error: "피플 프로필 등록 실패",
         });
+    },
+};
+
+export const peopleDetailService = {
+    readPeopleDetail: async () => {
+        const response = await api.get<ReadPeopleDetailResponseBody>(`/people/1`);
+        return response.data.data;
     },
 };

@@ -35,6 +35,31 @@ export interface ReadPeopleResponseBody {
     };
 }
 
+export interface ReadPeopleDetailResponseBody {
+    status: number;
+    data: {
+        peopleId: number;
+        nickname: string;
+        profileImageUri: string;
+        peopleType: string;
+        completedProjectsCount: number;
+        likesCount: number;
+        profile: {
+            introduction: string;
+            activityArea: string;
+            education: {
+                school: string;
+                major: string;
+            };
+            techStacks: string[];
+            hashtags: string[];
+            portfolios: {
+                description: string;
+                url: string;
+            }[];
+        };
+    };
+}
 export interface RegisterPeopleInfoRequestBody {
     nickname: string;
     email: string;
