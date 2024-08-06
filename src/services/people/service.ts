@@ -10,7 +10,7 @@ import {
     RegisterPeopleInfoRequestBody,
     RegisterPeopleProfileRequestBody,
     RegisterPeopleProfileResponseBody,
-} from "./people.types";
+} from "./types";
 
 export const peopleService = {
     readPeople: async (page = 0, size = 1, sort = "peopleId,desc") => {

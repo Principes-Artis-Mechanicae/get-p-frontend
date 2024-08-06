@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-import { MemberType } from "@/services/auth/auth.types";
+import { MemberType } from "@/services/auth/types";
 
 import profileImg from "@/assets/auth/people2.png";
 import editIcon from "@/assets/common/edit.svg";

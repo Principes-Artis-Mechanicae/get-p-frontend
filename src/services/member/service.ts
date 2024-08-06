@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 
 import { api } from "@/config/axios";
 
-import { MemberProfileResponseBody } from "./member.types";
+import { MemberProfileResponseBody } from "./types";
 
 export const memberService = {
     readMemberProfile: async () => {

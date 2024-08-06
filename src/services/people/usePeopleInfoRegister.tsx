@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-import { peopleService } from "../people.service";
+import { peopleService } from "./service";
 import { useMutation } from "@tanstack/react-query";
 
 export const usePeopleInfoRegister = () => {

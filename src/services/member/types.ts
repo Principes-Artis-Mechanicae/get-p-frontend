@@ -1,4 +1,4 @@
-import { MemberType } from "../auth/auth.types";
+import { MemberType } from "../auth/types";
 
 export interface MemberProfileResponseBody {
     status: number;

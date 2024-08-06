@@ -6,8 +6,8 @@ import { IPagination, Pagination } from "@/common/navigation/Pagination";
 import { PeopleCard } from "@/components/people/PeopleCard";
 import { PeopleSearch } from "@/components/people/PeopleSearch";
 
-import { peopleService } from "@/services/people/people.service";
-import { PeopleData } from "@/services/people/people.types";
+import { peopleService } from "@/services/people/service";
+import { PeopleData } from "@/services/people/types";
 
 import { PeopleListContainer, PeopleListWrapper } from "./PeopleListPage.style";
 

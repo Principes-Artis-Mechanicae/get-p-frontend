@@ -15,7 +15,7 @@ import { Title } from "@/common/typography/Title";
 
 import { useInputValidation } from "@/hooks/useInputValidation";
 
-import { authService } from "@/services/auth/auth.service";
+import { authService } from "@/services/auth/service";
 
 import { REGEXP_EMAIL, REGEXP_PASSWORD } from "@/constants/regex";
 

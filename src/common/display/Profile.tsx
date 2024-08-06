@@ -1,6 +1,6 @@
 import { useState, useRef, ChangeEvent } from "react";
 
-import { memberService } from "@/services/member/member.service";
+import { memberService } from "@/services/member/service";
 
 import editIcon from "@/assets/common/edit.svg";
 import defaultImg from "@/assets/common/profile.svg";

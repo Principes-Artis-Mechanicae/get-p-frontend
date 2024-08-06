@@ -1,7 +1,7 @@
 import { NavigateFunction } from "react-router-dom";
 
-import { authService } from "@/services/auth/auth.service";
-import { memberService } from "@/services/member/member.service";
+import { authService } from "@/services/auth/service";
+import { memberService } from "@/services/member/service";
 
 import { authAction } from "../slice/auth.slice";
 import { RootDispatch } from "../store";

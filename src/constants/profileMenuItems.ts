@@ -1,4 +1,4 @@
-import { MemberType } from "@/services/auth/auth.types";
+import { MemberType } from "@/services/auth/types";
 
 export interface IProfileMenuItem {
     id: number;

@@ -9,7 +9,7 @@ import { Text } from "@/common/typography/Text";
 
 import { MemberTypeCard } from "@/components/auth/MemberTypeCard";
 
-import { MemberType } from "@/services/auth/auth.types";
+import { MemberType } from "@/services/auth/types";
 
 import {
     SelectTypeContainer,

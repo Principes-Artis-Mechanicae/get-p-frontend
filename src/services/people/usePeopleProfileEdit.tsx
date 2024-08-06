@@ -4,7 +4,7 @@ import { useHashTag } from "@/hooks/useHashTag";
 import { useTechStack } from "@/hooks/useTechStack";
 
 // import { queryClient } from "@/config/query";
-import { peopleService } from "./people.service";
+import { peopleService } from "./service";
 import { useMutation } from "@tanstack/react-query";
 
 export const usePeopleProfileEdit = () => {

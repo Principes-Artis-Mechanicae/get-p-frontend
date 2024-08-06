@@ -14,7 +14,7 @@ import PeopleInfoRegisterPage from "@/pages/people/PeopleInfoRegisterPage";
 import PeopleListPage from "@/pages/people/PeopleListPage";
 import PeopleProfileEditPage from "@/pages/people/PeopleProfileEditPage";
 
-import { MemberType } from "@/services/auth/auth.types";
+import { MemberType } from "@/services/auth/types";
 
 export const Router = () => {
     return (
