@@ -61,7 +61,7 @@ const reducer: React.Reducer<TechStackState, TechStackAction> = (state, action) 
     }
 };
 
-export const TechStackProvider = ({ children }: { children: React.ReactNode }) => {
+export const TechStackProvider = ({ children }: { children?: React.ReactNode }) => {
     const [state, dispatch] = useReducer(reducer, techStackState);
 
     return <TechStackContext.Provider value={{ state, dispatch }}>{children}</TechStackContext.Provider>;
