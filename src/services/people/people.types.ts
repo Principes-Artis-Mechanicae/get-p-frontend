@@ -60,6 +60,19 @@ export interface ReadPeopleDetailResponseBody {
         };
     };
 }
+export interface RegisterPeopleInfoRequestBody {
+    nickname: string;
+    email: string;
+    phoneNumber: string;
+    peopleType: string;
+}
+
+export interface RegisterPeopleInfoResponseBody {
+    status: number;
+    data: {
+        peopleId: number;
+    };
+}
 export interface RegisterPeopleProfileRequestBody {
     education: {
         school: string;

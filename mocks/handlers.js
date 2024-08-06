@@ -1,4 +1,4 @@
 import { readPeopleDetail } from "./detail/handlers";
-import { readPeople } from "./people/handlers";
+import { readPeople, registerPeopleInfo } from "./people/handlers";
 
-export const handlers = [readPeople, readPeopleDetail];
+export const handlers = [readPeople, readPeopleDetail, registerPeopleInfo];

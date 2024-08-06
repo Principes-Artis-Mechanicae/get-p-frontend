@@ -2,6 +2,8 @@ import { HttpResponse, http } from "msw";
 
 import { peopleData } from "./data";
 
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const readPeople = http.get("https://api.princip.es/get-p/v2/people", ({ request }) => {
     const url = new URL(request.url);
 
@@ -42,6 +44,15 @@ export const readPeople = http.get("https://api.princip.es/get-p/v2/people", ({ 
                     direction: sortParam.split(",")[1],
                 },
             },
+        },
+    });
+});
+
+export const registerPeopleInfo = http.post(API_BASE_URL + "people/me", async () => {
+    return HttpResponse.json({
+        status: 201,
+        data: {
+            peopleId: 1,
         },
     });
 });
