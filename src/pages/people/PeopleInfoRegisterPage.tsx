@@ -5,7 +5,7 @@ import { Label } from "@/common/form/Label";
 import { Text } from "@/common/typography/Text";
 import { Title } from "@/common/typography/Title";
 
-import { usePeopleInfoRegister } from "@/services/people/hooks/usePeopleInfoRegister";
+import { usePeopleInfoRegister } from "@/services/people/usePeopleInfoRegister";
 
 import {
     PeopleInfoRegisterWrapper,

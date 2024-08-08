@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 
 import axios, { AxiosError } from "axios";
 
-import { authService } from "@/services/auth/auth.service";
+import { authService } from "@/services/auth/service";
 
 import { isExpired } from "@/utils/jwt";
 

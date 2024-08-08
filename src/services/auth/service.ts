@@ -10,7 +10,7 @@ import {
     InvalidEmailException,
     InvalidFieldException,
     WrongCredentialsException,
-} from "./auth.exception";
+} from "./exception";
 import {
     ReissueTokenResponseBody,
     SignInRequestBody,
@@ -18,7 +18,7 @@ import {
     SignUpRequestBody,
     SignUpResponseBody,
     VerifyEmailRequestBody,
-} from "./auth.types";
+} from "./types";
 
 export const authService = {
     signIn: async (body: SignInRequestBody) => {

@@ -1,4 +1,4 @@
-import { peopleDetailService } from "@/services/people/people.service";
+import { peopleDetailService } from "@/services/people/service";
 
 import { useQuery } from "@tanstack/react-query";
 
