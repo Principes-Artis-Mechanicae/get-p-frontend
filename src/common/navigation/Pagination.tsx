@@ -1,59 +1,59 @@
-import usePagination from "@/hooks/usePagination";
+import { PaginationOptions, usePagination } from "@/hooks/usePagination";
 
 import { PageButton, PaginationWrapper } from "./Pagination.style";
 
-export interface IPagination {
-    totalItems: number;
-    itemCountPerPage: number;
-    pageCount: number;
-    currentPage: number;
-    basePath: string;
-}
+export const Pagination = ({ totalPages, pageGroupSize }: PaginationOptions) => {
+    const { pageBegin, currentGroupIndex, currentPage, handleNextPageBtnClick, handlePrevPageBtnClick, handlePage } =
+        usePagination({
+            totalPages,
+            pageGroupSize: 5,
+        });
 
-export const Pagination: React.FC<IPagination> = ({
-    totalItems,
-    itemCountPerPage,
-    pageCount,
-    currentPage,
-    basePath,
-}) => {
-    const { pageBegin, isPrevBtnVisible, isNextBtnVisible, totalPages, gotoPrev, gotoNext, gotoPage } = usePagination({
-        totalItems,
-        itemCountPerPage,
-        pageCount,
-        currentPage,
-        basePath,
-    });
-
-    return (
-        <PaginationWrapper>
-            {!isPrevBtnVisible && (
-                <PageButton onClick={gotoPrev} active={false}>
-                    {"<"}
-                </PageButton>
-            )}
-            {Array.from({ length: pageCount }, (_, i) => pageBegin + i).map((value, index) => {
-                return (
-                    <>
-                        {value <= totalPages && (
-                            <PageButton
-                                key={pageBegin + index}
-                                onClick={() => gotoPage(value)}
-                                active={currentPage === pageBegin + index}
-                            >
-                                {pageBegin + index}
-                            </PageButton>
-                        )}
-                    </>
-                );
-            })}
-            {!isNextBtnVisible && (
-                <PageButton onClick={gotoNext} active={false}>
-                    {">"}
-                </PageButton>
-            )}
-        </PaginationWrapper>
-    );
+    if (totalPages > pageBegin + pageGroupSize) {
+        // 마지막 페이지 그룹
+        // ex. 17페이지, 그룹크기 5 > 16,17
+        return (
+            <PaginationWrapper>
+                {currentGroupIndex !== 0 && (
+                    <PageButton active={false} onClick={handlePrevPageBtnClick}>
+                        {"<"}
+                    </PageButton>
+                )}
+                {Array.from({ length: pageGroupSize }, (_, i) => pageBegin + i + 1).map((page, _) => {
+                    return (
+                        <PageButton key={page} active={currentPage === page} onClick={() => handlePage(page)}>
+                            {page}
+                        </PageButton>
+                    );
+                })}
+                {currentGroupIndex < Math.floor(totalPages / pageGroupSize) && (
+                    <PageButton active={false} onClick={handleNextPageBtnClick}>
+                        {">"}
+                    </PageButton>
+                )}
+            </PaginationWrapper>
+        );
+    } else {
+        return (
+            <PaginationWrapper>
+                {currentGroupIndex !== 0 && (
+                    <PageButton active={false} onClick={handlePrevPageBtnClick}>
+                        {"<"}
+                    </PageButton>
+                )}
+                {Array.from({ length: totalPages % pageGroupSize }, (_, i) => pageBegin + i + 1).map((page, _) => {
+                    return (
+                        <PageButton active={currentPage === page} onClick={() => handlePage(page)}>
+                            {page}
+                        </PageButton>
+                    );
+                })}
+                {currentGroupIndex < Math.floor(totalPages / pageGroupSize) && (
+                    <PageButton active={false}>{">"}</PageButton>
+                )}
+            </PaginationWrapper>
+        );
+    }
 };
 
 export default Pagination;
