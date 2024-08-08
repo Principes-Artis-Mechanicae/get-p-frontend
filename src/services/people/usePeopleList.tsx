@@ -14,8 +14,8 @@ export const usePeopleList = () => {
     const sortParams = searchParams.get("sort") as string;
 
     const query = useQuery({
-        queryKey: PEOPLE_QUERY_KEYS.READ_PEOPLE(currentPage, sizeParams, sortParams),
-        queryFn: () => peopleService.readPeople(currentPage, sizeParams, sortParams),
+        queryKey: PEOPLE_QUERY_KEYS.READ_PEOPLE(currentPage - 1, sizeParams, sortParams),
+        queryFn: () => peopleService.readPeople(currentPage - 1, sizeParams, sortParams),
     });
 
     return { ...query };
