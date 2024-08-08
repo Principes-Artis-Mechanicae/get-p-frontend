@@ -1,26 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
-export interface PaginationOptions {
-    totalPages: number;
-    pageGroupSize: number;
-}
-
-/**
- * @param {Number} totalPages 전체 페이지 수 (pageInfo.totalPages)
- * @param {Number} pageGroupSize 페이지당 페이지 인덱스 수
- * @returns
- */
-export const usePagination = (options: PaginationOptions) => {
+export const usePagination = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
 
+    const [totalPages, setTotalPages] = useState<number>(0);
+    const [pageGroupSize, setPageGroupSize] = useState<number>(5);
+
     const currentPage = parseInt(searchParams.get("page") ?? "1");
-    const [currentGroupIndex, setCurrentGroupIndex] = useState<number>(
-        Math.floor((currentPage - 1) / options.pageGroupSize),
-    );
-    const pageBegin = currentGroupIndex * options.pageGroupSize;
+    const [currentGroupIndex, setCurrentGroupIndex] = useState<number>(Math.floor((currentPage - 1) / pageGroupSize));
+    const pageBegin = currentGroupIndex * pageGroupSize;
 
     const handlePage = (page: number) => {
         let newSearchParam = "?";
@@ -29,7 +20,7 @@ export const usePagination = (options: PaginationOptions) => {
             else newSearchParam += `${key}=${searchParams.get(key) as string}&`;
         }
         navigate(location.pathname + newSearchParam);
-        setCurrentGroupIndex(Math.floor((page - 1) / options.pageGroupSize));
+        setCurrentGroupIndex(Math.floor((page - 1) / pageGroupSize));
     };
 
     const handleNextPageBtnClick = () => {
@@ -53,5 +44,9 @@ export const usePagination = (options: PaginationOptions) => {
         pageBegin,
         currentGroupIndex,
         currentPage,
+        totalPages,
+        setTotalPages,
+        pageGroupSize,
+        setPageGroupSize,
     };
 };

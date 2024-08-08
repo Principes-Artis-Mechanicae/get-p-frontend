@@ -1,13 +1,32 @@
-import { PaginationOptions, usePagination } from "@/hooks/usePagination";
+import { useEffect } from "react";
+
+import { usePagination } from "@/hooks/usePagination";
 
 import { PageButton, PaginationWrapper } from "./Pagination.style";
 
-export const Pagination = ({ totalPages, pageGroupSize }: PaginationOptions) => {
-    const { pageBegin, currentGroupIndex, currentPage, handleNextPageBtnClick, handlePrevPageBtnClick, handlePage } =
-        usePagination({
-            totalPages,
-            pageGroupSize: 5,
-        });
+export interface PaginationProps {
+    totalPages: number;
+    pageGroupSize: number;
+}
+
+export const Pagination = ({ totalPages: _totalPages, pageGroupSize: _pageGroupSize }: PaginationProps) => {
+    const {
+        pageBegin,
+        currentGroupIndex,
+        currentPage,
+        handleNextPageBtnClick,
+        handlePrevPageBtnClick,
+        handlePage,
+        totalPages,
+        setTotalPages,
+        pageGroupSize,
+        setPageGroupSize,
+    } = usePagination();
+
+    useEffect(() => {
+        setTotalPages(_totalPages);
+        setPageGroupSize(_pageGroupSize);
+    }, [_pageGroupSize, _totalPages, setPageGroupSize, setTotalPages]);
 
     if (totalPages > pageBegin + pageGroupSize) {
         // 마지막 페이지 그룹
