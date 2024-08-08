@@ -11,10 +11,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        totalItems: 125,
-        itemCountPerPage: 5,
-        pageCount: 10,
-        currentPage: 1,
-        basePath: "/example",
+        totalPages: 22,
+        pageGroupSize: 5,
     },
 };
