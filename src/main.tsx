@@ -13,7 +13,7 @@ async function enableMocking(enable: boolean) {
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const { worker }: { worker: { start: () => Promise<void> } } = await import("../mocks/browser");
+    const { worker }: { worker: { start: () => Promise<void> } } = await import("./mocks/browser.js");
     return worker.start();
 }
 
