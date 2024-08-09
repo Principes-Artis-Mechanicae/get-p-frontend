@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import axios, { AxiosError } from "axios";
 
 import { authService } from "@/services/auth/service";
+import { RefreshTokenExpiredException } from "@/services/exception";
 
 import { isExpired } from "@/utils/jwt";
 
@@ -52,11 +53,19 @@ api.interceptors.response.use(
         console.log(response);
         return response;
     },
-    (error: AxiosError) => {
+    (error: AxiosError | RefreshTokenExpiredException) => {
         console.log(error);
 
-        if (error.code === AxiosError.ECONNABORTED)
-            toast.error("서버 응답 시간이 초과하였습니다! 잠시 후 다시 시도 해주세요");
+        if (error instanceof RefreshTokenExpiredException) {
+            toast.error("로그인 세션이 만료되었습니다. 다시 로그인 해주세요");
+            store.dispatch(authAction.signOut());
+            location.href = "/auth/signin";
+        }
+        if (error instanceof AxiosError) {
+            if (error.code === AxiosError.ECONNABORTED) {
+                toast.error("서버 응답 시간이 초과하였습니다! 잠시 후 다시 시도 해주세요");
+            }
+        }
 
         return error;
     },
