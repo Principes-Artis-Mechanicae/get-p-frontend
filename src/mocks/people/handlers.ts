@@ -48,6 +48,15 @@ export const readPeople = http.get("https://api.princip.es/get-p/v2/people", ({ 
     });
 });
 
+export const readPeopleById = http.get(API_BASE_URL + `/people/:id`, async ({ params }) => {
+    const { id } = params;
+
+    return HttpResponse.json({
+        status: 200,
+        data: peopleData[+id],
+    });
+});
+
 export const registerPeopleInfo = http.post(API_BASE_URL + "people/me", async () => {
     return HttpResponse.json({
         status: 201,
