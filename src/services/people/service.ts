@@ -1,7 +1,5 @@
 import { toast } from "react-toastify";
 
-import { AxiosError } from "axios";
-
 import { api } from "@/config/axios";
 
 import { ExceptionHandler } from "@/utils/exception";
