@@ -10,7 +10,7 @@ interface IBuilder {
     exceptions: Exception[];
 }
 
-export class ExceptionFilter {
+export class ExceptionHandler {
     exceptions: Exception[] = [];
 
     constructor(builder: IBuilder) {
@@ -31,11 +31,13 @@ export class ExceptionFilter {
         }
 
         activate() {
-            const exceptionFilter = new ExceptionFilter(this);
+            const exceptionFilter = new ExceptionHandler(this);
             if (!(this.response instanceof AxiosError)) return this.response;
 
+            const status = this.response.response?.status;
+
             for (const exception of exceptionFilter.exceptions) {
-                if (exception.code === Number(this.response.code)) {
+                if (exception.code === status) {
                     throw new Error(exception.message);
                 }
             }
