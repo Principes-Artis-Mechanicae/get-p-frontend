@@ -5,7 +5,8 @@ import { Label } from "@/common/form/Label";
 import { Text } from "@/common/typography/Text";
 import { Title } from "@/common/typography/Title";
 
-import { usePeopleInfoRegister } from "@/services/people/usePeopleInfoRegister";
+import { PeopleType } from "@/services/people/types";
+import { PEOPLE_TYPE, usePeopleInfoRegister } from "@/services/people/usePeopleInfoRegister";
 
 import {
     PeopleInfoRegisterWrapper,
@@ -17,8 +18,15 @@ import {
 } from "./PeopleInfoRegisterPage.style";
 
 export default function PeopleInfoRegisterPage() {
-    const { nicknameRef, emailRef, phoneNumberRef, handleIndividualClick, handleTeamClick, handleNextClick } =
-        usePeopleInfoRegister();
+    const {
+        peopleType,
+        nicknameRef,
+        emailRef,
+        phoneNumberRef,
+        handleIndividualClick,
+        handleTeamClick,
+        handleNextClick,
+    } = usePeopleInfoRegister();
 
     return (
         <PeopleInfoRegisterWrapper>
@@ -85,7 +93,7 @@ export default function PeopleInfoRegisterPage() {
 
                 <PeopleInfoRegisterItem>
                     <Button variant="primary" width="100%" height="54px" onClick={handleNextClick}>
-                        다음으로
+                        완료
                     </Button>
                 </PeopleInfoRegisterItem>
             </PeopleInfoRegisterContainer>

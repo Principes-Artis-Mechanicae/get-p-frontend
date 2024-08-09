@@ -4,18 +4,14 @@ import { queryClient } from "@/config/query";
 
 import { PEOPLE_QUERY_KEYS } from "./keys";
 import { peopleService } from "./service";
+import { PeopleType } from "./types";
 import { useMutation } from "@tanstack/react-query";
-
-export enum PEOPLE_TYPE {
-    INDIVIDUAL = "INDIVIDUAL",
-    TEAM = "TEAM",
-}
 
 export const usePeopleInfoRegister = () => {
     const emailRef = useRef<HTMLInputElement | null>(null);
     const nicknameRef = useRef<HTMLInputElement | null>(null);
     const phoneNumberRef = useRef<HTMLInputElement | null>(null);
-    const [peopleType, setPeopleType] = useState<PEOPLE_TYPE | null>(null);
+    const [peopleType, setPeopleType] = useState<PeopleType | null>(null);
 
     const mutation = useMutation({
         mutationFn: () =>
@@ -31,11 +27,11 @@ export const usePeopleInfoRegister = () => {
     });
 
     const handleIndividualClick = useCallback(() => {
-        setPeopleType(PEOPLE_TYPE.INDIVIDUAL);
+        setPeopleType(PeopleType.INDIVIDUAL);
     }, []);
 
     const handleTeamClick = useCallback(() => {
-        setPeopleType(PEOPLE_TYPE.TEAM);
+        setPeopleType(PeopleType.TEAM);
     }, []);
 
     const handleNextClick = useCallback(() => {
