@@ -5,8 +5,7 @@ import { Label } from "@/common/form/Label";
 import { Text } from "@/common/typography/Text";
 import { Title } from "@/common/typography/Title";
 
-import { PeopleType } from "@/services/people/types";
-import { PEOPLE_TYPE, usePeopleInfoRegister } from "@/services/people/usePeopleInfoRegister";
+import { usePeopleInfoRegister } from "@/services/people/usePeopleInfoRegister";
 
 import {
     PeopleInfoRegisterWrapper,
@@ -18,15 +17,8 @@ import {
 } from "./PeopleInfoRegisterPage.style";
 
 export default function PeopleInfoRegisterPage() {
-    const {
-        peopleType,
-        nicknameRef,
-        emailRef,
-        phoneNumberRef,
-        handleIndividualClick,
-        handleTeamClick,
-        handleNextClick,
-    } = usePeopleInfoRegister();
+    const { nicknameRef, emailRef, phoneNumberRef, handleIndividualClick, handleTeamClick, handleNextClick } =
+        usePeopleInfoRegister();
 
     return (
         <PeopleInfoRegisterWrapper>
