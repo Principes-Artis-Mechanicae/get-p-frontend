@@ -1,13 +1,17 @@
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
+import { queryClient } from "@/config/query";
+
+import { PEOPLE_QUERY_KEYS } from "./keys";
 import { peopleService } from "./service";
+import { PeopleType } from "./types";
 import { useMutation } from "@tanstack/react-query";
 
 export const usePeopleInfoRegister = () => {
     const emailRef = useRef<HTMLInputElement | null>(null);
     const nicknameRef = useRef<HTMLInputElement | null>(null);
     const phoneNumberRef = useRef<HTMLInputElement | null>(null);
-    const [peopleType, setPeopleType] = useState<string | null>(null);
+    const [peopleType, setPeopleType] = useState<PeopleType | null>(null);
 
     const mutation = useMutation({
         mutationFn: () =>
@@ -17,19 +21,22 @@ export const usePeopleInfoRegister = () => {
                 phoneNumber: phoneNumberRef.current?.value as string,
                 peopleType: peopleType as string,
             }),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: PEOPLE_QUERY_KEYS.PEOPLE() });
+        },
     });
 
-    const handleIndividualClick = () => {
-        setPeopleType("INDIVIDUAL");
-    };
+    const handleIndividualClick = useCallback(() => {
+        setPeopleType(PeopleType.INDIVIDUAL);
+    }, []);
 
-    const handleTeamClick = () => {
-        setPeopleType("TEAM");
-    };
+    const handleTeamClick = useCallback(() => {
+        setPeopleType(PeopleType.TEAM);
+    }, []);
 
-    const handleNextClick = () => {
+    const handleNextClick = useCallback(() => {
         mutation.mutate();
-    };
+    }, [mutation]);
 
     return {
         nicknameRef,
@@ -38,6 +45,7 @@ export const usePeopleInfoRegister = () => {
         handleIndividualClick,
         handleTeamClick,
         handleNextClick,
+        peopleType,
         ...mutation,
     };
 };

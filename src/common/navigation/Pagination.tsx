@@ -38,7 +38,7 @@ export const Pagination = ({ totalPages: _totalPages, pageGroupSize: _pageGroupS
                         {"<"}
                     </PageButton>
                 )}
-                {Array.from({ length: pageGroupSize }, (_, i) => pageBegin + i + 1).map((page, _) => {
+                {Array.from({ length: pageGroupSize }, (_, i) => pageBegin + i + 1).map((page) => {
                     return (
                         <PageButton key={page} active={currentPage === page} onClick={() => handlePage(page)}>
                             {page}
@@ -60,7 +60,7 @@ export const Pagination = ({ totalPages: _totalPages, pageGroupSize: _pageGroupS
                         {"<"}
                     </PageButton>
                 )}
-                {Array.from({ length: totalPages % pageGroupSize }, (_, i) => pageBegin + i + 1).map((page, _) => {
+                {Array.from({ length: totalPages % pageGroupSize }, (_, i) => pageBegin + i + 1).map((page) => {
                     return (
                         <PageButton active={currentPage === page} onClick={() => handlePage(page)}>
                             {page}

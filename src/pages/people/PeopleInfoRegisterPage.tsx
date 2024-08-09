@@ -85,7 +85,7 @@ export default function PeopleInfoRegisterPage() {
 
                 <PeopleInfoRegisterItem>
                     <Button variant="primary" width="100%" height="54px" onClick={handleNextClick}>
-                        다음으로
+                        완료
                     </Button>
                 </PeopleInfoRegisterItem>
             </PeopleInfoRegisterContainer>

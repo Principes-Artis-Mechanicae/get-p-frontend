@@ -1,3 +1,5 @@
+import { BaseResponse } from "../types";
+
 export enum MemberType {
     ROLE_PEOPLE = "ROLE_PEOPLE",
     ROLE_CLIENT = "ROLE_CLIENT",
@@ -13,14 +15,11 @@ export interface SignInRequestBody {
     password: string;
 }
 
-export interface SignInResponseBody {
-    status: number;
-    data: {
-        grantType: string;
-        accessToken: string;
-        refreshToken: string;
-    };
-}
+export type SignInResponseBody = BaseResponse<{
+    grantType: string;
+    accessToken: string;
+    refreshToken: string;
+}>;
 
 export interface SignUpRequestBody {
     email: string;
@@ -30,32 +29,22 @@ export interface SignUpRequestBody {
     memberType: MemberType;
 }
 
-export interface SignUpResponseBody {
-    status: number;
-    data: {
-        email: string;
-        serviceTerms: [
-            {
-                tag: string;
-                required: boolean;
-                agreed: boolean;
-                revocable: boolean;
-                agreedAt: string;
-            },
-        ];
-        memberType: MemberType;
-    };
-}
+export type SignUpResponseBody = BaseResponse<{
+    email: string;
+    serviceTerms: [
+        {
+            tag: string;
+            required: boolean;
+            agreed: boolean;
+            revocable: boolean;
+            agreedAt: string;
+        },
+    ];
+    memberType: MemberType;
+}>;
 
 export interface VerifyEmailRequestBody {
     email: string;
 }
 
-export interface ReissueTokenResponseBody {
-    status: number;
-    data: {
-        grantType: string;
-        accessToken: string;
-        refreshToken: string;
-    };
-}
+export type ReissueTokenResponseBody = BaseResponse<{ grantType: string; accessToken: string; refreshToken: string }>;
