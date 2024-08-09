@@ -46,6 +46,7 @@ export const ProfileInfoContainer = styled.div`
 export const ProfileImg = styled.img`
     display: block;
     width: 100%;
+    aspect-ratio: 1/1;
 
     border-radius: 50%;
     object-fit: cover;

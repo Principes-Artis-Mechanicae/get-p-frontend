@@ -15,6 +15,7 @@ import { RootState } from "@/store/store";
 export const NavBar = () => {
     const navigate = useNavigate();
     const { isProfileDropDownOpened } = useSelector((state: RootState) => state.ui);
+    const { profileImageUri } = useSelector((state: RootState) => state.auth);
 
     const handleHomeClick = useCallback(() => {
         navigate("/");
@@ -47,7 +48,7 @@ export const NavBar = () => {
                         </AuthGuard>
 
                         <AuthGuard forLoginUser={true}>
-                            <NavProfileItem imgSrc="" />
+                            <NavProfileItem imgSrc={profileImageUri ?? ""} />
                             {isProfileDropDownOpened && <ProfileDropDown />}
                         </AuthGuard>
 
