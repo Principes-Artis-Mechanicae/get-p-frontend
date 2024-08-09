@@ -8,7 +8,9 @@ const ERR_MESSAGE = "Error Message" as const;
 describe("비정상적인 응답에 대해 커스텀한 에러 메시지를 검증합니다", () => {
     test("비정상적인 응답에 대한 검증을 진행합니다", () => {
         expect(() => {
-            const err = new AxiosError(ERR_MESSAGE, ERR_CODE.toString());
+            const err = new AxiosError(ERR_MESSAGE, ERR_CODE.toString(), undefined, {}, {
+                status: ERR_CODE,
+            } as AxiosResponse);
 
             new ExceptionHandler.Builder(err).addCase(ERR_CODE, ERR_MESSAGE).activate();
         }).toThrow(ERR_MESSAGE);
