@@ -5,6 +5,7 @@ import { api } from "@/config/axios";
 import { ExceptionHandler } from "@/utils/exception";
 import { isRequestBodyValid } from "@/utils/validation";
 
+import { RenderToastFromDerivedError } from "../exception";
 import {
     ReadPeopleResponseBody,
     ReadPeopleDetailResponseBody,
@@ -34,11 +35,7 @@ export const peopleService = {
         return toast.promise(request, {
             pending: "피플 정보 등록 중입니다.",
             success: "피플 정보 등록이 완료되었습니다.",
-            error: {
-                render({ data }: { data: Error }) {
-                    return data.message;
-                },
-            },
+            error: RenderToastFromDerivedError,
         });
     },
     registerPeopleProfile: async (body: RegisterPeopleProfileRequestBody) => {
@@ -55,11 +52,7 @@ export const peopleService = {
         return toast.promise(request, {
             pending: "피플 프로필 등록 중입니다",
             success: "피플 프로필 등록 성공!",
-            error: {
-                render({ data }: { data: Error }) {
-                    return data.message;
-                },
-            },
+            error: RenderToastFromDerivedError,
         });
     },
 };
