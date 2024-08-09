@@ -1,4 +1,4 @@
-import { TextArea } from "./TextArea";
+import { TextArea } from "../common/form/TextArea";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

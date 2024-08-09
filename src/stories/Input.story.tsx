@@ -2,8 +2,8 @@ import { useInputValidation } from "@/hooks/useInputValidation";
 
 import { REGEXP_PASSWORD } from "@/constants/regex";
 
-import { Button } from "./Button";
-import { Input } from "./Input";
+import { Button } from "../common/form/Button";
+import { Input } from "../common/form/Input";
 import { css } from "@emotion/react";
 import type { Meta, StoryObj } from "@storybook/react";
 

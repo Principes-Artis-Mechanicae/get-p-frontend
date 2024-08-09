@@ -1,4 +1,4 @@
-import { TechStackBadge } from "./TechStackBadge";
+import { TechStackBadge } from "../components/people/TechStackBadge";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

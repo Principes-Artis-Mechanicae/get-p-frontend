@@ -1,4 +1,4 @@
-import { PeopleCard } from "./PeopleCard";
+import { PeopleCard } from "../components/people/PeopleCard";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

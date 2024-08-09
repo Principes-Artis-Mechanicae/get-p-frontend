@@ -1,6 +1,6 @@
 import { techStack } from "@/constants/techstack";
 
-import { TechStackSelector } from "./TechStackSelector";
+import { TechStackSelector } from "../components/people/TechStackSelector";
 import { AccordionProvider } from "@/contexts/AccordionContext";
 import { TechStackProvider } from "@/contexts/TechStackContext";
 import type { Meta, StoryObj } from "@storybook/react";

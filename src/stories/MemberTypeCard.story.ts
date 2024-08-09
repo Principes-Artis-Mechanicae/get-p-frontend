@@ -1,4 +1,4 @@
-import { MemberTypeCard } from "./MemberTypeCard";
+import { MemberTypeCard } from "../components/auth/MemberTypeCard";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

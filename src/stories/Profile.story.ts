@@ -1,4 +1,4 @@
-import { Profile } from "./Profile";
+import { Profile } from "../components/people/Profile";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

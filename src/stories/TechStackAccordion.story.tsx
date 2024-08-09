@@ -1,4 +1,4 @@
-import { TechStackAccordion } from "./TechStackAccordion";
+import { TechStackAccordion } from "../components/people/TechStackAccordion";
 import { AccordionProvider } from "@/contexts/AccordionContext";
 import type { Meta, StoryObj } from "@storybook/react";
 

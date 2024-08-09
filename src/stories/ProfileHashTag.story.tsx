@@ -1,4 +1,4 @@
-import { ProfileHashTag } from "./ProfileHashTag";
+import { ProfileHashTag } from "../components/people/ProfileHashTag";
 import { HashTagProvider } from "@/contexts/HashTagContext";
 import type { Meta, StoryObj } from "@storybook/react";
 

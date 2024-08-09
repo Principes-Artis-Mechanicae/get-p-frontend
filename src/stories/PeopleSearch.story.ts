@@ -1,4 +1,4 @@
-import { PeopleSearch } from "./PeopleSearch";
+import { PeopleSearch } from "../components/people/PeopleSearch";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

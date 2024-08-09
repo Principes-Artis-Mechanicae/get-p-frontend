@@ -1,4 +1,4 @@
-import { Label } from "./Label";
+import { Label } from "../common/form/Label";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
