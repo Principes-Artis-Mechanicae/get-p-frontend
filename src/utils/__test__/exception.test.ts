@@ -1,6 +1,6 @@
 import { AxiosError, AxiosResponse } from "axios";
 
-import { ExceptionFilter } from "../exception";
+import { ExceptionHandler } from "../exception";
 
 const ERR_CODE = 500 as const;
 const ERR_MESSAGE = "Error Message" as const;
@@ -10,7 +10,7 @@ describe("비정상적인 응답에 대해 커스텀한 에러 메시지를 검�
         expect(() => {
             const err = new AxiosError(ERR_MESSAGE, ERR_CODE.toString());
 
-            new ExceptionFilter.Builder(err).addCase(ERR_CODE, ERR_MESSAGE).activate();
+            new ExceptionHandler.Builder(err).addCase(ERR_CODE, ERR_MESSAGE).activate();
         }).toThrow(ERR_MESSAGE);
     });
 
@@ -21,6 +21,6 @@ describe("비정상적인 응답에 대해 커스텀한 에러 메시지를 검�
             statusText: "200",
         } as AxiosResponse;
 
-        expect(new ExceptionFilter.Builder(SUCCESS_RESPONSE).activate()).toEqual(SUCCESS_RESPONSE);
+        expect(new ExceptionHandler.Builder(SUCCESS_RESPONSE).activate()).toEqual(SUCCESS_RESPONSE);
     });
 });
