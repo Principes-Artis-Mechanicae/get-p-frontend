@@ -160,3 +160,19 @@ export const PortfolioContainer = styled.div`
 
     gap: 12px;
 `;
+
+export const ResponsivePCHeading = styled.h1`
+    display: flex;
+
+    ${mobile} {
+        display: none;
+    }
+`;
+
+export const ResponsiveMobileHeading = styled.h1`
+    display: none;
+
+    ${mobile} {
+        display: block;
+    }
+`;
