@@ -5,23 +5,23 @@ interface Exception {
     message: string;
 }
 
-interface IBuilder {
-    response: AxiosResponse | AxiosError;
+interface IBuilder<T> {
+    response: AxiosResponse<T> | AxiosError<T>;
     exceptions: Exception[];
 }
 
-export class ExceptionHandler {
+export class ExceptionHandler<T> {
     exceptions: Exception[] = [];
 
-    constructor(builder: IBuilder) {
+    constructor(builder: IBuilder<T>) {
         this.exceptions = builder.exceptions;
     }
 
-    static Builder = class Builder implements IBuilder {
-        response: AxiosResponse | AxiosError;
+    static Builder = class Builder<T> implements IBuilder<T> {
+        response: AxiosResponse<T> | AxiosError<T>;
         exceptions: Exception[] = [];
 
-        constructor(response: AxiosResponse | AxiosError) {
+        constructor(response: AxiosResponse<T> | AxiosError<T>) {
             this.response = response;
         }
 
@@ -30,9 +30,11 @@ export class ExceptionHandler {
             return this;
         }
 
-        activate() {
-            const exceptionFilter = new ExceptionHandler(this);
-            if (!(this.response instanceof AxiosError)) return this.response;
+        activate(): AxiosResponse<T> | Error | undefined {
+            const exceptionFilter = new ExceptionHandler<T>(this);
+            if (!(this.response instanceof AxiosError)) {
+                return this.response;
+            }
 
             const status = this.response.response?.status;
 
