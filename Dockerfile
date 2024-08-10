@@ -1,4 +1,4 @@
-FROM node:22
+FROM --platform=amd64 node:22
 
 WORKDIR /get-p-frontend
 
