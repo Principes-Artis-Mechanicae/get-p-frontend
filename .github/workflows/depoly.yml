@@ -40,21 +40,21 @@ jobs:
                   tags: ${{env.DOCKER_IMAGE_TAG}}
 
     deploy:
-        runs-on: ubuntu-latest
+        runs-on: self-hosted
         needs: build
 
         steps:
-            - name: Pull Docker Images and Run Container
-              uses: appleboy/ssh-action@v1.0.3
-              with:
-                  host: ${{secrets.SSH_HOST}}
-                  username: ${{secrets.SSH_USERNAME}}
-                  password: ${{secrets.SSH_PASSWORD}}
-                  port: ${{secrets.SSH_PORT}}
-                  script: |
-                      sudo docker stop get-p-frontend || true
-                      sudo docker rm get-p-frontend || true
-                      sudo docker rmi ${{env.DOCKER_IMAGE_TAG}} || true
-                      sudo docker pull ${{env.DOCKER_IMAGE_TAG}}
-                      sudo docker run -d -p ${{secrets.FORWARDING_PORT}} --name get-p-frontend ${{env.DOCKER_IMAGE_TAG}}
-                      sudo docker prune -a -f
+            - name: Stop Running Container and Remove Images
+              run: |
+                  sudo docker stop get-p-frontend || true
+                  sudo docker rm get-p-frontend || true
+                  sudo docker rmi ${{env.DOCKER_IMAGE_TAG}} || true
+
+            - name: Pull Docker Image from Dockerhub
+              run: sudo docker pull ${{env.DOCKER_IMAGE_TAG}}
+
+            - name: Run Container
+              run: sudo docker run -d -p ${{secrets.FORWARDING_PORT}} --name get-p-frontend ${{env.DOCKER_IMAGE_TAG}}
+
+            - name: Prune Unused Containers and Images
+              run: sudo docker prune -a -f
