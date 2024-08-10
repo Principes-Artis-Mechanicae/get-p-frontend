@@ -57,4 +57,4 @@ jobs:
               run: sudo docker run -d -p ${{secrets.FORWARDING_PORT}} --name get-p-frontend ${{env.DOCKER_IMAGE_TAG}}
 
             - name: Prune Unused Containers and Images
-              run: sudo docker prune -a -f
+              run: sudo docker system prune -a -f
