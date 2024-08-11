@@ -21,6 +21,10 @@ export const PeopleCardWrapper = styled.div<IPeopleCardWrapper>`
     flex-direction: row;
     align-items: center;
     gap: 15px;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 export const PeopleCardImg = styled.img<IPeopleCardImg>`

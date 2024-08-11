@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import Pagination from "@/common/navigation/Pagination";
 
 import { PeopleCard } from "@/components/people/PeopleCard";
@@ -8,6 +10,7 @@ import { usePeopleList } from "@/services/people/usePeopleList";
 import { PeopleListContainer, PeopleListWrapper } from "./PeopleListPage.style";
 
 export default function PeopleListPage() {
+    const navigate = useNavigate();
     const { isPending, data } = usePeopleList();
 
     if (isPending) return <>loading...</>;
@@ -29,6 +32,7 @@ export default function PeopleListPage() {
                                 activityArea={people.profile.activityArea}
                                 hashtags={people.profile.hashtags}
                                 completeProjectsCount={people.completedProjectsCount}
+                                onClick={() => navigate(`/people/${people.peopleId}`)}
                             />
                         ))}
                     </>

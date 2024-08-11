@@ -9,7 +9,7 @@ import {
 } from "./PeopleCard.style";
 import { useMediaQuery } from "@mui/material";
 
-export interface IPeopleCard {
+export interface IPeopleCard extends React.ComponentProps<"div"> {
     width?: string;
     height?: string;
     profileImageUri: string;
@@ -31,11 +31,12 @@ export const PeopleCard: React.FC<IPeopleCard> = ({
     hashtags,
     completeProjectsCount,
     introduction,
+    onClick,
 }) => {
     const isTabletOrMobile = useMediaQuery("(max-width: 1200px)");
 
     return (
-        <PeopleCardWrapper width={isTabletOrMobile ? "100%" : width} height={height}>
+        <PeopleCardWrapper width={isTabletOrMobile ? "100%" : width} height={height} onClick={onClick}>
             <PeopleCardImg src={profileImageUri} />
             <PeopleCardContainer>
                 <PeopleCardHeader>
