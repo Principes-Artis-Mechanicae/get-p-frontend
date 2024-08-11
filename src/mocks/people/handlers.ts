@@ -20,11 +20,9 @@ export const readPeople = http.get(API_BASE_URL + "/people", ({ request }) => {
 
     const totalElements = peopleData.length;
     const totalPages = Math.ceil(totalElements / size);
-    const start = (page - 1) * size;
+    const start = page * size;
     const end = start + size;
     const content = peopleData.slice(start, end);
-
-    console.log(totalElements);
 
     return HttpResponse.json({
         status: 200,
