@@ -1,10 +1,10 @@
 import { HttpResponse, http } from "msw";
 
-import { peopleData } from "./data";
+import { peopleData, peopleDetailedData } from "./data";
 
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_BASE_URL = "https://api.princip.es/get-p/v2";
 
-export const readPeople = http.get("https://api.princip.es/get-p/v2/people", ({ request }) => {
+export const readPeople = http.get(API_BASE_URL + "/people", ({ request }) => {
     const url = new URL(request.url);
 
     const pageParam = url.searchParams.get("page");
@@ -20,11 +20,9 @@ export const readPeople = http.get("https://api.princip.es/get-p/v2/people", ({ 
 
     const totalElements = peopleData.length;
     const totalPages = Math.ceil(totalElements / size);
-    const start = (page - 1) * size;
+    const start = page * size;
     const end = start + size;
     const content = peopleData.slice(start, end);
-
-    console.log(totalElements);
 
     return HttpResponse.json({
         status: 200,
@@ -51,10 +49,7 @@ export const readPeople = http.get("https://api.princip.es/get-p/v2/people", ({ 
 export const readPeopleById = http.get(API_BASE_URL + `/people/:id`, async ({ params }) => {
     const { id } = params;
 
-    return HttpResponse.json({
-        status: 200,
-        data: peopleData[+id],
-    });
+    return HttpResponse.json(peopleDetailedData[+id - 1]);
 });
 
 export const registerPeopleInfo = http.post(API_BASE_URL + "people/me", async () => {

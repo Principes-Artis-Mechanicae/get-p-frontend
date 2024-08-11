@@ -12,7 +12,7 @@
         "preview": "vite preview",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build",
-        "compile": "tsc",
+        "compile": "tsc --noEmit",
         "prettier": "prettier --write '**/*.{ts,tsx}'",
         "chromatic": "npx chromatic --project-token=chpt_3238fbae3f52346"
     },

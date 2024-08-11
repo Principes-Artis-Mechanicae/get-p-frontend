@@ -20,6 +20,11 @@ export const peopleService = {
         console.log(response.data.data);
         return response.data.data;
     },
+    readPeopleById: async (id: number) => {
+        const response = await api.get<ReadPeopleDetailResponseBody>(`/people/${id}`);
+        console.log(response.data);
+        return response.data.data;
+    },
     registerPeopleInfo: async (body: RegisterPeopleInfoRequestBody) => {
         const request = async () => {
             if (!isRequestBodyValid(body)) throw new Error("모든 정보를 입력해주세요.");
@@ -54,12 +59,5 @@ export const peopleService = {
             success: "피플 프로필 등록 성공!",
             error: RenderToastFromDerivedError,
         });
-    },
-};
-
-export const peopleDetailService = {
-    readPeopleDetail: async () => {
-        const response = await api.get<ReadPeopleDetailResponseBody>(`/people/1`);
-        return response.data.data;
     },
 };
