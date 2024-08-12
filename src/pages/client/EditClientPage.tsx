@@ -1,8 +1,9 @@
-import { Profile } from "@/common/display/Profile";
-import { Button } from "@/common/form/Button";
-import { Input } from "@/common/form/Input";
-import { Label } from "@/common/form/Label";
-import { Title } from "@/common/typography/Title";
+import { Button } from "principes-getp";
+import { Input } from "principes-getp";
+import { Label } from "principes-getp";
+
+import { Profile } from "@/components/__common__/display/Profile";
+import { Title } from "@/components/__common__/typography/Title";
 
 import {
     EditClientPageForm,

@@ -1,10 +1,9 @@
 import { ComponentProps } from "react";
 import { NavLink } from "react-router-dom";
 
-import { Text } from "@/common/typography/Text";
-
 import { navLinkStyle } from "@/styles/utils";
 
+import { Text } from "../typography/Text";
 import { NavBarItemWrapper } from "./NavBarItem.style";
 
 export interface INavBarItem extends ComponentProps<"li"> {

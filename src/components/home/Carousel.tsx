@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa6";
 
-import { Button } from "@/common/form/Button";
+import { Button } from "principes-getp";
 
 import { mobile, tablet } from "@/styles/breakpoint";
 

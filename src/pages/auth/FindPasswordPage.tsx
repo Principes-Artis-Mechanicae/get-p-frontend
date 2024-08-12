@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
+import { Button } from "principes-getp";
+import { Input } from "principes-getp";
+import { Label } from "principes-getp";
 
-import { Button } from "@/common/form/Button";
-import { Input } from "@/common/form/Input";
-import { Label } from "@/common/form/Label";
-import { Text } from "@/common/typography/Text";
-import { Title } from "@/common/typography/Title";
+import { Text } from "@/components/__common__/typography/Text";
+import { Title } from "@/components/__common__/typography/Title";
 
 import {
     FindPasswordContainer,

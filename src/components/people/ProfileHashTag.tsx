@@ -1,9 +1,8 @@
 import { useRef } from "react";
 
-import { Text } from "@/common/typography/Text";
-
 import { useHashTag } from "@/hooks/useHashTag";
 
+import { Text } from "../__common__/typography/Text";
 import {
     ProfileHashTagWrapper,
     ProfileHashTagContainer,

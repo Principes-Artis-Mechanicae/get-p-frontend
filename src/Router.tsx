@@ -1,8 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 
-import { RouteGuard } from "@/common/guard/RouteGuard";
-import { MainLayout } from "@/common/layout/MainLayout";
-
 import FindPasswordPage from "@/pages/auth/FindPasswordPage";
 import SignInPage from "@/pages/auth/SignInPage";
 import SignUpPage from "@/pages/auth/SignUpPage";
@@ -15,6 +12,9 @@ import PeopleListPage from "@/pages/people/PeopleListPage";
 import PeopleProfileEditPage from "@/pages/people/PeopleProfileEditPage";
 
 import { MemberType } from "@/services/auth/types";
+
+import { RouteGuard } from "./components/__common__/guard/RouteGuard";
+import { MainLayout } from "./components/__common__/layout/MainLayout";
 
 export const Router = () => {
     return (

@@ -1,8 +1,7 @@
-import { Text } from "@/common/typography/Text";
-
 import likeIcon from "@/assets/people/like.png";
 import profileImg from "@/assets/people/profile.png";
 
+import { Text } from "../__common__/typography/Text";
 import { ProfileWrapper, ProfileContainer, ProfileLike, ProfileProject, ProfileImg, LikeIcon } from "./Profile.style";
 
 export interface IProfile {

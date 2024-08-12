@@ -3,13 +3,14 @@ import { useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
+import { Button } from "principes-getp";
+
 import { useNavAside } from "@/hooks/useNavAside";
 
 import { navItems } from "@/constants/navItems";
 
 import { navLinkStyle } from "@/styles/utils";
 
-import { Button } from "../form/Button";
 import { AuthGuard } from "../guard/AuthGuard";
 import { Text } from "../typography/Text";
 import { NavAsdieItem, NavAsideBackDrop, NavAsideContainer, NavAsideWrapper } from "./NavAside.style";

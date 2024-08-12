@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import Pagination from "@/common/navigation/Pagination";
+import { Pagination } from "principes-getp";
 
 import { PeopleCard } from "@/components/people/PeopleCard";
 import { PeopleSearch } from "@/components/people/PeopleSearch";

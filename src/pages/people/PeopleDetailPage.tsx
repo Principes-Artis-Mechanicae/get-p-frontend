@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 
-import { Input } from "@/common/form/Input";
-import { Text } from "@/common/typography/Text";
+import { Input } from "principes-getp";
 
+import { Text } from "@/components/__common__/typography/Text";
 import { Profile } from "@/components/people/Profile";
 import { TechStackBadge } from "@/components/people/TechStackBadge";
 

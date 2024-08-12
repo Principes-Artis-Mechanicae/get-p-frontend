@@ -1,9 +1,9 @@
-import { Toast } from "@/common/feedback/Toast";
-import { SearchBar } from "@/common/form/SearchBar";
-import { Footer } from "@/common/layout/Footer";
-import { Header } from "@/common/layout/Header";
-import { Text } from "@/common/typography/Text";
+import { SearchBar } from "principes-getp";
 
+import { Toast } from "@/components/__common__/feedback/Toast";
+import { Footer } from "@/components/__common__/layout/Footer";
+import { Header } from "@/components/__common__/layout/Header";
+import { Text } from "@/components/__common__/typography/Text";
 import { Carousel } from "@/components/home/Carousel";
 import { HomePageSection } from "@/components/home/HomePageSection.style";
 

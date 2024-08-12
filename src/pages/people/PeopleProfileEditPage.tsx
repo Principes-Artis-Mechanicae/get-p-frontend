@@ -1,11 +1,11 @@
-import { Button } from "@/common/form/Button";
-import { Input } from "@/common/form/Input";
-import { Label } from "@/common/form/Label";
-import { TextArea } from "@/common/form/TextArea";
-import { withProviders } from "@/common/helper/withProviders";
-import { Text } from "@/common/typography/Text";
-import { Title } from "@/common/typography/Title";
+import { Button } from "principes-getp";
+import { Input } from "principes-getp";
+import { Label } from "principes-getp";
+import { TextArea } from "principes-getp";
+import { withProviders } from "principes-getp";
 
+import { Text } from "@/components/__common__/typography/Text";
+import { Title } from "@/components/__common__/typography/Title";
 import { Profile } from "@/components/people/Profile";
 import { ProfileHashTag } from "@/components/people/ProfileHashTag";
 import { TechStackSelector } from "@/components/people/TechStackSelector";
