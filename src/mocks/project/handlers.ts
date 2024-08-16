@@ -4,7 +4,7 @@ import { projectData } from "./data";
 
 const API_BASE_URL = "https://api.princip.es/get-p/v2";
 
-export const readPeople = http.get(API_BASE_URL + "/projects", ({ request }) => {
+export const readProject = http.get(API_BASE_URL + "/projects", ({ request }) => {
     const url = new URL(request.url);
 
     const pageParam = url.searchParams.get("page");
