@@ -1,0 +1,63 @@
+import { useNavigate } from "react-router-dom";
+
+import { Pagination } from "principes-getp";
+
+import { PeopleSearch } from "@/components/people/PeopleSearch";
+import { ProjectCard } from "@/components/project/ProjectCard";
+
+import { useProjectList } from "@/services/project/useProjectList";
+
+import { PeopleListContainer, PeopleListWrapper } from "./ProjectListPage.style";
+import { projectData } from "@/mocks/project/data";
+
+export default function ProjectListPage() {
+    const navigate = useNavigate();
+    // const { isPending, data } = useProjectList();
+
+    // if (isPending) return <>loading...</>;
+
+    return (
+        <PeopleListWrapper>
+            <PeopleSearch width="100%" height="auto" />
+            <PeopleListContainer>
+                {/* {data && (
+                    <>
+                        {data.content.map((project) => (
+                            <ProjectCard
+                                title={project.title}
+                                payment={project.payment}
+                                applicantsCount={project.applicantsCount}
+                                estimatedDays={project.estimatedDays}
+                                applicationDuration={{
+                                    startDate: project.applicationDuration.startDate,
+                                    endDate: project.applicationDuration.endDate,
+                                }}
+                                hashtags={project.hashtags}
+                                description={project.description}
+                                status={project.status}
+                            />
+                        ))}
+                    </>
+                )} */}
+
+                {projectData.map((project) => (
+                    <ProjectCard
+                        title={project.title}
+                        payment={project.payment}
+                        applicantsCount={project.applicantsCount}
+                        estimatedDays={project.estimatedDays}
+                        applicationDuration={{
+                            startDate: project.applicationDuration.startDate,
+                            endDate: project.applicationDuration.endDate,
+                        }}
+                        hashtags={project.hashtags}
+                        description={project.description}
+                        status={project.status}
+                    />
+                ))}
+            </PeopleListContainer>
+
+            {/* <Pagination totalPages={data?.pageInfo.totalPages as number} pageGroupSize={5} /> */}
+        </PeopleListWrapper>
+    );
+}
