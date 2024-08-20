@@ -54,8 +54,4 @@ describe("authService 모듈을 테스트합니다", () => {
             ).rejects.toEqual(response);
         });
     });
-
-    describe("signUp 메서드", () => {
-        test("회원가입 성공시 ");
-    });
 });
