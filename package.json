@@ -5,6 +5,7 @@
     "type": "module",
     "scripts": {
         "test": "jest",
+        "test:coverage": "jest --coverage && serve coverage -p 2042",
         "dev": "vite",
         "build": "tsc && vite build",
         "start": "serve -s dist -l 5173",
@@ -71,9 +72,11 @@
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.4.1",
         "eslint-plugin-storybook": "^0.8.0",
+        "jest-environment-jsdom": "^29.7.0",
         "jsonwebtoken": "^9.0.2",
         "msw": "^2.3.1",
         "prettier": "^3.2.5",
+        "serve": "^14.2.3",
         "storybook": "^8.0.0",
         "typescript": "^5.0.2",
         "vite": "^4.5.3"
