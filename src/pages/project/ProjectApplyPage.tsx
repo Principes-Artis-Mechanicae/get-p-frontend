@@ -10,8 +10,6 @@ import {
     ProfileHashTagItem,
 } from "@/components/people/ProfileHashTag.style";
 
-import dropdownIcon from "@/assets/common/dropdown.svg";
-
 import {
     PeopleDetailWrapper,
     ProfileContainer,
@@ -28,20 +26,6 @@ import styled from "@emotion/styled";
 const HashTagTitleContainer = styled.h4`
     width: 100%;
     margin-bottom: 27px;
-`;
-
-const DateSelectHeader = styled.div`
-    width: 100%;
-    height: 50px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    border-radius: 12px;
-    background-color: #f9fafa;
-
-    padding: 15px 20px 15px 15px;
 `;
 
 const ProjectApplyPage = () => {
