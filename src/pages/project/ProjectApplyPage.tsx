@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { TextArea, Button } from "principes-getp";
 
 import { Text } from "@/components/__common__/typography/Text";
@@ -7,6 +9,8 @@ import {
     ProfileHashTagContainer,
     ProfileHashTagItem,
 } from "@/components/people/ProfileHashTag.style";
+
+import dropdownIcon from "@/assets/common/dropdown.svg";
 
 import {
     PeopleDetailWrapper,
@@ -18,6 +22,7 @@ import {
     ResponsiveMobileHeading,
     ResponsivePCHeading,
 } from "../people/PeopleDetailPage.style";
+import DropdownButton from "./DropdownButton";
 import styled from "@emotion/styled";
 
 const HashTagTitleContainer = styled.h4`
@@ -29,6 +34,10 @@ const DateSelectHeader = styled.div`
     width: 100%;
     height: 50px;
 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     border-radius: 12px;
     background-color: #f9fafa;
 
@@ -36,8 +45,25 @@ const DateSelectHeader = styled.div`
 `;
 
 const ProjectApplyPage = () => {
+    const [selectedStart, setSelectedStart] = useState<string | null>(null);
+    const [selectedEnd, setSelectedEnd] = useState<string | null>(null);
+
     const hashtags = ["설계", "기획", "서류작업"];
     const portfolios = ["포트폴리오1", "포트폴리오2"];
+    const dateList = [
+        "2024-08-05",
+        "2024-08-10",
+        "2024-08-12",
+        "2024-08-15",
+        "2024-08-18",
+        "2024-08-20",
+        "2024-08-23",
+        "2024-08-24",
+        "2024-08-25",
+        "2024-08-28",
+        "2024-08-30",
+    ];
+
     return (
         <PeopleDetailWrapper>
             <ResponsiveMobileHeading>
@@ -66,26 +92,29 @@ const ProjectApplyPage = () => {
                         프로젝트 지원하기
                     </Text>
                 </ResponsivePCHeading>
+
                 <TextboxContainer>
                     <Text size="m" color="secondary" weight="bold">
                         희망 작업 시작일
                     </Text>
-                    <DateSelectHeader>
-                        <Text size="s" color="placeholder">
-                            희망하는 작업 시작일을 선택해 주세요.(0000 - 00 - 00)
-                        </Text>
-                    </DateSelectHeader>
+                    <DropdownButton
+                        list={dateList}
+                        selectedItem={selectedStart}
+                        setSelectedItem={setSelectedStart}
+                        defaultValue="희망하는 작업 시작일을 선택해 주세요.(0000-00-00)"
+                    />
                 </TextboxContainer>
 
                 <TextboxContainer>
                     <Text size="m" color="secondary" weight="bold">
                         희망 작업 마감일
                     </Text>
-                    <DateSelectHeader>
-                        <Text size="s" color="placeholder">
-                            희망하는 작업 마감일을 선택해 주세요.(0000 - 00 - 00)
-                        </Text>
-                    </DateSelectHeader>
+                    <DropdownButton
+                        list={dateList}
+                        selectedItem={selectedEnd}
+                        setSelectedItem={setSelectedEnd}
+                        defaultValue="희망하는 작업 마감일을 선택해 주세요.(0000-00-00)"
+                    />
                 </TextboxContainer>
 
                 <TextboxContainer>
