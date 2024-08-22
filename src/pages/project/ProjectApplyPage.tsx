@@ -135,7 +135,7 @@ const ProjectApplyPage = () => {
                     </Text>
                     <PortfolioContainer>
                         {portfolios.map((portfolio) => (
-                            <PortfolioCard>{portfolio}</PortfolioCard>
+                            <PortfolioCard key={portfolio}>{portfolio}</PortfolioCard>
                         ))}
                     </PortfolioContainer>
                 </TextboxContainer>
