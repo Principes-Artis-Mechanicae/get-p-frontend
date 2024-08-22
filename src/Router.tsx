@@ -15,6 +15,7 @@ import { MemberType } from "@/services/auth/types";
 
 import { RouteGuard } from "./components/__common__/guard/RouteGuard";
 import { MainLayout } from "./components/__common__/layout/MainLayout";
+import ProjectApplyPage from "./pages/project/ProjectApplyPage";
 
 export const Router = () => {
     return (
@@ -48,6 +49,8 @@ export const Router = () => {
 
                 <Route path="client/register" element={<RegisterClientPage />} />
                 <Route path="client/edit" element={<EditClientPage />} />
+
+                <Route path="project/apply" element={<ProjectApplyPage />} />
             </Route>
         </Routes>
     );
