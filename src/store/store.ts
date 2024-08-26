@@ -1,6 +1,7 @@
 import { persistReducer, persistStore } from "redux-persist";
 
 import { authReducer } from "./slice/auth.slice";
+import { projectReducer } from "./slice/project.slice";
 import { signUpReducer } from "./slice/signup.slice";
 import { uiReducer } from "./slice/ui.slice";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     ui: uiReducer,
 
     signUp: signUpReducer,
+    project: projectReducer,
 });
 
 export const store = configureStore({
