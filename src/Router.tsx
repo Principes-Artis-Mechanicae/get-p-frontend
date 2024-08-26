@@ -10,6 +10,7 @@ import PeopleDetailPage from "@/pages/people/PeopleDetailPage";
 import PeopleInfoRegisterPage from "@/pages/people/PeopleInfoRegisterPage";
 import PeopleListPage from "@/pages/people/PeopleListPage";
 import PeopleProfileEditPage from "@/pages/people/PeopleProfileEditPage";
+import ProjectRequestPage from "@/pages/project/ProjectRequestPage";
 
 import { MemberType } from "@/services/auth/types";
 
@@ -48,6 +49,15 @@ export const Router = () => {
 
                 <Route path="client/register" element={<RegisterClientPage />} />
                 <Route path="client/edit" element={<EditClientPage />} />
+
+                <Route
+                    path="project/request"
+                    element={
+                        <RouteGuard role={MemberType.ROLE_CLIENT}>
+                            <ProjectRequestPage />
+                        </RouteGuard>
+                    }
+                ></Route>
             </Route>
         </Routes>
     );

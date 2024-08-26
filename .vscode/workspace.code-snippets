@@ -1,11 +1,9 @@
 {
     "Import Emotion Styled": {
-        "scope": "typescriptreact",
         "prefix": ["!styled"],
         "body": ["import styled from \"@emotion/styled\";"],
     },
     "StoryBook" : {
-        "scope":"typescript",
         "prefix" : ["!story"],
         "body": [
             "import type { Meta, StoryObj } from \"@storybook/react\";",
