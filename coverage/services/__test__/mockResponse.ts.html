@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/auth/types.ts</title>
+    <title>Code coverage report for services/__test__/mockResponse.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">services/auth</a> types.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">services/__test__</a> mockResponse.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>50/50</span>
+                <span class='fraction'>54/54</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>8/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>50/50</span>
+                <span class='fraction'>54/54</span>
             </div>
         
             
@@ -113,7 +113,11 @@
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -163,56 +167,64 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { BaseResponse } from "../types";
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { AxiosError, AxiosResponse } from "axios";
 &nbsp;
-export enum MemberType {
-    ROLE_PEOPLE = "ROLE_PEOPLE",
-    ROLE_CLIENT = "ROLE_CLIENT",
+export class AxiosMockResponseBuilder {
+    static Response = class Builder&lt;D&gt; {
+        axiosResponse: AxiosResponse&lt;D&gt;;
+&nbsp;
+        constructor() {
+            this.axiosResponse = {} as AxiosResponse&lt;D&gt;;
+        }
+&nbsp;
+        setStatus(status: number) {
+            this.axiosResponse.status = status;
+            this.axiosResponse.statusText = status.toString();
+            return this;
+        }
+&nbsp;
+        setData(data: D) {
+            this.axiosResponse.data = data;
+            return this;
+        }
+&nbsp;
+        build() {
+            return this.axiosResponse;
+        }
+    };
+&nbsp;
+    static Error = class Builder&lt;D&gt; {
+        axiosError: AxiosError;
+&nbsp;
+        constructor() {
+            this.axiosError = new AxiosError();
+            this.axiosError.response = {} as AxiosResponse;
+        }
+&nbsp;
+        setStatus(status: number) {
+            if (!this.axiosError.response) <span class="branch-0 cbranch-no" title="branch not covered" >throw new Error("axiosError.response is undefined!");</span>
+&nbsp;
+            this.axiosError.code = status.toString();
+            this.axiosError.response.status = status;
+            this.axiosError.response.statusText = status.toString();
+            return this;
+        }
+&nbsp;
+        setData(data: D) {
+            if (!this.axiosError.response) <span class="branch-0 cbranch-no" title="branch not covered" >throw new Error("axiosError.response is undefined!");</span>
+            this.axiosError.response.data = data;
+            return this;
+        }
+&nbsp;
+        build() {
+            return this.axiosError;
+        }
+    };
 }
-&nbsp;
-export interface ServiceTerms {
-    tag: "GET-P 서비스 약관";
-    agreed: boolean;
-}
-&nbsp;
-export interface SignInRequestBody {
-    email: string;
-    password: string;
-}
-&nbsp;
-export type SignInResponseBody = BaseResponse&lt;{
-    grantType: string;
-    accessToken: string;
-    refreshToken: string;
-}&gt;;
-&nbsp;
-export interface SignUpRequestBody {
-    email: string;
-    password: string;
-    verificationCode: string;
-    serviceTerms: ServiceTerms[];
-    memberType: MemberType;
-}
-&nbsp;
-export type SignUpResponseBody = BaseResponse&lt;{
-    email: string;
-    serviceTerms: [
-        {
-            tag: string;
-            required: boolean;
-            agreed: boolean;
-            revocable: boolean;
-            agreedAt: string;
-        },
-    ];
-    memberType: MemberType;
-}&gt;;
-&nbsp;
-export interface VerifyEmailRequestBody {
-    email: string;
-}
-&nbsp;
-export type ReissueTokenResponseBody = BaseResponse&lt;{ grantType: string; accessToken: string; refreshToken: string }&gt;;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -220,7 +232,7 @@ export type ReissueTokenResponseBody = BaseResponse&lt;{ grantType: string; acce
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-09T10:40:15.522Z
+                at 2024-08-20T06:13:33.430Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
