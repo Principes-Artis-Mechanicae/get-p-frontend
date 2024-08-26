@@ -35,6 +35,7 @@ export const ProfileContainer = styled.div`
         width: 100%;
         display: flex;
         flex-direction: column;
+        align-items: center;
 
         margin-top: 0px;
     }
@@ -145,8 +146,9 @@ export const PortfolioCard = styled.button`
     align-items: center;
 
     padding-left: 10px;
+    border-radius: 12px;
 
-    background-color: #f8f6f8;
+    background-color: #f9fafa;
 
     font-size: 14px;
     font-weight: bold;
