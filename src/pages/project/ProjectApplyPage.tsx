@@ -1,5 +1,3 @@
-import { useRef } from "react";
-
 import { TextArea, Button } from "principes-getp";
 
 import { Text } from "@/components/__common__/typography/Text";
@@ -10,9 +8,11 @@ import {
     ProfileHashTagItem,
 } from "@/components/people/ProfileHashTag.style";
 
+import useFileUpload from "@/hooks/useFileUpload";
+
 import { useProjectApply } from "@/services/project/useProjectApply";
 
-import { vertical_center } from "@/styles/utils";
+import deleteIcon from "@/assets/people/close.svg";
 
 import {
     PeopleDetailWrapper,
@@ -23,34 +23,17 @@ import {
     PortfolioCard,
     ResponsiveMobileHeading,
     ResponsivePCHeading,
+    NameContainer,
+    OpenButton,
+    DeleteButton,
 } from "../people/PeopleDetailPage.style";
-import styled from "@emotion/styled";
-
-const HashTagTitleContainer = styled.h4`
-    width: 100%;
-    margin-bottom: 27px;
-`;
-
-const DateInput = styled.input`
-    width: 100%;
-    height: 50px;
-    padding: 15px 20px 15px 15px;
-
-    ${vertical_center}
-    align-items: space-between;
-
-    border-radius: 12px;
-    background-color: #f9fafa;
-    cursor: pointer;
-
-    gap: 20px;
-`;
+import { HashTagTitleContainer, DateInput, FileInput } from "./ProjectApplyPage.style";
 
 const ProjectApplyPage = () => {
-    const { setStartDate, setEndDate, descriptionRef, setAttachmentFiles, handleApplyBtnClicked } = useProjectApply();
+    const { setStartDate, setEndDate, descriptionRef, handleApplyBtnClicked } = useProjectApply();
+    const { fileInputRef, portfolios, handleFileChange, handleDelete, handleButtonClick } = useFileUpload();
 
     const hashtags = ["설계", "기획", "서류작업"];
-    const portfolios = ["포트폴리오1", "포트폴리오2"];
 
     const selectStartDate = (e: React.ChangeEvent<HTMLInputElement>) => {
         const date = e.target.value;
@@ -130,18 +113,37 @@ const ProjectApplyPage = () => {
                     <Text size="m" color="secondary" weight="bold">
                         포트폴리오
                     </Text>
-                    <PortfolioContainer>
-                        {portfolios.map((portfolio) => (
-                            <PortfolioCard key={portfolio}>{portfolio}</PortfolioCard>
-                        ))}
-                    </PortfolioContainer>
+                    {portfolios.length > 0 && (
+                        <PortfolioContainer>
+                            {portfolios.map((portfolio, index) => (
+                                <PortfolioCard key={index}>
+                                    <NameContainer>
+                                        <DeleteButton onClick={() => handleDelete(portfolio.url)}>
+                                            <img src={deleteIcon} alt="delete" />
+                                        </DeleteButton>
+                                        {portfolio.name}
+                                    </NameContainer>
+                                    <OpenButton href={portfolio.url} target="_blank" rel="noopener noreferrer">
+                                        파일 열기
+                                    </OpenButton>
+                                </PortfolioCard>
+                            ))}
+                        </PortfolioContainer>
+                    )}
                 </TextboxContainer>
 
                 <TextboxContainer>
-                    <Button variant="outline" width="100%" height="50px">
+                    <FileInput
+                        placeholder="포트폴리오"
+                        type="file"
+                        accept=".pdf"
+                        ref={fileInputRef}
+                        onChange={handleFileChange}
+                    />
+                    <Button onClick={handleButtonClick} variant="outline" width="100%" height="50px">
                         + 포트폴리오 파일 첨부하기
                     </Button>
-                    <Button variant="primary" width="100%" height="50px">
+                    <Button onClick={handleApplyBtnClicked} variant="primary" width="100%" height="50px">
                         프로젝트 지원하기
                     </Button>
                 </TextboxContainer>
