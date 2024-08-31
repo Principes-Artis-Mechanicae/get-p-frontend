@@ -67,7 +67,6 @@ export const PostProjectRequestSection = () => {
                         itemContainerHeight="200px"
                         placeholder="카테고리를 선택해주세요"
                         onValueChange={(selected) => {
-                            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
                             dispatch(projectAction.setCategory(selected.value));
                         }}
                     >

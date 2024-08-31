@@ -1,6 +1,5 @@
 import { useCallback, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
 
 import { Button, Input, Label, TextArea } from "principes-getp";
 
@@ -8,8 +7,6 @@ import { Paragraph } from "@/components/__common__/typography/Paragraph";
 import { Title } from "@/components/__common__/typography/Title";
 
 import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequestPage.style";
-
-import { useProjectRequest } from "@/services/project/useProjectRequest";
 
 import { ProjectRequestStep } from "../ProjectRequestStep/ProjectRequestStep";
 import {
