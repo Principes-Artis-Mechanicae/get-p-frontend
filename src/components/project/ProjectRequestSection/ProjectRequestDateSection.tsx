@@ -1,4 +1,6 @@
+import { ChangeEvent, useCallback, useRef } from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 import { Button, DatePicker, Label } from "principes-getp";
 
@@ -7,6 +9,8 @@ import { Title } from "@/components/__common__/typography/Title";
 
 import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequestPage.style";
 
+import { useProjectRequest } from "@/services/project/useProjectRequest";
+
 import { ProjectRequestStep } from "../ProjectRequestStep/ProjectRequestStep";
 import { ProjectRequestDateSectionContainer } from "./ProjectRequestDateSection.style";
 import { projectAction } from "@/store/slice/project.slice";
@@ -14,6 +18,22 @@ import { RootDispatch } from "@/store/store";
 
 export const ProjectRequestDateSection = () => {
     const dispatch: RootDispatch = useDispatch();
+
+    const {
+        isProjectDurationValid,
+        handleApplicationStartDateChange,
+        handleApplicationEndDateChange,
+        handleEstimatedEndDateChange,
+        handleEstimatedStartDateChange,
+    } = useProjectRequest();
+
+    const handleNextBtnClick = useCallback(() => {
+        if (!isProjectDurationValid) {
+            toast.error("아직 입력하지 않은 항목이 존재합니다");
+            return;
+        }
+        dispatch(projectAction.nextStep());
+    }, [dispatch, isProjectDurationValid]);
 
     return (
         <ProjectRequestPageWrapper>
@@ -25,26 +45,31 @@ export const ProjectRequestDateSection = () => {
 
             <ProjectRequestDateSectionContainer>
                 <Label>지원자 모집 시작일</Label>
-                <DatePicker width="100%" height="54px" />
+                <DatePicker onChange={handleApplicationStartDateChange} width="100%" height="54px" />
             </ProjectRequestDateSectionContainer>
 
             <ProjectRequestDateSectionContainer>
                 <Label>지원자 모집 마감일</Label>
-                <DatePicker width="100%" height="54px" />
+                <DatePicker onChange={handleApplicationEndDateChange} width="100%" height="54px" />
             </ProjectRequestDateSectionContainer>
 
             <ProjectRequestDateSectionContainer>
                 <Label>예상 작업 시작일</Label>
-                <DatePicker width="100%" height="54px" />
+                <DatePicker onChange={handleEstimatedStartDateChange} width="100%" height="54px" />
             </ProjectRequestDateSectionContainer>
 
             <ProjectRequestDateSectionContainer>
                 <Label>예상 작업 마감일</Label>
-                <DatePicker width="100%" height="54px" />
+                <DatePicker onChange={handleEstimatedEndDateChange} width="100%" height="54px" />
             </ProjectRequestDateSectionContainer>
 
             <ProjectRequestDateSectionContainer>
-                <Button variant="primary" width="100%" height="54px" onClick={() => dispatch(projectAction.nextStep())}>
+                <Button
+                    variant={isProjectDurationValid ? "primary" : "disabled"}
+                    width="100%"
+                    height="54px"
+                    onClick={handleNextBtnClick}
+                >
                     다음
                 </Button>
             </ProjectRequestDateSectionContainer>

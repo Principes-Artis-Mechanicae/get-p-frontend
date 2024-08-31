@@ -1,4 +1,6 @@
-import { useDispatch } from "react-redux";
+import { useCallback, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 import { Button, Input, Label, TextArea } from "principes-getp";
 
@@ -7,13 +9,30 @@ import { Title } from "@/components/__common__/typography/Title";
 
 import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequestPage.style";
 
+import { useProjectRequest } from "@/services/project/useProjectRequest";
+
 import { ProjectRequestStep } from "../ProjectRequestStep/ProjectRequestStep";
-import { ProjectRequestContentContainer } from "./ProjectRequestContentSection.style";
+import {
+    ProjectPayment,
+    ProjectPaymentUnit,
+    ProjectRequestContentContainer,
+} from "./ProjectRequestContentSection.style";
 import { projectAction } from "@/store/slice/project.slice";
 import { RootDispatch } from "@/store/store";
 
 export const ProjectRequestContentSection = () => {
     const dispatch: RootDispatch = useDispatch();
+
+    const projectTitleRef = useRef<HTMLInputElement>(null);
+    const projectDescriptionRef = useRef<HTMLTextAreaElement>(null);
+    const projectPaymentRef = useRef<HTMLInputElement>(null);
+
+    const handleNextBtnClick = useCallback(() => {
+        dispatch(projectAction.setTitle(projectTitleRef.current?.value as string));
+        dispatch(projectAction.setDescription(projectDescriptionRef.current?.value as string));
+        dispatch(projectAction.setPayment(Number(projectPaymentRef.current?.value)));
+        dispatch(projectAction.nextStep());
+    }, [dispatch]);
 
     return (
         <ProjectRequestPageWrapper>
@@ -27,12 +46,19 @@ export const ProjectRequestContentSection = () => {
 
             <ProjectRequestContentContainer>
                 <Label>프로젝트 제목</Label>
-                <Input type="text" width="100%" height="54px" placeholder="프로젝트 제목을 입력해주세요"></Input>
+                <Input
+                    ref={projectTitleRef}
+                    type="text"
+                    width="100%"
+                    height="54px"
+                    placeholder="프로젝트 제목을 입력해주세요"
+                ></Input>
             </ProjectRequestContentContainer>
 
             <ProjectRequestContentContainer>
                 <Label>상세설명</Label>
                 <TextArea
+                    ref={projectDescriptionRef}
                     variant="primary"
                     width="100%"
                     height="150px"
@@ -51,13 +77,12 @@ export const ProjectRequestContentSection = () => {
 
             <ProjectRequestContentContainer>
                 <Label>프로젝트 보수금</Label>
-                <Button variant="disabled" width="100%" height="54px">
-                    2,000,000 만원
-                </Button>
+                <ProjectPayment ref={projectPaymentRef} type="number"></ProjectPayment>
+                <ProjectPaymentUnit>원</ProjectPaymentUnit>
             </ProjectRequestContentContainer>
 
             <ProjectRequestContentContainer>
-                <Button variant="primary" width="100%" height="54px" onClick={() => dispatch(projectAction.nextStep())}>
+                <Button variant="primary" width="100%" height="54px" onClick={handleNextBtnClick}>
                     다음
                 </Button>
             </ProjectRequestContentContainer>
