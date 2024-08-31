@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef } from "react";
 
 import { TextArea, Button } from "principes-getp";
 
@@ -9,6 +9,8 @@ import {
     ProfileHashTagContainer,
     ProfileHashTagItem,
 } from "@/components/people/ProfileHashTag.style";
+
+import { useProjectApply } from "@/services/project/useProjectApply";
 
 import { vertical_center } from "@/styles/utils";
 
@@ -45,8 +47,7 @@ const DateInput = styled.input`
 `;
 
 const ProjectApplyPage = () => {
-    const [startDate, setStartDate] = useState<string>("");
-    const [endDate, setEndDate] = useState<string>("");
+    const { setStartDate, setEndDate, descriptionRef, setAttachmentFiles, handleApplyBtnClicked } = useProjectApply();
 
     const hashtags = ["설계", "기획", "서류작업"];
     const portfolios = ["포트폴리오1", "포트폴리오2"];
@@ -60,9 +61,6 @@ const ProjectApplyPage = () => {
         const date = e.target.value;
         setEndDate(date);
     };
-
-    console.log(startDate);
-    console.log(endDate);
 
     return (
         <PeopleDetailWrapper>
@@ -120,6 +118,7 @@ const ProjectApplyPage = () => {
                         지원 내용
                     </Text>
                     <TextArea
+                        ref={descriptionRef}
                         variant="secondary"
                         width="100%"
                         height="261px"

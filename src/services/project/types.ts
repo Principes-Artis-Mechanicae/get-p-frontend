@@ -4,5 +4,5 @@ export interface ApplyProjectRequestBody {
         endDate: string;
     };
     description: string;
-    attchmentFiles: string[];
+    attachmentFiles: string[];
 }
