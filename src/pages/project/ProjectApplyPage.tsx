@@ -10,6 +10,8 @@ import {
     ProfileHashTagItem,
 } from "@/components/people/ProfileHashTag.style";
 
+import { vertical_center } from "@/styles/utils";
+
 import {
     PeopleDetailWrapper,
     ProfileContainer,
@@ -20,7 +22,6 @@ import {
     ResponsiveMobileHeading,
     ResponsivePCHeading,
 } from "../people/PeopleDetailPage.style";
-import DropdownButton from "./DropdownButton";
 import styled from "@emotion/styled";
 
 const HashTagTitleContainer = styled.h4`
@@ -28,25 +29,40 @@ const HashTagTitleContainer = styled.h4`
     margin-bottom: 27px;
 `;
 
+const DateInput = styled.input`
+    width: 100%;
+    height: 50px;
+    padding: 15px 20px 15px 15px;
+
+    ${vertical_center}
+    align-items: space-between;
+
+    border-radius: 12px;
+    background-color: #f9fafa;
+    cursor: pointer;
+
+    gap: 20px;
+`;
+
 const ProjectApplyPage = () => {
-    const [selectedStart, setSelectedStart] = useState<string | null>(null);
-    const [selectedEnd, setSelectedEnd] = useState<string | null>(null);
+    const [startDate, setStartDate] = useState<string>("");
+    const [endDate, setEndDate] = useState<string>("");
 
     const hashtags = ["설계", "기획", "서류작업"];
     const portfolios = ["포트폴리오1", "포트폴리오2"];
-    const dateList = [
-        "2024-08-05",
-        "2024-08-10",
-        "2024-08-12",
-        "2024-08-15",
-        "2024-08-18",
-        "2024-08-20",
-        "2024-08-23",
-        "2024-08-24",
-        "2024-08-25",
-        "2024-08-28",
-        "2024-08-30",
-    ];
+
+    const selectStartDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const date = e.target.value;
+        setStartDate(date);
+    };
+
+    const selectEndDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const date = e.target.value;
+        setEndDate(date);
+    };
+
+    console.log(startDate);
+    console.log(endDate);
 
     return (
         <PeopleDetailWrapper>
@@ -81,11 +97,10 @@ const ProjectApplyPage = () => {
                     <Text size="m" color="secondary" weight="bold">
                         희망 작업 시작일
                     </Text>
-                    <DropdownButton
-                        list={dateList}
-                        selectedItem={selectedStart}
-                        setSelectedItem={setSelectedStart}
-                        defaultValue="희망하는 작업 시작일을 선택해 주세요.(0000-00-00)"
+                    <DateInput
+                        type="date"
+                        placeholder="희망하는 작업 시작일을 선택해 주세요."
+                        onChange={selectStartDate}
                     />
                 </TextboxContainer>
 
@@ -93,11 +108,10 @@ const ProjectApplyPage = () => {
                     <Text size="m" color="secondary" weight="bold">
                         희망 작업 마감일
                     </Text>
-                    <DropdownButton
-                        list={dateList}
-                        selectedItem={selectedEnd}
-                        setSelectedItem={setSelectedEnd}
-                        defaultValue="희망하는 작업 마감일을 선택해 주세요.(0000-00-00)"
+                    <DateInput
+                        type="date"
+                        placeholder="희망하는 작업 시작일을 선택해 주세요."
+                        onChange={selectEndDate}
                     />
                 </TextboxContainer>
 
