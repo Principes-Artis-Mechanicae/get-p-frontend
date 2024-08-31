@@ -6,6 +6,7 @@ import SignUpPage from "@/pages/auth/SignUpPage";
 import EditClientPage from "@/pages/client/EditClientPage";
 import RegisterClientPage from "@/pages/client/RegisterClientPage";
 import HomePage from "@/pages/home/HomePage";
+import NotFoundPage from "@/pages/home/NotFoundPage";
 import PeopleDetailPage from "@/pages/people/PeopleDetailPage";
 import PeopleInfoRegisterPage from "@/pages/people/PeopleInfoRegisterPage";
 import PeopleListPage from "@/pages/people/PeopleListPage";
@@ -61,6 +62,8 @@ export const Router = () => {
                         </RouteGuard>
                     }
                 ></Route>
+
+                <Route path="*" element={<NotFoundPage />} />
             </Route>
         </Routes>
     );
