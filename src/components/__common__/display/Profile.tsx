@@ -1,4 +1,5 @@
 import { useState, useRef, ChangeEvent } from "react";
+import { useDispatch } from "react-redux";
 
 import { memberService } from "@/services/member/service";
 
@@ -6,8 +7,12 @@ import editIcon from "@/assets/common/edit.svg";
 import defaultImg from "@/assets/common/profile.svg";
 
 import { EditBtn, InputFile, PencilIcon, ProfileContainer, ProfileImage } from "./Profile.style";
+import { RootDispatch } from "@/store/store";
+import { updateProfileThunkAction } from "@/store/thunk/auth.thunk";
 
 export const Profile = () => {
+    const dispatch: RootDispatch = useDispatch();
+
     const [profileImage, setProfileImage] = useState(defaultImg);
     const inputFileRef = useRef<HTMLInputElement>(null);
 
@@ -22,7 +27,9 @@ export const Profile = () => {
             };
             reader.readAsDataURL(file);
 
-            await memberService.registerProfileImage(inputFileRef.current.files[0]);
+            memberService.registerProfileImage(inputFileRef.current.files[0]).then(() => {
+                dispatch(updateProfileThunkAction());
+            });
         }
     };
     return (
