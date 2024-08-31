@@ -16,7 +16,7 @@ export const Profile = () => {
     const [profileImage, setProfileImage] = useState(defaultImg);
     const inputFileRef = useRef<HTMLInputElement>(null);
 
-    const handleImageUpload = async (e: ChangeEvent<HTMLInputElement>) => {
+    const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0 && inputFileRef.current && inputFileRef.current.files) {
             const file = e.target.files[0];
             const reader = new FileReader();
