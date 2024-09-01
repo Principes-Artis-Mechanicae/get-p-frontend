@@ -20,6 +20,7 @@ export default function ProjectListPage() {
                     <>
                         {data.content.map((project) => (
                             <ProjectCard
+                                key={project.projectId}
                                 title={project.title}
                                 payment={project.payment}
                                 applicantsCount={project.applicantsCount}
