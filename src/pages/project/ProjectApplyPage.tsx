@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { TextArea, Button } from "principes-getp";
 
 import { Text } from "@/components/__common__/typography/Text";
@@ -10,6 +8,12 @@ import {
     ProfileHashTagItem,
 } from "@/components/people/ProfileHashTag.style";
 
+import useFileUpload from "@/hooks/useFileUpload";
+
+import { useProjectApply } from "@/services/project/useProjectApply";
+
+import deleteIcon from "@/assets/people/close.svg";
+
 import {
     PeopleDetailWrapper,
     ProfileContainer,
@@ -19,34 +23,27 @@ import {
     PortfolioCard,
     ResponsiveMobileHeading,
     ResponsivePCHeading,
+    NameContainer,
+    OpenButton,
+    DeleteButton,
 } from "../people/PeopleDetailPage.style";
-import DropdownButton from "./DropdownButton";
-import styled from "@emotion/styled";
-
-const HashTagTitleContainer = styled.h4`
-    width: 100%;
-    margin-bottom: 27px;
-`;
+import { HashTagTitleContainer, DateInput, FileInput } from "./ProjectApplyPage.style";
 
 const ProjectApplyPage = () => {
-    const [selectedStart, setSelectedStart] = useState<string | null>(null);
-    const [selectedEnd, setSelectedEnd] = useState<string | null>(null);
+    const { setStartDate, setEndDate, descriptionRef, handleApplyBtnClicked } = useProjectApply();
+    const { fileInputRef, portfolios, handleFileChange, handleDelete, handleButtonClick } = useFileUpload();
 
     const hashtags = ["설계", "기획", "서류작업"];
-    const portfolios = ["포트폴리오1", "포트폴리오2"];
-    const dateList = [
-        "2024-08-05",
-        "2024-08-10",
-        "2024-08-12",
-        "2024-08-15",
-        "2024-08-18",
-        "2024-08-20",
-        "2024-08-23",
-        "2024-08-24",
-        "2024-08-25",
-        "2024-08-28",
-        "2024-08-30",
-    ];
+
+    const selectStartDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const date = e.target.value;
+        setStartDate(date);
+    };
+
+    const selectEndDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const date = e.target.value;
+        setEndDate(date);
+    };
 
     return (
         <PeopleDetailWrapper>
@@ -81,11 +78,10 @@ const ProjectApplyPage = () => {
                     <Text size="m" color="secondary" weight="bold">
                         희망 작업 시작일
                     </Text>
-                    <DropdownButton
-                        list={dateList}
-                        selectedItem={selectedStart}
-                        setSelectedItem={setSelectedStart}
-                        defaultValue="희망하는 작업 시작일을 선택해 주세요.(0000-00-00)"
+                    <DateInput
+                        type="date"
+                        placeholder="희망하는 작업 시작일을 선택해 주세요."
+                        onChange={selectStartDate}
                     />
                 </TextboxContainer>
 
@@ -93,11 +89,10 @@ const ProjectApplyPage = () => {
                     <Text size="m" color="secondary" weight="bold">
                         희망 작업 마감일
                     </Text>
-                    <DropdownButton
-                        list={dateList}
-                        selectedItem={selectedEnd}
-                        setSelectedItem={setSelectedEnd}
-                        defaultValue="희망하는 작업 마감일을 선택해 주세요.(0000-00-00)"
+                    <DateInput
+                        type="date"
+                        placeholder="희망하는 작업 시작일을 선택해 주세요."
+                        onChange={selectEndDate}
                     />
                 </TextboxContainer>
 
@@ -106,6 +101,7 @@ const ProjectApplyPage = () => {
                         지원 내용
                     </Text>
                     <TextArea
+                        ref={descriptionRef}
                         variant="secondary"
                         width="100%"
                         height="261px"
@@ -117,18 +113,37 @@ const ProjectApplyPage = () => {
                     <Text size="m" color="secondary" weight="bold">
                         포트폴리오
                     </Text>
-                    <PortfolioContainer>
-                        {portfolios.map((portfolio) => (
-                            <PortfolioCard key={portfolio}>{portfolio}</PortfolioCard>
-                        ))}
-                    </PortfolioContainer>
+                    {portfolios.length > 0 && (
+                        <PortfolioContainer>
+                            {portfolios.map((portfolio, index) => (
+                                <PortfolioCard key={index}>
+                                    <NameContainer>
+                                        <DeleteButton onClick={() => handleDelete(portfolio.url)}>
+                                            <img src={deleteIcon} alt="delete" />
+                                        </DeleteButton>
+                                        {portfolio.name}
+                                    </NameContainer>
+                                    <OpenButton href={portfolio.url} target="_blank" rel="noopener noreferrer">
+                                        파일 열기
+                                    </OpenButton>
+                                </PortfolioCard>
+                            ))}
+                        </PortfolioContainer>
+                    )}
                 </TextboxContainer>
 
                 <TextboxContainer>
-                    <Button variant="outline" width="100%" height="50px">
+                    <FileInput
+                        placeholder="포트폴리오"
+                        type="file"
+                        accept=".pdf"
+                        ref={fileInputRef}
+                        onChange={handleFileChange}
+                    />
+                    <Button onClick={handleButtonClick} variant="outline" width="100%" height="50px">
                         + 포트폴리오 파일 첨부하기
                     </Button>
-                    <Button variant="primary" width="100%" height="50px">
+                    <Button onClick={handleApplyBtnClicked} variant="primary" width="100%" height="50px">
                         프로젝트 지원하기
                     </Button>
                 </TextboxContainer>
