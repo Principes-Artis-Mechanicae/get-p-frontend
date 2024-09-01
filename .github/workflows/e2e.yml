@@ -22,7 +22,7 @@ jobs:
             - name: Setup Environment Variables
               run: |
                   touch .env
-                  echo ${{secrets.VITE_API_BASE_URL}} >> .env
+                  echo VITE_API_BASE_URL=${{secrets.VITE_API_BASE_URL}} >> .env
 
             - name: Build
               run: npm run build
