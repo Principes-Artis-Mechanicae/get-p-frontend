@@ -2,7 +2,7 @@ import { HttpResponse, http } from "msw";
 
 import { projectData } from "./data";
 
-const API_BASE_URL = "https://api.princip.es/get-p/v2";
+const API_BASE_URL = "https://api.principes.xyz/get-p/v2";
 
 export const readProject = http.get(API_BASE_URL + "/projects", ({ request }) => {
     const url = new URL(request.url);

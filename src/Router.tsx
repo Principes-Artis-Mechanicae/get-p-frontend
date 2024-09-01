@@ -27,7 +27,7 @@ export const Router = () => {
                 <Route path="auth/signup" element={<SignUpPage />}></Route>
                 <Route path="auth/findpw" element={<FindPasswordPage />}></Route>
 
-                <Route path="project" element={<ProjectListPage />} />
+                <Route path="projects" element={<ProjectListPage />} />
                 <Route path="people" element={<PeopleListPage />} />
                 <Route path="people/:id" element={<PeopleDetailPage />}></Route>
 
