@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-
 import { Pagination } from "principes-getp";
 
 import { PeopleSearch } from "@/components/people/PeopleSearch";
@@ -10,7 +8,6 @@ import { useProjectList } from "@/services/project/useProjectList";
 import { ProjectListContainer, ProjectListWrapper } from "./ProjectListPage.style";
 
 export default function ProjectListPage() {
-    const navigate = useNavigate();
     const { isPending, data } = useProjectList();
 
     if (isPending) return <>loading...</>;
