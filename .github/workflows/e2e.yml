@@ -1,0 +1,27 @@
+name: Run e2e Test
+
+on:
+    pull_request:
+        branches: ["main", "develop", "release"]
+        types:
+            - closed
+
+jobs:
+    e2e:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Install NodeJS
+              uses: actions/setup-node@v4
+
+            - name: Checkout Code
+              uses: actions/checkout@v4
+
+            - name: Install Dependencies
+              run: npm ci
+
+            - name: Build
+              run: npm run build
+
+            - name: Run e2e Tests
+              run: npm run test:e2e-ci
