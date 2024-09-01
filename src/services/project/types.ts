@@ -16,3 +16,11 @@ export interface ProjectData {
 }
 
 export type ReadProjectResponseBody = PaginatedResponse<ProjectData[]>;
+export interface ApplyProjectRequestBody {
+    expectedDuration: {
+        startDate: string;
+        endDate: string;
+    };
+    description: string;
+    attachmentFiles: string[];
+}

@@ -50,8 +50,22 @@ export const Router = () => {
                     }
                 />
 
-                <Route path="client/register" element={<RegisterClientPage />} />
-                <Route path="client/edit" element={<EditClientPage />} />
+                <Route
+                    path="client/register"
+                    element={
+                        <RouteGuard role={MemberType.ROLE_CLIENT}>
+                            <RegisterClientPage />
+                        </RouteGuard>
+                    }
+                />
+                <Route
+                    path="client/edit"
+                    element={
+                        <RouteGuard role={MemberType.ROLE_CLIENT}>
+                            <EditClientPage />
+                        </RouteGuard>
+                    }
+                />
 
                 <Route path="project/apply" element={<ProjectApplyPage />} />
 

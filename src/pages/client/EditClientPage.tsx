@@ -5,6 +5,8 @@ import { Label } from "principes-getp";
 import { Profile } from "@/components/__common__/display/Profile";
 import { Title } from "@/components/__common__/typography/Title";
 
+import { useEditClient } from "@/services/client/useEditClient";
+
 import {
     EditClientPageForm,
     EditClientPageFormItem,
@@ -14,6 +16,8 @@ import {
 import { css } from "@emotion/react";
 
 export default function EditClientPage() {
+    const { nicknameRef, emailRef, phoneNumberRef, handleRegisterBtnClick } = useEditClient();
+
     return (
         <EditClientPageWrapper>
             <Title>의뢰자 정보 수정</Title>
@@ -25,12 +29,13 @@ export default function EditClientPage() {
 
                 <EditClientPageFormItem>
                     <Label>닉네임(필수)</Label>
-                    <Input width="100%" height="40px" placeholder="닉네임을 입력해주세요"></Input>
+                    <Input ref={nicknameRef} width="100%" height="40px" placeholder="닉네임을 입력해주세요"></Input>
                 </EditClientPageFormItem>
 
                 <EditClientPageFormItem>
                     <Label>전화번호(필수)</Label>
                     <Input
+                        ref={phoneNumberRef}
                         width="100%"
                         height="40px"
                         placeholder="전화번호를 입력해주세요('-' 빼고 숫자만 입력)"
@@ -40,6 +45,7 @@ export default function EditClientPage() {
                 <EditClientPageFormItem>
                     <Label>이메일(선택)</Label>
                     <Input
+                        ref={emailRef}
                         width="100%"
                         height="40px"
                         placeholder="의뢰 연락을 받을 다른 이메일이 있는 경우 입력해주세요"
@@ -59,7 +65,7 @@ export default function EditClientPage() {
 
                 <EditClientPageFormItem>
                     <Label>계좌(선택)</Label>
-                    <Input width="100%" height="45px"></Input>
+                    <Input width="100%" height="45px" placeholder=""></Input>
                     <Input width="100%" height="45px"></Input>
                     <Input width="100%" height="45px"></Input>
                 </EditClientPageFormItem>
@@ -72,6 +78,7 @@ export default function EditClientPage() {
                 css={css`
                     margin: 100px 0px;
                 `}
+                onClick={handleRegisterBtnClick}
             >
                 프로필 저장하기
             </Button>
