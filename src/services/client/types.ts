@@ -16,6 +16,4 @@ export type RegisterClientRequestBody = {
     };
 };
 
-export type RegisterClientResponseBody = BaseResponse<{
-    clientId: number;
-}>;
+export type RegisterClientResponseBody = BaseResponse<{ clientId: number }>;

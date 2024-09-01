@@ -7,7 +7,7 @@ export interface IProfileMenuItem {
 }
 
 export const profileMenu = (memberType: MemberType | null): IProfileMenuItem[] => {
-    if (memberType === MemberType.ROLE_PEOPLE) {
+    if (memberType === MemberType.ROLE_CLIENT) {
         return [
             {
                 id: 1,
