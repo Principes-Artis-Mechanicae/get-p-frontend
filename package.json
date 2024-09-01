@@ -6,6 +6,9 @@
     "scripts": {
         "test": "jest",
         "test:coverage": "jest --coverage && serve coverage -p 2042",
+        "test:e2e": "cypress run",
+        "test:e2e-open": "cypress open",
+        "test:e2e-ci": "start-server-and-test start http://localhost:5173 test:e2e",
         "dev": "vite",
         "build": "tsc && vite build",
         "start": "serve -s dist -l 5173",
@@ -66,6 +69,7 @@
         "@typescript-eslint/parser": "^5.61.0",
         "@vitejs/plugin-react": "^4.0.1",
         "chromatic": "^11.3.0",
+        "cypress": "^13.14.1",
         "eslint": "^8.44.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-prettier": "^5.1.3",
@@ -77,6 +81,7 @@
         "msw": "^2.3.1",
         "prettier": "^3.2.5",
         "serve": "^14.2.3",
+        "start-server-and-test": "^2.0.5",
         "storybook": "^8.0.0",
         "typescript": "^5.0.2",
         "vite": "^4.5.3"

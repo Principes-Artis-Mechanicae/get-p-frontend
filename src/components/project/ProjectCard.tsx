@@ -23,8 +23,6 @@ import {
 import { useMediaQuery } from "@mui/material";
 
 export interface IProjectCard {
-    width?: string;
-    height?: string;
     title: string;
     payment: number;
     applicantsCount: number;

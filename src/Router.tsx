@@ -6,6 +6,7 @@ import SignUpPage from "@/pages/auth/SignUpPage";
 import EditClientPage from "@/pages/client/EditClientPage";
 import RegisterClientPage from "@/pages/client/RegisterClientPage";
 import HomePage from "@/pages/home/HomePage";
+import NotFoundPage from "@/pages/home/NotFoundPage";
 import PeopleDetailPage from "@/pages/people/PeopleDetailPage";
 import PeopleInfoRegisterPage from "@/pages/people/PeopleInfoRegisterPage";
 import PeopleListPage from "@/pages/people/PeopleListPage";
@@ -17,6 +18,7 @@ import { MemberType } from "@/services/auth/types";
 
 import { RouteGuard } from "./components/__common__/guard/RouteGuard";
 import { MainLayout } from "./components/__common__/layout/MainLayout";
+import ProjectListPage from "./pages/project/ProjectListPage";
 
 export const Router = () => {
     return (
@@ -28,6 +30,7 @@ export const Router = () => {
                 <Route path="auth/signup" element={<SignUpPage />}></Route>
                 <Route path="auth/findpw" element={<FindPasswordPage />}></Route>
 
+                <Route path="projects" element={<ProjectListPage />} />
                 <Route path="people" element={<PeopleListPage />} />
                 <Route path="people/:id" element={<PeopleDetailPage />}></Route>
 
@@ -75,6 +78,8 @@ export const Router = () => {
                         </RouteGuard>
                     }
                 ></Route>
+
+                <Route path="*" element={<NotFoundPage />} />
             </Route>
         </Routes>
     );

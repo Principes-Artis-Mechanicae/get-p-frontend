@@ -1,10 +1,10 @@
 import { HttpResponse, http } from "msw";
 
-import { peopleData, peopleDetailedData } from "./data";
+import { projectData } from "./data";
 
 const API_BASE_URL = "https://api.principes.xyz/get-p/v2";
 
-export const readPeople = http.get(API_BASE_URL + "/people", ({ request }) => {
+export const readProject = http.get(API_BASE_URL + "/projects", ({ request }) => {
     const url = new URL(request.url);
 
     const pageParam = url.searchParams.get("page");
@@ -18,11 +18,11 @@ export const readPeople = http.get(API_BASE_URL + "/people", ({ request }) => {
     const page = parseInt(pageParam, 10);
     const size = parseInt(sizeParam, 10);
 
-    const totalElements = peopleData.length;
+    const totalElements = projectData.length;
     const totalPages = Math.ceil(totalElements / size);
     const start = page * size;
     const end = start + size;
-    const content = peopleData.slice(start, end);
+    const content = projectData.slice(start, end);
 
     return HttpResponse.json({
         status: 200,
@@ -42,21 +42,6 @@ export const readPeople = http.get(API_BASE_URL + "/people", ({ request }) => {
                     direction: sortParam.split(",")[1],
                 },
             },
-        },
-    });
-});
-
-export const readPeopleById = http.get(API_BASE_URL + `/people/:id`, async ({ params }) => {
-    const { id } = params;
-
-    return HttpResponse.json(peopleDetailedData[+id - 1]);
-});
-
-export const registerPeopleInfo = http.post(API_BASE_URL + "people/me", async () => {
-    return HttpResponse.json({
-        status: 201,
-        data: {
-            peopleId: 1,
         },
     });
 });

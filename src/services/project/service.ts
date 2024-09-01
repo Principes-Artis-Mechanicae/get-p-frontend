@@ -6,10 +6,16 @@ import { ExceptionHandler } from "@/utils/exception";
 import { isRequestBodyValid } from "@/utils/validation";
 
 import { RenderToastFromDerivedError } from "../exception";
-import { ProjectRequestBody, ProjectRequestResponseBody } from "./types";
+import { ReadProjectResponseBody } from "./types";
 import { ApplyProjectRequestBody } from "./types";
+import { ProjectRequestBody, ProjectRequestResponseBody } from "./types";
 
 export const projectService = {
+    readProjects: async (page = 0, size = 1, sort = "projectId,desc") => {
+        const response = await api.get<ReadProjectResponseBody>(`/projects?page=${page}&size=${size}&sort=${sort}`);
+        return response.data.data;
+    },
+
     requestProject: async (body: ProjectRequestBody) => {
         const request = async () => {
             const response = await api.post<ProjectRequestResponseBody>("/projects", body);

@@ -1,4 +1,5 @@
 import { BaseResponse } from "../types";
+import { PaginatedResponse } from "../types";
 
 export type ProjectMeetingType = "IN_PERSON" | string | null;
 
@@ -29,6 +30,23 @@ export type ProjectRequestBody = {
 export type ProjectRequestResponseBody = BaseResponse<{
     projectId: number;
 }>;
+
+export interface ProjectData {
+    projectId: number;
+    title: string;
+    payment: number;
+    applicantsCount: number;
+    estimatedDays: number;
+    applicationDuration: {
+        startDate: string;
+        endDate: string;
+    };
+    hashtags: string[];
+    description: string;
+    status: string;
+}
+
+export type ReadProjectResponseBody = PaginatedResponse<ProjectData[]>;
 export interface ApplyProjectRequestBody {
     expectedDuration: {
         startDate: string;
