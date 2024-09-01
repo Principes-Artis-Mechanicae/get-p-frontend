@@ -3,8 +3,7 @@ name: Run e2e Test
 on:
     pull_request:
         branches: ["main", "develop", "release"]
-        types:
-            - closed
+    workflow_dispatch:
 
 jobs:
     e2e:
