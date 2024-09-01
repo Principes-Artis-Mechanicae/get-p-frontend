@@ -12,8 +12,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Project1: Story = {
     args: {
-        width: "522px",
-        height: "110px",
         title: "간단한 캘린더 제작",
         payment: 500000,
         applicantsCount: 4,

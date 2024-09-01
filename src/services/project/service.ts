@@ -4,9 +4,15 @@ import { api } from "@/config/axios";
 
 import { isRequestBodyValid } from "@/utils/validation";
 
+import { ReadProjectResponseBody } from "./types";
 import { ApplyProjectRequestBody } from "./types";
 
 export const projectService = {
+    readProjects: async (page = 0, size = 1, sort = "projectId,desc") => {
+        const response = await api.get<ReadProjectResponseBody>(`/projects?page=${page}&size=${size}&sort=${sort}`);
+        console.log(response.data.data);
+        return response.data.data;
+    },
     applyProjectById: async (body: ApplyProjectRequestBody, id = 1) => {
         if (!isRequestBodyValid(body)) throw new Error("모든 정보를 입력해주세요.");
         const request = async () => {

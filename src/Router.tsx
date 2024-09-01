@@ -17,6 +17,7 @@ import { MemberType } from "@/services/auth/types";
 
 import { RouteGuard } from "./components/__common__/guard/RouteGuard";
 import { MainLayout } from "./components/__common__/layout/MainLayout";
+import ProjectListPage from "./pages/project/ProjectListPage";
 
 export const Router = () => {
     return (
@@ -28,6 +29,7 @@ export const Router = () => {
                 <Route path="auth/signup" element={<SignUpPage />}></Route>
                 <Route path="auth/findpw" element={<FindPasswordPage />}></Route>
 
+                <Route path="projects" element={<ProjectListPage />} />
                 <Route path="people" element={<PeopleListPage />} />
                 <Route path="people/:id" element={<PeopleDetailPage />}></Route>
 
