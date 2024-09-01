@@ -7,20 +7,19 @@ import { ProjectCard } from "@/components/project/ProjectCard";
 
 import { useProjectList } from "@/services/project/useProjectList";
 
-import { PeopleListContainer, PeopleListWrapper } from "./ProjectListPage.style";
-import { projectData } from "@/mocks/project/data";
+import { ProjectListContainer, ProjectListWrapper } from "./ProjectListPage.style";
 
 export default function ProjectListPage() {
     const navigate = useNavigate();
-    // const { isPending, data } = useProjectList();
+    const { isPending, data } = useProjectList();
 
-    // if (isPending) return <>loading...</>;
+    if (isPending) return <>loading...</>;
 
     return (
-        <PeopleListWrapper>
+        <ProjectListWrapper>
             <PeopleSearch width="100%" height="auto" />
-            <PeopleListContainer>
-                {/* {data && (
+            <ProjectListContainer>
+                {data && (
                     <>
                         {data.content.map((project) => (
                             <ProjectCard
@@ -38,26 +37,10 @@ export default function ProjectListPage() {
                             />
                         ))}
                     </>
-                )} */}
+                )}
+            </ProjectListContainer>
 
-                {projectData.map((project) => (
-                    <ProjectCard
-                        title={project.title}
-                        payment={project.payment}
-                        applicantsCount={project.applicantsCount}
-                        estimatedDays={project.estimatedDays}
-                        applicationDuration={{
-                            startDate: project.applicationDuration.startDate,
-                            endDate: project.applicationDuration.endDate,
-                        }}
-                        hashtags={project.hashtags}
-                        description={project.description}
-                        status={project.status}
-                    />
-                ))}
-            </PeopleListContainer>
-
-            {/* <Pagination totalPages={data?.pageInfo.totalPages as number} pageGroupSize={5} /> */}
-        </PeopleListWrapper>
+            <Pagination totalPages={data?.pageInfo.totalPages as number} pageGroupSize={5} />
+        </ProjectListWrapper>
     );
 }
