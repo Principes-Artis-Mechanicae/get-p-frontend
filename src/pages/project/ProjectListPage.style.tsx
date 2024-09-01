@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const PeopleListWrapper = styled.section`
+export const ProjectListWrapper = styled.section`
     width: min(100%, 1230px);
     margin: 40px auto;
 
@@ -12,14 +12,12 @@ export const PeopleListWrapper = styled.section`
     flex-wrap: wrap;
 `;
 
-export const PeopleListContainer = styled.section`
-    width: auto;
+export const ProjectListContainer = styled.section`
+    width: 100%;
     margin: 40px auto;
 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 한 줄에 3개의 아이템을 배치 */
     gap: 12px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    justify-items: start; /* 아이템을 왼쪽에 정렬 */
 `;
