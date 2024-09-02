@@ -49,6 +49,7 @@ const authSlice = createSlice({
 
             state.accessToken = null;
             state.refreshToken = null;
+            state.memberType = null;
         },
         reissueToken: (state, action: PayloadAction<Pick<IAuthState, "accessToken" | "refreshToken">>) => {
             state.accessToken = action.payload.accessToken;

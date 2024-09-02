@@ -11,6 +11,7 @@ import PeopleInfoRegisterPage from "@/pages/people/PeopleInfoRegisterPage";
 import PeopleListPage from "@/pages/people/PeopleListPage";
 import PeopleProfileEditPage from "@/pages/people/PeopleProfileEditPage";
 import ProjectApplyPage from "@/pages/project/ProjectApplyPage";
+import ProjectDetailPage from "@/pages/project/ProjectDetailPage";
 import ProjectRequestPage from "@/pages/project/ProjectRequestPage";
 
 import { MemberType } from "@/services/auth/types";
@@ -61,6 +62,8 @@ export const Router = () => {
                         </RouteGuard>
                     }
                 ></Route>
+
+                <Route path="project/:id" element={<ProjectDetailPage />} />
             </Route>
         </Routes>
     );

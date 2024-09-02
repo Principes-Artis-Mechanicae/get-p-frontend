@@ -2,7 +2,7 @@ import { HttpResponse, http } from "msw";
 
 import { peopleData, peopleDetailedData } from "./data";
 
-const API_BASE_URL = "https://api.princip.es/get-p/v2";
+const API_BASE_URL = "https://api.principes.xyz/get-p/v2";
 
 export const readPeople = http.get(API_BASE_URL + "/people", ({ request }) => {
     const url = new URL(request.url);
