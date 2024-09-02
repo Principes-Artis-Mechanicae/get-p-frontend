@@ -52,7 +52,7 @@ export const Router = () => {
                 <Route path="client/register" element={<RegisterClientPage />} />
                 <Route path="client/edit" element={<EditClientPage />} />
 
-                <Route path="project/apply" element={<ProjectApplyPage />} />
+                <Route path="project/apply/:id" element={<ProjectApplyPage />} />
 
                 <Route
                     path="project/request"
