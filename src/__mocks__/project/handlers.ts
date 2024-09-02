@@ -2,7 +2,6 @@ import { HttpResponse, http } from "msw";
 
 const API_BASE_URL = "https://api.principes.xyz/get-p/v2";
 
-// eslint-disable-next-line @typescript-eslint/require-await
 export const readProjectDetail = http.get(API_BASE_URL + `/projects/:id`, async () => {
     return HttpResponse.json({
         status: 200,

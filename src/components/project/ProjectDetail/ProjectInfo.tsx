@@ -1,9 +1,5 @@
 import { Text } from "@/components/__common__/typography/Text";
 
-import { useProjectById } from "@/services/project/useProjectById";
-
-import { calculateDays } from "@/utils/calculateDays";
-
 import {
     ProjectInfoWrapper,
     ProjectHeaderContainer,

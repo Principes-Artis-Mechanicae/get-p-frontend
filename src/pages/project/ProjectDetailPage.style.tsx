@@ -1,5 +1,4 @@
 import { mobile } from "@/styles/breakpoint";
-import { place_center } from "@/styles/utils";
 
 import styled from "@emotion/styled";
 

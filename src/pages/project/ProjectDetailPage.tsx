@@ -1,11 +1,8 @@
-import { MouseEvent, useCallback } from "react";
+import { useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { Button } from "principes-getp";
-
 import { AuthGuardBlur } from "@/components/__common__/display/AuthGuardBlur/AuthGuardBlur";
-import { AuthGuardBlurFilter } from "@/components/__common__/display/AuthGuardBlur/AuthGuardBlur.style";
 import { AuthFilter } from "@/components/__common__/guard/AuthFilterGuard";
 import { Text } from "@/components/__common__/typography/Text";
 import { ProjectApply } from "@/components/project/ProjectApply/ProjectApply";
