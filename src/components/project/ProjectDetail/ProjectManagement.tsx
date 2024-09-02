@@ -1,7 +1,5 @@
 import { Text } from "@/components/__common__/typography/Text";
 
-import { useProjectById } from "@/services/project/useProjectById";
-
 import likeIcon from "@/assets/people/like.png";
 import buildingIcon from "@/assets/project/building.png";
 import locationIcon from "@/assets/project/location.png";
@@ -13,22 +11,29 @@ import {
     Icon,
 } from "./ProjectManagement.style";
 
-export const ProjectManagement: React.FC = () => {
-    const { data: project } = useProjectById();
+export interface ProjectManagementProps {
+    clientAddress: {
+        detail: string;
+        street: string;
+    };
+    likesCount: number;
+}
+
+export const ProjectManagement = ({ clientAddress, likesCount }: ProjectManagementProps) => {
     return (
         <ProjectManagementWrapper>
             <ProjectManagementContainer>
                 <ProjectManagementItem>
                     <Icon src={buildingIcon}></Icon>
                     <Text size="m" color="secondary" weight="normal">
-                        {project?.client.address.detail}
+                        {clientAddress.detail}
                     </Text>
                 </ProjectManagementItem>
 
                 <ProjectManagementItem>
                     <Icon src={likeIcon}></Icon>
                     <Text size="m" color="secondary" weight="normal">
-                        {project?.likesCount}
+                        {likesCount}
                     </Text>
                 </ProjectManagementItem>
             </ProjectManagementContainer>
@@ -36,7 +41,7 @@ export const ProjectManagement: React.FC = () => {
             <ProjectManagementItem>
                 <Icon src={locationIcon}></Icon>
                 <Text size="m" color="secondary" weight="normal">
-                    {project?.client.address.street}
+                    {clientAddress.street}
                 </Text>
             </ProjectManagementItem>
         </ProjectManagementWrapper>
