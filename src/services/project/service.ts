@@ -9,13 +9,34 @@ import { RenderToastFromDerivedError } from "../exception";
 import { ReadProjectResponseBody } from "./types";
 import { ApplyProjectRequestBody } from "./types";
 import { ProjectRequestBody, ProjectRequestResponseBody } from "./types";
+import { ReadProjectDetailResponseBody } from "./types";
 
 export const projectService = {
     readProjects: async (page = 0, size = 1, sort = "projectId,desc") => {
         const response = await api.get<ReadProjectResponseBody>(`/projects?page=${page}&size=${size}&sort=${sort}`);
         return response.data.data;
     },
+    readProjectDetail: async (id: number) => {
+        const response = await api.get<ReadProjectDetailResponseBody>(`/projects/${id}`);
+        console.log(response.data.data);
+        return response.data.data;
+    },
+    registerProjectLike: async (id: number) => {
+        const request = async () => {
+            const response = await api.post(`/projects/${id}/likes`);
 
+            return new ExceptionHandler.Builder(response)
+                .addCase(400, "잘못된 요청입니다. 다시 시도해주세요.")
+                .addCase(404, "해당 프로젝트를 찾을 수 없습니다.")
+                .addCase(409, "이미 좋아요를 등록한 프로젝트입니다.")
+                .activate();
+        };
+        return toast.promise(request, {
+            pending: "프로젝트에 좋아요 등록 중입니다.",
+            success: "프로젝트에 좋아요가 등록되었습니다.",
+            error: RenderToastFromDerivedError,
+        });
+    },
     requestProject: async (body: ProjectRequestBody) => {
         const request = async () => {
             const response = await api.post<ProjectRequestResponseBody>("/projects", body);
@@ -27,14 +48,29 @@ export const projectService = {
                 .addCase(500, "입력 항목이 누락되었거나 올바르지 않습니다")
                 .activate();
         };
-
         return toast.promise(request, {
             success: "프로젝트 의뢰 완료!",
             pending: "프로젝트 의뢰 생성중",
             error: RenderToastFromDerivedError,
         });
     },
+    deleteProjectLike: async (id: number) => {
+        const request = async () => {
+            const response = await api.delete(`/projects/${id}/likes`);
 
+            return new ExceptionHandler.Builder(response)
+                .addCase(400, "잘못된 요청입니다. 다시 시도해주세요.")
+                .addCase(404, "해당 프로젝트를 찾을 수 없습니다.")
+                .addCase(409, "이미 좋아요를 취소한 프로젝트입니다.")
+                .activate();
+        };
+
+        return toast.promise(request, {
+            pending: "프로젝트에 좋아요 취소 중입니다.",
+            success: "프로젝트에 좋아요가 취소되었습니다.",
+            error: RenderToastFromDerivedError,
+        });
+    },
     applyProjectById: async (body: ApplyProjectRequestBody, id = 1) => {
         if (!isRequestBodyValid(body)) throw new Error("모든 정보를 입력해주세요.");
         const request = async () => {

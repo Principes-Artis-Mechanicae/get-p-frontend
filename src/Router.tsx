@@ -12,13 +12,14 @@ import PeopleInfoRegisterPage from "@/pages/people/PeopleInfoRegisterPage";
 import PeopleListPage from "@/pages/people/PeopleListPage";
 import PeopleProfileEditPage from "@/pages/people/PeopleProfileEditPage";
 import ProjectApplyPage from "@/pages/project/ProjectApplyPage";
+import ProjectDetailPage from "@/pages/project/ProjectDetailPage";
+import ProjectListPage from "@/pages/project/ProjectListPage";
 import ProjectRequestPage from "@/pages/project/ProjectRequestPage";
 
 import { MemberType } from "@/services/auth/types";
 
 import { RouteGuard } from "./components/__common__/guard/RouteGuard";
 import { MainLayout } from "./components/__common__/layout/MainLayout";
-import ProjectListPage from "./pages/project/ProjectListPage";
 
 export const Router = () => {
     return (
@@ -68,7 +69,7 @@ export const Router = () => {
                     }
                 />
 
-                <Route path="project/apply" element={<ProjectApplyPage />} />
+                <Route path="project/apply/:id" element={<ProjectApplyPage />} />
 
                 <Route
                     path="project/request"
@@ -77,8 +78,9 @@ export const Router = () => {
                             <ProjectRequestPage />
                         </RouteGuard>
                     }
-                ></Route>
+                />
 
+                <Route path="project/:id" element={<ProjectDetailPage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Route>
         </Routes>
