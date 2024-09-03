@@ -1,17 +1,21 @@
 import { NavigateFunction } from "react-router-dom";
 
-import { authService } from "@/services/auth/auth.service";
-import { memberService } from "@/services/member/member.service";
+import { AxiosResponse } from "axios";
+
+import { authService } from "@/services/auth/service";
+import { SignInResponseBody } from "@/services/auth/types";
+import { memberService } from "@/services/member/service";
 
 import { authAction } from "../slice/auth.slice";
-import { GetState, RootDispatch } from "../store";
+import { RootDispatch } from "../store";
 
 export const signInThunkAction = (email: string, password: string, navigate: NavigateFunction) => {
     return async (dispatch: RootDispatch) => {
-        const authResponse = await authService.signIn({
+        const authResponse = (await authService.signIn({
             email,
             password,
-        });
+        })) as AxiosResponse<SignInResponseBody>;
+
         const { accessToken, refreshToken } = authResponse.data.data;
 
         dispatch(
@@ -22,7 +26,7 @@ export const signInThunkAction = (email: string, password: string, navigate: Nav
         );
 
         const memberResponse = await memberService.readMemberProfile();
-        const { nickname, memberType } = memberResponse.data.data;
+        const { nickname, memberType, profileImageUri } = memberResponse.data.data;
 
         dispatch(
             authAction.signIn({
@@ -31,6 +35,7 @@ export const signInThunkAction = (email: string, password: string, navigate: Nav
                 memberType,
                 accessToken,
                 refreshToken,
+                profileImageUri,
             }),
         );
 
@@ -38,20 +43,12 @@ export const signInThunkAction = (email: string, password: string, navigate: Nav
     };
 };
 
-export const reissueTokenThunkAction = () => {
-    return async (dispatch: RootDispatch, getState: GetState) => {
-        const { refreshToken } = getState().auth;
+export const updateProfileThunkAction = () => {
+    return async (dispatch: RootDispatch) => {
+        const memberResponse = await memberService.readMemberProfile();
+        const { nickname, profileImageUri } = memberResponse.data.data;
 
-        const response = await authService.reissueToken(refreshToken as string);
-
-        const newAccessToken = response.accessToken;
-        const newRefreshToken = response.refreshToken;
-
-        dispatch(
-            authAction.reissueToken({
-                accessToken: newAccessToken,
-                refreshToken: newRefreshToken,
-            }),
-        );
+        dispatch(authAction.updateProfileImageUri(profileImageUri));
+        dispatch(authAction.updateNickName(nickname));
     };
 };

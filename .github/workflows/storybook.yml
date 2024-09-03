@@ -4,14 +4,20 @@ on:
     pull_request:
         branches: [develop]
         types: [closed]
+    workflow_dispatch:
 
 jobs:
     storybook:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v4
-            - run: yarn
+            - name: Checkout Code
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Install Dependencies
+              run: yarn
 
             - uses: chromaui/action@v11
               with:

@@ -1,22 +1,22 @@
-import { Text } from "@/common/typography/Text";
-
 import likeIcon from "@/assets/people/like.png";
 import profileImg from "@/assets/people/profile.png";
 
+import { Text } from "../__common__/typography/Text";
 import { ProfileWrapper, ProfileContainer, ProfileLike, ProfileProject, ProfileImg, LikeIcon } from "./Profile.style";
 
 export interface IProfile {
     width: string;
     height: string;
+    imgSrc?: string;
     nickname: string;
     likeCount: number;
     completeProjectsCount: number;
 }
 
-export const Profile: React.FC<IProfile> = ({ width, height, nickname, likeCount, completeProjectsCount }) => {
+export const Profile: React.FC<IProfile> = ({ width, height, imgSrc, nickname, likeCount, completeProjectsCount }) => {
     return (
         <ProfileWrapper width={width} height={height}>
-            <ProfileImg src={profileImg}></ProfileImg>
+            <ProfileImg src={imgSrc ? imgSrc : profileImg} alt={nickname} />
             <ProfileContainer>
                 <Text size="m" color="primary" weight="bold">
                     {nickname}

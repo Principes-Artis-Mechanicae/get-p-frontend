@@ -1,11 +1,10 @@
 import { useCallback } from "react";
 
-import { Paragraph } from "@/common/typography/Paragraph";
-
 import { useTechStack } from "@/hooks/useTechStack";
 
 import closeIcon from "@/assets/people/close.svg";
 
+import { Paragraph } from "../__common__/typography/Paragraph";
 import { TechStackBadgeCloseIcon, TechStackBadgeWrapper } from "./TechStackBadge.style";
 
 export interface ITechStackBadge {

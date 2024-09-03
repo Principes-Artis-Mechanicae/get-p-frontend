@@ -1,5 +1,5 @@
-import { authService } from "@/services/auth/auth.service";
-import { MemberType } from "@/services/auth/auth.types";
+import { authService } from "@/services/auth/service";
+import { MemberType } from "@/services/auth/types";
 
 import { signUpAction } from "../slice/signup.slice";
 import { RootDispatch, store } from "../store";

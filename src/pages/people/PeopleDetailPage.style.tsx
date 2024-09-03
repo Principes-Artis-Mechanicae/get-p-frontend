@@ -35,6 +35,7 @@ export const ProfileContainer = styled.div`
         width: 100%;
         display: flex;
         flex-direction: column;
+        align-items: center;
 
         margin-top: 0px;
     }
@@ -136,21 +137,45 @@ export const BadgeContainer = styled.div`
     gap: 8px;
 `;
 
-export const PortfolioCard = styled.button`
+export const NameContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 20px;
+`;
+
+export const PortfolioCard = styled.li`
     width: 100%;
     height: 54px;
 
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
 
-    padding-left: 10px;
+    padding: 0px 20px;
+    border-radius: 12px;
+    box-sizing: border-box;
 
-    background-color: #f8f6f8;
+    background-color: #f9fafa;
 
     font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+
+    cursor: pointer;
+`;
+
+export const OpenButton = styled.a`
+    color: #476ff1;
     font-weight: bold;
-    text-decoration: underline;
+    text-decoration: none;
+`;
+
+export const DeleteButton = styled.button`
+    background-color: transparent;
+    &:hover {
+        transform: scale(1.15);
+        cursor: pointer;
+    }
 `;
 
 export const PortfolioContainer = styled.div`
@@ -159,4 +184,20 @@ export const PortfolioContainer = styled.div`
     ${vertical_center}
 
     gap: 12px;
+`;
+
+export const ResponsivePCHeading = styled.h1`
+    display: flex;
+
+    ${mobile} {
+        display: none;
+    }
+`;
+
+export const ResponsiveMobileHeading = styled.h1`
+    display: none;
+
+    ${mobile} {
+        display: block;
+    }
 `;

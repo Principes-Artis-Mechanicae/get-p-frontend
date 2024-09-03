@@ -8,12 +8,12 @@ export const navItems: INavItem[] = [
     {
         key: 1,
         text: "프로젝트 찾기",
-        to: "/project",
+        to: "/projects?page=1&size=6&sort=projectId,desc",
     },
     {
         key: 2,
         text: "피플 찾기",
-        to: "/people",
+        to: "/people?page=1&size=10&sort=peopleId,desc",
     },
     {
         key: 3,

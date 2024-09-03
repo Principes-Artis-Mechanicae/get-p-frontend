@@ -1,6 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 
-import { MemberType } from "@/services/auth/auth.types";
+import { MemberType } from "@/services/auth/types";
 
 export interface JwtPayload {
     sub: string;

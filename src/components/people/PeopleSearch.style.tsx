@@ -54,7 +54,7 @@ export const TotalProjectIcon: React.FC<ITotalProjectIcon> = ({ checked }) => {
     return (
         <>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <g clip-path="url(#clip0_857_3113)">
+                <g clipPath="url(#clip0_857_3113)">
                     <path
                         d="M14 3H10C6.13401 3 3 6.13401 3 10V14C3 17.866 6.13401 21 10 21H14C17.866 21 21 17.866 21 14V10C21 6.13401 17.866 3 14 3Z"
                         fill={checked ? "#476ff1" : "#ECF0FE"}

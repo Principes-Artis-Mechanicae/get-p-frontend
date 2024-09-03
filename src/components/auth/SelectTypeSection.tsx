@@ -3,14 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 import { motion } from "framer-motion";
-
-import { Button } from "@/common/form/Button";
-import { Text } from "@/common/typography/Text";
+import { Button } from "principes-getp";
 
 import { MemberTypeCard } from "@/components/auth/MemberTypeCard";
 
-import { MemberType } from "@/services/auth/auth.types";
+import { MemberType } from "@/services/auth/types";
 
+import { Text } from "../__common__/typography/Text";
 import {
     SelectTypeContainer,
     SelectTypeItem,

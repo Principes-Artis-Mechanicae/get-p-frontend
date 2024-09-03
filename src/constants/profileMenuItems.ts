@@ -1,4 +1,4 @@
-import { MemberType } from "@/services/auth/auth.types";
+import { MemberType } from "@/services/auth/types";
 
 export interface IProfileMenuItem {
     id: number;
@@ -7,7 +7,7 @@ export interface IProfileMenuItem {
 }
 
 export const profileMenu = (memberType: MemberType | null): IProfileMenuItem[] => {
-    if (memberType === MemberType.ROLE_PEOPLE) {
+    if (memberType === MemberType.ROLE_CLIENT) {
         return [
             {
                 id: 1,

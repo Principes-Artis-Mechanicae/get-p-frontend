@@ -31,4 +31,6 @@ export const PeopleTypeButtonWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 20px;
+
+    margin: 5px 0px;
 `;

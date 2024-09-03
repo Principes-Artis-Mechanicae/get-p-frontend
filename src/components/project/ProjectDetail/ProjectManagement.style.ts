@@ -1,0 +1,28 @@
+import styled from "@emotion/styled";
+
+export const ProjectManagementWrapper = styled.div`
+    width: max(100%, 200px);
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 25px;
+`;
+
+export const ProjectManagementContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`;
+
+export const ProjectManagementItem = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 3px;
+`;
+
+export const Icon = styled.img`
+    width: 20px;
+    height: 20px;
+`;

@@ -1,5 +1,6 @@
 import path from "path";
-import { defineConfig } from "vite";
+import { visualizer } from "rollup-plugin-visualizer";
+import { defineConfig, PluginOption } from "vite";
 
 import react from "@vitejs/plugin-react";
 
@@ -15,5 +16,10 @@ export default defineConfig({
                 plugins: ["@emotion/babel-plugin"],
             },
         }),
+        visualizer({
+            filename: ".stats/bundle.html",
+            title: "GET-P Bundle",
+            open: true,
+        }) as PluginOption,
     ],
 });

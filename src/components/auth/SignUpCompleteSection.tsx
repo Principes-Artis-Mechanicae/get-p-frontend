@@ -3,11 +3,10 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
+import { Button } from "principes-getp";
 
-import { Button } from "@/common/form/Button";
-import { Text } from "@/common/typography/Text";
-import { Title } from "@/common/typography/Title";
-
+import { Text } from "../__common__/typography/Text";
+import { Title } from "../__common__/typography/Title";
 import {
     SignUpCompleteContainer,
     SignUpCompleteItem,

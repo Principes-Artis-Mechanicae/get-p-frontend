@@ -1,10 +1,13 @@
-import { Button } from "@/common/form/Button";
-import { Input } from "@/common/form/Input";
-import { Label } from "@/common/form/Label";
-import { Profile } from "@/common/form/Profile";
-import { Paragraph } from "@/common/typography/Paragraph";
-import { Text } from "@/common/typography/Text";
-import { Title } from "@/common/typography/Title";
+import { Button } from "principes-getp";
+import { Input } from "principes-getp";
+import { Label } from "principes-getp";
+
+import { Profile } from "@/components/__common__/display/Profile";
+import { Paragraph } from "@/components/__common__/typography/Paragraph";
+import { Text } from "@/components/__common__/typography/Text";
+import { Title } from "@/components/__common__/typography/Title";
+
+import { useRegisterClient } from "@/services/client/useRegisterClient";
 
 import {
     RegisterClientPageContainer,
@@ -15,6 +18,8 @@ import {
 import { css } from "@emotion/react";
 
 export default function RegisterClientPage() {
+    const { nicknameRef, emailRef, phoneNumberRef, handleRegisterBtnClick } = useRegisterClient();
+
     return (
         <RegisterClientPageWrapper>
             <Title>의뢰자 정보 등록</Title>
@@ -32,12 +37,13 @@ export default function RegisterClientPage() {
 
                 <RegisterClientPageFormItem>
                     <Label>닉네임(필수)</Label>
-                    <Input width="100%" height="40px" placeholder="닉네임을 입력해주세요"></Input>
+                    <Input ref={nicknameRef} width="100%" height="40px" placeholder="닉네임을 입력해주세요"></Input>
                 </RegisterClientPageFormItem>
 
                 <RegisterClientPageFormItem>
                     <Label>전화번호(필수)</Label>
                     <Input
+                        ref={phoneNumberRef}
                         width="100%"
                         height="40px"
                         placeholder="전화번호를 입력해주세요('-' 빼고 숫자만 입력)"
@@ -47,6 +53,7 @@ export default function RegisterClientPage() {
                 <RegisterClientPageFormItem>
                     <Label>이메일(선택)</Label>
                     <Input
+                        ref={emailRef}
                         width="100%"
                         height="40px"
                         placeholder="의뢰 연락을 받을 다른 이메일이 있는 경우 입력해주세요"
@@ -66,12 +73,13 @@ export default function RegisterClientPage() {
             </RegisterClientPageContainer>
 
             <Button
-                variant="disabled"
+                variant="primary"
                 width="100%"
                 height="50px"
                 css={css`
                     margin: 100px 0px;
                 `}
+                onClick={handleRegisterBtnClick}
             >
                 의뢰자 정보 등록하기
             </Button>

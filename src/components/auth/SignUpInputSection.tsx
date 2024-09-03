@@ -3,24 +3,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 import { motion } from "framer-motion";
-
-import { Modal } from "@/common/feedback/Modal";
-import { Button } from "@/common/form/Button";
-import { CheckBox } from "@/common/form/CheckBox";
-import { Input } from "@/common/form/Input";
-import { Label } from "@/common/form/Label";
-import { Paragraph } from "@/common/typography/Paragraph";
-import { Text } from "@/common/typography/Text";
-import { Title } from "@/common/typography/Title";
+import { Button } from "principes-getp";
+import { CheckBox } from "principes-getp";
+import { Input } from "principes-getp";
+import { Label } from "principes-getp";
 
 import { useInputValidation } from "@/hooks/useInputValidation";
 
-import { authService } from "@/services/auth/auth.service";
+import { authService } from "@/services/auth/service";
 
 import { REGEXP_EMAIL, REGEXP_PASSWORD } from "@/constants/regex";
 
 import { formatTime } from "@/utils/formatTime";
 
+import { Modal } from "../__common__/feedback/Modal";
+import { Paragraph } from "../__common__/typography/Paragraph";
+import { Text } from "../__common__/typography/Text";
+import { Title } from "../__common__/typography/Title";
 import {
     SignUpSectionWrapper,
     SignUpSectionHeader,

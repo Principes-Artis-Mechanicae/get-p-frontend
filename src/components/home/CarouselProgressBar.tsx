@@ -1,5 +1,4 @@
-import { Text } from "@/common/typography/Text";
-
+import { Text } from "../__common__/typography/Text";
 import {
     CarouselProgressBadge,
     CarouselProgressBarContainer,

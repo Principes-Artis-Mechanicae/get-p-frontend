@@ -1,10 +1,12 @@
-import { Input } from "@/common/form/Input";
-import { Text } from "@/common/typography/Text";
+import { useCallback } from "react";
 
+import { Input } from "principes-getp";
+
+import { Text } from "@/components/__common__/typography/Text";
 import { Profile } from "@/components/people/Profile";
 import { TechStackBadge } from "@/components/people/TechStackBadge";
 
-import { mobile } from "@/styles/breakpoint";
+import { usePeopleById } from "@/services/people/usePeopleById";
 
 import {
     PeopleDetailWrapper,
@@ -18,26 +20,19 @@ import {
     BadgeContainer,
     PortfolioCard,
     PortfolioContainer,
+    ResponsiveMobileHeading,
+    ResponsivePCHeading,
 } from "./PeopleDetailPage.style";
-import styled from "@emotion/styled";
 
-const ResponsivePCHeading = styled.h1`
-    display: flex;
+export default function PeopleDetailPage() {
+    const { isPending, data: people } = usePeopleById();
 
-    ${mobile} {
-        display: none;
-    }
-`;
+    const handlePortfolioOpen = useCallback((url: string) => {
+        window.open(url, "_blank");
+    }, []);
 
-const ResponsiveMobileHeading = styled.h1`
-    display: none;
+    if (isPending) return <>loading...</>;
 
-    ${mobile} {
-        display: block;
-    }
-`;
-
-const PeopleDetailPage = () => {
     return (
         <PeopleDetailWrapper>
             <ResponsiveMobileHeading>
@@ -46,15 +41,22 @@ const PeopleDetailPage = () => {
                 </Text>
             </ResponsiveMobileHeading>
             <ProfileContainer>
-                <Profile width="100%" height="283px" nickname="People01" likeCount={14} completeProjectsCount={2} />
+                <Profile
+                    width="100%"
+                    height="283px"
+                    nickname={people?.nickname as string}
+                    likeCount={people?.likesCount as number}
+                    completeProjectsCount={people?.completedProjectsCount as number}
+                />
                 <HashtagWrapper>
                     <Text size="xs" color="secondary" weight="normal">
                         해시태그
                     </Text>
                     <HashtagContainer>
-                        <HashtagCard>#설계</HashtagCard>
-                        <HashtagCard>#기획</HashtagCard>
-                        <HashtagCard>#서류작업</HashtagCard>
+                        {people?.profile.hashtags &&
+                            people.profile.hashtags.map((hashtag: string) => {
+                                return <HashtagCard>{hashtag}</HashtagCard>;
+                            })}
                     </HashtagContainer>
                 </HashtagWrapper>
             </ProfileContainer>
@@ -68,59 +70,60 @@ const PeopleDetailPage = () => {
                     <Text size="xs" color="secondary" weight="bold">
                         닉네임
                     </Text>
-                    <Input width="100%" height="45px" disabled={true} value={"People01"} />
+                    <Input width="100%" height="45px" disabled={true} value={people?.nickname as string} />
                 </TextboxContainer>
                 <TextboxContainer>
                     <Text size="xs" color="secondary" weight="bold">
                         피플 유형
                     </Text>
-                    <Input width="100%" height="45px" disabled={true} value={"개인"} />
+                    <Input
+                        width="100%"
+                        height="45px"
+                        disabled={true}
+                        value={people?.peopleType === "INDIVIDAUL" ? "개인" : "팀"}
+                    />
                 </TextboxContainer>
                 <TextboxContainer>
                     <Text size="xs" color="secondary" weight="bold">
                         기술 스택
                     </Text>
                     <BadgeContainer>
-                        <TechStackBadge text="JavaScript" isInput={false}></TechStackBadge>
-                        <TechStackBadge text="Adobe Illustrator" isInput={false}></TechStackBadge>
-                        <TechStackBadge text="Python" isInput={false}></TechStackBadge>
-                        <TechStackBadge text="PHP" isInput={false}></TechStackBadge>
+                        {people?.profile.techStacks.map((techStack: string) => (
+                            <TechStackBadge text={techStack} isInput={false} />
+                        ))}
                     </BadgeContainer>
                 </TextboxContainer>
                 <TextboxContainer>
                     <Text size="xs" color="secondary" weight="bold">
                         활동지역
                     </Text>
-                    <Input width="100%" height="45px" disabled={true} value={"대구광역시 북구"} />
+                    <Input width="100%" height="45px" disabled={true} value={people?.profile.activityArea} />
                 </TextboxContainer>
                 <TextboxContainer>
                     <Text size="xs" color="secondary" weight="bold">
                         학력
                     </Text>
-                    <Input width="100%" height="45px" disabled={true} value={"경북대학교 대구캠퍼스"} />
+                    <Input width="100%" height="45px" disabled={true} value={people?.profile.education.school} />
                 </TextboxContainer>
                 <TextboxContainer>
                     <Text size="xs" color="secondary" weight="bold">
                         소개
                     </Text>
-                    <Textbox width="100%">
-                        안녕하세요 의뢰자님 반갑습니다^^ 경북대학교 경영학과 19학번 김수현 입니다. 다양한 관련 작업을
-                        진행해 왔으며, 많은 경험을 바탕으로 의뢰자님의 서류 가치를 업그레이드 시킬 수 있는 만족스러운
-                        결과물로 보답드리도록 하겠습니다. (*워드파일 원본 제공) 감사합니다.
-                    </Textbox>
+                    <Textbox width="100%">{people?.profile.introduction}</Textbox>
                 </TextboxContainer>
                 <TextboxContainer>
                     <Text size="xs" color="secondary" weight="bold">
                         포트폴리오
                     </Text>
                     <PortfolioContainer>
-                        <PortfolioCard>신채원의 포트폴리오1</PortfolioCard>
-                        <PortfolioCard>신채원의 포트폴리오2</PortfolioCard>
+                        {people?.profile.portfolios.map((portfolio) => (
+                            <PortfolioCard onClick={() => handlePortfolioOpen(portfolio.url)}>
+                                {portfolio.description}
+                            </PortfolioCard>
+                        ))}
                     </PortfolioContainer>
                 </TextboxContainer>
             </InfoContainer>
         </PeopleDetailWrapper>
     );
-};
-
-export default PeopleDetailPage;
+}

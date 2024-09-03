@@ -1,7 +1,8 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 
-import { Text } from "@/common/typography/Text";
+import { useHashTag } from "@/hooks/useHashTag";
 
+import { Text } from "../__common__/typography/Text";
 import {
     ProfileHashTagWrapper,
     ProfileHashTagContainer,
@@ -16,14 +17,15 @@ export interface IProfileHashTag {
 
 export const ProfileHashTag: React.FC<IProfileHashTag> = ({ width, minHeight }) => {
     const inputRef = useRef<HTMLInputElement>(null);
-    const [hashTagItems, setHashTagItems] = useState<string[]>([]);
+    const { hashtag, setHashTag } = useHashTag();
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        // BUG : 한글 입력시 두번 등록되는 버그
         if (e.key === "Enter" && inputRef.current) {
             const value = inputRef.current.value.trim();
 
-            if (value && hashTagItems.length < 15) {
-                setHashTagItems([...hashTagItems, value]);
+            if (value && hashtag.length < 15) {
+                setHashTag((hashtag) => [...hashtag, value]);
                 inputRef.current.value = "";
             }
         }
@@ -34,7 +36,7 @@ export const ProfileHashTag: React.FC<IProfileHashTag> = ({ width, minHeight }) 
                 해시태그
             </Text>
             <ProfileHashTagContainer>
-                {hashTagItems.map((item, index) => (
+                {hashtag.map((item, index) => (
                     <ProfileHashTagItem key={index}>#{item}</ProfileHashTagItem>
                 ))}
             </ProfileHashTagContainer>

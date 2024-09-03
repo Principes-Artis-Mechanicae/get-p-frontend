@@ -1,5 +1,4 @@
-import { Text } from "@/common/typography/Text";
-
+import { Text } from "../__common__/typography/Text";
 import {
     PeopleCardWrapper,
     PeopleCardImg,
@@ -9,15 +8,17 @@ import {
 } from "./PeopleCard.style";
 import { useMediaQuery } from "@mui/material";
 
-export interface IPeopleCard {
+export interface IPeopleCard extends React.ComponentProps<"div"> {
     width?: string;
     height?: string;
     profileImageUri: string;
     nickname: string;
     activityArea: string;
-    hashtags: string[];
+    hashtags: {
+        value: string;
+    }[];
     completeProjectsCount: number;
-    comment: string;
+    introduction: string;
 }
 
 export const PeopleCard: React.FC<IPeopleCard> = ({
@@ -28,12 +29,13 @@ export const PeopleCard: React.FC<IPeopleCard> = ({
     activityArea,
     hashtags,
     completeProjectsCount,
-    comment,
+    introduction,
+    onClick,
 }) => {
     const isTabletOrMobile = useMediaQuery("(max-width: 1200px)");
 
     return (
-        <PeopleCardWrapper width={isTabletOrMobile ? "100%" : width} height={height}>
+        <PeopleCardWrapper width={isTabletOrMobile ? "100%" : width} height={height} onClick={onClick}>
             <PeopleCardImg src={profileImageUri} />
             <PeopleCardContainer>
                 <PeopleCardHeader>
@@ -48,10 +50,10 @@ export const PeopleCard: React.FC<IPeopleCard> = ({
                     {nickname}
                 </Text>
                 <Text size="s" color="secondary" weight="light">
-                    <PeopleCardComment width={isTabletOrMobile ? "auto" : "375px"}>{comment}</PeopleCardComment>
+                    <PeopleCardComment width={isTabletOrMobile ? "auto" : "375px"}>{introduction}</PeopleCardComment>
                 </Text>
                 <Text size="s" color="#BDA7BC" weight="light">
-                    {hashtags}
+                    {hashtags.map((hashtag) => `${hashtag.value}`).join(" ")}
                 </Text>
             </PeopleCardContainer>
         </PeopleCardWrapper>

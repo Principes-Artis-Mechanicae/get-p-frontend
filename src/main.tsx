@@ -7,4 +7,16 @@ import { register } from "swiper/element/bundle";
 
 register();
 
-ReactDOM.createRoot(document.getElementById("root")!).render(<App />);
+async function enableMocking(enable: boolean) {
+    if (!enable) return;
+    if (import.meta.env.MODE !== "development") return;
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const { worker }: { worker: { start: () => Promise<void> } } = await import("./__mocks__/browser.js");
+    return worker.start();
+}
+
+enableMocking(true).then(() => {
+    ReactDOM.createRoot(document.getElementById("root")!).render(<App />);
+});

@@ -1,8 +1,8 @@
-import { SearchBar } from "@/common/form/SearchBar";
-import { Text } from "@/common/typography/Text";
+import { SearchBar } from "principes-getp";
 
 import { useToggle } from "@/hooks/useToggle";
 
+import { Text } from "../__common__/typography/Text";
 import {
     PeopleSearchCheckBox,
     PeopleSearchHeader,

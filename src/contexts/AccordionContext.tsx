@@ -104,7 +104,7 @@ const reducer: React.Reducer<AccordionState, AccordionAction> = (state, action) 
     }
 };
 
-export const AccordionProvider = ({ children }: { children: React.ReactNode }) => {
+export const AccordionProvider = ({ children }: { children?: React.ReactNode }) => {
     const [state, dispatch] = useReducer(reducer, accordionState);
 
     return (
