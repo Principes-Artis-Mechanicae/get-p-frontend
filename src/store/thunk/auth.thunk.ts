@@ -42,3 +42,13 @@ export const signInThunkAction = (email: string, password: string, navigate: Nav
         navigate("/");
     };
 };
+
+export const updateProfileThunkAction = () => {
+    return async (dispatch: RootDispatch) => {
+        const memberResponse = await memberService.readMemberProfile();
+        const { nickname, profileImageUri } = memberResponse.data.data;
+
+        dispatch(authAction.updateProfileImageUri(profileImageUri));
+        dispatch(authAction.updateNickName(nickname));
+    };
+};

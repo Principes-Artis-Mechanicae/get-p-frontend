@@ -1,4 +1,5 @@
-import { useDispatch } from "react-redux";
+import { useCallback, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Button, Input, Label } from "principes-getp";
 
@@ -7,13 +8,34 @@ import { Title } from "@/components/__common__/typography/Title";
 
 import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequestPage.style";
 
+import { useProjectRequest } from "@/services/project/useProjectRequest";
+
 import { ProjectRequestStep } from "../ProjectRequestStep/ProjectRequestStep";
+import { ProjectTag, ProjectTagContainer } from "../ProjectTag/ProjectTag.style";
 import { ProjectRequestTagSectionContainer } from "./ProjectRequestTagSection.style";
 import { projectAction } from "@/store/slice/project.slice";
-import { RootDispatch } from "@/store/store";
+import { RootDispatch, RootState } from "@/store/store";
 
 export const ProjectRequestTagSection = () => {
     const dispatch: RootDispatch = useDispatch();
+    const { hashtags } = useSelector((state: RootState) => state.project);
+
+    const { mutate } = useProjectRequest();
+
+    const hashTagRef = useRef<HTMLInputElement>(null);
+
+    const handleTagAddBtnClick = useCallback(() => {
+        if (!hashTagRef.current) throw new Error("hashTagRef is not defined!");
+
+        dispatch(projectAction.addHashTag(hashTagRef.current.value));
+        hashTagRef.current.value = "";
+    }, [dispatch]);
+
+    const handleRegisterProjectBtnClick = useCallback(() => {
+        dispatch(projectAction.nextStep());
+        dispatch(projectAction.initializeState());
+        mutate();
+    }, [dispatch, mutate]);
 
     return (
         <ProjectRequestPageWrapper>
@@ -26,17 +48,28 @@ export const ProjectRequestTagSection = () => {
 
             <ProjectRequestTagSectionContainer>
                 <Label>태그</Label>
-                <Input type="text" width="100%" height="54px" placeholder="태그를 입력해주세요"></Input>
+                <Input
+                    ref={hashTagRef}
+                    type="text"
+                    width="100%"
+                    height="54px"
+                    placeholder="태그를 입력해주세요"
+                ></Input>
+                <ProjectTagContainer>
+                    {hashtags.map((hashtag, index) => {
+                        return <ProjectTag key={index}>{hashtag}</ProjectTag>;
+                    })}
+                </ProjectTagContainer>
             </ProjectRequestTagSectionContainer>
 
             <ProjectRequestTagSectionContainer>
-                <Button variant="outline" width="100%" height="54px">
+                <Button variant="outline" width="100%" height="54px" onClick={handleTagAddBtnClick}>
                     + 추가
                 </Button>
             </ProjectRequestTagSectionContainer>
 
             <ProjectRequestTagSectionContainer>
-                <Button variant="primary" width="100%" height="54px" onClick={() => dispatch(projectAction.nextStep())}>
+                <Button variant="primary" width="100%" height="54px" onClick={handleRegisterProjectBtnClick}>
                     등록 신청하기
                 </Button>
             </ProjectRequestTagSectionContainer>

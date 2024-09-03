@@ -1,16 +1,9 @@
+import { ProjectMeetingType, ProjectRequestBody } from "@/services/project/types";
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export type MeetingType = "IN_PERSON" | null;
-
-interface IProjectState {
+interface IProjectState extends ProjectRequestBody {
     step: number;
-
-    title: string;
-    description: string;
-    meetingType: MeetingType;
-    category: string;
-    attachmentFiles: string[];
-    hashtags: string[];
 }
 
 const initialState: IProjectState = {
@@ -19,9 +12,19 @@ const initialState: IProjectState = {
     title: "",
     description: "",
     meetingType: null,
-    category: "",
+    category: null,
     attachmentFiles: [],
     hashtags: [],
+    payment: 0,
+
+    applicationDuration: {
+        startDate: "",
+        endDate: "",
+    },
+    estimatedDuration: {
+        startDate: "",
+        endDate: "",
+    },
 };
 
 const projectSlice = createSlice({
@@ -43,7 +46,7 @@ const projectSlice = createSlice({
             state.title = "";
             state.description = "";
             state.meetingType = null;
-            state.category = "";
+            state.category = null;
             state.attachmentFiles = [];
             state.hashtags = [];
         },
@@ -54,11 +57,27 @@ const projectSlice = createSlice({
         setDescription: (state, action: PayloadAction<string>) => {
             state.description = action.payload;
         },
-        setMeetingType: (state, action: PayloadAction<MeetingType>) => {
+        setMeetingType: (state, action: PayloadAction<ProjectMeetingType>) => {
             state.meetingType = action.payload;
         },
         setCategory: (state, action: PayloadAction<string>) => {
-            state.category = action.payload;
+            switch (action.payload) {
+                case "프론트엔드 개발":
+                    state.category = "FRONTEND";
+                    break;
+                case "백엔드 개발":
+                    state.category = "BACKEND";
+                    break;
+                case "앱 개발":
+                    state.category = "APP";
+                    break;
+                case "프로그램 개발":
+                    state.category = "PROGRAM";
+                    break;
+            }
+        },
+        setPayment: (state, action: PayloadAction<number>) => {
+            state.payment = action.payload;
         },
         addAttachmentFile: (state, action: PayloadAction<string>) => {
             state.attachmentFiles.push(action.payload);
@@ -71,6 +90,19 @@ const projectSlice = createSlice({
         },
         removeHashTag: (state, action: PayloadAction<string>) => {
             state.hashtags.filter((value) => value !== action.payload);
+        },
+
+        setApplicationStartDate: (state, action: PayloadAction<string>) => {
+            state.applicationDuration.startDate = action.payload;
+        },
+        setApplicationEndDate: (state, action: PayloadAction<string>) => {
+            state.applicationDuration.endDate = action.payload;
+        },
+        setEstimatedStartDate: (state, action: PayloadAction<string>) => {
+            state.estimatedDuration.startDate = action.payload;
+        },
+        setEstimatedEndDate: (state, action: PayloadAction<string>) => {
+            state.estimatedDuration.endDate = action.payload;
         },
     },
 });

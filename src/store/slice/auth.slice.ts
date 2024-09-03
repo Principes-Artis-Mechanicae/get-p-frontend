@@ -55,6 +55,12 @@ const authSlice = createSlice({
             state.accessToken = action.payload.accessToken;
             state.refreshToken = action.payload.refreshToken;
         },
+        updateProfileImageUri: (state, action: PayloadAction<string>) => {
+            state.profileImageUri = action.payload;
+        },
+        updateNickName: (state, action: PayloadAction<string>) => {
+            state.nickname = action.payload;
+        },
     },
 });
 

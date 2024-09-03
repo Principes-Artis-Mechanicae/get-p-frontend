@@ -36,5 +36,5 @@ module.exports = {
         ],
     },
 
-    ignorePatterns: ["server.js", ".eslintrc.cjs", "ssr.js", "__mocks__"],
+    ignorePatterns: ["server.js", ".eslintrc.cjs", "ssr.js", "__mocks__", "*.config.js", "*.config.ts"],
 };

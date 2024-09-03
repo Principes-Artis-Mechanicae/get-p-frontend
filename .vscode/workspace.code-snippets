@@ -3,24 +3,40 @@
         "prefix": ["!styled"],
         "body": ["import styled from \"@emotion/styled\";"],
     },
-    "StoryBook" : {
-        "prefix" : ["!story"],
+    "StoryBook": {
+        "prefix": ["!story"],
         "body": [
             "import type { Meta, StoryObj } from \"@storybook/react\";",
             "",
-            "const meta = {"
+            "const meta = {",
             "    title: /*여기에 스토리 제목 입력 (/ 를 사용하면 그룹으로 묶입니다!)*/,",
             "    component: /* 여기에 컴포넌트 입력 */,",
             "} satisfies Meta<typeof /* 여기에 컴포넌트 입력 */>;",
             "",
-            "export default meta;"
-            "type Story = StoryObj<typeof meta>;"
+            "export default meta;",
+            "type Story = StoryObj<typeof meta>;",
             "",
-            "export const /* 여기에 스토리 이름 입력 */ : Story = {"
-            "    args: {"
+            "export const /* 여기에 스토리 이름 입력 */ : Story = {",
+            "    args: {",
             "       /* 여기에 Props 입력 */",
-            "    },"
-            "};"
-        ]
-    }
+            "    },",
+            "};",
+        ],
+    },
+    "API": {
+        "prefix": "!api",
+        "body": [
+            "NAME : async () => {",
+            "   const request = async () => {",
+            "       const response = await api.${1:METHOD}(${2:ENDPOINT});",
+            "       return new ExceptionHandler.Builder(response).addCase(${3:ERR_CODE},${4:ERR_MESSAGE}).activate();",
+            "   }",
+            "   return toast.promise(request, {",
+            "       success: ${5:SUCCESS_MESSAGE},",
+            "       pending: ${6:PENDING_MESSAGE},",
+            "       error: RenderToastFromDerivedError",
+            "   });",
+            "}",
+        ],
+    },
 }
