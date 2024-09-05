@@ -42,7 +42,7 @@ describe("사용자는 회원가입을 할 수 있다", () => {
     });
 
     describe("사용자는 회원가입시 비밀번호가 일치해야한다", () => {
-        it("비밀번호가 서로 다르면 '비밀번호가 일치하지 않습니다' 토스트를 출력한다", () => {
+        it("비밀번호가 서로 다르면 '비밀번호가 일치하지 않습니다!' 토스트를 출력한다", () => {
             cy.get("button").contains("의뢰자 회원").click();
             cy.get("button").contains("완료하기").click();
 
@@ -54,7 +54,7 @@ describe("사용자는 회원가입을 할 수 있다", () => {
 
             cy.get(".Toastify__toast-body")
                 .children("div:nth-child(2)")
-                .should("have.text", "이미 인증된 이메일이거나 가입된 이메일입니다");
+                .should("have.text", "비밀번호가 일치하지 않습니다!");
         });
     });
 });
