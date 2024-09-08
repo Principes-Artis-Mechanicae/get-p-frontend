@@ -26,7 +26,7 @@ import {
     NameContainer,
     OpenButton,
     DeleteButton,
-} from "../people/PeopleDetailPage.style";
+} from "../people/PeopleDetail/PeopleDetailPage.style";
 import { HashTagTitleContainer, DateInput, FileInput } from "./ProjectApplyPage.style";
 
 const ProjectApplyPage = () => {
