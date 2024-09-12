@@ -11,16 +11,22 @@ export const ApplyPeopleItemWrapper = styled.div`
 
     max-width: 400px;
 
+    margin: 10px 0px;
+
     border: 1px solid #ebedef;
     border-radius: 12px;
 
     background-color: #fff;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 export const ApplyPeopleId = styled.div`
     ${place_center};
 
-    width: 20px;
+    width: 25px;
     height: 100%;
 `;
 

@@ -6,7 +6,7 @@ import { ApplyPeopleId, ApplyPeopleImage, ApplyPeopleInfo, ApplyPeopleItemWrappe
 
 export interface ApplyPeopleItemProps {
     id: number;
-    profileImage: string | null;
+    profileImage?: string;
     name: string;
     school: string;
     education: string;
