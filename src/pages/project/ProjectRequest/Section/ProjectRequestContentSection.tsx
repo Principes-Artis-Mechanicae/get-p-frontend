@@ -1,5 +1,6 @@
 import { useCallback, useRef } from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 import { Button, Input, Label, TextArea } from "principes-getp";
 
@@ -8,6 +9,8 @@ import { Title } from "@/components/__common__/typography/Title";
 import { ProjectRequestStep } from "@/components/project/ProjectRequestStep/ProjectRequestStep";
 
 import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequest/ProjectRequestPage.style";
+
+import { isValueAssigned } from "@/utils/validation";
 
 import {
     ProjectPayment,
@@ -21,13 +24,23 @@ export const ProjectRequestContentSection = () => {
     const dispatch: RootDispatch = useDispatch();
 
     const projectTitleRef = useRef<HTMLInputElement>(null);
+    const projectNumsOfPeople = useRef<HTMLInputElement>(null);
     const projectDescriptionRef = useRef<HTMLTextAreaElement>(null);
     const projectPaymentRef = useRef<HTMLInputElement>(null);
 
     const handleNextBtnClick = useCallback(() => {
-        dispatch(projectAction.setTitle(projectTitleRef.current?.value as string));
-        dispatch(projectAction.setDescription(projectDescriptionRef.current?.value as string));
-        dispatch(projectAction.setPayment(Number(projectPaymentRef.current?.value)));
+        const title = projectTitleRef.current?.value as string;
+        const description = projectDescriptionRef.current?.value as string;
+        const payment = Number(projectPaymentRef.current?.value);
+
+        if (!isValueAssigned([title, description, payment])) {
+            toast.error("필수 입력항목을 입력해주세요");
+            return;
+        }
+
+        dispatch(projectAction.setTitle(title));
+        dispatch(projectAction.setDescription(description));
+        dispatch(projectAction.setPayment(payment));
         dispatch(projectAction.nextStep());
     }, [dispatch]);
 
@@ -42,13 +55,26 @@ export const ProjectRequestContentSection = () => {
             </ProjectRequestContentContainer>
 
             <ProjectRequestContentContainer>
-                <Label>프로젝트 제목</Label>
+                <Label htmlFor="TITLE">프로젝트 제목</Label>
                 <Input
+                    id="TITLE"
                     ref={projectTitleRef}
                     type="text"
                     width="100%"
                     height="54px"
                     placeholder="프로젝트 제목을 입력해주세요"
+                ></Input>
+            </ProjectRequestContentContainer>
+
+            <ProjectRequestContentContainer>
+                <Label htmlFor="NUMS_OF_PEOPLE">모집인원</Label>
+                <Input
+                    id="NUMS_OF_PEOPLE"
+                    ref={projectNumsOfPeople}
+                    type="number"
+                    width="100%"
+                    height="54px"
+                    placeholder="모집인원을 입력해주세요"
                 ></Input>
             </ProjectRequestContentContainer>
 
@@ -66,8 +92,8 @@ export const ProjectRequestContentSection = () => {
             </ProjectRequestContentContainer>
 
             <ProjectRequestContentContainer>
-                <Label>첨부파일</Label>
-                <Button variant="primary" width="100%" height="54px">
+                <Label htmlFor="FILE">첨부파일</Label>
+                <Button id="FILE" variant="primary" width="100%" height="54px">
                     + 파일 첨부하기
                 </Button>
             </ProjectRequestContentContainer>
