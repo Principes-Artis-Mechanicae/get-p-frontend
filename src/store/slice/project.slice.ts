@@ -74,6 +74,9 @@ const projectSlice = createSlice({
                 case "프로그램 개발":
                     state.category = "PROGRAM";
                     break;
+                case "기타":
+                    state.category = "ETC";
+                    break;
             }
         },
         setPayment: (state, action: PayloadAction<number>) => {
