@@ -92,7 +92,7 @@ const projectSlice = createSlice({
             state.hashtags.push(action.payload);
         },
         removeHashTag: (state, action: PayloadAction<string>) => {
-            state.hashtags.filter((value) => value !== action.payload);
+            state.hashtags = state.hashtags.filter((value) => value !== action.payload);
         },
 
         setApplicationStartDate: (state, action: PayloadAction<string>) => {

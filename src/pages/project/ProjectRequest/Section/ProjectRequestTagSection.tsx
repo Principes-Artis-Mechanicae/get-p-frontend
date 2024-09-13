@@ -57,7 +57,14 @@ export const ProjectRequestTagSection = () => {
                 ></Input>
                 <ProjectTagContainer>
                     {hashtags.map((hashtag, index) => {
-                        return <ProjectTag key={index}>{hashtag}</ProjectTag>;
+                        return (
+                            <ProjectTag
+                                key={`${index}:hashtag:${hashtag}`}
+                                onClick={() => dispatch(projectAction.removeHashTag(hashtag))}
+                            >
+                                {hashtag}
+                            </ProjectTag>
+                        );
                     })}
                 </ProjectTagContainer>
             </ProjectRequestTagSectionContainer>
