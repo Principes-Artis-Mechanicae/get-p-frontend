@@ -6,12 +6,12 @@ import { Button, DatePicker, Label } from "principes-getp";
 
 import { Paragraph } from "@/components/__common__/typography/Paragraph";
 import { Title } from "@/components/__common__/typography/Title";
+import { ProjectRequestStep } from "@/components/project/ProjectRequestStep/ProjectRequestStep";
 
-import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequestPage.style";
+import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequest/ProjectRequestPage.style";
 
 import { useProjectRequest } from "@/services/project/useProjectRequest";
 
-import { ProjectRequestStep } from "../ProjectRequestStep/ProjectRequestStep";
 import { ProjectRequestDateSectionContainer } from "./ProjectRequestDateSection.style";
 import { projectAction } from "@/store/slice/project.slice";
 import { RootDispatch } from "@/store/store";

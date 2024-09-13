@@ -5,10 +5,10 @@ import { Button, Input, Label, TextArea } from "principes-getp";
 
 import { Paragraph } from "@/components/__common__/typography/Paragraph";
 import { Title } from "@/components/__common__/typography/Title";
+import { ProjectRequestStep } from "@/components/project/ProjectRequestStep/ProjectRequestStep";
 
-import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequestPage.style";
+import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequest/ProjectRequestPage.style";
 
-import { ProjectRequestStep } from "../ProjectRequestStep/ProjectRequestStep";
 import {
     ProjectPayment,
     ProjectPaymentUnit,
