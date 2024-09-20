@@ -1,5 +1,6 @@
 import { useCallback, useState, useRef } from "react";
 
+import { PeopleType } from "../people/types";
 import { projectService } from "./service";
 import { useMutation } from "@tanstack/react-query";
 
@@ -8,6 +9,7 @@ export const useProjectApply = () => {
     const [endDate, setEndDate] = useState<string>("");
     const descriptionRef = useRef<HTMLTextAreaElement | null>(null);
     const [attachmentFiles, setAttachmentFiles] = useState<string[]>([]);
+    const [peopleType, setPeopleType] = useState<PeopleType | null>(null);
 
     const mutation = useMutation({
         mutationFn: () =>
@@ -25,5 +27,20 @@ export const useProjectApply = () => {
         mutation.mutate();
     }, [mutation]);
 
-    return { setStartDate, setEndDate, descriptionRef, setAttachmentFiles, handleApplyBtnClicked };
+    const handlePeopleType = useCallback(
+        (type: PeopleType) => {
+            setPeopleType(peopleType === type ? null : type);
+        },
+        [peopleType],
+    );
+
+    return {
+        setStartDate,
+        setEndDate,
+        descriptionRef,
+        setAttachmentFiles,
+        handleApplyBtnClicked,
+        handlePeopleType,
+        peopleType,
+    };
 };
