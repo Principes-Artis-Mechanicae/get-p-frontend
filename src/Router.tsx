@@ -20,6 +20,7 @@ import { MemberType } from "@/services/auth/types";
 
 import { RouteGuard } from "./components/__common__/guard/RouteGuard";
 import { MainLayout } from "./components/__common__/layout/MainLayout";
+import ClientProjectListPage from "./pages/client/ClientProjectListPage/ClientProjectListPage";
 
 export const Router = () => {
     return (
@@ -68,7 +69,14 @@ export const Router = () => {
                         </RouteGuard>
                     }
                 />
-
+                <Route
+                    path="client/me/projects"
+                    element={
+                        <RouteGuard role={MemberType.ROLE_CLIENT}>
+                            <ClientProjectListPage />
+                        </RouteGuard>
+                    }
+                />
                 <Route path="project/apply/:id" element={<ProjectApplyPage />} />
 
                 <Route
