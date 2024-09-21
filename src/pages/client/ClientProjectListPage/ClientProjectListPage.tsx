@@ -6,14 +6,13 @@ import { ProjectCard } from "@/components/project/ProjectCard";
 
 import { useClientProjectList } from "@/services/client/useClientProjectList";
 
-import { ProjectListWrapper } from "../../project/ProjectListPage.style";
+import { ProjectListWrapper } from "../../project/ProjectListPage/ProjectListPage.style";
 import { ClientProjectListContainer, ClientProjectListWrapper, TotalProjectCount } from "./ClientProjectListPage.style";
 
 export default function ClientProjectListPage() {
     const { isPending, data } = useClientProjectList();
 
     if (isPending) return <>loading...</>;
-    console.log(data);
 
     return (
         <ProjectListWrapper>

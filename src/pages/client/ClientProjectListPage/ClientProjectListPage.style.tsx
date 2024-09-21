@@ -1,4 +1,4 @@
-import { ProjectListContainer } from "@/pages/project/ProjectListPage.style";
+import { ProjectListContainer } from "@/pages/project/ProjectListPage/ProjectListPage.style";
 
 import { mobile, tablet } from "@/styles/breakpoint";
 
