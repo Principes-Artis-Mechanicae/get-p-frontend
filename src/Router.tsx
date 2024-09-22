@@ -4,6 +4,7 @@ import FindPasswordPage from "@/pages/auth/FindPasswordPage";
 import SignInPage from "@/pages/auth/SignInPage";
 import SignUpPage from "@/pages/auth/SignUpPage";
 import EditClientPage from "@/pages/client/EditClientPage";
+import MeetingRequestPage from "@/pages/client/MeetingRequest/MeetingRequestPage";
 import RegisterClientPage from "@/pages/client/RegisterClientPage";
 import HomePage from "@/pages/home/HomePage";
 import NotFoundPage from "@/pages/home/NotFoundPage";
@@ -81,6 +82,8 @@ export const Router = () => {
                 />
 
                 <Route path="project/:id" element={<ProjectDetailPage />} />
+
+                <Route path="project/:id/meetings" element={<MeetingRequestPage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Route>
         </Routes>
