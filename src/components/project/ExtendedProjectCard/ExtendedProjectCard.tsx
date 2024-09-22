@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
 import { ProjectManagement } from "../ProjectDetail/ProjectManagement";
 import {
@@ -37,7 +37,6 @@ export interface IProjectCard {
     };
     hashtags: string[];
     description: string;
-    status: string;
 }
 
 export const ExtendedProjectCard: React.FC<IProjectCard> = ({
@@ -48,11 +47,9 @@ export const ExtendedProjectCard: React.FC<IProjectCard> = ({
     applicationDuration,
     hashtags,
     description,
-    status,
 }) => {
     // 아코디언 상태 관리
     const [isOpen, setIsOpen] = useState(false);
-    const cardRef = useRef<HTMLDivElement>(null);
 
     // 아코디언 토글 함수
     const toggleAccordion = () => {
