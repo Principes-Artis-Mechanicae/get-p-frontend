@@ -17,3 +17,22 @@ export type RegisterClientRequestBody = {
 };
 
 export type RegisterClientResponseBody = BaseResponse<{ clientId: number }>;
+
+export type RequestMeetingRequestBody = {
+    applicantId: number;
+    location: string;
+    schedule: {
+        date: string;
+        startTime: string;
+        endTime: string;
+    };
+    phoneNumber: string;
+    description: string;
+};
+
+export type RequestMeetingResponseBody = {
+    status: number;
+    data: {
+        meetingId: number;
+    };
+};
