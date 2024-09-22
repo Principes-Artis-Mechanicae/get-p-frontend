@@ -6,8 +6,6 @@ export const ProjectManagementWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
-
-    padding: 25px;
 `;
 
 export const ProjectManagementContainer = styled.div`
