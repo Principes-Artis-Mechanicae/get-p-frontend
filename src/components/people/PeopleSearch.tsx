@@ -27,6 +27,23 @@ export const PeopleSearch: React.FC<IPeopleSearch> = ({ width, height, order, on
 
     const sortOptions: ISortOrder[] = ["default", "latest", "closing", "successFee", "like"];
 
+    const getSortOptionText = (option: ISortOrder) => {
+        switch (option) {
+            case "default":
+                return "기본 정렬";
+            case "latest":
+                return "최신 등록 순";
+            case "closing":
+                return "마감 임박 순";
+            case "successFee":
+                return "성공 보수 순";
+            case "like":
+                return "관심 순";
+            default:
+                return "";
+        }
+    };
+
     return (
         <PeopleSearchWrapper width={width} height={height}>
             <PeopleSearchHeader>
@@ -51,15 +68,7 @@ export const PeopleSearch: React.FC<IPeopleSearch> = ({ width, height, order, on
                             $selected={option === "default"}
                         >
                             <Text size="s" color={option === order ? "point" : "primary"} weight="bold">
-                                {option === "default"
-                                    ? "기본 정렬"
-                                    : option === "latest"
-                                      ? "최신 등록 순"
-                                      : option === "closing"
-                                        ? "마감 임박 순"
-                                        : option === "successFee"
-                                          ? "성공 보수 순"
-                                          : "관심 순"}
+                                {getSortOptionText(option)}
                             </Text>
                         </PeopleSearchOptionItem>
                     ))}
