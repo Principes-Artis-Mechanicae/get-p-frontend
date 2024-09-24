@@ -1,5 +1,7 @@
 import { SearchBar } from "principes-getp";
 
+import { ISortOrder } from "@/pages/project/ProjectListPage";
+
 import { useToggle } from "@/hooks/useToggle";
 
 import { Text } from "../__common__/typography/Text";
@@ -16,10 +18,14 @@ import {
 export interface IPeopleSearch {
     width: string;
     height: string;
+    order: ISortOrder;
+    onSortChange: (order: ISortOrder) => void;
 }
 
-export const PeopleSearch: React.FC<IPeopleSearch> = ({ width, height }) => {
+export const PeopleSearch: React.FC<IPeopleSearch> = ({ width, height, order, onSortChange }) => {
     const { toggle, handleClick } = useToggle();
+
+    const sortOptions: ISortOrder[] = ["default", "latest", "closing", "successFee", "like"];
 
     return (
         <PeopleSearchWrapper width={width} height={height}>
@@ -38,31 +44,25 @@ export const PeopleSearch: React.FC<IPeopleSearch> = ({ width, height }) => {
                 </PeopleSearchCheckBox>
 
                 <PeopleSearchOptionContainer>
-                    <PeopleSearchOptionItem>
-                        <Text size="s" color="point" weight="bold">
-                            기본 정렬
-                        </Text>
-                    </PeopleSearchOptionItem>
-                    <PeopleSearchOptionItem>
-                        <Text size="s" color="primary" weight="bold">
-                            최신 등록 순
-                        </Text>
-                    </PeopleSearchOptionItem>
-                    <PeopleSearchOptionItem>
-                        <Text size="s" color="primary" weight="bold">
-                            마감 임박 순
-                        </Text>
-                    </PeopleSearchOptionItem>
-                    <PeopleSearchOptionItem>
-                        <Text size="s" color="primary" weight="bold">
-                            성공 보수 순
-                        </Text>
-                    </PeopleSearchOptionItem>
-                    <PeopleSearchOptionItem>
-                        <Text size="s" color="primary" weight="bold">
-                            관심 순
-                        </Text>
-                    </PeopleSearchOptionItem>
+                    {sortOptions.map((option) => (
+                        <PeopleSearchOptionItem
+                            key={option}
+                            onClick={() => onSortChange(option)}
+                            $selected={option === "default"}
+                        >
+                            <Text size="s" color={option === order ? "point" : "primary"} weight="bold">
+                                {option === "default"
+                                    ? "기본 정렬"
+                                    : option === "latest"
+                                      ? "최신 등록 순"
+                                      : option === "closing"
+                                        ? "마감 임박 순"
+                                        : option === "successFee"
+                                          ? "성공 보수 순"
+                                          : "관심 순"}
+                            </Text>
+                        </PeopleSearchOptionItem>
+                    ))}
                 </PeopleSearchOptionContainer>
             </PeopleSearchOptionWrapper>
         </PeopleSearchWrapper>

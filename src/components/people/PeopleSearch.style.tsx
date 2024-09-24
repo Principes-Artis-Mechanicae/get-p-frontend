@@ -96,6 +96,12 @@ export const PeopleSearchOptionContainer = styled.div`
     gap: 12px;
 `;
 
-export const PeopleSearchOptionItem = styled.div`
+export const PeopleSearchOptionItem = styled.button<{ $selected: boolean }>`
+    background-color: transparent;
+    outline: none;
+    border: none;
+
     cursor: pointer;
+
+    color: ${({ $selected }) => ($selected ? "#476ff1" : "#000")};
 `;

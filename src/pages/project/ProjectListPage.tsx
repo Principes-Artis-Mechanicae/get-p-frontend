@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { Pagination } from "principes-getp";
 
 import { PeopleSearch } from "@/components/people/PeopleSearch";
@@ -7,16 +9,22 @@ import { useProjectList } from "@/services/project/useProjectList";
 
 import { ProjectListContainer, ProjectListWrapper } from "./ProjectListPage.style";
 
+export type ISortOrder = "default" | "latest" | "closing" | "successFee" | "like";
+
 export default function ProjectListPage() {
+    const [sortOrder, setSortOrder] = useState<ISortOrder>("default");
     const { isPending, data } = useProjectList();
 
-    if (isPending) return <>loading...</>;
+    const handleSortOrder = (order: ISortOrder) => {
+        setSortOrder(order);
+    };
 
+    if (isPending) return <>loading...</>;
     return (
         <ProjectListWrapper>
-            <PeopleSearch width="100%" height="auto" />
+            <PeopleSearch width="100%" height="auto" order={sortOrder} onSortChange={handleSortOrder} />
             <ProjectListContainer>
-                {data && (
+                {sortOrder === "default" && data && (
                     <>
                         {data.content.map((project) => (
                             <ProjectCard
@@ -36,6 +44,7 @@ export default function ProjectListPage() {
                         ))}
                     </>
                 )}
+                {sortOrder === "like" && <div>관심순</div>}
             </ProjectListContainer>
 
             <Pagination totalPages={data?.pageInfo.totalPages as number} pageGroupSize={5} />
