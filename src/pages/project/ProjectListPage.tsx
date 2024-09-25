@@ -9,7 +9,7 @@ import { useProjectList } from "@/services/project/useProjectList";
 
 import { ProjectListContainer, ProjectListWrapper } from "./ProjectListPage.style";
 
-export type ISortOrder = "default" | "latest" | "closing" | "successFee" | "like";
+export type ISortOrder = "default" | "latest" | "closing" | "successFee" | "likes";
 
 export default function ProjectListPage() {
     const [sortOrder, setSortOrder] = useState<ISortOrder>("default");
@@ -44,7 +44,6 @@ export default function ProjectListPage() {
                         ))}
                     </>
                 )}
-                {sortOrder === "like" && <div>관심순</div>}
             </ProjectListContainer>
 
             <Pagination totalPages={data?.pageInfo.totalPages as number} pageGroupSize={5} />

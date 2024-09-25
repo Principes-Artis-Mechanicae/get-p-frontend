@@ -25,7 +25,7 @@ export interface IPeopleSearch {
 export const PeopleSearch: React.FC<IPeopleSearch> = ({ width, height, order, onSortChange }) => {
     const { toggle, handleClick } = useToggle();
 
-    const sortOptions: ISortOrder[] = ["default", "latest", "closing", "successFee", "like"];
+    const sortOptions: ISortOrder[] = ["default", "latest", "closing", "successFee", "likes"];
 
     const getSortOptionText = (option: ISortOrder) => {
         switch (option) {
@@ -37,7 +37,7 @@ export const PeopleSearch: React.FC<IPeopleSearch> = ({ width, height, order, on
                 return "마감 임박 순";
             case "successFee":
                 return "성공 보수 순";
-            case "like":
+            case "likes":
                 return "관심 순";
             default:
                 return "";
