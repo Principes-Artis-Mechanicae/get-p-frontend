@@ -38,7 +38,7 @@ export const PeopleSearch: React.FC<IPeopleSearch> = ({ width, height, order, on
             case "successFee":
                 return "성공 보수 순";
             case "likes":
-                return "관심 순";
+                return "좋아요 순";
             default:
                 return "";
         }
