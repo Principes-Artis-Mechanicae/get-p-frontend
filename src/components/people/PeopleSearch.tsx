@@ -1,6 +1,6 @@
 import { SearchBar } from "principes-getp";
 
-import { ISortOrder } from "@/pages/project/ProjectListPage";
+import { ISortOption } from "@/pages/project/ProjectListPage";
 
 import { useToggle } from "@/hooks/useToggle";
 
@@ -18,31 +18,13 @@ import {
 export interface IPeopleSearch {
     width: string;
     height: string;
-    order: ISortOrder;
-    onSortChange: (order: ISortOrder) => void;
+    options: ISortOption[];
+    order: ISortOption;
+    onSortChange: (order: ISortOption) => void;
 }
 
-export const PeopleSearch: React.FC<IPeopleSearch> = ({ width, height, order, onSortChange }) => {
+export const PeopleSearch = ({ width, height, options, order, onSortChange }: IPeopleSearch) => {
     const { toggle, handleClick } = useToggle();
-
-    const sortOptions: ISortOrder[] = ["default", "latest", "closing", "successFee", "likes"];
-
-    const getSortOptionText = (option: ISortOrder) => {
-        switch (option) {
-            case "default":
-                return "기본 정렬";
-            case "latest":
-                return "최신 등록 순";
-            case "closing":
-                return "마감 임박 순";
-            case "successFee":
-                return "성공 보수 순";
-            case "likes":
-                return "좋아요 순";
-            default:
-                return "";
-        }
-    };
 
     return (
         <PeopleSearchWrapper width={width} height={height}>
@@ -61,14 +43,14 @@ export const PeopleSearch: React.FC<IPeopleSearch> = ({ width, height, order, on
                 </PeopleSearchCheckBox>
 
                 <PeopleSearchOptionContainer>
-                    {sortOptions.map((option) => (
+                    {options.map((option) => (
                         <PeopleSearchOptionItem
-                            key={option}
+                            key={option.key}
                             onClick={() => onSortChange(option)}
-                            $selected={option === "default"}
+                            $selected={option.key === "default"}
                         >
-                            <Text size="s" color={option === order ? "point" : "primary"} weight="bold">
-                                {getSortOptionText(option)}
+                            <Text size="s" color={option.key === order.key ? "point" : "primary"} weight="bold">
+                                {option.title}
                             </Text>
                         </PeopleSearchOptionItem>
                     ))}

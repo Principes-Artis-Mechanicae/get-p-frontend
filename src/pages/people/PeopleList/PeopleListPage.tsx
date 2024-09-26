@@ -7,7 +7,7 @@ import { Text } from "@/components/__common__/typography/Text";
 import { PeopleCard } from "@/components/people/PeopleCard";
 import { PeopleSearch } from "@/components/people/PeopleSearch";
 
-import { ISortOrder } from "@/pages/project/ProjectListPage";
+import { ISortOption } from "@/pages/project/ProjectListPage";
 
 import { usePeopleList } from "@/services/people/usePeopleList";
 
@@ -17,9 +17,14 @@ export default function PeopleListPage() {
     const navigate = useNavigate();
     const { isPending, data } = usePeopleList();
 
-    const [sortOrder, setSortOrder] = useState<ISortOrder>("default");
+    const [sortOrder, setSortOrder] = useState<ISortOption>({ key: "default", title: "기본 정렬" });
 
-    const handleSortOrder = (order: ISortOrder) => {
+    const sortOptions: ISortOption[] = [
+        { key: "default", title: "기본 정렬" },
+        { key: "likes", title: "좋아요 순" },
+    ];
+
+    const handleSortOrder = (order: ISortOption) => {
         setSortOrder(order);
     };
 
@@ -27,7 +32,13 @@ export default function PeopleListPage() {
 
     return (
         <PeopleListWrapper>
-            <PeopleSearch width="100%" height="auto" order={sortOrder} onSortChange={handleSortOrder} />
+            <PeopleSearch
+                width="100%"
+                height="auto"
+                options={sortOptions}
+                order={sortOrder}
+                onSortChange={handleSortOrder}
+            />
             <PeopleListContainer>
                 {data && (
                     <>

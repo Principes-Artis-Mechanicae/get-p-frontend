@@ -10,20 +10,37 @@ import { useProjectList } from "@/services/project/useProjectList";
 
 import { ProjectListContainer, ProjectListWrapper } from "./ProjectListPage.style";
 
-export type ISortOrder = "default" | "latest" | "closing" | "successFee" | "likes";
+export interface ISortOption {
+    key: string;
+    title: string;
+}
 
 export default function ProjectListPage() {
-    const [sortOrder, setSortOrder] = useState<ISortOrder>("default");
+    const [sortOrder, setSortOrder] = useState<ISortOption>({ key: "default", title: "기본 정렬" });
     const { isPending, data } = useProjectList();
 
-    const handleSortOrder = (order: ISortOrder) => {
+    const sortOptions: ISortOption[] = [
+        { key: "default", title: "기본 정렬" },
+        { key: "latest", title: "최신 등록 순" },
+        { key: "closing", title: "마감 임박 순" },
+        { key: "successFee", title: "성공 보수 순" },
+        { key: "likes", title: "좋아요 순" },
+    ];
+
+    const handleSortOrder = (order: ISortOption) => {
         setSortOrder(order);
     };
 
     if (isPending) return <>loading...</>;
     return (
         <ProjectListWrapper>
-            <PeopleSearch width="100%" height="auto" order={sortOrder} onSortChange={handleSortOrder} />
+            <PeopleSearch
+                width="100%"
+                height="auto"
+                options={sortOptions}
+                order={sortOrder}
+                onSortChange={handleSortOrder}
+            />
             <ProjectListContainer>
                 {data && (
                     <>
