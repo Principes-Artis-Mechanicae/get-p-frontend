@@ -12,7 +12,7 @@ import PeopleProfileEditPage from "@/pages/people/PeopleProfileEdit/PeopleProfil
 import ProjectApplyPage from "@/pages/project/ProjectApplyPage";
 import ProjectDetailPage from "@/pages/project/ProjectDetailPage";
 import ProjectListPage from "@/pages/project/ProjectListPage/ProjectListPage";
-import ProjectRequestPage from "@/pages/project/ProjectRequestPage";
+import ProjectRequestPage from "@/pages/project/ProjectRequest/ProjectRequestPage";
 
 import { MemberType } from "@/services/auth/types";
 
