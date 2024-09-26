@@ -12,10 +12,11 @@ export const useProjectList = () => {
 
     const sizeParams = parseInt(searchParams.get("size") ?? "10");
     const sortParams = searchParams.get("sort") as string;
+    const likedParams = searchParams.get("liked") === "true";
 
     const query = useQuery({
-        queryKey: PROJECT_QUERY_KEYS.READ_PROJECTS(currentPage - 1, sizeParams, sortParams),
-        queryFn: () => projectService.readProjects(currentPage - 1, sizeParams, sortParams),
+        queryKey: PROJECT_QUERY_KEYS.READ_PROJECTS(currentPage - 1, sizeParams, sortParams, likedParams),
+        queryFn: () => projectService.readProjects(currentPage - 1, sizeParams, sortParams, likedParams),
     });
 
     return { ...query };

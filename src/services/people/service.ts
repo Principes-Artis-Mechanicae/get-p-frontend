@@ -15,9 +15,19 @@ import {
 } from "./types";
 
 export const peopleService = {
-    readPeople: async (page = 0, size = 1, sort = "peopleId,desc") => {
-        const response = await api.get<ReadPeopleResponseBody>(`/people?page=${page}&size=${size}&sort=${sort}`);
-        console.log(response.data.data);
+    readPeople: async (page = 0, size = 1, sort = "peopleId,desc", liked?: boolean) => {
+        const params = new URLSearchParams({
+            page: String(page),
+            size: String(size),
+            sort: sort,
+        });
+
+        if (liked !== undefined) {
+            params.append("liked", liked ? "true" : "false");
+        }
+
+        const response = await api.get<ReadPeopleResponseBody>(`/people?${params.toString()}`);
+        //console.log(response.data.data);
         return response.data.data;
     },
     readPeopleById: async (id: number) => {

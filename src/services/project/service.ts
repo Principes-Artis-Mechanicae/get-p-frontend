@@ -12,8 +12,19 @@ import { ProjectRequestBody, ProjectRequestResponseBody } from "./types";
 import { ReadProjectDetailResponseBody } from "./types";
 
 export const projectService = {
-    readProjects: async (page = 0, size = 1, sort = "projectId,desc") => {
-        const response = await api.get<ReadProjectResponseBody>(`/projects?page=${page}&size=${size}&sort=${sort}`);
+    readProjects: async (page = 0, size = 1, sort = "projectId,desc", liked?: boolean) => {
+        const params = new URLSearchParams({
+            page: String(page),
+            size: String(size),
+            sort: sort,
+        });
+
+        if (liked !== undefined) {
+            params.append("liked", liked ? "true" : "false");
+        }
+
+        const response = await api.get<ReadProjectResponseBody>(`/projects?${params.toString()}`);
+        //console.log(response.data.data);
         return response.data.data;
     },
     readProjectDetail: async (id: number) => {

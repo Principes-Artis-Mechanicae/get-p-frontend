@@ -1,5 +1,7 @@
 import { SearchBar } from "principes-getp";
 
+import { ISortOption } from "@/pages/project/ProjectListPage";
+
 import { useToggle } from "@/hooks/useToggle";
 
 import { Text } from "../__common__/typography/Text";
@@ -16,9 +18,12 @@ import {
 export interface IPeopleSearch {
     width: string;
     height: string;
+    options: ISortOption[];
+    order: ISortOption;
+    onSortChange: (order: ISortOption) => void;
 }
 
-export const PeopleSearch: React.FC<IPeopleSearch> = ({ width, height }) => {
+export const PeopleSearch = ({ width, height, options, order, onSortChange }: IPeopleSearch) => {
     const { toggle, handleClick } = useToggle();
 
     return (
@@ -38,31 +43,17 @@ export const PeopleSearch: React.FC<IPeopleSearch> = ({ width, height }) => {
                 </PeopleSearchCheckBox>
 
                 <PeopleSearchOptionContainer>
-                    <PeopleSearchOptionItem>
-                        <Text size="s" color="point" weight="bold">
-                            기본 정렬
-                        </Text>
-                    </PeopleSearchOptionItem>
-                    <PeopleSearchOptionItem>
-                        <Text size="s" color="primary" weight="bold">
-                            최신 등록 순
-                        </Text>
-                    </PeopleSearchOptionItem>
-                    <PeopleSearchOptionItem>
-                        <Text size="s" color="primary" weight="bold">
-                            마감 임박 순
-                        </Text>
-                    </PeopleSearchOptionItem>
-                    <PeopleSearchOptionItem>
-                        <Text size="s" color="primary" weight="bold">
-                            성공 보수 순
-                        </Text>
-                    </PeopleSearchOptionItem>
-                    <PeopleSearchOptionItem>
-                        <Text size="s" color="primary" weight="bold">
-                            관심 순
-                        </Text>
-                    </PeopleSearchOptionItem>
+                    {options.map((option) => (
+                        <PeopleSearchOptionItem
+                            key={option.key}
+                            onClick={() => onSortChange(option)}
+                            $selected={option.key === "default"}
+                        >
+                            <Text size="s" color={option.key === order.key ? "point" : "primary"} weight="bold">
+                                {option.title}
+                            </Text>
+                        </PeopleSearchOptionItem>
+                    ))}
                 </PeopleSearchOptionContainer>
             </PeopleSearchOptionWrapper>
         </PeopleSearchWrapper>
