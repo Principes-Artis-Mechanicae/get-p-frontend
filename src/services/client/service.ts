@@ -5,7 +5,7 @@ import { api } from "@/config/axios";
 import { ExceptionHandler } from "@/utils/exception";
 
 import { RenderToastFromDerivedError } from "../exception";
-import { RegisterClientRequestBody, RegisterClientResponseBody } from "./types";
+import { ReadProjectResponseBody, RegisterClientRequestBody, RegisterClientResponseBody } from "./types";
 
 export const clientService = {
     registerClient: async (body: RegisterClientRequestBody) => {
@@ -35,5 +35,11 @@ export const clientService = {
             pending: "의뢰자 정보 수정 중입니다",
             error: RenderToastFromDerivedError,
         });
+    },
+    readClientProjects: async (page = 0, size = 1, sort = "projectId,desc") => {
+        const response = await api.get<ReadProjectResponseBody>(
+            `/client/me/projects?page=${page}&size=${size}&sort=${sort}`,
+        );
+        return response.data.data;
     },
 };

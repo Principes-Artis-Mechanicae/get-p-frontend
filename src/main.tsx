@@ -17,6 +17,6 @@ async function enableMocking(enable: boolean) {
     return worker.start();
 }
 
-enableMocking(true).then(() => {
+enableMocking(false).then(() => {
     ReactDOM.createRoot(document.getElementById("root")!).render(<App />);
 });

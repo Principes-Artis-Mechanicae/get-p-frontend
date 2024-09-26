@@ -1,11 +1,14 @@
+import { SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 
-export const ProjectManagementWrapper = styled.div`
+export const ProjectManagementWrapper = styled.div<{ additionalStyles?: SerializedStyles }>`
     width: max(100%, 200px);
 
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    ${(props) => props.additionalStyles};
 `;
 
 export const ProjectManagementContainer = styled.div`
