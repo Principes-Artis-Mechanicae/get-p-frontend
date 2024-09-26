@@ -8,6 +8,7 @@ export const ProjectCategory = {
     BACKEND: "백엔드 개발",
     APP: "앱 개발",
     PROGRAM: "프로그램 개발",
+    ETC: "기타",
 } as const;
 
 export type Duration = {

@@ -1,12 +1,11 @@
 // import { RadioGroup } from "principes-getp";
 import { useSelector } from "react-redux";
 
-import { PostProjectRequestSection } from "@/components/project/ProjectRequestSection/PostProjectRequestSection";
-import { ProjectReqeustCompleteSection } from "@/components/project/ProjectRequestSection/ProjectRequestCompleteSection";
-import { ProjectRequestContentSection } from "@/components/project/ProjectRequestSection/ProjectRequestContentSection";
-import { ProjectRequestDateSection } from "@/components/project/ProjectRequestSection/ProjectRequestDateSection";
-import { ProjectRequestTagSection } from "@/components/project/ProjectRequestSection/ProjectRequestTagSection";
-
+import { PostProjectRequestSection } from "./Section/PostProjectRequestSection";
+import { ProjectReqeustCompleteSection } from "./Section/ProjectRequestCompleteSection";
+import { ProjectRequestContentSection } from "./Section/ProjectRequestContentSection";
+import { ProjectRequestDateSection } from "./Section/ProjectRequestDateSection";
+import { ProjectRequestTagSection } from "./Section/ProjectRequestTagSection";
 import { RootState } from "@/store/store";
 
 export default function ProjectRequestPage() {

@@ -2,6 +2,7 @@ import { useCallback } from "react";
 
 import { Input } from "principes-getp";
 
+import { AuthGuardBlur } from "@/components/__common__/display/AuthGuardBlur/AuthGuardBlur";
 import { Text } from "@/components/__common__/typography/Text";
 import { Profile } from "@/components/people/Profile";
 import { TechStackBadge } from "@/components/people/TechStackBadge";
@@ -83,46 +84,48 @@ export default function PeopleDetailPage() {
                         value={people?.peopleType === "INDIVIDAUL" ? "개인" : "팀"}
                     />
                 </TextboxContainer>
-                <TextboxContainer>
-                    <Text size="xs" color="secondary" weight="bold">
-                        기술 스택
-                    </Text>
-                    <BadgeContainer>
-                        {people?.profile.techStacks.map((techStack: string) => (
-                            <TechStackBadge text={techStack} isInput={false} />
-                        ))}
-                    </BadgeContainer>
-                </TextboxContainer>
-                <TextboxContainer>
-                    <Text size="xs" color="secondary" weight="bold">
-                        활동지역
-                    </Text>
-                    <Input width="100%" height="45px" disabled={true} value={people?.profile.activityArea} />
-                </TextboxContainer>
-                <TextboxContainer>
-                    <Text size="xs" color="secondary" weight="bold">
-                        학력
-                    </Text>
-                    <Input width="100%" height="45px" disabled={true} value={people?.profile.education.school} />
-                </TextboxContainer>
-                <TextboxContainer>
-                    <Text size="xs" color="secondary" weight="bold">
-                        소개
-                    </Text>
-                    <Textbox width="100%">{people?.profile.introduction}</Textbox>
-                </TextboxContainer>
-                <TextboxContainer>
-                    <Text size="xs" color="secondary" weight="bold">
-                        포트폴리오
-                    </Text>
-                    <PortfolioContainer>
-                        {people?.profile.portfolios.map((portfolio) => (
-                            <PortfolioCard onClick={() => handlePortfolioOpen(portfolio.url)}>
-                                {portfolio.description}
-                            </PortfolioCard>
-                        ))}
-                    </PortfolioContainer>
-                </TextboxContainer>
+                <AuthGuardBlur width="100%" height="100%" withButton={true}>
+                    <TextboxContainer>
+                        <Text size="xs" color="secondary" weight="bold">
+                            기술 스택
+                        </Text>
+                        <BadgeContainer>
+                            {people?.profile.techStacks.map((techStack: string) => (
+                                <TechStackBadge text={techStack} isInput={false} />
+                            ))}
+                        </BadgeContainer>
+                    </TextboxContainer>
+                    <TextboxContainer>
+                        <Text size="xs" color="secondary" weight="bold">
+                            활동지역
+                        </Text>
+                        <Input width="100%" height="45px" disabled={true} value={people?.profile.activityArea} />
+                    </TextboxContainer>
+                    <TextboxContainer>
+                        <Text size="xs" color="secondary" weight="bold">
+                            학력
+                        </Text>
+                        <Input width="100%" height="45px" disabled={true} value={people?.profile.education.school} />
+                    </TextboxContainer>
+                    <TextboxContainer>
+                        <Text size="xs" color="secondary" weight="bold">
+                            소개
+                        </Text>
+                        <Textbox width="100%">{people?.profile.introduction}</Textbox>
+                    </TextboxContainer>
+                    <TextboxContainer>
+                        <Text size="xs" color="secondary" weight="bold">
+                            포트폴리오
+                        </Text>
+                        <PortfolioContainer>
+                            {people?.profile.portfolios.map((portfolio) => (
+                                <PortfolioCard onClick={() => handlePortfolioOpen(portfolio.url)}>
+                                    {portfolio.description}
+                                </PortfolioCard>
+                            ))}
+                        </PortfolioContainer>
+                    </TextboxContainer>
+                </AuthGuardBlur>
             </InfoContainer>
         </PeopleDetailWrapper>
     );

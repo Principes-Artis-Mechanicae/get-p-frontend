@@ -14,7 +14,7 @@ import { authService } from "@/services/auth/service";
 
 import { REGEXP_EMAIL, REGEXP_PASSWORD } from "@/constants/regex";
 
-import { formatTime } from "@/utils/formatTime";
+import { formatTime } from "@/utils/format";
 
 import { Modal } from "../__common__/feedback/Modal";
 import { Paragraph } from "../__common__/typography/Paragraph";
