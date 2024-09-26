@@ -1,4 +1,15 @@
 {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "todo-tree.highlights.customHighlight": {
+        "TODO": {
+            "foreground": "#fff",
+            "background": "green"
+        },
+        "BUG": {
+            "icon": "bug",
+            "foreground": "#fff",
+            "background": "red"
+        }
+    }
 }

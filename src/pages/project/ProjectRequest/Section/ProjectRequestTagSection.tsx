@@ -5,13 +5,13 @@ import { Button, Input, Label } from "principes-getp";
 
 import { Paragraph } from "@/components/__common__/typography/Paragraph";
 import { Title } from "@/components/__common__/typography/Title";
+import { ProjectRequestStep } from "@/components/project/ProjectRequestStep/ProjectRequestStep";
+import { ProjectTag, ProjectTagContainer } from "@/components/project/ProjectTag/ProjectTag.style";
 
-import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequestPage.style";
+import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequest/ProjectRequestPage.style";
 
 import { useProjectRequest } from "@/services/project/useProjectRequest";
 
-import { ProjectRequestStep } from "../ProjectRequestStep/ProjectRequestStep";
-import { ProjectTag, ProjectTagContainer } from "../ProjectTag/ProjectTag.style";
 import { ProjectRequestTagSectionContainer } from "./ProjectRequestTagSection.style";
 import { projectAction } from "@/store/slice/project.slice";
 import { RootDispatch, RootState } from "@/store/store";
@@ -57,7 +57,14 @@ export const ProjectRequestTagSection = () => {
                 ></Input>
                 <ProjectTagContainer>
                     {hashtags.map((hashtag, index) => {
-                        return <ProjectTag key={index}>{hashtag}</ProjectTag>;
+                        return (
+                            <ProjectTag
+                                key={`${index}:hashtag:${hashtag}`}
+                                onClick={() => dispatch(projectAction.removeHashTag(hashtag))}
+                            >
+                                {hashtag}
+                            </ProjectTag>
+                        );
                     })}
                 </ProjectTagContainer>
             </ProjectRequestTagSectionContainer>

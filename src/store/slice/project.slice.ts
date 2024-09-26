@@ -74,6 +74,9 @@ const projectSlice = createSlice({
                 case "프로그램 개발":
                     state.category = "PROGRAM";
                     break;
+                case "기타":
+                    state.category = "ETC";
+                    break;
             }
         },
         setPayment: (state, action: PayloadAction<number>) => {
@@ -89,7 +92,7 @@ const projectSlice = createSlice({
             state.hashtags.push(action.payload);
         },
         removeHashTag: (state, action: PayloadAction<string>) => {
-            state.hashtags.filter((value) => value !== action.payload);
+            state.hashtags = state.hashtags.filter((value) => value !== action.payload);
         },
 
         setApplicationStartDate: (state, action: PayloadAction<string>) => {

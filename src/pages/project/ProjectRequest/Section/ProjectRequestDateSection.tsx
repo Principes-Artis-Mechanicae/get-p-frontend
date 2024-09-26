@@ -6,12 +6,12 @@ import { Button, DatePicker, Label } from "principes-getp";
 
 import { Paragraph } from "@/components/__common__/typography/Paragraph";
 import { Title } from "@/components/__common__/typography/Title";
+import { ProjectRequestStep } from "@/components/project/ProjectRequestStep/ProjectRequestStep";
 
-import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequestPage.style";
+import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequest/ProjectRequestPage.style";
 
 import { useProjectRequest } from "@/services/project/useProjectRequest";
 
-import { ProjectRequestStep } from "../ProjectRequestStep/ProjectRequestStep";
 import { ProjectRequestDateSectionContainer } from "./ProjectRequestDateSection.style";
 import { projectAction } from "@/store/slice/project.slice";
 import { RootDispatch } from "@/store/store";
@@ -28,11 +28,10 @@ export const ProjectRequestDateSection = () => {
     } = useProjectRequest();
 
     const handleNextBtnClick = useCallback(() => {
-        if (!isProjectDurationValid) {
-            toast.error("아직 입력하지 않은 항목이 존재합니다");
-            return;
-        }
-        dispatch(projectAction.nextStep());
+        const isValid = isProjectDurationValid();
+
+        if (typeof isValid === "string") toast.error(isValid);
+        else dispatch(projectAction.nextStep());
     }, [dispatch, isProjectDurationValid]);
 
     return (
@@ -65,7 +64,7 @@ export const ProjectRequestDateSection = () => {
 
             <ProjectRequestDateSectionContainer>
                 <Button
-                    variant={isProjectDurationValid ? "primary" : "disabled"}
+                    variant={isProjectDurationValid() ? "primary" : "disabled"}
                     width="100%"
                     height="54px"
                     onClick={handleNextBtnClick}

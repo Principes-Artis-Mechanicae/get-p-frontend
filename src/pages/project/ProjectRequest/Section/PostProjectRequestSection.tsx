@@ -4,12 +4,13 @@ import { toast } from "react-toastify";
 
 import { Button, DropDown, DropDownContextProvider, DropDownItem, RadioGroup, RadioItem } from "principes-getp";
 
-import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequestPage.style";
+import { Paragraph } from "@/components/__common__/typography/Paragraph";
+import { Title } from "@/components/__common__/typography/Title";
+
+import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequest/ProjectRequestPage.style";
 
 import { useProjectRequest } from "@/services/project/useProjectRequest";
 
-import { Paragraph } from "../../__common__/typography/Paragraph";
-import { Title } from "../../__common__/typography/Title";
 import { PostProjectRequestContianer } from "./PostProjectRequestSection.style";
 import { projectAction } from "@/store/slice/project.slice";
 import { RootDispatch } from "@/store/store";
@@ -20,8 +21,7 @@ export const PostProjectRequestSection = () => {
     const { isPostProjectInputValid } = useProjectRequest();
 
     const handleOnlineMeeting = useCallback(() => {
-        // 온라인 미팅 타입 필요
-        dispatch(projectAction.setMeetingType(""));
+        dispatch(projectAction.setMeetingType("REMOTE"));
     }, [dispatch]);
 
     const handleOfflineMeeting = useCallback(() => {
@@ -74,6 +74,7 @@ export const PostProjectRequestSection = () => {
                         <DropDownItem index={2} value={"백엔드 개발"} />
                         <DropDownItem index={3} value={"앱 개발"} />
                         <DropDownItem index={4} value={"프로그램 개발"} />
+                        <DropDownItem index={5} value={"기타"} />
                     </DropDown>
                 </DropDownContextProvider>
             </PostProjectRequestContianer>
