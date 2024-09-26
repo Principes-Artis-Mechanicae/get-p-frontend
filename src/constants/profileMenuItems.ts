@@ -27,7 +27,7 @@ export const profileMenu = (memberType: MemberType | null): IProfileMenuItem[] =
             {
                 id: 4,
                 text: "프로젝트 관리",
-                to: "/",
+                to: "client/me/projects?page=1&size=9&sort=projectId,desc",
             },
             {
                 id: 5,

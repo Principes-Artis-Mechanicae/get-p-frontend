@@ -1,6 +1,8 @@
 import { ChangeEvent, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { isValidDuration } from "@/utils/validation";
+
 import { projectService } from "./service";
 import { projectAction } from "@/store/slice/project.slice";
 import { RootDispatch, RootState } from "@/store/store";
@@ -41,11 +43,28 @@ export const useProjectRequest = () => {
     });
 
     const isPostProjectInputValid = meetingType && category;
-    const isProjectDurationValid =
-        applicationDuration.startDate &&
-        applicationDuration.endDate &&
-        estimatedDuration.startDate &&
-        estimatedDuration.endDate;
+
+    const isProjectDurationValid = (): string | boolean => {
+        if (
+            !(
+                applicationDuration.startDate &&
+                applicationDuration.endDate &&
+                estimatedDuration.startDate &&
+                estimatedDuration.endDate
+            )
+        )
+            return "아직 입력하지 않은 항목이 존재합니다";
+
+        if (
+            !(
+                isValidDuration(applicationDuration.startDate, applicationDuration.endDate) &&
+                isValidDuration(estimatedDuration.startDate, estimatedDuration.endDate)
+            )
+        )
+            return "시작 날짜는 마감 날짜보다 앞서야 합니다";
+
+        return true;
+    };
 
     const handleApplicationStartDateChange = useCallback(
         (e: ChangeEvent<HTMLInputElement>) => {

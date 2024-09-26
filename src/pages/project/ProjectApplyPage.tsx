@@ -1,18 +1,18 @@
 import { TextArea, Button } from "principes-getp";
 
+import { CheckButton } from "@/components/__common__/form/CheckButton";
 import { Text } from "@/components/__common__/typography/Text";
-import { Profile } from "@/components/people/Profile";
-import {
-    ProfileHashTagWrapper,
-    ProfileHashTagContainer,
-    ProfileHashTagItem,
-} from "@/components/people/ProfileHashTag.style";
+import { ProjectOutline } from "@/components/project/ProjectApply/ProjectOutline";
 
 import useFileUpload from "@/hooks/useFileUpload";
 
+import { PeopleType } from "@/services/people/types";
 import { useProjectApply } from "@/services/project/useProjectApply";
+import { useProjectById } from "@/services/project/useProjectById";
 
 import deleteIcon from "@/assets/people/close.svg";
+
+import { calculateDays } from "@/utils/calculateDays";
 
 import {
     PeopleDetailWrapper,
@@ -26,14 +26,16 @@ import {
     NameContainer,
     OpenButton,
     DeleteButton,
+    ButtonBox,
 } from "../people/PeopleDetail/PeopleDetailPage.style";
-import { HashTagTitleContainer, DateInput, FileInput } from "./ProjectApplyPage.style";
+import { DateInput, FileInput } from "./ProjectApplyPage.style";
 
 const ProjectApplyPage = () => {
-    const { setStartDate, setEndDate, descriptionRef, handleApplyBtnClicked } = useProjectApply();
-    const { fileInputRef, portfolios, handleFileChange, handleDelete, handleButtonClick } = useFileUpload();
+    const { setStartDate, setEndDate, descriptionRef, handleApplyBtnClicked, handlePeopleType, peopleType } =
+        useProjectApply();
+    const { isPending, isError, data: project } = useProjectById();
 
-    const hashtags = ["설계", "기획", "서류작업"];
+    const { fileInputRef, portfolios, handleFileChange, handleDelete, handleButtonClick } = useFileUpload();
 
     const selectStartDate = (e: React.ChangeEvent<HTMLInputElement>) => {
         const date = e.target.value;
@@ -45,6 +47,16 @@ const ProjectApplyPage = () => {
         setEndDate(date);
     };
 
+    const totalDays = calculateDays(
+        project?.estimatedDuration.startDate as string,
+        project?.estimatedDuration.endDate as string,
+    );
+
+    const remainedDays = calculateDays(new Date().toString(), project?.applicationDuration.startDate as string);
+
+    if (isPending) return <>loading...</>;
+    if (isError) return <>err..</>;
+
     return (
         <PeopleDetailWrapper>
             <ResponsiveMobileHeading>
@@ -53,19 +65,17 @@ const ProjectApplyPage = () => {
                 </Text>
             </ResponsiveMobileHeading>
             <ProfileContainer>
-                <Profile width="268px" height="283px" nickname="People01" likeCount={14} completeProjectsCount={2} />
-                <ProfileHashTagWrapper width="268px" minHeight="120px">
-                    <ProfileHashTagContainer>
-                        <HashTagTitleContainer>
-                            <Text size="m" color="secondary" weight="bold">
-                                해시태그
-                            </Text>
-                        </HashTagTitleContainer>
-                        {hashtags.map((item, index) => (
-                            <ProfileHashTagItem key={index}>{item}</ProfileHashTagItem>
-                        ))}
-                    </ProfileHashTagContainer>
-                </ProfileHashTagWrapper>
+                <ProjectOutline
+                    totalDays={totalDays}
+                    remainedDays={remainedDays}
+                    title={project.title}
+                    hashtags={project.hashtags}
+                    clientAddress={project.client.address}
+                    likesCount={project.likesCount}
+                    payment={project.payment}
+                    description={project.description}
+                    applicationDuration={project.applicationDuration}
+                ></ProjectOutline>
             </ProfileContainer>
             <InfoContainer>
                 <ResponsivePCHeading>
@@ -73,6 +83,25 @@ const ProjectApplyPage = () => {
                         프로젝트 지원하기
                     </Text>
                 </ResponsivePCHeading>
+
+                <ButtonBox>
+                    <CheckButton
+                        width="50%"
+                        height="50px"
+                        isChecked={peopleType === PeopleType.INDIVIDUAL}
+                        onClick={() => handlePeopleType(PeopleType.INDIVIDUAL)}
+                    >
+                        개인으로 지원하기
+                    </CheckButton>
+                    <CheckButton
+                        width="50%"
+                        height="50px"
+                        isChecked={peopleType === PeopleType.TEAM}
+                        onClick={() => handlePeopleType(PeopleType.TEAM)}
+                    >
+                        팀으로 지원하기
+                    </CheckButton>
+                </ButtonBox>
 
                 <TextboxContainer>
                     <Text size="m" color="secondary" weight="bold">

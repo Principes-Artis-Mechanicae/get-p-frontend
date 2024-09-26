@@ -10,6 +10,7 @@ import {
     ProjectManagementItem,
     Icon,
 } from "./ProjectManagement.style";
+import { SerializedStyles } from "@emotion/react";
 
 export interface ProjectManagementProps {
     clientAddress: {
@@ -17,11 +18,12 @@ export interface ProjectManagementProps {
         street: string;
     };
     likesCount: number;
+    additionalStyles?: SerializedStyles;
 }
 
-export const ProjectManagement = ({ clientAddress, likesCount }: ProjectManagementProps) => {
+export const ProjectManagement = ({ clientAddress, likesCount, additionalStyles }: ProjectManagementProps) => {
     return (
-        <ProjectManagementWrapper>
+        <ProjectManagementWrapper additionalStyles={additionalStyles}>
             <ProjectManagementContainer>
                 <ProjectManagementItem>
                     <Icon src={buildingIcon}></Icon>

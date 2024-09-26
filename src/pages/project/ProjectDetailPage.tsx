@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { AuthGuardBlur } from "@/components/__common__/display/AuthGuardBlur/AuthGuardBlur";
-import { AuthFilter } from "@/components/__common__/guard/AuthFilterGuard";
+import { AuthFilter } from "@/components/__common__/guard/AuthFilter";
 import { Text } from "@/components/__common__/typography/Text";
 import { ProjectApply } from "@/components/project/ProjectApply/ProjectApply";
 import { ProjectInfo } from "@/components/project/ProjectDetail/ProjectInfo";

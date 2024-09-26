@@ -48,6 +48,20 @@ export const ProjectCard: React.FC<IProjectCard> = ({
 }) => {
     const isTabletOrMobile = useMediaQuery("(max-width: 1200px)");
 
+    // 상태에 따른 텍스트 변환
+    const getStatusText = (status: string) => {
+        switch (status) {
+            case "APPLYING":
+                return "모집중";
+            case "ACTIVE":
+                return "진행중";
+            case "CLOSE":
+                return "완료";
+            default:
+                return status;
+        }
+    };
+
     return (
         <ProjectCardWrapper>
             <ApplicantsCountItem>{applicantsCount}회 지원</ApplicantsCountItem>
@@ -56,8 +70,8 @@ export const ProjectCard: React.FC<IProjectCard> = ({
                     <ProjectHeaderItem>
                         <ProjectTitle>{title}</ProjectTitle>
                     </ProjectHeaderItem>
-                    <StatusBox>
-                        <StatusText>{status}</StatusText>
+                    <StatusBox status={status}>
+                        <StatusText status={status}>{getStatusText(status)}</StatusText>
                     </StatusBox>
                 </ProjectCardHeader>
                 <ProjectCardItemContainer>
