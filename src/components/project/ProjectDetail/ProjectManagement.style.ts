@@ -8,8 +8,6 @@ export const ProjectManagementWrapper = styled.div<{ additionalStyles?: Serializ
     flex-direction: column;
     gap: 10px;
 
-    padding: 25px;
-
     ${(props) => props.additionalStyles};
 `;
 
