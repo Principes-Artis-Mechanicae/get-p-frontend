@@ -7,7 +7,7 @@ import { Text } from "@/components/__common__/typography/Text";
 import { PeopleCard } from "@/components/people/PeopleCard";
 import { PeopleSearch } from "@/components/people/PeopleSearch";
 
-import { ISortOption } from "@/pages/project/ProjectListPage";
+import { ISortOption } from "@/pages/project/ProjectListPage/ProjectListPage";
 
 import { usePeopleList } from "@/services/people/usePeopleList";
 

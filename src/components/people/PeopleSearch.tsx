@@ -1,6 +1,6 @@
 import { SearchBar } from "principes-getp";
 
-import { ISortOption } from "@/pages/project/ProjectListPage";
+import { ISortOption } from "@/pages/project/ProjectListPage/ProjectListPage";
 
 import { useToggle } from "@/hooks/useToggle";
 
@@ -18,9 +18,9 @@ import {
 export interface IPeopleSearch {
     width: string;
     height: string;
-    options: ISortOption[];
-    order: ISortOption;
-    onSortChange: (order: ISortOption) => void;
+    options?: ISortOption[];
+    order?: ISortOption;
+    onSortChange?: (order: ISortOption) => void;
 }
 
 export const PeopleSearch = ({ width, height, options, order, onSortChange }: IPeopleSearch) => {
@@ -43,13 +43,13 @@ export const PeopleSearch = ({ width, height, options, order, onSortChange }: IP
                 </PeopleSearchCheckBox>
 
                 <PeopleSearchOptionContainer>
-                    {options.map((option) => (
+                    {options?.map((option) => (
                         <PeopleSearchOptionItem
                             key={option.key}
-                            onClick={() => onSortChange(option)}
+                            onClick={() => onSortChange && onSortChange(option)}
                             $selected={option.key === "default"}
                         >
-                            <Text size="s" color={option.key === order.key ? "point" : "primary"} weight="bold">
+                            <Text size="s" color={option.key === order?.key ? "point" : "primary"} weight="bold">
                                 {option.title}
                             </Text>
                         </PeopleSearchOptionItem>
