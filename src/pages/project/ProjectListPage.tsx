@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { Pagination } from "principes-getp";
 
+import { Text } from "@/components/__common__/typography/Text";
 import { PeopleSearch } from "@/components/people/PeopleSearch";
 import { ProjectCard } from "@/components/project/ProjectCard";
 
@@ -24,7 +25,7 @@ export default function ProjectListPage() {
         <ProjectListWrapper>
             <PeopleSearch width="100%" height="auto" order={sortOrder} onSortChange={handleSortOrder} />
             <ProjectListContainer>
-                {sortOrder === "default" && data && (
+                {data && (
                     <>
                         {data.content.map((project) => (
                             <ProjectCard
@@ -44,6 +45,7 @@ export default function ProjectListPage() {
                         ))}
                     </>
                 )}
+                {data && data.content.length === 0 && <Text>해당하는 데이터가 존재하지 않습니다.</Text>}
             </ProjectListContainer>
 
             <Pagination totalPages={data?.pageInfo.totalPages as number} pageGroupSize={5} />
