@@ -4,6 +4,17 @@ import { clientProjectData } from "./data";
 
 const API_BASE_URL = "https://api.principes.xyz/get-p/v2";
 
+export const requestMeeting = http.post(API_BASE_URL + `/projects/:id/meetings`, async ({ params }) => {
+    const { id } = params;
+
+    return HttpResponse.json({
+        status: 201,
+        data: {
+            meetingId: id,
+        },
+    });
+});
+
 export const readClientProject = http.get(API_BASE_URL + "/client/me/projects", ({ request }) => {
     const url = new URL(request.url);
 

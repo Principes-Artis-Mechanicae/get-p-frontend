@@ -3,6 +3,9 @@ import { Routes, Route } from "react-router-dom";
 import FindPasswordPage from "@/pages/auth/FindPasswordPage";
 import SignInPage from "@/pages/auth/SignInPage";
 import SignUpPage from "@/pages/auth/SignUpPage";
+import EditClientPage from "@/pages/client/EditClientPage";
+import MeetingRequestPage from "@/pages/client/MeetingRequest/MeetingRequestPage";
+import RegisterClientPage from "@/pages/client/RegisterClientPage";
 import HomePage from "@/pages/home/HomePage";
 import NotFoundPage from "@/pages/home/NotFoundPage";
 import PeopleDetailPage from "@/pages/people/PeopleDetail/PeopleDetailPage";
@@ -19,8 +22,6 @@ import { MemberType } from "@/services/auth/types";
 import { RouteGuard } from "./components/__common__/guard/RouteGuard";
 import { MainLayout } from "./components/__common__/layout/MainLayout";
 import ClientProjectListPage from "./pages/client/ClientProjectListPage/ClientProjectListPage";
-import EditClientPage from "./pages/client/EditClientPage";
-import RegisterClientPage from "./pages/client/RegisterClientPage";
 
 export const Router = () => {
     return (
@@ -89,6 +90,8 @@ export const Router = () => {
                 />
 
                 <Route path="project/:id" element={<ProjectDetailPage />} />
+
+                <Route path="project/:id/meetings" element={<MeetingRequestPage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Route>
         </Routes>
