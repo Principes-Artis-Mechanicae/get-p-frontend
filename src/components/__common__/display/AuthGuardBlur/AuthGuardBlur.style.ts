@@ -8,6 +8,10 @@ export const AuthGuardBlurWrapper = styled.div<Pick<AuthGuardBlurProps, "width" 
 
     width: ${(props) => props.width};
     height: ${(props) => props.height};
+
+    ${place_center}
+    flex-direction: column;
+    gap: 36px;
 `;
 
 export const AuthGuardBlurFilter = styled.div`

@@ -7,6 +7,7 @@ import { isRequestBodyValid } from "@/utils/validation";
 
 import { RenderToastFromDerivedError } from "../exception";
 import {
+    ReadProjectResponseBody,
     RegisterClientRequestBody,
     RegisterClientResponseBody,
     RequestMeetingRequestBody,
@@ -63,5 +64,11 @@ export const clientService = {
             success: "사전 미팅 신청서 전달이 성공적으로 완료되었습니다.",
             error: RenderToastFromDerivedError,
         });
+    },
+    readClientProjects: async (page = 0, size = 1, sort = "projectId,desc") => {
+        const response = await api.get<ReadProjectResponseBody>(
+            `/client/me/projects?page=${page}&size=${size}&sort=${sort}`,
+        );
+        return response.data.data;
     },
 };

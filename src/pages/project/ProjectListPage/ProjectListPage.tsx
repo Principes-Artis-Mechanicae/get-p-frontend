@@ -1,7 +1,7 @@
 import { Pagination } from "principes-getp";
 
 import { PeopleSearch } from "@/components/people/PeopleSearch";
-import { ProjectCard } from "@/components/project/ProjectCard";
+import { ProjectCard } from "@/components/project/ProjectCard/ProjectCard";
 
 import { useProjectList } from "@/services/project/useProjectList";
 

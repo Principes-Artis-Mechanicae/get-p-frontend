@@ -1,3 +1,5 @@
+import { mobile, tablet } from "@/styles/breakpoint";
+
 import styled from "@emotion/styled";
 
 export const ProjectCardWrapper = styled.div`
@@ -15,6 +17,13 @@ export const ProjectCardWrapper = styled.div`
     background: #fff;
     box-sizing: border-box;
     position: relative;
+
+    ${tablet} {
+        width: 100%;
+    }
+    ${mobile} {
+        width: 100%;
+    }
 `;
 
 export const ApplicantsCountItem = styled.div`
@@ -125,7 +134,7 @@ export const ApplicationDate = styled.div`
     letter-spacing: -0.56px;
 `;
 
-export const StatusBox = styled.div`
+export const StatusBox = styled.div<{ status: string }>`
     display: flex;
     padding: 8px 20px;
     height: 40px;
@@ -133,12 +142,22 @@ export const StatusBox = styled.div`
     align-items: center;
     gap: 8px;
     border-radius: 10px;
-    background: #f4f4f4;
+    background: ${({ status }) =>
+        status === "APPLYING"
+            ? "#f4f4f4" // 회색
+            : status === "ACTIVE"
+              ? "#F1FAFF" // 파란색
+              : "#E2F9E8"};
     box-sizing: border-box;
 `;
 
-export const StatusText = styled.div`
-    color: #818181;
+export const StatusText = styled.div<{ status: string }>`
+    color: ${({ status }) =>
+        status === "APPLYING"
+            ? "#818181" // 회색
+            : status === "ACTIVE"
+              ? "#2577C3E5" // 파란색
+              : "#69CA7E"};
     text-align: center;
     font-family: Pretendard;
     font-size: 14px;

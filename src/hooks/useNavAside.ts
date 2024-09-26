@@ -1,7 +1,9 @@
 import { useLayoutEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { RootState } from "@/store/store";
+import { useDebouncedScreenSize } from "./useScreenSize";
+import { uiActions } from "@/store/slice/ui.slice";
+import { RootDispatch, RootState } from "@/store/store";
 
 export const useNavAside = () => {
     const backdropRef = useRef<HTMLDivElement>(null);
@@ -10,6 +12,16 @@ export const useNavAside = () => {
     const timeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const { isNavAsideOpened } = useSelector((state: RootState) => state.ui);
+    const dispatch: RootDispatch = useDispatch();
+
+    const { innerWidth } = useDebouncedScreenSize();
+
+    useLayoutEffect(
+        function closeNavAsideWhenScreenExpands() {
+            if (innerWidth > 768 && isNavAsideOpened) dispatch(uiActions.closeNavAside());
+        },
+        [innerWidth, dispatch, isNavAsideOpened],
+    );
 
     useLayoutEffect(() => {
         if (isNavAsideOpened) {
