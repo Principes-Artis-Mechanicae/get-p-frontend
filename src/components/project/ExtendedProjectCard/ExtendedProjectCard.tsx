@@ -25,6 +25,7 @@ import {
     PaymentBox,
     CardTag,
 } from "./ExtendedProjectCard.style";
+import { css } from "@emotion/react";
 
 export interface IProjectCard {
     title: string;
@@ -100,6 +101,9 @@ export const ExtendedProjectCard: React.FC<IProjectCard> = ({
                                                 street: "대구광역시, 북구",
                                             }}
                                             likesCount={14}
+                                            additionalStyles={css`
+                                                padding: 0;
+                                            `}
                                         />
                                         <PaymentBox>{payment / 10000}만원</PaymentBox>
                                     </ProjectInfoWrapper>
