@@ -4,22 +4,24 @@ import FindPasswordPage from "@/pages/auth/FindPasswordPage";
 import SignInPage from "@/pages/auth/SignInPage";
 import SignUpPage from "@/pages/auth/SignUpPage";
 import EditClientPage from "@/pages/client/EditClientPage";
+import MeetingRequestPage from "@/pages/client/MeetingRequest/MeetingRequestPage";
 import RegisterClientPage from "@/pages/client/RegisterClientPage";
 import HomePage from "@/pages/home/HomePage";
 import NotFoundPage from "@/pages/home/NotFoundPage";
-import PeopleDetailPage from "@/pages/people/PeopleDetailPage";
-import PeopleInfoRegisterPage from "@/pages/people/PeopleInfoRegisterPage";
-import PeopleListPage from "@/pages/people/PeopleListPage";
-import PeopleProfileEditPage from "@/pages/people/PeopleProfileEditPage";
+import PeopleDetailPage from "@/pages/people/PeopleDetail/PeopleDetailPage";
+import PeopleInfoRegisterPage from "@/pages/people/PeopleInfoRegister/PeopleInfoRegisterPage";
+import PeopleListPage from "@/pages/people/PeopleList/PeopleListPage";
+import PeopleProfileEditPage from "@/pages/people/PeopleProfileEdit/PeopleProfileEditPage";
 import ProjectApplyPage from "@/pages/project/ProjectApplyPage";
 import ProjectDetailPage from "@/pages/project/ProjectDetailPage";
-import ProjectListPage from "@/pages/project/ProjectListPage";
-import ProjectRequestPage from "@/pages/project/ProjectRequestPage";
+import ProjectListPage from "@/pages/project/ProjectListPage/ProjectListPage";
+import ProjectRequestPage from "@/pages/project/ProjectRequest/ProjectRequestPage";
 
 import { MemberType } from "@/services/auth/types";
 
 import { RouteGuard } from "./components/__common__/guard/RouteGuard";
 import { MainLayout } from "./components/__common__/layout/MainLayout";
+import ClientProjectListPage from "./pages/client/ClientProjectListPage/ClientProjectListPage";
 
 export const Router = () => {
     return (
@@ -68,7 +70,14 @@ export const Router = () => {
                         </RouteGuard>
                     }
                 />
-
+                <Route
+                    path="client/me/projects"
+                    element={
+                        <RouteGuard role={MemberType.ROLE_CLIENT}>
+                            <ClientProjectListPage />
+                        </RouteGuard>
+                    }
+                />
                 <Route path="project/apply/:id" element={<ProjectApplyPage />} />
 
                 <Route
@@ -81,6 +90,8 @@ export const Router = () => {
                 />
 
                 <Route path="project/:id" element={<ProjectDetailPage />} />
+
+                <Route path="project/:id/meetings" element={<MeetingRequestPage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Route>
         </Routes>

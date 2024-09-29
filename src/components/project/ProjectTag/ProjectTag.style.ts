@@ -16,4 +16,8 @@ export const ProjectTag = styled.span`
     font-weight: bold;
     color: #476ff1;
     background-color: #ecf0fe;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;

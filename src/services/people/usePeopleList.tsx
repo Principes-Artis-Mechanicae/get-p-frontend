@@ -12,10 +12,11 @@ export const usePeopleList = () => {
 
     const sizeParams = parseInt(searchParams.get("size") ?? "10");
     const sortParams = searchParams.get("sort") as string;
+    const likedParams = searchParams.get("liked") === "true";
 
     const query = useQuery({
-        queryKey: PEOPLE_QUERY_KEYS.READ_PEOPLE(currentPage - 1, sizeParams, sortParams),
-        queryFn: () => peopleService.readPeople(currentPage - 1, sizeParams, sortParams),
+        queryKey: PEOPLE_QUERY_KEYS.READ_PEOPLE(currentPage - 1, sizeParams, sortParams, likedParams),
+        queryFn: () => peopleService.readPeople(currentPage - 1, sizeParams, sortParams, likedParams),
     });
 
     return { ...query };
