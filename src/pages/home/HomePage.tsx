@@ -4,8 +4,8 @@ import { Toast } from "@/components/__common__/feedback/Toast";
 import { Footer } from "@/components/__common__/layout/Footer";
 import { Header } from "@/components/__common__/layout/Header";
 import { Text } from "@/components/__common__/typography/Text";
-import { Carousel } from "@/components/home/Carousel";
-import { HomePageSection } from "@/components/home/HomePageSection.style";
+import { Carousel } from "@/components/home/Carousel/Carousel";
+import { HomePageSection } from "@/components/home/Section/HomePageSection";
 
 import { carouselImgSrc } from "@/constants/carouselImgSrc";
 

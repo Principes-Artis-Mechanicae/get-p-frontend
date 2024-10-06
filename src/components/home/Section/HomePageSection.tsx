@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-import { Text } from "../__common__/typography/Text";
-import { Title } from "../__common__/typography/Title";
-import { HomePageSectionHeader, HomePageSectionWrapper } from "./HomePageSection";
+import { Text } from "../../__common__/typography/Text";
+import { Title } from "../../__common__/typography/Title";
+import { HomePageSectionHeader, HomePageSectionWrapper } from "./HomePageSection.style";
 
 export interface IHomePageSection {
     title: string;
