@@ -4,7 +4,7 @@ import { TechStackAccordion } from "@/components/people/TechStackAccordion";
 import { TechStackBadge } from "@/components/people/TechStackBadge";
 
 import { useAccordion } from "@/hooks/people/useAccordion";
-import { useTechStack } from "@/hooks/useTechStack";
+import { useTechStack } from "@/hooks/people/useTechStack";
 
 import searchIcon from "@/assets/people/search.svg";
 

@@ -1,5 +1,5 @@
-import { NavAside } from "../navigation/NavAside";
-import { NavBar } from "../navigation/NavBar";
+import { NavAside } from "@/common/components/navigations/NavAside";
+import { NavBar } from "@/common/components/navigations/NavBar";
 
 export const Header: React.FC = () => {
     return (

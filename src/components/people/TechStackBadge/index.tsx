@@ -2,7 +2,7 @@ import { useCallback } from "react";
 
 import { Paragraph } from "@/common/components/typography/Paragraph/Paragraph";
 
-import { useTechStack } from "@/hooks/useTechStack";
+import { useTechStack } from "@/hooks/people/useTechStack";
 
 import closeIcon from "@/assets/people/close.svg";
 

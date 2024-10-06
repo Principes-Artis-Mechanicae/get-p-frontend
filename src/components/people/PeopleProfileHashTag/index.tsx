@@ -2,7 +2,7 @@ import { useRef } from "react";
 
 import { Text } from "@/common/components/typography/Text";
 
-import { useHashTag } from "@/hooks/useHashTag";
+import { useHashTag } from "@/hooks/people/useHashTag";
 
 import * as Styles from "./index.style";
 

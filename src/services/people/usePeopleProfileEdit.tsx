@@ -1,9 +1,8 @@
 import { useCallback, useRef, useState } from "react";
 
-import { useHashTag } from "@/hooks/useHashTag";
-import { useTechStack } from "@/hooks/useTechStack";
+import { useHashTag } from "@/hooks/people/useHashTag";
+import { useTechStack } from "@/hooks/people/useTechStack";
 
-// import { queryClient } from "@/config/query";
 import { peopleService } from "./service";
 import { useMutation } from "@tanstack/react-query";
 

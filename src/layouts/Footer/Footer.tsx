@@ -1,4 +1,5 @@
-import { Text } from "../typography/Text";
+import { Text } from "@/common/components/typography/Text";
+
 import {
     FooterContainerHead,
     FooterContainerBody,

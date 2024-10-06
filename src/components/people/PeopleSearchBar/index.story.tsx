@@ -1,11 +1,11 @@
-import { PeopleSearch } from ".";
+import { PeopleSearchBar } from "@/components/people/PeopleSearchBar";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
-    title: "components/PEOPLE/PeopleSearch",
-    component: PeopleSearch,
-} satisfies Meta<typeof PeopleSearch>;
+    title: "components/PEOPLE/PeopleSearchBar",
+    component: PeopleSearchBar,
+} satisfies Meta<typeof PeopleSearchBar>;
 
 export default meta;
 

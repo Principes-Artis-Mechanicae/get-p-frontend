@@ -11,6 +11,13 @@ import { ProjectInfo } from "@/components/project/ProjectInfo";
 import { ProjectManagement } from "@/components/project/ProjectManagement";
 import { ProjectPayment } from "@/components/project/ProjectPayment";
 
+import { useProjectById } from "@/services/project/useProjectById";
+import { useProjectLike } from "@/services/project/useProjectLike";
+
+import downloadIcon from "@/assets/project/download.png";
+
+import { calculateDays } from "@/utils/calculateDays";
+
 import {
     ProjectDetailWrapper,
     ProjectDetailSideContainer,
@@ -23,14 +30,7 @@ import {
     FileContainer,
     File,
     DownloadIcon,
-} from "@/pages/project/ProjectDetailPage.style";
-
-import { useProjectById } from "@/services/project/useProjectById";
-import { useProjectLike } from "@/services/project/useProjectLike";
-
-import downloadIcon from "@/assets/project/download.png";
-
-import { calculateDays } from "@/utils/calculateDays";
+} from "./ProjectDetailPage.style";
 
 export default function ProjectDetailPage() {
     const navigate = useNavigate();

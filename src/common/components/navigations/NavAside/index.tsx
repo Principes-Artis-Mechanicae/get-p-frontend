@@ -8,7 +8,7 @@ import { Button } from "principes-getp";
 import { AuthGuard } from "@/common/components/guards/AuthGuard";
 import { Text } from "@/common/components/typography/Text";
 
-import { useNavAside } from "@/hooks/useNavAside";
+import { useNavAside } from "@/hooks/home/useNavAside";
 
 import { authAction } from "@/store/slice/auth.slice";
 import { uiActions } from "@/store/slice/ui.slice";
