@@ -6,8 +6,8 @@ import { memberService } from "@/services/member/service";
 import { RootDispatch } from "@/store/store";
 import { updateProfileThunkAction } from "@/store/thunk/auth.thunk";
 
+import defaultImg from "@/assets/common/default-profile.svg";
 import editIcon from "@/assets/common/edit.svg";
-import defaultImg from "@/assets/common/profile.svg";
 
 import * as Styles from "./index.style";
 
