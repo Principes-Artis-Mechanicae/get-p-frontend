@@ -43,7 +43,9 @@ export default function HomePage() {
                     link=""
                     topBadge={
                         <NewPeopleBadge>
-                            <Text size="s">New</Text>
+                            <Text size="s" color="#fff" weight="bold">
+                                New
+                            </Text>
                         </NewPeopleBadge>
                     }
                 >
