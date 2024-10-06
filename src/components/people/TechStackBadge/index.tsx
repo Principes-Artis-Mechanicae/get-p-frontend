@@ -1,11 +1,12 @@
 import { useCallback } from "react";
 
+import { Paragraph } from "@/common/components/typography/Paragraph/Paragraph";
+
 import { useTechStack } from "@/hooks/useTechStack";
 
 import closeIcon from "@/assets/people/close.svg";
 
-import { Paragraph } from "../__common__/typography/Paragraph";
-import { TechStackBadgeCloseIcon, TechStackBadgeWrapper } from "./TechStackBadge.style";
+import * as Styles from "./index.style";
 
 export interface ITechStackBadge {
     text: string;
@@ -25,11 +26,11 @@ export const TechStackBadge: React.FC<ITechStackBadge> = ({ text, isInput }) => 
     }, [dispatch, text]);
 
     return (
-        <TechStackBadgeWrapper>
+        <Styles.Wrapper>
             <Paragraph size="m" weight="bold">
                 {text}
             </Paragraph>
-            {isInput ? <TechStackBadgeCloseIcon src={closeIcon} onClick={handleBadgeClick} /> : null}
-        </TechStackBadgeWrapper>
+            {isInput ? <Styles.CloseIcon src={closeIcon} onClick={handleBadgeClick} /> : null}
+        </Styles.Wrapper>
     );
 };

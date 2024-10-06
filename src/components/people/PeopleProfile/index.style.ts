@@ -1,11 +1,6 @@
 import styled from "@emotion/styled";
 
-export interface IProfileWrapper {
-    width: string;
-    height: string;
-}
-
-export const ProfileWrapper = styled.div<IProfileWrapper>`
+export const Wrapper = styled.div<BoxSizing>`
     width: ${(props) => props.width};
     height: ${(props) => props.height};
 
@@ -19,7 +14,7 @@ export const ProfileWrapper = styled.div<IProfileWrapper>`
     gap: 20px;
 `;
 
-export const ProfileContainer = styled.div`
+export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +22,7 @@ export const ProfileContainer = styled.div`
     gap: 15px;
 `;
 
-export const ProfileLike = styled.div`
+export const Like = styled.div`
     width: 100%;
 
     display: flex;
@@ -36,7 +31,7 @@ export const ProfileLike = styled.div`
     gap: 2px;
 `;
 
-export const ProfileProject = styled.div`
+export const Project = styled.div`
     width: 100%;
 
     display: flex;
@@ -45,7 +40,7 @@ export const ProfileProject = styled.div`
     gap: 12px;
 `;
 
-export const ProfileImg = styled.img`
+export const Image = styled.img`
     width: 105px;
     height: 96px;
 `;

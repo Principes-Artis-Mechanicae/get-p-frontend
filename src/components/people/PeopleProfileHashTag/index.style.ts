@@ -1,11 +1,8 @@
+import { PeopleProfileHashTagProps } from "@/components/people/PeopleProfileHashTag";
+
 import styled from "@emotion/styled";
 
-export interface IProfileHashTagWrapper {
-    width: string;
-    minHeight: string;
-}
-
-export const ProfileHashTagWrapper = styled.div<IProfileHashTagWrapper>`
+export const Wrapper = styled.div<Pick<PeopleProfileHashTagProps, "width" | "minHeight">>`
     width: ${(props) => props.width};
     min-height: ${(props) => props.minHeight};
 
@@ -20,7 +17,7 @@ export const ProfileHashTagWrapper = styled.div<IProfileHashTagWrapper>`
     gap: 14px;
 `;
 
-export const ProfileHashTagContainer = styled.div`
+export const Container = styled.div`
     width: 100%;
 
     display: flex;
@@ -28,7 +25,7 @@ export const ProfileHashTagContainer = styled.div`
     gap: 10px;
 `;
 
-export const ProfileHashTagItem = styled.div`
+export const Item = styled.div`
     background-color: #ecf0fe;
     color: #476ff1;
 
@@ -39,7 +36,7 @@ export const ProfileHashTagItem = styled.div`
     border-radius: 12px;
 `;
 
-export const ProfileHashTagInput = styled.input`
+export const Input = styled.input`
     width: 90%;
     height: 40px;
 

@@ -1,21 +1,17 @@
 import { useRef } from "react";
 
+import { Text } from "@/common/components/typography/Text";
+
 import { useHashTag } from "@/hooks/useHashTag";
 
-import { Text } from "../__common__/typography/Text";
-import {
-    ProfileHashTagWrapper,
-    ProfileHashTagContainer,
-    ProfileHashTagItem,
-    ProfileHashTagInput,
-} from "./ProfileHashTag.style";
+import * as Styles from "./index.style";
 
-export interface IProfileHashTag {
-    width: string;
-    minHeight: string;
+export interface PeopleProfileHashTagProps {
+    width: SizeProp;
+    minHeight: SizeProp;
 }
 
-export const ProfileHashTag: React.FC<IProfileHashTag> = ({ width, minHeight }) => {
+export const PeopleProfileHashTag = ({ width, minHeight }: PeopleProfileHashTagProps) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const { hashtag, setHashTag } = useHashTag();
 
@@ -30,22 +26,23 @@ export const ProfileHashTag: React.FC<IProfileHashTag> = ({ width, minHeight }) 
             }
         }
     };
+
     return (
-        <ProfileHashTagWrapper width={width} minHeight={minHeight}>
+        <Styles.Wrapper width={width} minHeight={minHeight}>
             <Text size="s" color="secondary" weight="normal">
                 해시태그
             </Text>
-            <ProfileHashTagContainer>
+            <Styles.Container>
                 {hashtag.map((item, index) => (
-                    <ProfileHashTagItem key={index}>#{item}</ProfileHashTagItem>
+                    <Styles.Item key={index}>#{item}</Styles.Item>
                 ))}
-            </ProfileHashTagContainer>
-            <ProfileHashTagInput
+            </Styles.Container>
+            <Styles.Input
                 type="text"
                 ref={inputRef}
                 placeholder="해시태그를 입력해주세요."
                 onKeyDown={handleKeyDown}
-            ></ProfileHashTagInput>
-        </ProfileHashTagWrapper>
+            ></Styles.Input>
+        </Styles.Wrapper>
     );
 };

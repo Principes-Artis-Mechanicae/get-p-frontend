@@ -1,5 +1,8 @@
 import { ChangeEvent, useCallback, useState } from "react";
 
+import { TechStackAccordion } from "@/components/people/TechStackAccordion";
+import { TechStackBadge } from "@/components/people/TechStackBadge";
+
 import { useAccordion } from "@/hooks/useAccordion";
 import { useTechStack } from "@/hooks/useTechStack";
 
@@ -7,24 +10,16 @@ import searchIcon from "@/assets/people/search.svg";
 
 import { ITechStack } from "@/constants/techstack";
 
-import { TechStackAccordion } from "./TechStackAccordion";
-import { TechStackBadge } from "./TechStackBadge";
-import {
-    SearchIcon,
-    SelectedTechStacks,
-    TechStackSearchInput,
-    TechStackSelectorContainer,
-    TechStackSelectorGroupContainer,
-    TechStackSelectorWrapper,
-} from "./TechStackSelector.style";
+import * as Styles from "./index.style";
 
-export interface ITechStackSelector {
+export interface TechStackSelectorProps {
+    width: SizeProp;
+    height: SizeProp;
+
     techStack: ITechStack[];
-    width: string;
-    height: string;
 }
 
-export const TechStackSelector: React.FC<ITechStackSelector> = ({ width, height, techStack }) => {
+export const TechStackSelector = ({ width, height, techStack }: TechStackSelectorProps) => {
     const [searchInput, setSearchInput] = useState<string>("");
 
     const { state } = useTechStack();
@@ -49,12 +44,12 @@ export const TechStackSelector: React.FC<ITechStackSelector> = ({ width, height,
     );
 
     return (
-        <TechStackSelectorWrapper width={width}>
-            <SearchIcon src={searchIcon} />
-            <TechStackSearchInput placeholder="기술 검색" onChange={handleChange} />
+        <Styles.Wrapper width={width}>
+            <Styles.SearchIcon src={searchIcon} />
+            <Styles.TechStackSearchInput placeholder="기술 검색" onChange={handleChange} />
 
-            <TechStackSelectorContainer height={height}>
-                <TechStackSelectorGroupContainer>
+            <Styles.Container height={height}>
+                <Styles.GroupContainer>
                     {techStack
                         .map((stack) => {
                             return {
@@ -76,14 +71,14 @@ export const TechStackSelector: React.FC<ITechStackSelector> = ({ width, height,
                                 ></TechStackAccordion>
                             );
                         })}
-                </TechStackSelectorGroupContainer>
+                </Styles.GroupContainer>
 
-                <SelectedTechStacks>
+                <Styles.SelectedTechStacks>
                     {state.selected.map((techStack) => {
                         return <TechStackBadge text={techStack.value} isInput={true} />;
                     })}
-                </SelectedTechStacks>
-            </TechStackSelectorContainer>
-        </TechStackSelectorWrapper>
+                </Styles.SelectedTechStacks>
+            </Styles.Container>
+        </Styles.Wrapper>
     );
 };

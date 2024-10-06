@@ -1,14 +1,6 @@
 import styled from "@emotion/styled";
 
-export interface ITechStackAccordionWrapper {
-    width: string;
-}
-
-export interface ITechStackAccordionItem {
-    isSelected: boolean;
-}
-
-export const TechStackAccordionButton = styled.button`
+export const Button = styled.button`
     display: flex;
     justify-content: space-between;
 
@@ -27,13 +19,13 @@ export const TechStackAccordionButton = styled.button`
     }
 `;
 
-export const TechStackAccordionWrapper = styled.div<ITechStackAccordionWrapper>`
+export const Wrapper = styled.div<{ width: SizeProp }>`
     width: ${(props) => props.width};
 
     overflow: hidden;
 `;
 
-export const TechStackAccordionContainer = styled.div`
+export const Container = styled.div`
     width: 100%;
     max-height: 0px;
 
@@ -42,7 +34,7 @@ export const TechStackAccordionContainer = styled.div`
     background-color: #fff;
 `;
 
-export const TechStackAccordionItem = styled.div<ITechStackAccordionItem>`
+export const Item = styled.div<{ isSelected: boolean }>`
     display: flex;
     align-items: center;
 

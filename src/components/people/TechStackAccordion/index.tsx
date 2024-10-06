@@ -5,24 +5,17 @@ import { useTechStack } from "@/hooks/useTechStack";
 
 import chevronIcon from "@/assets/people/chevron.svg";
 
-import {
-    AccordionItemText,
-    Chevron,
-    TechStackAccordionButton,
-    TechStackAccordionContainer,
-    TechStackAccordionWrapper,
-    TechStackAccordionItem,
-} from "./TechStackAccordion.style";
+import * as Styles from "./index.style";
 
-export interface ITechStackAccordionGroup {
+export interface TechStackAccordionGroupProps {
     groupId: number;
     groupName: string;
     groupItems: string[];
 
-    width: string;
+    width: SizeProp;
 }
 
-export const TechStackAccordion: React.FC<ITechStackAccordionGroup> = ({ width, groupId, groupName, groupItems }) => {
+export const TechStackAccordion = ({ width, groupId, groupName, groupItems }: TechStackAccordionGroupProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const iconRef = useRef<HTMLImageElement>(null);
@@ -66,18 +59,18 @@ export const TechStackAccordion: React.FC<ITechStackAccordionGroup> = ({ width, 
     }, [groupId, groupItems.length, accordionState.groups]);
 
     return (
-        <TechStackAccordionWrapper width={width}>
-            <TechStackAccordionButton ref={buttonRef} onClick={handleClick}>
-                <AccordionItemText>{groupName}</AccordionItemText>
-                <Chevron ref={iconRef} src={chevronIcon}></Chevron>
-            </TechStackAccordionButton>
+        <Styles.Wrapper width={width}>
+            <Styles.Button ref={buttonRef} onClick={handleClick}>
+                <Styles.AccordionItemText>{groupName}</Styles.AccordionItemText>
+                <Styles.Chevron ref={iconRef} src={chevronIcon}></Styles.Chevron>
+            </Styles.Button>
 
-            <TechStackAccordionContainer ref={containerRef}>
+            <Styles.Container ref={containerRef}>
                 {groupItems
                     .filter((item) => item !== "")
                     .map((item) => {
                         return (
-                            <TechStackAccordionItem
+                            <Styles.Item
                                 isSelected={
                                     techStackState.selected.findIndex((selectedItem) => selectedItem.value === item) !==
                                     -1
@@ -85,10 +78,10 @@ export const TechStackAccordion: React.FC<ITechStackAccordionGroup> = ({ width, 
                                 onClick={handleItemClick}
                             >
                                 {item}
-                            </TechStackAccordionItem>
+                            </Styles.Item>
                         );
                     })}
-            </TechStackAccordionContainer>
-        </TechStackAccordionWrapper>
+            </Styles.Container>
+        </Styles.Wrapper>
     );
 };

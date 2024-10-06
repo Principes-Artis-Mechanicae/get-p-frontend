@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const TechStackBadgeWrapper = styled.div`
+export const Wrapper = styled.div`
     display: inline-flex;
     align-items: center;
 
@@ -14,7 +14,7 @@ export const TechStackBadgeWrapper = styled.div`
     padding: 0px 10px;
 `;
 
-export const TechStackBadgeCloseIcon = styled.img`
+export const CloseIcon = styled.img`
     height: 100%;
     width: 15px;
 

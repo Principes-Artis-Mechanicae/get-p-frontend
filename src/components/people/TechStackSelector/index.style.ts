@@ -2,15 +2,7 @@ import { mobile } from "@/styles/breakpoint";
 
 import styled from "@emotion/styled";
 
-export interface ITechStackSelector {
-    width: string;
-}
-
-export interface ITechStackSelectorContainer {
-    height: string;
-}
-
-export const TechStackSelectorWrapper = styled.div<ITechStackSelector>`
+export const Wrapper = styled.div<{ width: SizeProp }>`
     position: relative;
     width: ${(props) => props.width};
 `;
@@ -46,7 +38,7 @@ export const SearchIcon = styled.img`
     padding: 7.5px;
 `;
 
-export const TechStackSelectorContainer = styled.div<ITechStackSelectorContainer>`
+export const Container = styled.div<{ height: SizeProp }>`
     display: flex;
 
     width: 100%;
@@ -59,10 +51,9 @@ export const TechStackSelectorContainer = styled.div<ITechStackSelectorContainer
         flex-direction: column;
         height: 600px;
     }
-    }
 `;
 
-export const TechStackSelectorGroupContainer = styled.div`
+export const GroupContainer = styled.div`
     width: 40%;
     height: 100%;
 
