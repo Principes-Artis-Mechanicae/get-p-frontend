@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import { Text } from "@/components/__common__/typography/Text";
+import { Text } from "@/common/components/typography/Text";
 
 import defaultProfile from "@/assets/common/profile.svg";
 import likeIcon from "@/assets/people/like.png";
