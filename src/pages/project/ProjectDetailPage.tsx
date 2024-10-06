@@ -67,7 +67,15 @@ export default function ProjectDetailPage() {
     return (
         <ProjectDetailWrapper>
             <ProjectDetailSideContainer>
-                <ProjectInfo remainedDays={remainedDays} title={project.title} hashtags={project.hashtags} />
+                <ProjectInfo
+                    totalDays={totalDays}
+                    remainedDays={remainedDays}
+                    title={project.title}
+                    hashtags={project.hashtags}
+                    recruitmentCount={project.recruitmentCount}
+                    applicantsCount={project.applicantsCount}
+                    applicationDuration={project.applicationDuration}
+                />
 
                 <AuthGuardBlur width="100%" height="fit-content" withButton={false}>
                     <ProjectManagement clientAddress={project.client.address} likesCount={project.likesCount} />
@@ -76,7 +84,13 @@ export default function ProjectDetailPage() {
                 <ProjectPayment payment={project.payment} />
 
                 <AuthFilter
-                    forClient={null}
+                    forClient={
+                        <ProjectApply
+                            isActive={isActive}
+                            handleLikeBtnClick={handleLikeClick}
+                            handleApplyBtnClick={navigateToProjectApply}
+                        />
+                    }
                     forPeople={
                         <ProjectApply
                             isActive={isActive}

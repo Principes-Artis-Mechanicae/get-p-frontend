@@ -1,3 +1,5 @@
+import { mobile } from "@/styles/breakpoint";
+
 import styled from "@emotion/styled";
 
 export interface IPeopleCardWrapper {
@@ -9,9 +11,8 @@ export interface IPeopleCardImg {
     src: string;
 }
 
-export const PeopleCardWrapper = styled.div<IPeopleCardWrapper>`
-    width: ${(props) => props.width};
-    height: ${(props) => props.height};
+export const PeopleCardWrapper = styled.div`
+    width: 100%;
 
     padding: 24px;
 
@@ -29,7 +30,14 @@ export const PeopleCardWrapper = styled.div<IPeopleCardWrapper>`
 
 export const PeopleCardImg = styled.img<IPeopleCardImg>`
     src: ${(props) => props.src};
-    height: 100%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+
+    ${mobile} {
+        width: 80px;
+        height: 80px;
+    }
 `;
 
 export const PeopleCardContainer = styled.div`
@@ -49,8 +57,9 @@ export const PeopleCardHeader = styled.div`
     width: 100%;
 `;
 
-export const PeopleCardComment = styled.div<{ width: string }>`
-    width: ${(props) => props.width};
+export const PeopleCardComment = styled.div`
+    width: 100%;
+
     display: -webkit-box;
     -webkit-line-clamp: 2; /* 두 줄로 제한 */
     -webkit-box-orient: vertical;

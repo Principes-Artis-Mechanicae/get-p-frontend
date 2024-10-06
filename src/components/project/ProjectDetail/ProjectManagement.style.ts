@@ -9,6 +9,8 @@ export const ProjectManagementWrapper = styled.div<{ additionalStyles?: Serializ
     gap: 10px;
 
     ${(props) => props.additionalStyles};
+
+    padding: 0px 20px;
 `;
 
 export const ProjectManagementContainer = styled.div`

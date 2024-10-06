@@ -16,7 +16,8 @@ import {
 import { css } from "@emotion/react";
 
 export default function EditClientPage() {
-    const { nicknameRef, emailRef, phoneNumberRef, handleRegisterBtnClick } = useEditClient();
+    const { nicknameRef, emailRef, phoneNumberRef, zipCodeRef, streetRef, detailRef, handleRegisterBtnClick } =
+        useEditClient();
 
     return (
         <EditClientPageWrapper>
@@ -54,20 +55,13 @@ export default function EditClientPage() {
 
                 <EditClientPageFormItem>
                     <Label>주소(선택)</Label>
-                    <Input width="100%" height="45px" placeholder="우편번호">
+                    <Input width="100%" height="45px" placeholder="우편번호" ref={zipCodeRef}>
                         <Button variant="outline" width="100px" height="40px">
                             우편번호 찾기
                         </Button>
                     </Input>
-                    <Input width="100%" height="45px" placeholder="도로명주소"></Input>
-                    <Input width="100%" height="45px" placeholder="상세주소"></Input>
-                </EditClientPageFormItem>
-
-                <EditClientPageFormItem>
-                    <Label>계좌(선택)</Label>
-                    <Input width="100%" height="45px" placeholder=""></Input>
-                    <Input width="100%" height="45px"></Input>
-                    <Input width="100%" height="45px"></Input>
+                    <Input width="100%" height="45px" placeholder="도로명주소" ref={streetRef}></Input>
+                    <Input width="100%" height="45px" placeholder="상세주소" ref={detailRef}></Input>
                 </EditClientPageFormItem>
             </EditClientPageForm>
 

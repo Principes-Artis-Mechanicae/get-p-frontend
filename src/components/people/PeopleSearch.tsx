@@ -21,26 +21,22 @@ export interface IPeopleSearch {
     options?: ISortOption[];
     order?: ISortOption;
     onSortChange?: (order: ISortOption) => void;
+    headerText?: string;
 }
 
-export const PeopleSearch = ({ width, height, options, order, onSortChange }: IPeopleSearch) => {
-    const { toggle, handleClick } = useToggle();
+export const PeopleSearch = ({ width, height, options, order, onSortChange, headerText }: IPeopleSearch) => {
+    const { handleClick } = useToggle();
 
     return (
         <PeopleSearchWrapper width={width} height={height}>
             <PeopleSearchHeader>
                 <Text size="m" color="primary" weight="bold">
-                    어떤 피플을 찾으시나요?
+                    {headerText || "어떤 피플을 찾으시나요?"}
                 </Text>
             </PeopleSearchHeader>
             <SearchBar width={width} placeholder="검색어를 입력하세요" />
             <PeopleSearchOptionWrapper>
-                <PeopleSearchCheckBox onClick={handleClick}>
-                    <TotalProjectIcon checked={toggle} />
-                    <Text size="s" color="primary" weight="bold">
-                        전체 프로젝트 보기
-                    </Text>
-                </PeopleSearchCheckBox>
+                <PeopleSearchCheckBox onClick={handleClick}></PeopleSearchCheckBox>
 
                 <PeopleSearchOptionContainer>
                     {options?.map((option) => (

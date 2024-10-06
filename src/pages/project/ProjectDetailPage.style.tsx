@@ -25,7 +25,7 @@ export const ProjectDetailSideContainer = styled.div`
 
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
 
     ${mobile} {
         width: 100%;

@@ -67,6 +67,8 @@ export interface ReadProjectDetailResponseBody {
         projectId: number;
         title: string;
         payment: number;
+        recruitmentCount: number;
+        applicantsCount: number;
         applicationDuration: {
             startDate: string;
             endDate: string;
