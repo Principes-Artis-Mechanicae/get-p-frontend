@@ -1,11 +1,9 @@
-name: Deploy on Beta Server (Netlify)
+name: Deploy On Netlify (beta-get-p.netlify.app)
 
 on:
     pull_request:
         branches: [release]
         types: [closed]
-    push:
-        branches: [release]
     workflow_dispatch:
 
 jobs:
