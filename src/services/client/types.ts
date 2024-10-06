@@ -9,11 +9,6 @@ export type RegisterClientRequestBody = {
         street: string;
         detail: string;
     };
-    bankAccount: {
-        bank: string;
-        accountNumber: string;
-        accountHolder: string;
-    };
 };
 export interface ProjectData {
     projectId: number;
