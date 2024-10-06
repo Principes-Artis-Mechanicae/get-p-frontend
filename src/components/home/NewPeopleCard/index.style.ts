@@ -20,18 +20,6 @@ export const Skeleton = styled(Wrapper)`
     height: 100px;
 
     animation: skeleton-loading 2s infinite;
-
-    @keyframes skeleton-loading {
-        0% {
-            background-color: #e0e0e0;
-        }
-        50% {
-            background-color: #f0f0f0;
-        }
-        100% {
-            background-color: #e0e0e0;
-        }
-    }
 `;
 
 export const Contianer = styled.div`

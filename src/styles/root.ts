@@ -18,5 +18,17 @@ export const rootStyles = css`
         --font-size-m: 16px;
         --font-size-l: 18px;
         --font-size-xl: 24px;
+
+        @keyframes skeleton-loading {
+            0% {
+                background-color: #e0e0e0;
+            }
+            50% {
+                background-color: #f0f0f0;
+            }
+            100% {
+                background-color: #e0e0e0;
+            }
+        }
     }
 `;
