@@ -90,8 +90,8 @@ export default function PeopleDetailPage() {
                             기술 스택
                         </Text>
                         <BadgeContainer>
-                            {people?.profile?.techStacks?.map((techStack: string) => (
-                                <TechStackBadge key={uuidv4()} text={techStack} isInput={false} />
+                            {people?.profile?.techStacks?.map((techStack: string, index) => (
+                                <TechStackBadge key={index} text={techStack} isInput={false} />
                             ))}
                         </BadgeContainer>
                     </TextboxContainer>
