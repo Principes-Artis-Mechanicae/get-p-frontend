@@ -25,7 +25,7 @@ export const NewPeopleBadge = styled.div`
 
 export const PopularPeopleContainer = styled.div`
     display: grid;
-
+    gap: 10px;
     grid-template-columns: repeat(2, 1fr);
 
     ${mobile} {
