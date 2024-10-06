@@ -1,7 +1,5 @@
 import { useCallback, useRef } from "react";
 
-import { queryClient } from "@/config/query";
-
 import { clientService } from "./service";
 import { useMutation } from "@tanstack/react-query";
 

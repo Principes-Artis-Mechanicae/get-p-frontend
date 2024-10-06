@@ -19,11 +19,6 @@ export const useRegisterClient = () => {
                     street: "",
                     detail: "",
                 },
-                bankAccount: {
-                    bank: "",
-                    accountNumber: "",
-                    accountHolder: "",
-                },
             }),
     });
 
