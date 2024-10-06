@@ -40,6 +40,7 @@ export default function ProjectListPage() {
                 options={sortOptions}
                 order={sortOrder}
                 onSortChange={handleSortOrder}
+                headerText="어떤 프로젝트를 찾으시나요?"
             />
             <ProjectListContainer>
                 {data && (
