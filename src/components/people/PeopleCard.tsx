@@ -1,3 +1,5 @@
+import defaultProfile from "@/assets/people/profile.png";
+
 import { Text } from "../__common__/typography/Text";
 import {
     PeopleCardWrapper,
@@ -6,7 +8,6 @@ import {
     PeopleCardHeader,
     PeopleCardComment,
 } from "./PeopleCard.style";
-import { useMediaQuery } from "@mui/material";
 
 export interface IPeopleCard extends React.ComponentProps<"div"> {
     width?: string;
@@ -14,16 +15,12 @@ export interface IPeopleCard extends React.ComponentProps<"div"> {
     profileImageUri: string;
     nickname: string;
     activityArea: string;
-    hashtags: {
-        value: string;
-    }[];
+    hashtags: string[];
     completeProjectsCount: number;
     introduction: string;
 }
 
 export const PeopleCard: React.FC<IPeopleCard> = ({
-    width = "522px",
-    height = "110px",
     profileImageUri,
     nickname,
     activityArea,
@@ -32,11 +29,9 @@ export const PeopleCard: React.FC<IPeopleCard> = ({
     introduction,
     onClick,
 }) => {
-    const isTabletOrMobile = useMediaQuery("(max-width: 1200px)");
-
     return (
-        <PeopleCardWrapper width={isTabletOrMobile ? "100%" : width} height={height} onClick={onClick}>
-            <PeopleCardImg src={profileImageUri} />
+        <PeopleCardWrapper onClick={onClick}>
+            <PeopleCardImg src={profileImageUri ?? defaultProfile} />
             <PeopleCardContainer>
                 <PeopleCardHeader>
                     <Text size="s" color="point" weight="bold">
@@ -50,10 +45,10 @@ export const PeopleCard: React.FC<IPeopleCard> = ({
                     {nickname}
                 </Text>
                 <Text size="s" color="secondary" weight="light">
-                    <PeopleCardComment width={isTabletOrMobile ? "auto" : "375px"}>{introduction}</PeopleCardComment>
+                    <PeopleCardComment>{introduction}</PeopleCardComment>
                 </Text>
                 <Text size="s" color="#BDA7BC" weight="light">
-                    {hashtags.map((hashtag) => `${hashtag.value}`).join(" ")}
+                    {hashtags.map((hashtag) => `${hashtag}`).join(" ")}
                 </Text>
             </PeopleCardContainer>
         </PeopleCardWrapper>

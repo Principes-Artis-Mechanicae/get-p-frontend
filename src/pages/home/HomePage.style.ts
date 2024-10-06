@@ -1,3 +1,4 @@
+import { mobile } from "@/styles/breakpoint";
 import { place_center } from "@/styles/utils";
 
 import styled from "@emotion/styled";
@@ -20,4 +21,14 @@ export const NewPeopleBadge = styled.div`
 
     background-color: #476ff1;
     color: #fff;
+`;
+
+export const PopularPeopleContainer = styled.div`
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+
+    ${mobile} {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `;

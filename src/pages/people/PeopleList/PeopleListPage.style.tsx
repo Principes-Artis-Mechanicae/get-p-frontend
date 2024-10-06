@@ -1,3 +1,5 @@
+import { mobile } from "@/styles/breakpoint";
+
 import styled from "@emotion/styled";
 
 export const PeopleListWrapper = styled.section`
@@ -11,13 +13,15 @@ export const PeopleListWrapper = styled.section`
 `;
 
 export const PeopleListContainer = styled.section`
-    width: auto;
+    width: 100%;
     margin: 40px auto;
 
-    gap: 24px 0px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    gap: 10px;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    ${mobile} {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `;
