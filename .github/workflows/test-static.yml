@@ -10,7 +10,7 @@ env:
     NODE_VERSION: 20
 
 jobs:
-    lint:
+    compile_and_lint:
         runs-on: ubuntu-latest
 
         steps:
@@ -18,27 +18,15 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: ${{env.NODE_VERSION}}
+
             - name: Code Checkout
               uses: actions/checkout@v4
+
             - name: Install Dependencies
               run: npm ci
+
             - name: Typescript Compile
               run: npm run compile
+
             - name: Lint Code
               run: npm run lint
-
-    test:
-        runs-on: ubuntu-latest
-        needs: lint
-
-        steps:
-            - name: Install NodeJS
-              uses: actions/setup-node@v2
-              with:
-                  node-version: ${{env.NODE_VERSION}}
-            - name: Code Checkout
-              uses: actions/checkout@v4
-            - name: Install Dependencies
-              run: npm ci
-            - name: Run Test
-              run: npm run test
