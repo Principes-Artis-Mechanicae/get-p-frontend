@@ -7,6 +7,9 @@ export const useRegisterClient = () => {
     const nicknameRef = useRef<HTMLInputElement>(null);
     const emailRef = useRef<HTMLInputElement>(null);
     const phoneNumberRef = useRef<HTMLInputElement>(null);
+    const zipCodeRef = useRef<HTMLInputElement>(null);
+    const streetRef = useRef<HTMLInputElement>(null);
+    const detailRef = useRef<HTMLInputElement>(null);
 
     const mutation = useMutation({
         mutationFn: () =>
@@ -15,9 +18,9 @@ export const useRegisterClient = () => {
                 email: emailRef.current?.value as string,
                 phoneNumber: phoneNumberRef.current?.value as string,
                 address: {
-                    zipcode: "",
-                    street: "",
-                    detail: "",
+                    zipcode: zipCodeRef.current?.value as string,
+                    street: streetRef.current?.value as string,
+                    detail: detailRef.current?.value as string,
                 },
             }),
     });
@@ -26,5 +29,5 @@ export const useRegisterClient = () => {
         mutation.mutate();
     }, [mutation]);
 
-    return { nicknameRef, emailRef, phoneNumberRef, handleRegisterBtnClick };
+    return { nicknameRef, emailRef, phoneNumberRef, zipCodeRef, streetRef, detailRef, handleRegisterBtnClick };
 };
