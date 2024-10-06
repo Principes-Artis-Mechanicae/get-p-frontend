@@ -35,6 +35,10 @@ export const peopleService = {
         console.log(response.data);
         return response.data.data;
     },
+    readNewPeople: async (page = 0, size = 5) => {
+        const response = await api.get<ReadPeopleResponseBody>(`/people?page=${page}&size=${size}&sort=createdAt,asc`);
+        return response.data.data;
+    },
     registerPeopleInfo: async (body: RegisterPeopleInfoRequestBody) => {
         const request = async () => {
             if (!isRequestBodyValid(body)) throw new Error("모든 정보를 입력해주세요.");
