@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
-import SelectTypePage from "@/components/auth/SelectTypeSection";
-import SignUpCompletePage from "@/components/auth/SignUpCompleteSection";
+import SelectTypeSection from "@/components/auth/SelectTypeSection";
+import SignUpCompleteSection from "@/components/auth/SignUpCompleteSection";
 import SignUpInputPage from "@/components/auth/SignUpInputSection";
 
 import { RootState } from "@/store/store";
@@ -11,9 +11,9 @@ export default function SignUpPage() {
 
     return (
         <>
-            {signUpSectionIndex === 1 && <SelectTypePage />}
+            {signUpSectionIndex === 1 && <SelectTypeSection />}
             {signUpSectionIndex === 2 && <SignUpInputPage />}
-            {signUpSectionIndex === 3 && <SignUpCompletePage />}
+            {signUpSectionIndex === 3 && <SignUpCompleteSection />}
         </>
     );
 }

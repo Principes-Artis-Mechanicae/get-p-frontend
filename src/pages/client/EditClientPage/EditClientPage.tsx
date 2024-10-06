@@ -2,8 +2,8 @@ import { Button } from "principes-getp";
 import { Input } from "principes-getp";
 import { Label } from "principes-getp";
 
-import { Profile } from "@/components/__common__/display/Profile";
-import { Title } from "@/components/__common__/typography/Title";
+import { ProfileImageEdit } from "@/common/components/displays/ProfileImageEdit";
+import { Title } from "@/common/components/typography/Title/Title";
 
 import { useEditClient } from "@/services/client/useEditClient";
 
@@ -25,7 +25,7 @@ export default function EditClientPage() {
 
             <EditClientPageForm>
                 <EditClientPageProfileForm>
-                    <Profile />
+                    <ProfileImageEdit />
                 </EditClientPageProfileForm>
 
                 <EditClientPageFormItem>

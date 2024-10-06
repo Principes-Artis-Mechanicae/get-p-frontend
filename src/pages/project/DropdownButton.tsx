@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Text } from "@/components/__common__/typography/Text";
+import { Text } from "@/common/components/typography/Text";
 
 import down from "@/assets/common/dropdown.svg";
 import up from "@/assets/common/rollup.svg";

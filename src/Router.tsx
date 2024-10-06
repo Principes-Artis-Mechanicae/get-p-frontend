@@ -1,8 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 
+import { RouteGuard } from "@/common/components/guards/RouteGuard";
+
 import FindPasswordPage from "@/pages/auth/FindPasswordPage";
 import SignInPage from "@/pages/auth/SignInPage";
 import SignUpPage from "@/pages/auth/SignUpPage";
+import ClientProjectListPage from "@/pages/client/ClientProjectListPage/ClientProjectListPage";
 import EditClientPage from "@/pages/client/EditClientPage/EditClientPage";
 import MeetingRequestPage from "@/pages/client/MeetingRequest/MeetingRequestPage";
 import RegisterClientPage from "@/pages/client/RegisterClientPage/RegisterClientPage";
@@ -12,16 +15,14 @@ import PeopleDetailPage from "@/pages/people/PeopleDetail/PeopleDetailPage";
 import PeopleInfoRegisterPage from "@/pages/people/PeopleInfoRegister/PeopleInfoRegisterPage";
 import PeopleListPage from "@/pages/people/PeopleList/PeopleListPage";
 import PeopleProfileEditPage from "@/pages/people/PeopleProfileEdit/PeopleProfileEditPage";
-import ProjectApplyPage from "@/pages/project/ProjectApplyPage";
-import ProjectDetailPage from "@/pages/project/ProjectDetailPage";
+import ProjectApplyPage from "@/pages/project/ProjectApplyPage/ProjectApplyPage";
+import ProjectDetailPage from "@/pages/project/ProjectDetailPage/ProjectDetailPage";
 import ProjectListPage from "@/pages/project/ProjectListPage/ProjectListPage";
 import ProjectRequestPage from "@/pages/project/ProjectRequest/ProjectRequestPage";
 
 import { MemberType } from "@/services/auth/types";
 
-import { RouteGuard } from "./components/__common__/guard/RouteGuard";
-import { MainLayout } from "./components/__common__/layout/MainLayout";
-import ClientProjectListPage from "./pages/client/ClientProjectListPage/ClientProjectListPage";
+import { MainLayout } from "@/layouts/RootLayout/MainLayout";
 
 export const Router = () => {
     return (

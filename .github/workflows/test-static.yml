@@ -1,0 +1,32 @@
+name: Compile & Linting
+
+on:
+    pull_request:
+        branches:
+            - develop
+    workflow_dispatch:
+
+env:
+    NODE_VERSION: 20
+
+jobs:
+    compile_and_lint:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Install NodeJS
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{env.NODE_VERSION}}
+
+            - name: Code Checkout
+              uses: actions/checkout@v4
+
+            - name: Install Dependencies
+              run: npm ci
+
+            - name: Typescript Compile
+              run: npm run compile
+
+            - name: Lint Code
+              run: npm run lint

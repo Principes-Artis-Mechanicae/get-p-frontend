@@ -4,11 +4,15 @@ import { toast } from "react-toastify";
 
 import { Button, Input, Label, TextArea } from "principes-getp";
 
-import { Paragraph } from "@/components/__common__/typography/Paragraph";
-import { Title } from "@/components/__common__/typography/Title";
-import { ProjectRequestStep } from "@/components/project/ProjectRequestStep/ProjectRequestStep";
+import { Paragraph } from "@/common/components/typography/Paragraph/Paragraph";
+import { Title } from "@/common/components/typography/Title/Title";
+
+import { ProjectRequestStep } from "@/components/project/ProjectRequestStep";
 
 import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequest/ProjectRequestPage.style";
+
+import { projectAction } from "@/store/slice/project.slice";
+import { RootDispatch } from "@/store/store";
 
 import { isValueAssigned } from "@/utils/validation";
 
@@ -17,8 +21,6 @@ import {
     ProjectPaymentUnit,
     ProjectRequestContentContainer,
 } from "./ProjectRequestContentSection.style";
-import { projectAction } from "@/store/slice/project.slice";
-import { RootDispatch } from "@/store/store";
 
 export const ProjectRequestContentSection = () => {
     const dispatch: RootDispatch = useDispatch();

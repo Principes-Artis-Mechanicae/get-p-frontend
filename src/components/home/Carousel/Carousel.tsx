@@ -14,7 +14,6 @@ import {
     CarouselItemWrapper,
     CarouselWrapper,
 } from "./Carousel.style";
-// import { CarouselProgressBar } from "./CarouselProgressBar";
 import { css } from "@emotion/react";
 import { Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";

@@ -2,9 +2,9 @@ import { Button } from "principes-getp";
 import { Input } from "principes-getp";
 import { Label } from "principes-getp";
 
-import { Profile } from "@/components/__common__/display/Profile";
-import { Text } from "@/components/__common__/typography/Text";
-import { Title } from "@/components/__common__/typography/Title";
+import { ProfileImageEdit } from "@/common/components/displays/ProfileImageEdit";
+import { Text } from "@/common/components/typography/Text";
+import { Title } from "@/common/components/typography/Title/Title";
 
 import { usePeopleInfoRegister } from "@/services/people/usePeopleInfoRegister";
 
@@ -35,7 +35,7 @@ export default function PeopleInfoRegisterPage() {
             </PeopleInfoRegisterHeader>
 
             <PeopleProfileWrapper>
-                <Profile />
+                <ProfileImageEdit />
             </PeopleProfileWrapper>
 
             <PeopleInfoRegisterContainer>

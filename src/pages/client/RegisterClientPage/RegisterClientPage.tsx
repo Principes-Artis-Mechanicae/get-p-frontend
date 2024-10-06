@@ -2,10 +2,10 @@ import { Button } from "principes-getp";
 import { Input } from "principes-getp";
 import { Label } from "principes-getp";
 
-import { Profile } from "@/components/__common__/display/Profile";
-import { Paragraph } from "@/components/__common__/typography/Paragraph";
-import { Text } from "@/components/__common__/typography/Text";
-import { Title } from "@/components/__common__/typography/Title";
+import { ProfileImageEdit } from "@/common/components/displays/ProfileImageEdit";
+import { Paragraph } from "@/common/components/typography/Paragraph/Paragraph";
+import { Text } from "@/common/components/typography/Text";
+import { Title } from "@/common/components/typography/Title/Title";
 
 import { useRegisterClient } from "@/services/client/useRegisterClient";
 
@@ -33,7 +33,7 @@ export default function RegisterClientPage() {
 
             <RegisterClientPageContainer>
                 <RegisterClientPageProfileForm>
-                    <Profile />
+                    <ProfileImageEdit />
                 </RegisterClientPageProfileForm>
 
                 <RegisterClientPageFormItem>

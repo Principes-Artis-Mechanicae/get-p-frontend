@@ -4,16 +4,17 @@ import { toast } from "react-toastify";
 
 import { Button, DropDown, DropDownContextProvider, DropDownItem, RadioGroup, RadioItem } from "principes-getp";
 
-import { Paragraph } from "@/components/__common__/typography/Paragraph";
-import { Title } from "@/components/__common__/typography/Title";
+import { Paragraph } from "@/common/components/typography/Paragraph/Paragraph";
+import { Title } from "@/common/components/typography/Title/Title";
 
 import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequest/ProjectRequestPage.style";
 
 import { useProjectRequest } from "@/services/project/useProjectRequest";
 
-import { PostProjectRequestContianer } from "./PostProjectRequestSection.style";
 import { projectAction } from "@/store/slice/project.slice";
 import { RootDispatch } from "@/store/store";
+
+import { PostProjectRequestContianer } from "./PostProjectRequestSection.style";
 
 export const PostProjectRequestSection = () => {
     const dispatch: RootDispatch = useDispatch();

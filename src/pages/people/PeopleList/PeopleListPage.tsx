@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 import { Pagination } from "principes-getp";
 
-import { Text } from "@/components/__common__/typography/Text";
+import { Text } from "@/common/components/typography/Text";
+
 import { PeopleCard } from "@/components/people/PeopleCard";
-import { PeopleSearch } from "@/components/people/PeopleSearch";
+import { PeopleSearchBar } from "@/components/people/PeopleSearchBar";
 
 import { ISortOption } from "@/pages/project/ProjectListPage/ProjectListPage";
 
@@ -32,7 +33,7 @@ export default function PeopleListPage() {
 
     return (
         <PeopleListWrapper>
-            <PeopleSearch
+            <PeopleSearchBar
                 width="100%"
                 height="auto"
                 options={sortOptions}
@@ -45,8 +46,6 @@ export default function PeopleListPage() {
                         {data.content.map((people) => (
                             <PeopleCard
                                 key={people.peopleId}
-                                width="auto"
-                                height="auto"
                                 profileImageUri={people.profileImageUri}
                                 nickname={people.nickname}
                                 introduction={people.profile.introduction}

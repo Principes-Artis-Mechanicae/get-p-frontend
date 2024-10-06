@@ -5,10 +5,10 @@ import axios, { AxiosError } from "axios";
 import { authService } from "@/services/auth/service";
 import { RefreshTokenExpiredException } from "@/services/exception";
 
-import { isExpired } from "@/utils/jwt";
-
 import { authAction } from "@/store/slice/auth.slice";
 import { store } from "@/store/store";
+
+import { isExpired } from "@/utils/jwt";
 
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
 

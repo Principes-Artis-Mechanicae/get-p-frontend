@@ -3,8 +3,8 @@ import { Button } from "principes-getp";
 import { Input } from "principes-getp";
 import { Label } from "principes-getp";
 
-import { Text } from "@/components/__common__/typography/Text";
-import { Title } from "@/components/__common__/typography/Title";
+import { Text } from "@/common/components/typography/Text";
+import { Title } from "@/common/components/typography/Title/Title";
 
 import {
     FindPasswordContainer,

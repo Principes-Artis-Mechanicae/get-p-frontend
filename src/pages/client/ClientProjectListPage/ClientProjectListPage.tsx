@@ -1,12 +1,14 @@
 import { Pagination } from "principes-getp";
 
-import { Text } from "@/components/__common__/typography/Text";
-import { PeopleSearch } from "@/components/people/PeopleSearch";
-import { ProjectCard } from "@/components/project/ProjectCard/ProjectCard";
+import { Text } from "@/common/components/typography/Text";
+
+import { PeopleSearchBar } from "@/components/people/PeopleSearchBar";
+import { ProjectCard } from "@/components/project/ProjectCard";
+
+import { ProjectListWrapper } from "@/pages/project/ProjectListPage/ProjectListPage.style";
 
 import { useClientProjectList } from "@/services/client/useClientProjectList";
 
-import { ProjectListWrapper } from "../../project/ProjectListPage/ProjectListPage.style";
 import { ClientProjectListContainer, ClientProjectListWrapper, TotalProjectCount } from "./ClientProjectListPage.style";
 
 export default function ClientProjectListPage() {
@@ -20,7 +22,7 @@ export default function ClientProjectListPage() {
                 유지훈 의뢰자님의 의뢰중인 프로젝트 목록
             </Text>
             <ClientProjectListWrapper>
-                <PeopleSearch width="100%" height="auto" />
+                <PeopleSearchBar width="100%" height="auto" />
                 <TotalProjectCount>총 {data?.pageInfo.totalElements}개</TotalProjectCount>
 
                 <ClientProjectListContainer>
