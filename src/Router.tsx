@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import FindPasswordPage from "@/pages/auth/FindPasswordPage";
 import SignInPage from "@/pages/auth/SignInPage";
 import SignUpPage from "@/pages/auth/SignUpPage";
-import EditClientPage from "@/pages/client/EditClientPage";
+import EditClientPage from "@/pages/client/EditClientPage/EditClientPage";
 import MeetingRequestPage from "@/pages/client/MeetingRequest/MeetingRequestPage";
 import RegisterClientPage from "@/pages/client/RegisterClientPage";
 import NotFoundPage from "@/pages/error/NotFoundPage";

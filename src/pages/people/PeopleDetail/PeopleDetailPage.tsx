@@ -55,8 +55,8 @@ export default function PeopleDetailPage() {
                     </Text>
                     <HashtagContainer>
                         {people?.profile.hashtags &&
-                            people.profile.hashtags.map((hashtag: string) => {
-                                return <HashtagCard>{hashtag}</HashtagCard>;
+                            people.profile.hashtags.map((hashtag, index) => {
+                                return <HashtagCard key={index}>{hashtag}</HashtagCard>;
                             })}
                     </HashtagContainer>
                 </HashtagWrapper>
@@ -90,8 +90,8 @@ export default function PeopleDetailPage() {
                             기술 스택
                         </Text>
                         <BadgeContainer>
-                            {people?.profile.techStacks.map((techStack: string) => (
-                                <TechStackBadge text={techStack} isInput={false} />
+                            {people?.profile?.techStacks?.map((techStack: string) => (
+                                <TechStackBadge key={uuidv4()} text={techStack} isInput={false} />
                             ))}
                         </BadgeContainer>
                     </TextboxContainer>
@@ -105,7 +105,7 @@ export default function PeopleDetailPage() {
                         <Text size="xs" color="secondary" weight="bold">
                             학력
                         </Text>
-                        <Input width="100%" height="45px" disabled={true} value={people?.profile.education.school} />
+                        <Input width="100%" height="45px" disabled={true} value={people?.profile?.education?.school} />
                     </TextboxContainer>
                     <TextboxContainer>
                         <Text size="xs" color="secondary" weight="bold">
@@ -118,7 +118,7 @@ export default function PeopleDetailPage() {
                             포트폴리오
                         </Text>
                         <PortfolioContainer>
-                            {people?.profile.portfolios.map((portfolio) => (
+                            {people?.profile?.portfolios?.map((portfolio) => (
                                 <PortfolioCard onClick={() => handlePortfolioOpen(portfolio.url)}>
                                     {portfolio.description}
                                 </PortfolioCard>

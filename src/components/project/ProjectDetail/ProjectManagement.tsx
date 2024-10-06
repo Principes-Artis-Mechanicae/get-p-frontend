@@ -22,6 +22,7 @@ export interface ProjectManagementProps {
 }
 
 export const ProjectManagement = ({ clientAddress, likesCount, additionalStyles }: ProjectManagementProps) => {
+    console.log(clientAddress);
     return (
         <ProjectManagementWrapper additionalStyles={additionalStyles}>
             <ProjectManagementContainer>

@@ -7,7 +7,7 @@ export const ProjectInfoWrapper = styled.div`
 
     ${place_center}
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 
     border-radius: 12px;
     border: 1px solid #ebedef;
@@ -30,6 +30,24 @@ export const ProjectDueDate = styled.div`
 
     border-radius: 4px;
     padding: 4px 10px;
+`;
+
+export const ProjectInfoContainer = styled.div`
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+`;
+
+export const ProjectTextContainer = styled.div`
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 10px;
 `;
 
 export const ProjectHashTagContainer = styled.div`
