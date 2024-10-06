@@ -1,13 +1,12 @@
 import { SearchBar } from "principes-getp";
 
-import { Toast } from "@/components/__common__/feedback/Toast";
-import { Footer } from "@/components/__common__/layout/Footer";
-import { Header } from "@/components/__common__/layout/Header";
-import { Text } from "@/components/__common__/typography/Text";
+import { Toast } from "@/common/components/overlays/Toast";
+import { Text } from "@/common/components/typography/Text";
+
 import { Carousel } from "@/components/home/Carousel/Carousel";
-import { NewPeopleCard, NewPeopleCardSkeleton } from "@/components/home/NewPeople/NewPeopleCard";
-import { NewPeopleCardContainer } from "@/components/home/NewPeople/NewPeopleCardContainer";
-import { HomePageSection } from "@/components/home/Section/HomePageSection";
+import { NewPeopleCard, NewPeopleCardSkeleton } from "@/components/home/NewPeopleCard";
+import { NewPeopleCardContainer } from "@/components/home/NewPeopleCardContainer";
+import { HomePageSection } from "@/components/home/Section";
 import { PeopleCard } from "@/components/people/PeopleCard";
 
 import { useNewPeople } from "@/services/people/useNewPeople";
@@ -15,9 +14,9 @@ import { usePopularPeople } from "@/services/people/usePopularPeople";
 
 import { carouselImgSrc } from "@/constants/carouselImgSrc";
 
-import { nav_height } from "@/styles/variables";
-
 import { HomePageMainLayout, NewPeopleBadge, PopularPeopleContainer } from "./HomePage.style";
+import { Footer } from "@/layouts/Footer/Footer";
+import { Header } from "@/layouts/Header/Header";
 
 export default function HomePage() {
     const { isPending, data } = useNewPeople();
@@ -30,7 +29,7 @@ export default function HomePage() {
         <>
             <Toast />
             <Header />
-            <div style={{ height: nav_height }} />
+            <div style={{ height: "var(--nav-height)" }} />
 
             <Carousel carouselImgSrc={carouselImgSrc} />
 
@@ -44,7 +43,9 @@ export default function HomePage() {
                     link=""
                     topBadge={
                         <NewPeopleBadge>
-                            <Text size="s">New</Text>
+                            <Text size="s" color="#fff" weight="bold">
+                                New
+                            </Text>
                         </NewPeopleBadge>
                     }
                 >

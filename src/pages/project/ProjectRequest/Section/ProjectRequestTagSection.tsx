@@ -3,18 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Button, Input, Label } from "principes-getp";
 
-import { Paragraph } from "@/components/__common__/typography/Paragraph";
-import { Title } from "@/components/__common__/typography/Title";
-import { ProjectRequestStep } from "@/components/project/ProjectRequestStep/ProjectRequestStep";
-import { ProjectTag, ProjectTagContainer } from "@/components/project/ProjectTag/ProjectTag.style";
+import { Paragraph } from "@/common/components/typography/Paragraph/Paragraph";
+import { Title } from "@/common/components/typography/Title/Title";
+
+import { ProjectRequestStep } from "@/components/project/ProjectRequestStep";
+import { ProjectTag, ProjectTagContainer } from "@/components/project/ProjectTag";
 
 import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequest/ProjectRequestPage.style";
 
 import { useProjectRequest } from "@/services/project/useProjectRequest";
 
-import { ProjectRequestTagSectionContainer } from "./ProjectRequestTagSection.style";
 import { projectAction } from "@/store/slice/project.slice";
 import { RootDispatch, RootState } from "@/store/store";
+
+import { ProjectRequestTagSectionContainer } from "./ProjectRequestTagSection.style";
 
 export const ProjectRequestTagSection = () => {
     const dispatch: RootDispatch = useDispatch();

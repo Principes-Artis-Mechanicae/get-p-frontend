@@ -2,10 +2,10 @@ import { Button } from "principes-getp";
 import { Label } from "principes-getp";
 import { TextArea } from "principes-getp";
 
-import { Text } from "@/components/__common__/typography/Text";
-import { Title } from "@/components/__common__/typography/Title";
+import { Text } from "@/common/components/typography/Text";
+import { Title } from "@/common/components/typography/Title/Title";
 
-import { DateInput } from "@/pages/project/ProjectApplyPage.style";
+import { DateInput } from "@/pages/project/ProjectApplyPage/ProjectApplyPage.style";
 
 import { useRequestMeeting } from "@/services/client/useRequestMeeting";
 

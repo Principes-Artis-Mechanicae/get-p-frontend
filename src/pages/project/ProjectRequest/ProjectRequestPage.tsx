@@ -1,12 +1,13 @@
 // import { RadioGroup } from "principes-getp";
 import { useSelector } from "react-redux";
 
+import { RootState } from "@/store/store";
+
 import { PostProjectRequestSection } from "./Section/PostProjectRequestSection";
 import { ProjectReqeustCompleteSection } from "./Section/ProjectRequestCompleteSection";
 import { ProjectRequestContentSection } from "./Section/ProjectRequestContentSection";
 import { ProjectRequestDateSection } from "./Section/ProjectRequestDateSection";
 import { ProjectRequestTagSection } from "./Section/ProjectRequestTagSection";
-import { RootState } from "@/store/store";
 
 export default function ProjectRequestPage() {
     const { step } = useSelector((state: RootState) => state.project);

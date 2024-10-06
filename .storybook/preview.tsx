@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
 import { store } from "../src/store/store";
+import { GlobalStyles } from "../src/styles/styles";
 import type { Preview } from "@storybook/react";
 
 const preview: Preview = {
@@ -19,6 +20,7 @@ const preview: Preview = {
             <BrowserRouter>
                 <Provider store={store}>
                     <Story />
+                    <GlobalStyles />
                 </Provider>
             </BrowserRouter>
         ),
