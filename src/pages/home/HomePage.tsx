@@ -8,17 +8,23 @@ import { Carousel } from "@/components/home/Carousel/Carousel";
 import { NewPeopleCard, NewPeopleCardSkeleton } from "@/components/home/NewPeople/NewPeopleCard";
 import { NewPeopleCardContainer } from "@/components/home/NewPeople/NewPeopleCardContainer";
 import { HomePageSection } from "@/components/home/Section/HomePageSection";
+import { PeopleCard } from "@/components/people/PeopleCard";
 
 import { useNewPeople } from "@/services/people/useNewPeople";
+import { usePopularPeople } from "@/services/people/usePopularPeople";
 
 import { carouselImgSrc } from "@/constants/carouselImgSrc";
 
 import { nav_height } from "@/styles/variables";
 
-import { HomePageMainLayout, NewPeopleBadge } from "./HomePage.style";
+import { HomePageMainLayout, NewPeopleBadge, PopularPeopleContainer } from "./HomePage.style";
 
 export default function HomePage() {
     const { isPending, data } = useNewPeople();
+
+    usePopularPeople();
+
+    const { isPending: isPopularPeoplePending, data: popularPeople } = usePopularPeople();
 
     return (
         <>
@@ -63,7 +69,22 @@ export default function HomePage() {
                 </HomePageSection>
 
                 <HomePageSection title="인기 있는 피플" link="">
-                    인기 피플
+                    <PopularPeopleContainer>
+                        {isPopularPeoplePending
+                            ? "loading"
+                            : popularPeople?.content.map((people) => {
+                                  return (
+                                      <PeopleCard
+                                          profileImageUri={people.profileImageUri}
+                                          nickname={people.nickname}
+                                          activityArea={people.profile.activityArea}
+                                          hashtags={people.profile.hashtags}
+                                          completeProjectsCount={people.completedProjectsCount}
+                                          introduction={people.profile.introduction}
+                                      />
+                                  );
+                              })}
+                    </PopularPeopleContainer>
                 </HomePageSection>
 
                 <HomePageSection title="마감 임박 프로젝트" link="">
