@@ -5,20 +5,16 @@ import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { Button } from "principes-getp";
 
+import { Text } from "@/common/components/typography/Text";
+
 import { MemberTypeCard } from "@/components/auth/MemberTypeCard";
 
 import { MemberType } from "@/services/auth/types";
 
-import { Text } from "../__common__/typography/Text";
-import {
-    SelectTypeContainer,
-    SelectTypeItem,
-    SelectTypeSectionHeader,
-    SelectTypeSectionWrapper,
-    SelectTypeTextItem,
-} from "./SelectTypeSection.style";
 import { signUpAction } from "@/store/slice/signup.slice";
 import { RootDispatch, RootState } from "@/store/store";
+
+import * as Styles from "./index.style";
 
 export default function SelectTypeSection() {
     const dispatch: RootDispatch = useDispatch();
@@ -44,18 +40,18 @@ export default function SelectTypeSection() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <SelectTypeSectionWrapper>
-                <SelectTypeSectionHeader>
+            <Styles.SectionWrapper>
+                <Styles.SectionHeader>
                     <Text size="xl" color="point" weight="bold">
                         회원타입
                     </Text>
                     <Text size="xl" color="primary" weight="bold">
                         을 선택해주세요
                     </Text>
-                </SelectTypeSectionHeader>
+                </Styles.SectionHeader>
 
-                <SelectTypeContainer>
-                    <SelectTypeTextItem>
+                <Styles.Container>
+                    <Styles.TextItem>
                         <Text size="m" color="secondary" weight="normal">
                             회원 타입은 프로젝트를 의뢰하는 '의뢰자 회원'과
                         </Text>
@@ -63,30 +59,26 @@ export default function SelectTypeSection() {
                         <Text size="m" color="secondary" weight="normal">
                             프로젝트에 참여하는 '피플 회원'으로 나누어 집니다.
                         </Text>
-                    </SelectTypeTextItem>
+                    </Styles.TextItem>
 
-                    <SelectTypeItem>
+                    <Styles.Item>
                         <MemberTypeCard
                             variant="client"
                             width="208px"
                             height="208px"
-                            imgSrc=""
-                            label="의뢰자 회원"
                             onClick={handleClientBtnClick}
                             selected={signUpMemberType === "ROLE_CLIENT"}
-                        ></MemberTypeCard>
+                        />
                         <MemberTypeCard
                             variant="people"
                             width="208px"
                             height="208px"
-                            imgSrc=""
-                            label="피플 회원"
                             onClick={handlePeopleBtnClick}
                             selected={signUpMemberType === "ROLE_PEOPLE"}
-                        ></MemberTypeCard>
-                    </SelectTypeItem>
+                        />
+                    </Styles.Item>
 
-                    <SelectTypeItem>
+                    <Styles.Item>
                         <Button
                             variant={signUpMemberType ? "primary" : "disabled"}
                             width="100%"
@@ -95,9 +87,9 @@ export default function SelectTypeSection() {
                         >
                             완료하기
                         </Button>
-                    </SelectTypeItem>
-                </SelectTypeContainer>
-            </SelectTypeSectionWrapper>
+                    </Styles.Item>
+                </Styles.Container>
+            </Styles.SectionWrapper>
         </motion.div>
     );
 }

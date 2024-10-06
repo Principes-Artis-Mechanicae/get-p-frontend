@@ -1,21 +1,21 @@
 import styled from "@emotion/styled";
 
-export const SelectTypeSectionWrapper = styled.section`
+export const SectionWrapper = styled.section`
     width: min(100%, 440px);
     margin: 40px auto;
 `;
 
-export const SelectTypeSectionHeader = styled.p`
+export const SectionHeader = styled.p`
     margin: 25px 0px;
 
     text-align: center;
 `;
 
-export const SelectTypeContainer = styled.div`
+export const Container = styled.div`
     width: 100%;
 `;
 
-export const SelectTypeTextItem = styled.div`
+export const TextItem = styled.div`
     justify-content: center;
     text-align: center;
     margin: 0px 0px;
@@ -23,7 +23,7 @@ export const SelectTypeTextItem = styled.div`
     margin: 30px auto;
 `;
 
-export const SelectTypeItem = styled.div`
+export const Item = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 10px;

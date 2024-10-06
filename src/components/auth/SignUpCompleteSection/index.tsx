@@ -5,17 +5,15 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "principes-getp";
 
-import { Text } from "../__common__/typography/Text";
-import { Title } from "../__common__/typography/Title";
-import {
-    SignUpCompleteContainer,
-    SignUpCompleteItem,
-    SignUpCompleteSectionHeader,
-    SignUpCompleteSectionWrapper,
-    SignUpCompleteTextItem,
-} from "./SignUpCompleteSection.style";
+import { Text } from "@/common/components/typography/Text";
+import { Title } from "@/common/components/typography/Title/Title";
+
 import { signUpAction } from "@/store/slice/signup.slice";
 import { RootDispatch } from "@/store/store";
+
+import congratsImage from "@/assets/auth/congrats1.png";
+
+import * as Styles from "./index.style";
 
 export default function SignUpCompleteSection() {
     const navigate = useNavigate();
@@ -38,17 +36,17 @@ export default function SignUpCompleteSection() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <SignUpCompleteSectionWrapper>
-                <SignUpCompleteSectionHeader>
+            <Styles.SectionWrapper>
+                <Styles.SectionHeader>
                     <Title>가입완료</Title>
-                </SignUpCompleteSectionHeader>
+                </Styles.SectionHeader>
 
-                <SignUpCompleteContainer>
-                    <SignUpCompleteItem>
-                        <img src="/src/assets/auth/congrats2.png" width="312px" height="230px" />
-                    </SignUpCompleteItem>
+                <Styles.Container>
+                    <Styles.Item>
+                        <img src={congratsImage} width="312px" height="230px" alt="congrats-signup-complete" />
+                    </Styles.Item>
 
-                    <SignUpCompleteTextItem>
+                    <Styles.TextItem>
                         <Text size="l" color="point" weight="bold">
                             환영합니다.
                         </Text>
@@ -56,24 +54,24 @@ export default function SignUpCompleteSection() {
                         <Text size="l" color="primary" weight="bold">
                             가입이 완료되었어요.
                         </Text>
-                    </SignUpCompleteTextItem>
+                    </Styles.TextItem>
 
-                    <SignUpCompleteItem>
+                    <Styles.Item>
                         <Button variant="secondary" width="100%" height="54px" onClick={handleLoginBtnClick}>
                             <Text size="s" color="point" weight="bold">
                                 로그인하기
                             </Text>
                         </Button>
-                    </SignUpCompleteItem>
-                    <SignUpCompleteItem>
+                    </Styles.Item>
+                    <Styles.Item>
                         <Button variant="primary" width="100%" height="54px" onClick={handleRegisterInfoBtnClick}>
                             <Text size="s" color="white" weight="bold">
                                 내 정보 등록하러 가기
                             </Text>
                         </Button>
-                    </SignUpCompleteItem>
-                </SignUpCompleteContainer>
-            </SignUpCompleteSectionWrapper>
+                    </Styles.Item>
+                </Styles.Container>
+            </Styles.SectionWrapper>
         </motion.div>
     );
 }

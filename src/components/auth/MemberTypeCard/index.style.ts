@@ -1,20 +1,12 @@
+import { MemberTypeCardProps } from "@/components/auth/MemberTypeCard";
+
 import { place_center } from "@/styles/utils";
 
 import styled from "@emotion/styled";
 
-export interface IMemberTypeCardWrapper {
-    variant: "client" | "people";
-    width: string;
-    height: string;
-    selected: boolean; // (임시) 선택된 스타일
-}
-
-export interface IMemberTypeCardImg {
-    src: string;
-}
-
-export const MemberTypeCardWrapper = styled.button<IMemberTypeCardWrapper>`
+export const Wrapper = styled.button<Omit<MemberTypeCardProps, "imgSrc" | "label">>`
     ${place_center}
+
     width: ${(props) => props.width};
     height: ${(props) => props.height};
 
@@ -44,6 +36,6 @@ export const MemberTypeCardWrapper = styled.button<IMemberTypeCardWrapper>`
     }
 `;
 
-export const MemberTypeCardImg = styled.div<IMemberTypeCardImg>`
-    src: ${(props) => props.src};
+export const Image = styled.img`
+    display: block;
 `;

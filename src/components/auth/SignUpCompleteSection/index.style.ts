@@ -1,27 +1,27 @@
 import styled from "@emotion/styled";
 
-export const SignUpCompleteSectionWrapper = styled.section`
+export const SectionWrapper = styled.section`
     width: min(100%, 500px);
     margin: 0px auto;
 `;
 
-export const SignUpCompleteSectionHeader = styled.p`
+export const SectionHeader = styled.p`
     margin: 50px 0px;
     text-align: center;
 `;
 
-export const SignUpCompleteContainer = styled.div`
+export const Container = styled.div`
     text-align: center;
     width: 100%;
 `;
 
-export const SignUpCompleteTextItem = styled.div`
+export const TextItem = styled.div`
     justify-content: center;
     width: 100%;
     margin: 44px auto;
 `;
 
-export const SignUpCompleteItem = styled.div`
+export const Item = styled.div`
     justify-content: center;
     width: 100%;
     margin: 12px auto;

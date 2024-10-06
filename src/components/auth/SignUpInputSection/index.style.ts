@@ -1,20 +1,20 @@
 import styled from "@emotion/styled";
 
-export const SignUpSectionWrapper = styled.section`
+export const SectionWrapper = styled.section`
     width: min(100%, 500px);
     margin: 0px auto;
 `;
 
-export const SignUpSectionHeader = styled.p`
+export const SectionHeader = styled.p`
     margin: 50px 0px;
     text-align: center;
 `;
 
-export const SignUpSectionContainer = styled.div`
+export const SectionContainer = styled.div`
     width: 100%;
 `;
 
-export const SignUpItem = styled.div`
+export const Item = styled.div`
     width: 100%;
     margin: 30px 0px;
 `;
@@ -26,7 +26,7 @@ export const CheckBoxContainer = styled.div`
     margin: 12px 0px;
 `;
 
-export const DetailBtn = styled.button`
+export const DetailButton = styled.button`
     width: 60px;
     height: 25px;
     font-weight: bold;

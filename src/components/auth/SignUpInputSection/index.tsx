@@ -8,30 +8,24 @@ import { CheckBox } from "principes-getp";
 import { Input } from "principes-getp";
 import { Label } from "principes-getp";
 
-import { useInputValidation } from "@/hooks/useInputValidation";
+import { Modal } from "@/common/components/overlays/Modal";
+import { Paragraph } from "@/common/components/typography/Paragraph/Paragraph";
+import { Text } from "@/common/components/typography/Text";
+import { Title } from "@/common/components/typography/Title/Title";
+import { useInputValidation } from "@/common/hooks/useInputValidation";
 
 import { authService } from "@/services/auth/service";
+
+import { signUpAction } from "@/store/slice/signup.slice";
+import { uiActions } from "@/store/slice/ui.slice";
+import { RootDispatch, RootState } from "@/store/store";
+import { signUpThunkAction } from "@/store/thunk/signup.thunk";
 
 import { REGEXP_EMAIL, REGEXP_PASSWORD } from "@/constants/regex";
 
 import { formatTime } from "@/utils/format";
 
-import { Modal } from "../__common__/feedback/Modal";
-import { Paragraph } from "../__common__/typography/Paragraph";
-import { Text } from "../__common__/typography/Text";
-import { Title } from "../__common__/typography/Title";
-import {
-    SignUpSectionWrapper,
-    SignUpSectionHeader,
-    SignUpSectionContainer,
-    SignUpItem,
-    CheckBoxContainer,
-    DetailBtn,
-} from "./SignUpInputSection.style";
-import { signUpAction } from "@/store/slice/signup.slice";
-import { uiActions } from "@/store/slice/ui.slice";
-import { RootDispatch, RootState } from "@/store/store";
-import { signUpThunkAction } from "@/store/thunk/signup.thunk";
+import * as Styles from "./index.style";
 
 export default function SignUpInputSection() {
     const dispatch: RootDispatch = useDispatch();
@@ -122,7 +116,7 @@ export default function SignUpInputSection() {
                 transition={{ duration: 0.5 }}
             >
                 {isModalOpened && (
-                    <Modal width="400px" height="300px">
+                    <Modal width="400px">
                         <Title>
                             <Text size="l" weight="bold">
                                 이메일을 받지 못하셨나요 ?
@@ -138,13 +132,13 @@ export default function SignUpInputSection() {
                     </Modal>
                 )}
 
-                <SignUpSectionWrapper>
-                    <SignUpSectionHeader>
+                <Styles.SectionWrapper>
+                    <Styles.SectionHeader>
                         <Title>회원가입</Title>
-                    </SignUpSectionHeader>
+                    </Styles.SectionHeader>
 
-                    <SignUpSectionContainer>
-                        <SignUpItem>
+                    <Styles.SectionContainer>
+                        <Styles.Item>
                             <Label htmlFor="id">아이디</Label>
                             <Input
                                 ref={emailRef}
@@ -164,11 +158,11 @@ export default function SignUpInputSection() {
                                     인증
                                 </Button>
                             </Input>
-                        </SignUpItem>
+                        </Styles.Item>
 
                         {isEmailVerificationFieldVisible && (
                             <>
-                                <SignUpItem>
+                                <Styles.Item>
                                     <Input
                                         ref={verificationRef}
                                         id="id"
@@ -194,11 +188,11 @@ export default function SignUpInputSection() {
                                             인증번호를 받지 못하셨나요?
                                         </Text>
                                     </Button>
-                                </SignUpItem>
+                                </Styles.Item>
                             </>
                         )}
 
-                        <SignUpItem>
+                        <Styles.Item>
                             <Label htmlFor="pw">비밀번호</Label>
                             <Input
                                 ref={passwordRef}
@@ -213,10 +207,10 @@ export default function SignUpInputSection() {
                                         ? "비밀번호는 영문,숫자,특수문자로 조합된 8-20자 이어야 합니다"
                                         : ""
                                 }
-                            ></Input>
-                        </SignUpItem>
+                            />
+                        </Styles.Item>
 
-                        <SignUpItem>
+                        <Styles.Item>
                             <Label htmlFor="pw-verify">비밀번호 확인</Label>
                             <Input
                                 ref={passwordCheckRef}
@@ -227,36 +221,36 @@ export default function SignUpInputSection() {
                                 placeholder="비밀번호를 다시 입력해주세요"
                                 onChange={handlePasswordChange}
                                 error={!isPasswordCorrect ? "비밀번호가 일치하지 않습니다" : ""}
-                            ></Input>
-                        </SignUpItem>
+                            />
+                        </Styles.Item>
 
-                        <SignUpItem>
-                            <CheckBoxContainer>
+                        <Styles.Item>
+                            <Styles.CheckBoxContainer>
                                 <CheckBox width="20px" height="20px" ref={termsAgreementRef}>
                                     GET-P 이용약관 (필수)
                                 </CheckBox>
-                                <DetailBtn>상세보기</DetailBtn>
-                            </CheckBoxContainer>
+                                <Styles.DetailButton>상세보기</Styles.DetailButton>
+                            </Styles.CheckBoxContainer>
 
-                            <CheckBoxContainer>
+                            <Styles.CheckBoxContainer>
                                 <CheckBox width="20px" height="20px" ref={infoAgreementRef}>
                                     개인정보 수집 및 이용 동의 (필수)
                                 </CheckBox>
-                                <DetailBtn>상세보기</DetailBtn>
-                            </CheckBoxContainer>
+                                <Styles.DetailButton>상세보기</Styles.DetailButton>
+                            </Styles.CheckBoxContainer>
 
                             <CheckBox width="20px" height="20px">
                                 마케팅 정보 수신 (선택)
                             </CheckBox>
-                        </SignUpItem>
+                        </Styles.Item>
 
-                        <SignUpItem>
+                        <Styles.Item>
                             <Button variant="primary" width="100%" height="54px" onClick={handleNextStepBtnClick}>
                                 다음으로
                             </Button>
-                        </SignUpItem>
-                    </SignUpSectionContainer>
-                </SignUpSectionWrapper>
+                        </Styles.Item>
+                    </Styles.SectionContainer>
+                </Styles.SectionWrapper>
             </motion.div>
         </>
     );
