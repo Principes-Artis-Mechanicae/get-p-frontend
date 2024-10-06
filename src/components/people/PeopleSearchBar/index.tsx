@@ -17,7 +17,7 @@ export interface PeopleSearchBarProps {
     headerText?: string;
 }
 
-export const PeopleSearch = ({ width, height, options, order, onSortChange, headerText }: PeopleSearchBarProps) => {
+export const PeopleSearchBar = ({ width, height, options, order, onSortChange, headerText }: PeopleSearchBarProps) => {
     const { handleClick } = useToggle();
 
     return (

@@ -2,9 +2,10 @@ import { useState } from "react";
 
 import { Pagination } from "principes-getp";
 
-import { Text } from "@/components/__common__/typography/Text";
-import { PeopleSearch } from "@/components/people/PeopleSearch";
-import { ProjectCard } from "@/components/project/ProjectCard/ProjectCard";
+import { Text } from "@/common/components/typography/Text";
+
+import { PeopleSearchBar } from "@/components/people/PeopleSearchBar";
+import { ProjectCard } from "@/components/project/ProjectCard";
 
 import { useProjectList } from "@/services/project/useProjectList";
 
@@ -34,7 +35,7 @@ export default function ProjectListPage() {
     if (isPending) return <>loading...</>;
     return (
         <ProjectListWrapper>
-            <PeopleSearch
+            <PeopleSearchBar
                 width="100%"
                 height="auto"
                 options={sortOptions}

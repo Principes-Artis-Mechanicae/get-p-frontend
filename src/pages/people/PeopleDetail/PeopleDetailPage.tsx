@@ -2,9 +2,10 @@ import { useCallback } from "react";
 
 import { Input } from "principes-getp";
 
-import { AuthGuardBlur } from "@/components/__common__/display/AuthGuardBlur/AuthGuardBlur";
-import { Text } from "@/components/__common__/typography/Text";
-import { Profile } from "@/components/people/Profile";
+import { Text } from "@/common/components/typography/Text";
+
+import { AuthGuardBlur } from "@/components/auth/AuthGuardBlur";
+import { PeopleProfile } from "@/components/people/PeopleProfile";
 import { TechStackBadge } from "@/components/people/TechStackBadge";
 
 import { usePeopleById } from "@/services/people/usePeopleById";
@@ -42,7 +43,7 @@ export default function PeopleDetailPage() {
                 </Text>
             </ResponsiveMobileHeading>
             <ProfileContainer>
-                <Profile
+                <PeopleProfile
                     width="100%"
                     height="283px"
                     nickname={people?.nickname as string}
@@ -90,8 +91,8 @@ export default function PeopleDetailPage() {
                             기술 스택
                         </Text>
                         <BadgeContainer>
-                            {people?.profile?.techStacks?.map((techStack: string) => (
-                                <TechStackBadge key={uuidv4()} text={techStack} isInput={false} />
+                            {people?.profile?.techStacks?.map((techStack: string, index) => (
+                                <TechStackBadge key={index} text={techStack} isInput={false} />
                             ))}
                         </BadgeContainer>
                     </TextboxContainer>

@@ -11,7 +11,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const PeopleSearchBar: Story = {
+export const Default: Story = {
     args: {
         width: "600px",
         height: "100px",

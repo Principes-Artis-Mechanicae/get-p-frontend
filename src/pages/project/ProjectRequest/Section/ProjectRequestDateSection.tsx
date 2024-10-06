@@ -4,17 +4,19 @@ import { toast } from "react-toastify";
 
 import { Button, DatePicker, Label } from "principes-getp";
 
-import { Paragraph } from "@/components/__common__/typography/Paragraph";
-import { Title } from "@/components/__common__/typography/Title";
-import { ProjectRequestStep } from "@/components/project/ProjectRequestStep/ProjectRequestStep";
+import { Paragraph } from "@/common/components/typography/Paragraph/Paragraph";
+import { Title } from "@/common/components/typography/Title/Title";
+
+import { ProjectRequestStep } from "@/components/project/ProjectRequestStep";
 
 import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequest/ProjectRequestPage.style";
 
 import { useProjectRequest } from "@/services/project/useProjectRequest";
 
-import { ProjectRequestDateSectionContainer } from "./ProjectRequestDateSection.style";
 import { projectAction } from "@/store/slice/project.slice";
 import { RootDispatch } from "@/store/store";
+
+import { ProjectRequestDateSectionContainer } from "./ProjectRequestDateSection.style";
 
 export const ProjectRequestDateSection = () => {
     const dispatch: RootDispatch = useDispatch();

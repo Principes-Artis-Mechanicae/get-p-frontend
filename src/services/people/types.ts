@@ -16,7 +16,7 @@ export interface PeopleData {
     profile: {
         introduction: string;
         activityArea: string;
-        hashtags: { value: string }[];
+        hashtags: string[];
     };
 }
 

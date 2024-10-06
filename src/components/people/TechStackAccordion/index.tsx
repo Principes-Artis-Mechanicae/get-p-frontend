@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from "react";
 
-import { useAccordion } from "@/hooks/useAccordion";
+import { useAccordion } from "@/hooks/people/useAccordion";
 import { useTechStack } from "@/hooks/useTechStack";
 
 import chevronIcon from "@/assets/people/chevron.svg";

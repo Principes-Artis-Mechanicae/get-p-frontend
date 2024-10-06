@@ -2,8 +2,8 @@ import { useNavigate } from "react-router-dom";
 
 import { Button } from "principes-getp";
 
-import { Paragraph } from "@/components/__common__/typography/Paragraph";
-import { Title } from "@/components/__common__/typography/Title";
+import { Paragraph } from "@/common/components/typography/Paragraph/Paragraph";
+import { Title } from "@/common/components/typography/Title/Title";
 
 import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequest/ProjectRequestPage.style";
 

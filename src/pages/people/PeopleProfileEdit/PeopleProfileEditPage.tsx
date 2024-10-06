@@ -4,10 +4,11 @@ import { Label } from "principes-getp";
 import { TextArea } from "principes-getp";
 import { withProviders } from "principes-getp";
 
-import { Text } from "@/components/__common__/typography/Text";
-import { Title } from "@/components/__common__/typography/Title";
-import { Profile } from "@/components/people/Profile";
-import { ProfileHashTag } from "@/components/people/ProfileHashTag";
+import { Text } from "@/common/components/typography/Text";
+import { Title } from "@/common/components/typography/Title/Title";
+
+import { PeopleProfile } from "@/components/people/PeopleProfile";
+import { PeopleProfileHashTag } from "@/components/people/PeopleProfileHashTag";
 import { TechStackSelector } from "@/components/people/TechStackSelector";
 
 import { usePeopleProfileEdit } from "@/services/people/usePeopleProfileEdit";
@@ -35,8 +36,14 @@ const PeopleProfileEditPage = withProviders(
         return (
             <PeopleProfileEditPageWrapper>
                 <PeopleProfileEditPageAside>
-                    <Profile width="100%" height="280px" nickname={"닉네임"} likeCount={0} completeProjectsCount={0} />
-                    <ProfileHashTag width="100%" minHeight="120px" />
+                    <PeopleProfile
+                        width="100%"
+                        height="280px"
+                        nickname={"닉네임"}
+                        likeCount={0}
+                        completeProjectsCount={0}
+                    />
+                    <PeopleProfileHashTag width="100%" minHeight="120px" />
                 </PeopleProfileEditPageAside>
 
                 <PeopleProfileEditPageContainer>
@@ -69,7 +76,7 @@ const PeopleProfileEditPage = withProviders(
 
                         <PeopleProfileEditFormItem>
                             <Label>기술스택</Label>
-                            <TechStackSelector techStack={techStack} width="100$" height="350px" />
+                            <TechStackSelector techStack={techStack} width="100%" height="350px" />
                         </PeopleProfileEditFormItem>
 
                         <PeopleProfileEditFormItem>
