@@ -1,7 +1,6 @@
 import { useCallback } from "react";
 
 import { Input } from "principes-getp";
-import { v4 as uuidv4 } from "uuid";
 
 import { AuthGuardBlur } from "@/components/__common__/display/AuthGuardBlur/AuthGuardBlur";
 import { Text } from "@/components/__common__/typography/Text";
@@ -56,8 +55,8 @@ export default function PeopleDetailPage() {
                     </Text>
                     <HashtagContainer>
                         {people?.profile.hashtags &&
-                            people.profile.hashtags.map((hashtag: string) => {
-                                return <HashtagCard key={uuidv4()}>{hashtag}</HashtagCard>;
+                            people.profile.hashtags.map((hashtag, index) => {
+                                return <HashtagCard key={index}>{hashtag}</HashtagCard>;
                             })}
                     </HashtagContainer>
                 </HashtagWrapper>
