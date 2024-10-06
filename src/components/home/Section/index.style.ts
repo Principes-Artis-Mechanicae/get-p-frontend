@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 
-export const HomePageSectionWrapper = styled.section`
+export const Wrapper = styled.section`
     margin: 40px 0px;
 `;
 
-export const HomePageSectionHeader = styled.div`
+export const Header = styled.div`
     display: flex;
     justify-content: space-between;
 
