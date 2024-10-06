@@ -18,7 +18,7 @@ export const People: Story = {
         nickname: "유진",
         introduction: "안녕하세요. 경북대 컴퓨터학부 김유진입니다. 개발새발개발흐엥흐에엥",
         activityArea: "대구광역시 동구",
-        hashtags: [{ value: "#안녕하세요" }, { value: "#entp" }],
+        hashtags: ["#안녕하세요", "#entp"],
         completeProjectsCount: 5,
     },
 };

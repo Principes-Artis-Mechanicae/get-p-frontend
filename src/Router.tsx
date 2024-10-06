@@ -5,7 +5,7 @@ import SignInPage from "@/pages/auth/SignInPage";
 import SignUpPage from "@/pages/auth/SignUpPage";
 import EditClientPage from "@/pages/client/EditClientPage/EditClientPage";
 import MeetingRequestPage from "@/pages/client/MeetingRequest/MeetingRequestPage";
-import RegisterClientPage from "@/pages/client/RegisterClientPage";
+import RegisterClientPage from "@/pages/client/RegisterClientPage/RegisterClientPage";
 import NotFoundPage from "@/pages/error/NotFoundPage";
 import HomePage from "@/pages/home/HomePage";
 import PeopleDetailPage from "@/pages/people/PeopleDetail/PeopleDetailPage";

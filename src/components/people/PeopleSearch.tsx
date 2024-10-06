@@ -12,7 +12,6 @@ import {
     PeopleSearchOptionItem,
     PeopleSearchOptionWrapper,
     PeopleSearchWrapper,
-    TotalProjectIcon,
 } from "./PeopleSearch.style";
 
 export interface IPeopleSearch {
