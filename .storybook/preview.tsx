@@ -25,6 +25,7 @@ const preview: Preview = {
             </BrowserRouter>
         ),
     ],
+    tags: ["autodocs"],
 };
 
 export default preview;
