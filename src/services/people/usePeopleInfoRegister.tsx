@@ -1,5 +1,9 @@
 import { useCallback, useRef } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
+import { authAction } from "@/store/slice/auth.slice";
+import { RootDispatch } from "@/store/store";
 
 import { queryClient } from "@/config/query";
 
@@ -8,6 +12,8 @@ import { peopleService } from "./service";
 import { useMutation } from "@tanstack/react-query";
 
 export const usePeopleInfoRegister = () => {
+    const dispatch: RootDispatch = useDispatch();
+
     const emailRef = useRef<HTMLInputElement | null>(null);
     const nicknameRef = useRef<HTMLInputElement | null>(null);
     const phoneNumberRef = useRef<HTMLInputElement | null>(null);
@@ -23,6 +29,7 @@ export const usePeopleInfoRegister = () => {
             }),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: PEOPLE_QUERY_KEYS.PEOPLE() });
+            dispatch(authAction.registerInfo());
             navigate("/");
         },
     });
