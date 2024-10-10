@@ -49,10 +49,10 @@ export const clientService = {
     },
 
     checkInfoRegistered: async () => {
-        const response = await api.get("/people/me");
+        const response = await api.get("/client/me");
+        if (response.status === 200) return true;
         if (response instanceof AxiosError) {
             if (response.status === 404) return false;
-            else if (response.status === 200) return true;
         }
     },
 

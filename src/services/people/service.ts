@@ -65,9 +65,9 @@ export const peopleService = {
     },
     checkInfoRegistered: async () => {
         const response = await api.get("/people/me");
+        if (response.status === 200) return true;
         if (response instanceof AxiosError) {
             if (response.status === 404) return false;
-            else if (response.status === 200) return true;
         }
     },
     registerPeopleProfile: async (body: RegisterPeopleProfileRequestBody) => {
