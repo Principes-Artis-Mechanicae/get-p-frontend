@@ -8,10 +8,14 @@ export const Wrapper = styled.div`
     height: 100px;
 
     border-radius: 10px;
+    border: 1px solid #ebedef;
     padding: 12px;
 
     background: #fff;
-    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 export const Skeleton = styled(Wrapper)`
@@ -35,6 +39,8 @@ export const ProfileImg = styled.img`
     display: block;
     width: 50px;
     height: 50px;
+
+    border-radius: 15px;
 `;
 
 export const LikesInfo = styled.div`
@@ -54,6 +60,8 @@ export const LikesInfo = styled.div`
 export const LikesIcon = styled.img`
     width: 20px;
     height: 20px;
+
+    object-fit: contain;
 `;
 
 export const Item = styled.div`
@@ -70,6 +78,7 @@ export const Item = styled.div`
         flex-shrink: 1;
         white-space: nowrap;
         overflow: hidden;
+        text-overflow: ellipsis;
     }
 `;
 export const HashTagContainer = styled.div`

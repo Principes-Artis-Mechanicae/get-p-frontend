@@ -33,7 +33,7 @@ export const NewPeopleCard = ({
     return (
         <Styles.Wrapper onClick={() => navigate(`/people/${peopleId}`)}>
             <Styles.Contianer>
-                <Styles.ProfileImg src={profileImg ?? defaultProfile} />
+                <Styles.ProfileImg src={profileImg || defaultProfile} />
                 <Styles.LikesInfo>
                     <Styles.LikesIcon src={likeIcon} />
                     <Text size="xs" weight="bold">

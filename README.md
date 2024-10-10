@@ -1,10 +1,11 @@
 # GET-P : Get your People, Get your Projects!
 
+[![Compile & Linting](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/test-static.yml/badge.svg)](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/test-static.yml)
+[![Run e2e Test](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/test-e2e.yml/badge.svg)](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/test-e2e.yml)
+[![Deploy Storybook](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/deploy-storybook.yml/badge.svg)](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/deploy-storybook.yml)<br/>
+[![Deploy On Netlify (beta-get-p.netlify.app)](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/deploy-netlify.yml/badge.svg)](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/deploy-netlify.yml)
+[![Deploy On Production Server](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/depoly-production.yml/badge.svg)](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/depoly-production.yml)
 
-[![Compile & Linting](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/ci.yml) <br/>
-[![Deploy Storybook](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/storybook.yml/badge.svg)](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/storybook.yml) <br/>
-[![Deploy on Beta Server (Netlify)](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/release.yml/badge.svg)](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/release.yml) <br/>
-[![Deploy On Production Server](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/depoly.yml/badge.svg)](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/depoly.yml) <br/>
 
 ![ViteSSR](https://shields.io/badge/Vite_SSR-black?logo=vite&style=flat&color=512BD4)
 ![PM2](https://shields.io/badge/PM2-black?logo=pm2&style=flat&color=2B037A)

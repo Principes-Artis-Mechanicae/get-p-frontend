@@ -21,7 +21,7 @@ export const NavProfileItem = ({ imgSrc }: NavProfileItemProps) => {
 
     return (
         <Styles.Container onClick={handleNavProfileClick}>
-            <Styles.Image src={imgSrc ?? defaultProfileImage} alt="nav-profile-image" />
+            <Styles.Image src={imgSrc || defaultProfileImage} alt="nav-profile-image" />
         </Styles.Container>
     );
 };
