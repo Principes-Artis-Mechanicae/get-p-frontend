@@ -22,7 +22,8 @@ export const clientService = {
             const response = await api.post<RegisterClientResponseBody>("/client/me", body);
 
             return new ExceptionHandler.Builder(response)
-                .addCase(409, "필수 입력란을 채워 주세요")
+                .addCase(400, "필수 입력란을 채워 주세요")
+                .addCase(409, "이미 등록된 의뢰자 정보가 있습니다")
                 .addCase(500, "의뢰자 정보 등록중 오류가 발생하였습니다. 잠시 후 다시 시도해 주세요")
                 .activate();
         };
