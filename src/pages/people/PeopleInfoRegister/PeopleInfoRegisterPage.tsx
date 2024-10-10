@@ -14,12 +14,10 @@ import {
     PeopleInfoRegisterContainer,
     PeopleInfoRegisterItem,
     PeopleProfileWrapper,
-    PeopleTypeButtonWrapper,
 } from "./PeopleInfoRegisterPage.style";
 
 export default function PeopleInfoRegisterPage() {
-    const { nicknameRef, emailRef, phoneNumberRef, handleIndividualClick, handleTeamClick, handleNextClick } =
-        usePeopleInfoRegister();
+    const { nicknameRef, emailRef, phoneNumberRef, handleNextClick } = usePeopleInfoRegister();
 
     return (
         <PeopleInfoRegisterWrapper>
@@ -70,18 +68,6 @@ export default function PeopleInfoRegisterPage() {
                         height="40px"
                         placeholder="의뢰 연락을 받을 다른 이메일이 있는 경우 입력해주세요."
                     ></Input>
-                </PeopleInfoRegisterItem>
-
-                <PeopleInfoRegisterItem>
-                    <Label htmlFor="typeButton">피플유형</Label>
-                    <PeopleTypeButtonWrapper id="typeButton">
-                        <Button variant="outline" width="50%" height="54px" onClick={handleIndividualClick}>
-                            개인
-                        </Button>
-                        <Button variant="outline" width="50%" height="54px" onClick={handleTeamClick}>
-                            팀
-                        </Button>
-                    </PeopleTypeButtonWrapper>
                 </PeopleInfoRegisterItem>
 
                 <PeopleInfoRegisterItem>
