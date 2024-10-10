@@ -35,7 +35,6 @@ export default function HomePage() {
         <>
             {isRegisterInfoModalOpened && <RegisterInfoModal />}
 
-            <Toast />
             <Header />
             <div style={{ height: "var(--nav-height)" }} />
 
