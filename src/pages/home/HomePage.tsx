@@ -1,10 +1,13 @@
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { SearchBar } from "principes-getp";
 
+import { Modal } from "@/common/components/overlays/Modal";
 import { Toast } from "@/common/components/overlays/Toast";
 import { Text } from "@/common/components/typography/Text";
 
+import { RegisterInfoModal } from "@/components/auth/RegisterInfoModal";
 import { Carousel } from "@/components/home/Carousel/Carousel";
 import { NewPeopleCard, NewPeopleCardSkeleton } from "@/components/home/NewPeopleCard";
 import { NewPeopleCardContainer } from "@/components/home/NewPeopleCardContainer";
@@ -13,6 +16,8 @@ import { PeopleCard } from "@/components/people/PeopleCard";
 
 import { useNewPeople } from "@/services/people/useNewPeople";
 import { usePopularPeople } from "@/services/people/usePopularPeople";
+
+import { RootState } from "@/store/store";
 
 import { carouselImgSrc } from "@/constants/carouselImgSrc";
 
@@ -23,13 +28,16 @@ import { Header } from "@/layouts/Header/Header";
 export default function HomePage() {
     const navigate = useNavigate();
     const { isPending, data } = useNewPeople();
-
     usePopularPeople();
+
+    const { isRegisteredModalOpened } = useSelector((state: RootState) => state.auth);
 
     const { isPending: isPopularPeoplePending, data: popularPeople } = usePopularPeople();
 
     return (
         <>
+            {isRegisteredModalOpened && <RegisterInfoModal />}
+
             <Toast />
             <Header />
             <div style={{ height: "var(--nav-height)" }} />

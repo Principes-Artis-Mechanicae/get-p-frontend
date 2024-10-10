@@ -1,5 +1,7 @@
 import { toast } from "react-toastify";
 
+import { AxiosError } from "axios";
+
 import { api } from "@/config/axios";
 
 import { ExceptionHandler } from "@/utils/exception";
@@ -60,6 +62,13 @@ export const peopleService = {
             success: "피플 정보 등록이 완료되었습니다.",
             error: RenderToastFromDerivedError,
         });
+    },
+    checkInfoRegistered: async () => {
+        const response = await api.get("/people/me");
+        if (response instanceof AxiosError) {
+            if (response.status === 404) return false;
+            else if (response.status === 200) return true;
+        }
     },
     registerPeopleProfile: async (body: RegisterPeopleProfileRequestBody) => {
         const request = async () => {

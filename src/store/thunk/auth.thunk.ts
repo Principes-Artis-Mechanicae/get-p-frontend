@@ -3,8 +3,10 @@ import { NavigateFunction } from "react-router-dom";
 import { AxiosResponse } from "axios";
 
 import { authService } from "@/services/auth/service";
-import { SignInResponseBody } from "@/services/auth/types";
+import { MemberType, SignInResponseBody } from "@/services/auth/types";
+import { clientService } from "@/services/client/service";
 import { memberService } from "@/services/member/service";
+import { peopleService } from "@/services/people/service";
 
 import { authAction } from "../slice/auth.slice";
 import { RootDispatch } from "../store";
@@ -28,6 +30,15 @@ export const signInThunkAction = (email: string, password: string, navigate: Nav
         const memberResponse = await memberService.readMemberProfile();
         const { nickname, memberType, profileImageUri } = memberResponse.data.data;
 
+        let isRegistered = false;
+
+        if (memberType === MemberType.ROLE_PEOPLE) {
+            isRegistered = (await peopleService.checkInfoRegistered()) as boolean;
+        }
+        if (memberType === MemberType.ROLE_CLIENT) {
+            isRegistered = (await clientService.checkInfoRegistered()) as boolean;
+        }
+
         dispatch(
             authAction.signIn({
                 email,
@@ -36,6 +47,9 @@ export const signInThunkAction = (email: string, password: string, navigate: Nav
                 accessToken,
                 refreshToken,
                 profileImageUri,
+                isRegistered,
+                isRegisteredModalOpened: true,
+                closeRegisterInfoModalForever: false,
             }),
         );
 

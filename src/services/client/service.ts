@@ -1,5 +1,7 @@
 import { toast } from "react-toastify";
 
+import { AxiosError } from "axios";
+
 import { api } from "@/config/axios";
 
 import { ExceptionHandler } from "@/utils/exception";
@@ -44,6 +46,14 @@ export const clientService = {
             pending: "의뢰자 정보 수정 중입니다",
             error: RenderToastFromDerivedError,
         });
+    },
+
+    checkInfoRegistered: async () => {
+        const response = await api.get("/people/me");
+        if (response instanceof AxiosError) {
+            if (response.status === 404) return false;
+            else if (response.status === 200) return true;
+        }
     },
 
     requestMeeting: async (body: RequestMeetingRequestBody, id = 1) => {
