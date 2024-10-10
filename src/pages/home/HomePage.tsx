@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { SearchBar } from "principes-getp";
@@ -13,10 +12,10 @@ import { NewPeopleCardContainer } from "@/components/home/NewPeopleCardContainer
 import { HomePageSection } from "@/components/home/Section";
 import { PeopleCard } from "@/components/people/PeopleCard";
 
+import { useRegisterInfoModal } from "@/hooks/auth/useRegisterInfoModal";
+
 import { useNewPeople } from "@/services/people/useNewPeople";
 import { usePopularPeople } from "@/services/people/usePopularPeople";
-
-import { RootState } from "@/store/store";
 
 import { carouselImgSrc } from "@/constants/carouselImgSrc";
 
@@ -29,13 +28,12 @@ export default function HomePage() {
     const { isPending, data } = useNewPeople();
     usePopularPeople();
 
-    const { isRegisteredModalOpened } = useSelector((state: RootState) => state.auth);
-
+    const { isRegisterInfoModalOpened } = useRegisterInfoModal();
     const { isPending: isPopularPeoplePending, data: popularPeople } = usePopularPeople();
 
     return (
         <>
-            {isRegisteredModalOpened && <RegisterInfoModal />}
+            {isRegisterInfoModalOpened && <RegisterInfoModal />}
 
             <Toast />
             <Header />

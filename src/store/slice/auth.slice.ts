@@ -56,7 +56,10 @@ const authSlice = createSlice({
             state.isRegisteredModalOpened = action.payload.isRegisteredModalOpened;
         },
         signOut: (state) => {
+            state.isRegistered = null;
             state.isAuthenticated = false;
+            state.isRegisteredModalOpened = false;
+            state.closeRegisterInfoModalForever = false;
 
             state.accessToken = null;
             state.refreshToken = null;
@@ -76,8 +79,7 @@ const authSlice = createSlice({
             state.isRegistered = true;
         },
         openRegisterInfoModal: (state) => {
-            if (state.isAuthenticated && !state.isRegistered && !state.closeRegisterInfoModalForever)
-                state.isRegisteredModalOpened = true;
+            state.isRegisteredModalOpened = true;
         },
         closeRegisterInfoModal: (state) => {
             state.isRegisteredModalOpened = false;

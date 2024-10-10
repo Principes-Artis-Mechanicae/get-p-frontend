@@ -32,12 +32,11 @@ export const signInThunkAction = (email: string, password: string, navigate: Nav
 
         let isRegistered = false;
 
-        if (memberType === MemberType.ROLE_PEOPLE) {
+        if (memberType === MemberType.ROLE_PEOPLE)
             isRegistered = (await peopleService.checkInfoRegistered()) as boolean;
-        }
-        if (memberType === MemberType.ROLE_CLIENT) {
+
+        if (memberType === MemberType.ROLE_CLIENT)
             isRegistered = (await clientService.checkInfoRegistered()) as boolean;
-        }
 
         dispatch(
             authAction.signIn({
