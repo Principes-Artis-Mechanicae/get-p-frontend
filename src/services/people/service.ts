@@ -36,7 +36,7 @@ export const peopleService = {
         return response.data.data;
     },
     readNewPeople: async (page = 0, size = 5) => {
-        const response = await api.get<ReadPeopleResponseBody>(`/people?page=${page}&size=${size}&sort=createdAt,asc`);
+        const response = await api.get<ReadPeopleResponseBody>(`/people?page=${page}&size=${size}&sort=createdAt,desc`);
         return response.data.data;
     },
     readPopularPeople: async () => {
@@ -52,7 +52,7 @@ export const peopleService = {
             return new ExceptionHandler.Builder(response)
                 .addCase(400, "필수 항목을 입력해주세요")
                 .addCase(404, "등록된 피플정보가 없습니다. 피플 정보를 먼저 등록해주세요")
-                .addCase(409, "Conflict")
+                .addCase(409, "이미 등록된 피플입니다")
                 .activate();
         };
         return toast.promise(request, {

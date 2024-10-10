@@ -8,10 +8,10 @@ export const Wrapper = styled.div`
     height: 100px;
 
     border-radius: 10px;
+    border: 1px solid #ebedef;
     padding: 12px;
 
     background: #fff;
-    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.1);
 
     &:hover {
         cursor: pointer;
@@ -39,6 +39,8 @@ export const ProfileImg = styled.img`
     display: block;
     width: 50px;
     height: 50px;
+
+    border-radius: 15px;
 `;
 
 export const LikesInfo = styled.div`

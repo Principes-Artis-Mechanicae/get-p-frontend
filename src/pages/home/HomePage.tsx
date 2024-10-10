@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { SearchBar } from "principes-getp";
 
 import { Toast } from "@/common/components/overlays/Toast";
@@ -19,6 +21,7 @@ import { Footer } from "@/layouts/Footer/Footer";
 import { Header } from "@/layouts/Header/Header";
 
 export default function HomePage() {
+    const navigate = useNavigate();
     const { isPending, data } = useNewPeople();
 
     usePopularPeople();
@@ -62,6 +65,7 @@ export default function HomePage() {
                                           region={people.profile.activityArea}
                                           peopleName={people.nickname}
                                           hashTags={people.profile.hashtags}
+                                          profileImg={people.profileImageUri}
                                           likesCount={0}
                                       />
                                   );
@@ -82,6 +86,7 @@ export default function HomePage() {
                                           hashtags={people.profile.hashtags}
                                           completeProjectsCount={people.completedProjectsCount}
                                           introduction={people.profile.introduction}
+                                          onClick={() => navigate(`/people/${people.peopleId}`)}
                                       />
                                   );
                               })}
