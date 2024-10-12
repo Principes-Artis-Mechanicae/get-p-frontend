@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Pagination } from "principes-getp";
 
@@ -17,6 +18,7 @@ export interface ISortOption {
 }
 
 export default function ProjectListPage() {
+    const navigate = useNavigate();
     const [sortOrder, setSortOrder] = useState<ISortOption>({ key: "default", title: "기본 정렬" });
     const { isPending, data } = useProjectList();
 
@@ -60,6 +62,7 @@ export default function ProjectListPage() {
                                 hashtags={project.hashtags}
                                 description={project.description}
                                 status={project.status}
+                                onClick={() => navigate(`/projects/${project.projectId}`)}
                             />
                         ))}
                     </>
