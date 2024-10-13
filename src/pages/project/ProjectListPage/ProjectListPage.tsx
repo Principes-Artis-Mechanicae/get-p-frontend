@@ -70,7 +70,7 @@ export default function ProjectListPage() {
                 {data && data.content.length === 0 && <Text>해당하는 데이터가 존재하지 않습니다.</Text>}
             </ProjectListContainer>
 
-            <Pagination totalPages={data?.pageInfo.totalPages as number} pageGroupSize={5} />
+            <Pagination totalPages={data?.pageInfo.totalPages as number} pageGroupSize={6} />
         </ProjectListWrapper>
     );
 }
