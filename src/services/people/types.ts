@@ -48,7 +48,6 @@ export interface RegisterPeopleInfoRequestBody {
     nickname: string;
     email: string;
     phoneNumber: string;
-    peopleType: string;
 }
 
 export type RegisterPeopleInfoResponseBody = BaseResponse<{

@@ -2,9 +2,9 @@ import { useNavigate } from "react-router-dom";
 
 import { SearchBar } from "principes-getp";
 
-import { Toast } from "@/common/components/overlays/Toast";
 import { Text } from "@/common/components/typography/Text";
 
+import { RegisterInfoModal } from "@/components/auth/RegisterInfoModal";
 import { Carousel } from "@/components/home/Carousel/Carousel";
 import { DeadLineProjectCard, DeadLineProjectCardSkeleton } from "@/components/home/DeadLineProjectCard";
 import { DeadLineProjectCardContainer } from "@/components/home/DeadLineProjectCardContainer";
@@ -12,6 +12,8 @@ import { NewPeopleCard, NewPeopleCardSkeleton } from "@/components/home/NewPeopl
 import { NewPeopleCardContainer } from "@/components/home/NewPeopleCardContainer";
 import { HomePageSection } from "@/components/home/Section";
 import { PeopleCard } from "@/components/people/PeopleCard";
+
+import { useRegisterInfoModal } from "@/hooks/auth/useRegisterInfoModal";
 
 import { useNewPeople } from "@/services/people/useNewPeople";
 import { usePopularPeople } from "@/services/people/usePopularPeople";
@@ -26,12 +28,14 @@ import { Header } from "@/layouts/Header/Header";
 export default function HomePage() {
     const navigate = useNavigate();
     const { isPending, data } = useNewPeople();
+    const { isRegisterInfoModalOpened } = useRegisterInfoModal();
     const { isPending: isPopularPeoplePending, data: popularPeople } = usePopularPeople();
     const { isPending: isDeadLineProjectPending, data: deadLineProjects } = useDeadLineProject();
 
     return (
         <>
-            <Toast />
+            {isRegisterInfoModalOpened && <RegisterInfoModal />}
+
             <Header />
             <div style={{ height: "var(--nav-height)" }} />
 

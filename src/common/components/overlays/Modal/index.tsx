@@ -23,7 +23,7 @@ export const Modal = ({ width, children }: ModalProps) => {
             <Styles.BackDrop onClick={handleModalClose} />
             <Styles.Wrapper width={width}>
                 <Styles.Controller width={width} onClick={handleModalClose}>
-                    <img src="/close.svg" alt="" />
+                    <img src="/close.svg" alt="close-icon" />
                 </Styles.Controller>
                 <Styles.Container>{children}</Styles.Container>
             </Styles.Wrapper>

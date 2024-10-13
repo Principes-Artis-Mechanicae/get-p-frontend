@@ -1,9 +1,17 @@
 import { useCallback, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { authAction } from "@/store/slice/auth.slice";
+import { RootDispatch } from "@/store/store";
 
 import { clientService } from "./service";
 import { useMutation } from "@tanstack/react-query";
 
 export const useRegisterClient = () => {
+    const navigate = useNavigate();
+    const dispatch: RootDispatch = useDispatch();
+
     const nicknameRef = useRef<HTMLInputElement>(null);
     const emailRef = useRef<HTMLInputElement>(null);
     const phoneNumberRef = useRef<HTMLInputElement>(null);
@@ -23,6 +31,10 @@ export const useRegisterClient = () => {
                     detail: detailRef.current?.value as string,
                 },
             }),
+        onSuccess: () => {
+            dispatch(authAction.registerInfo());
+            navigate("/");
+        },
     });
 
     const handleRegisterBtnClick = useCallback(() => {
