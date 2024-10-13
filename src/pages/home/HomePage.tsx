@@ -6,6 +6,8 @@ import { Text } from "@/common/components/typography/Text";
 
 import { RegisterInfoModal } from "@/components/auth/RegisterInfoModal";
 import { Carousel } from "@/components/home/Carousel/Carousel";
+import { DeadLineProjectCard, DeadLineProjectCardSkeleton } from "@/components/home/DeadLineProjectCard";
+import { DeadLineProjectCardContainer } from "@/components/home/DeadLineProjectCardContainer";
 import { NewPeopleCard, NewPeopleCardSkeleton } from "@/components/home/NewPeopleCard";
 import { NewPeopleCardContainer } from "@/components/home/NewPeopleCardContainer";
 import { HomePageSection } from "@/components/home/Section";
@@ -15,6 +17,7 @@ import { useRegisterInfoModal } from "@/hooks/auth/useRegisterInfoModal";
 
 import { useNewPeople } from "@/services/people/useNewPeople";
 import { usePopularPeople } from "@/services/people/usePopularPeople";
+import { useDeadLineProject } from "@/services/project/useDeadLineProject";
 
 import { carouselImgSrc } from "@/constants/carouselImgSrc";
 
@@ -25,10 +28,9 @@ import { Header } from "@/layouts/Header/Header";
 export default function HomePage() {
     const navigate = useNavigate();
     const { isPending, data } = useNewPeople();
-    usePopularPeople();
-
     const { isRegisterInfoModalOpened } = useRegisterInfoModal();
     const { isPending: isPopularPeoplePending, data: popularPeople } = usePopularPeople();
+    const { isPending: isDeadLineProjectPending, data: deadLineProjects } = useDeadLineProject();
 
     return (
         <>
@@ -97,7 +99,25 @@ export default function HomePage() {
                 </HomePageSection>
 
                 <HomePageSection title="마감 임박 프로젝트" link="">
-                    마감 임박 프로젝트
+                    <DeadLineProjectCardContainer>
+                        {isDeadLineProjectPending
+                            ? Array.from({ length: 4 }).map(() => {
+                                  return <DeadLineProjectCardSkeleton />;
+                              })
+                            : deadLineProjects?.content.map((project) => {
+                                  return (
+                                      <DeadLineProjectCard
+                                          deadline={10}
+                                          title={project.title}
+                                          hashtags={project.hashtags}
+                                          payment={project.payment}
+                                          likes={project.applicantsCount}
+                                          expectedDuration={project.estimatedDays}
+                                          meetingType={""}
+                                      />
+                                  );
+                              })}
+                    </DeadLineProjectCardContainer>
                 </HomePageSection>
             </HomePageMainLayout>
 
