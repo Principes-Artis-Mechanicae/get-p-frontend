@@ -7,7 +7,7 @@ import * as Styles from "./index.style";
 export interface DeadLineProjectCardProps {
     profileImg: string;
     deadline: number;
-    location: string;
+    // location: string; TODO: location 추가
     title: string;
     hashtags: string[];
     payment: number;
@@ -34,9 +34,9 @@ export const DeadLineProjectCard = (props: DeadLineProjectCardProps) => {
                         <Text size="s" weight="bolder" color="red">
                             D-{props.deadline}
                         </Text>{" "}
-                        <Text size="s" color="#676F7C">
+                        {/* <Text size="s" color="#676F7C">
                             {props.location}
-                        </Text>
+                        </Text> */}
                     </Styles.Info>
                     <Styles.Info>
                         <Text size="m" weight="bold">
@@ -74,4 +74,8 @@ export const DeadLineProjectCard = (props: DeadLineProjectCardProps) => {
             </Styles.Body>
         </Styles.Wrapper>
     );
+};
+
+export const DeadLineProjectCardSkeleton = () => {
+    return <Styles.Skeleton />;
 };
