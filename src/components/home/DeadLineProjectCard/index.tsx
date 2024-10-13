@@ -82,5 +82,44 @@ export const DeadLineProjectCard = (props: DeadLineProjectCardProps) => {
 };
 
 export const DeadLineProjectCardSkeleton = () => {
-    return <Styles.Skeleton />;
+    return (
+        <Styles.Wrapper>
+            <Styles.Header>
+                <Styles.SkeletonImage />
+                <Styles.SkeletonInfo>
+                    <Styles.SkeletonText width="80px" />
+                </Styles.SkeletonInfo>
+            </Styles.Header>
+
+            <Styles.Body>
+                <Styles.Left>
+                    <Styles.SkeletonInfo>
+                        <Styles.SkeletonText width="50px" />
+                    </Styles.SkeletonInfo>
+                    <Styles.SkeletonInfo>
+                        <Styles.SkeletonText width="150px" />
+                    </Styles.SkeletonInfo>
+                    <Styles.SkeletonInfo>
+                        <Styles.SkeletonHashtags>
+                            <Styles.SkeletonHashtag width="40px" />
+                            <Styles.SkeletonHashtag width="40px" />
+                            <Styles.SkeletonHashtag width="40px" />
+                        </Styles.SkeletonHashtags>
+                    </Styles.SkeletonInfo>
+                    <Styles.SkeletonInfo>
+                        <Styles.SkeletonText width="200px" />
+                    </Styles.SkeletonInfo>
+                </Styles.Left>
+
+                <Styles.Right>
+                    <Styles.SkeletonInfo>
+                        <Styles.SkeletonText width="80px" />
+                    </Styles.SkeletonInfo>
+                    <Styles.SkeletonInfo>
+                        <Styles.SkeletonText width="80px" />
+                    </Styles.SkeletonInfo>
+                </Styles.Right>
+            </Styles.Body>
+        </Styles.Wrapper>
+    );
 };
