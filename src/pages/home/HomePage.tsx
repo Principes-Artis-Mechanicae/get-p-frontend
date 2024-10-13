@@ -42,13 +42,13 @@ export default function HomePage() {
             <Carousel carouselImgSrc={carouselImgSrc} />
 
             <HomePageMainLayout>
-                <HomePageSection title="어떤 프로젝트를 찾으시나요?" link="">
+                <HomePageSection title="어떤 프로젝트를 찾으시나요?" link="/projects?page=1&size=6&sort=projectId,desc">
                     <SearchBar width="100%" placeholder="키워드로 검색해 보세요" />
                 </HomePageSection>
 
                 <HomePageSection
                     title="새로 가입한 신인 피플"
-                    link=""
+                    link="/people?page=1&size=10&sort=createdAt,desc"
                     topBadge={
                         <NewPeopleBadge>
                             <Text size="s" color="#fff" weight="bold">
@@ -78,7 +78,7 @@ export default function HomePage() {
                     </NewPeopleCardContainer>
                 </HomePageSection>
 
-                <HomePageSection title="인기 있는 피플" link="">
+                <HomePageSection title="인기 있는 피플" link="/people?page=1&size=10&sort=likesCount,desc">
                     <PopularPeopleContainer>
                         {isPopularPeoplePending
                             ? "loading"
@@ -98,7 +98,7 @@ export default function HomePage() {
                     </PopularPeopleContainer>
                 </HomePageSection>
 
-                <HomePageSection title="마감 임박 프로젝트" link="">
+                <HomePageSection title="마감 임박 프로젝트" link="/projects?page=1&size=6&sort=applicationDuration,asc">
                     <DeadLineProjectCardContainer>
                         {isDeadLineProjectPending
                             ? Array.from({ length: 4 }).map(() => {
