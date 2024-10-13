@@ -1,5 +1,14 @@
 import styled from "@emotion/styled";
 
+export const Skeleton = styled.div`
+    width: 100%;
+    height: 144px;
+
+    border-radius: 12px;
+
+    animation: skeleton-loading 2s infinite;
+`;
+
 export const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
