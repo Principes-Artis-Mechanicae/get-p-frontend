@@ -6,7 +6,7 @@ import { Pagination } from "principes-getp";
 import { Text } from "@/common/components/typography/Text";
 
 import { PeopleSearchBar } from "@/components/people/PeopleSearchBar";
-import { ProjectCard } from "@/components/project/ProjectCard";
+import { ProjectCard, ProjectCardSkeleton } from "@/components/project/ProjectCard";
 
 import { useProjectList } from "@/services/project/useProjectList";
 
@@ -34,7 +34,6 @@ export default function ProjectListPage() {
         setSortOrder(order);
     };
 
-    if (isPending) return <>loading...</>;
     return (
         <ProjectListWrapper>
             <PeopleSearchBar
@@ -46,27 +45,29 @@ export default function ProjectListPage() {
                 headerText="어떤 프로젝트를 찾으시나요?"
             />
             <ProjectListContainer>
-                {data && (
-                    <>
-                        {data.content.map((project) => (
-                            <ProjectCard
-                                key={project.projectId}
-                                title={project.title}
-                                payment={project.payment}
-                                applicantsCount={project.applicantsCount}
-                                estimatedDays={project.estimatedDays}
-                                applicationDuration={{
-                                    startDate: project.applicationDuration.startDate,
-                                    endDate: project.applicationDuration.endDate,
-                                }}
-                                hashtags={project.hashtags}
-                                description={project.description}
-                                status={project.status}
-                                onClick={() => navigate(`/projects/${project.projectId}`)}
-                            />
-                        ))}
-                    </>
-                )}
+                {isPending
+                    ? Array.from({ length: 6 }).map((_, index) => <ProjectCardSkeleton key={index} />)
+                    : data && (
+                          <>
+                              {data.content.map((project) => (
+                                  <ProjectCard
+                                      key={project.projectId}
+                                      title={project.title}
+                                      payment={project.payment}
+                                      applicantsCount={project.applicantsCount}
+                                      estimatedDays={project.estimatedDays}
+                                      applicationDuration={{
+                                          startDate: project.applicationDuration.startDate,
+                                          endDate: project.applicationDuration.endDate,
+                                      }}
+                                      hashtags={project.hashtags}
+                                      description={project.description}
+                                      status={project.status}
+                                      onClick={() => navigate(`/projects/${project.projectId}`)}
+                                  />
+                              ))}
+                          </>
+                      )}
                 {data && data.content.length === 0 && <Text>해당하는 데이터가 존재하지 않습니다.</Text>}
             </ProjectListContainer>
 

@@ -219,3 +219,99 @@ export const Price = styled.div`
     letter-spacing: -0.96px;
     white-space: nowrap;
 `;
+
+export const SkeletonWrapper = styled.div`
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 40px 103px;
+
+    width: 397px;
+    height: 459px;
+
+    border: 1px solid #ebedef;
+    padding: 48px 35px 44px 35px;
+    border-radius: 16px;
+
+    background: #fff;
+
+    ${tablet} {
+        width: 100%;
+    }
+    ${mobile} {
+        width: 100%;
+    }
+`;
+
+export const SkeletonContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 36px;
+
+    flex-shrink: 2;
+
+    width: 327px;
+    height: 100%;
+`;
+
+export const SkeletonProjectTitle = styled.div`
+    width: 200px;
+    height: 24px;
+    animation: skeleton-loading 1.5s infinite;
+`;
+
+export const SkeletonStatusBox = styled.div`
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+    animation: skeleton-loading 1.5s infinite;
+`;
+
+export const SkeletonExpectedDuration = styled.div`
+    width: 150px;
+    height: 16px;
+    margin-bottom: 4px;
+    animation: skeleton-loading 1.5s infinite;
+`;
+
+export const SkeletonApplicationDate = styled.div`
+    width: 200px;
+    height: 14px;
+    margin-bottom: 4px;
+    animation: skeleton-loading 1.5s infinite;
+`;
+
+export const SkeletonComment = styled.div`
+    width: 327px;
+    height: 50px;
+    margin-top: 16px;
+    animation: skeleton-loading 1.5s infinite;
+`;
+
+export const SkeletonHashtagWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 9.6px;
+`;
+
+export const SkeletonHashtag = styled.div`
+    width: 50px;
+    height: 24px;
+    border-radius: 4.8px;
+    animation: skeleton-loading 1.5s infinite;
+`;
+
+export const SkeletonPrice = styled.div`
+    width: 60px;
+    height: 24px;
+    animation: skeleton-loading 1.5s infinite;
+`;
+
+export const SkeletonButton = styled.div`
+    width: 100%;
+    height: 54px;
+    animation: skeleton-loading 1.5s infinite;
+`;

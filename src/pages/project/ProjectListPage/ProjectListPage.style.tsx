@@ -23,6 +23,8 @@ export const ProjectListContainer = styled.section`
     gap: 12px;
     justify-items: start; /* 아이템을 왼쪽에 정렬 */
 
+    min-height: 950px;
+
     ${tablet} {
         grid-template-columns: repeat(2, 1fr); /* 한 줄에 3개의 아이템을 배치 */
         justify-items: center;

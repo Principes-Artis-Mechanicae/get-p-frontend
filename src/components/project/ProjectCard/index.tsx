@@ -92,3 +92,35 @@ export const ProjectCard = ({
         </Styles.Wrapper>
     );
 };
+
+export const ProjectCardSkeleton = () => {
+    return (
+        <Styles.SkeletonWrapper>
+            <Styles.SkeletonContainer>
+                <Styles.Header>
+                    <Styles.ProjectHeaderItem>
+                        <Styles.SkeletonProjectTitle />
+                    </Styles.ProjectHeaderItem>
+                    <Styles.SkeletonStatusBox />
+                </Styles.Header>
+                <Styles.ItemContainer>
+                    <Styles.ItemUpper>
+                        <Styles.SkeletonExpectedDuration />
+                        <Styles.SkeletonApplicationDate />
+                        <Styles.SkeletonApplicationDate />
+                        <Styles.SkeletonComment />
+                    </Styles.ItemUpper>
+                    <Styles.ProjectCarItemLower>
+                        <Styles.SkeletonHashtagWrapper>
+                            <Styles.SkeletonHashtag />
+                            <Styles.SkeletonHashtag />
+                            <Styles.SkeletonHashtag />
+                        </Styles.SkeletonHashtagWrapper>
+                        <Styles.SkeletonPrice />
+                    </Styles.ProjectCarItemLower>
+                </Styles.ItemContainer>
+                <Styles.SkeletonButton />
+            </Styles.SkeletonContainer>
+        </Styles.SkeletonWrapper>
+    );
+};

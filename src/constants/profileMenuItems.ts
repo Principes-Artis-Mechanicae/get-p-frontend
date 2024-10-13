@@ -22,7 +22,7 @@ export const profileMenu = (memberType: MemberType | null): IProfileMenuItem[] =
             {
                 id: 3,
                 text: "프로젝트 의뢰하기",
-                to: "/",
+                to: "/project/request",
             },
             {
                 id: 4,

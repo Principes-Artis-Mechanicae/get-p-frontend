@@ -1,14 +1,5 @@
 import styled from "@emotion/styled";
 
-export const Skeleton = styled.div`
-    width: 100%;
-    height: 144px;
-
-    border-radius: 12px;
-
-    animation: skeleton-loading 2s infinite;
-`;
-
 export const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
@@ -19,6 +10,10 @@ export const Wrapper = styled.div`
     border: 1px solid #ebedef;
 
     padding: 20px;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 export const Header = styled.div`
@@ -68,4 +63,39 @@ export const Info = styled.p`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+`;
+
+export const SkeletonImage = styled.div`
+    width: 66px;
+    height: 66px;
+    border-radius: 24px;
+    margin: 0 auto;
+
+    animation: skeleton-loading 2s infinite;
+`;
+
+export const SkeletonInfo = styled.div`
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 8px;
+`;
+
+export const SkeletonText = styled.div<{ width: string }>`
+    width: ${(props) => props.width};
+    height: 16px;
+
+    animation: skeleton-loading 2s infinite;
+`;
+
+export const SkeletonHashtags = styled.div`
+    display: flex;
+    gap: 8px;
+`;
+
+export const SkeletonHashtag = styled.div<{ width: string }>`
+    width: ${(props) => props.width};
+    height: 16px;
+
+    animation: skeleton-loading 2s infinite;
 `;

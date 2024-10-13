@@ -1,4 +1,5 @@
-import { Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 
 import { Toast } from "../../common/components/overlays/Toast";
 import { Footer } from "../Footer/Footer";
@@ -15,6 +16,12 @@ export const Main = styled.main`
 `;
 
 export const MainLayout = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location.key]);
+
     return (
         <>
             <Toast />

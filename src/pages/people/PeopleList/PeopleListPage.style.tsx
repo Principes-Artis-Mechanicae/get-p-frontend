@@ -14,14 +14,17 @@ export const PeopleListWrapper = styled.section`
 
 export const PeopleListContainer = styled.section`
     width: 100%;
+    min-height: 850px;
     margin: 40px auto;
 
     display: grid;
-    gap: 10px;
+    gap: 20px;
 
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
 
     ${mobile} {
+        min-height: 1900px;
         grid-template-columns: repeat(1, 1fr);
     }
 `;

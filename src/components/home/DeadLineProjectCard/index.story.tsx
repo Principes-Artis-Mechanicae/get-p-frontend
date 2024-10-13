@@ -12,6 +12,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
+        projectId: 1,
         profileImg: "https://example.com/profile.jpg",
         deadline: 10,
         // location: "대구광역시 북구 산격동",
