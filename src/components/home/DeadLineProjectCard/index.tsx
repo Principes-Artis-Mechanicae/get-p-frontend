@@ -5,7 +5,7 @@ import defaultProfile from "@/assets/common/default-profile.svg";
 import * as Styles from "./index.style";
 
 export interface DeadLineProjectCardProps {
-    profileImg: string;
+    profileImg?: string;
     deadline: number;
     // location: string; TODO: location 추가
     title: string;
@@ -20,7 +20,7 @@ export const DeadLineProjectCard = (props: DeadLineProjectCardProps) => {
     return (
         <Styles.Wrapper>
             <Styles.Header>
-                <Styles.Image src={defaultProfile} alt="client-profile" />
+                <Styles.Image src={props.profileImg || defaultProfile} alt="client-profile" />
                 <Styles.Info>
                     <Text size="s" weight="bold">
                         우경정보기술

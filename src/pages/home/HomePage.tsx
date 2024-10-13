@@ -103,7 +103,6 @@ export default function HomePage() {
                             : deadLineProjects?.content.map((project) => {
                                   return (
                                       <DeadLineProjectCard
-                                          profileImg={"undefined"}
                                           deadline={10}
                                           title={project.title}
                                           hashtags={project.hashtags}
