@@ -20,7 +20,6 @@ export const Default: Story = {
                     return (
                         <DeadLineProjectCard
                             deadline={10}
-                            location={"대구광역시 북구 산격동"}
                             title={"사업계획서 Word 작업"}
                             hashtags={["#설계", "#기획", "#서류작업"]}
                             payment={1000000}

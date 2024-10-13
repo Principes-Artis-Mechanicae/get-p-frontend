@@ -105,7 +105,6 @@ export default function HomePage() {
                                       <DeadLineProjectCard
                                           profileImg={"undefined"}
                                           deadline={10}
-                                          location={"대구광역시 북구"}
                                           title={project.title}
                                           hashtags={project.hashtags}
                                           payment={project.payment}
