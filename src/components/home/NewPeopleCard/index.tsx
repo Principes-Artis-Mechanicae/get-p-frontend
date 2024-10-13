@@ -59,9 +59,9 @@ export const NewPeopleCard = ({
                 </Styles.Name>
 
                 <Styles.HashTagContainer>
-                    {hashTags.map((hashtag) => {
+                    {hashTags.map((hashtag, index) => {
                         return (
-                            <Styles.HashTag>
+                            <Styles.HashTag key={index}>
                                 <Text size="xs" weight="bold" color="#fff">
                                     {hashtag}
                                 </Text>

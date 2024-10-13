@@ -16,9 +16,10 @@ export const Default: Story = {
     render: () => {
         return (
             <DeadLineProjectCardContainer>
-                {Array.from({ length: 6 }).map(() => {
+                {Array.from({ length: 6 }).map((_, index) => {
                     return (
                         <DeadLineProjectCard
+                            projectId={index}
                             deadline={10}
                             title={"사업계획서 Word 작업"}
                             hashtags={["#설계", "#기획", "#서류작업"]}

@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { Text } from "@/common/components/typography/Text";
 
 import defaultProfile from "@/assets/common/default-profile.svg";
@@ -5,6 +7,7 @@ import defaultProfile from "@/assets/common/default-profile.svg";
 import * as Styles from "./index.style";
 
 export interface DeadLineProjectCardProps {
+    projectId: number;
     profileImg?: string;
     deadline: number;
     // location: string; TODO: location 추가
@@ -17,8 +20,10 @@ export interface DeadLineProjectCardProps {
 }
 
 export const DeadLineProjectCard = (props: DeadLineProjectCardProps) => {
+    const navigate = useNavigate();
+
     return (
-        <Styles.Wrapper>
+        <Styles.Wrapper onClick={() => navigate(`/projects/${props.projectId}`)}>
             <Styles.Header>
                 <Styles.Image src={props.profileImg || defaultProfile} alt="client-profile" />
                 <Styles.Info>
@@ -44,9 +49,9 @@ export const DeadLineProjectCard = (props: DeadLineProjectCardProps) => {
                         </Text>
                     </Styles.Info>
                     <Styles.Info>
-                        {props.hashtags.map((hashtag) => {
+                        {props.hashtags.map((hashtag, index) => {
                             return (
-                                <Text size="s" color="#BDA7BC">
+                                <Text size="s" color="#BDA7BC" key={index}>
                                     {hashtag}
                                 </Text>
                             );

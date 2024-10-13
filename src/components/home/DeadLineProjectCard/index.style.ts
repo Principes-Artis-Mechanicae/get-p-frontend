@@ -19,6 +19,10 @@ export const Wrapper = styled.div`
     border: 1px solid #ebedef;
 
     padding: 20px;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 export const Header = styled.div`
