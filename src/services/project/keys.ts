@@ -5,4 +5,5 @@ export const PROJECT_QUERY_KEYS = {
         "projects",
         { page, size, sort, liked },
     ],
+    READ_DEADLINE_PROJECTS: (size?: number) => ["project", "deadline", { size }],
 };

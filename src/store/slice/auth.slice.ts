@@ -13,6 +13,10 @@ export interface IAuthState {
     memberType: MemberType | null;
 
     profileImageUri: string | null;
+
+    isRegistered: boolean | null;
+    isRegisteredModalOpened: boolean;
+    closeRegisterInfoModalForever: boolean;
 }
 
 const initialState: IAuthState = {
@@ -26,6 +30,10 @@ const initialState: IAuthState = {
     memberType: null,
 
     profileImageUri: null,
+
+    isRegistered: null,
+    isRegisteredModalOpened: false,
+    closeRegisterInfoModalForever: false,
 };
 
 const authSlice = createSlice({
@@ -33,7 +41,7 @@ const authSlice = createSlice({
     initialState,
 
     reducers: {
-        signIn: (state, action: PayloadAction<Omit<IAuthState, "isAuthenticated">>) => {
+        signIn: (state, action: PayloadAction<Omit<IAuthState, "isAuthenticated" | "isRegisteredModalVisible">>) => {
             state.isAuthenticated = true;
 
             state.email = action.payload.email;
@@ -43,9 +51,15 @@ const authSlice = createSlice({
             state.accessToken = action.payload.accessToken;
             state.refreshToken = action.payload.refreshToken;
             state.profileImageUri = action.payload.profileImageUri;
+
+            state.isRegistered = action.payload.isRegistered;
+            state.isRegisteredModalOpened = action.payload.isRegisteredModalOpened;
         },
         signOut: (state) => {
+            state.isRegistered = null;
             state.isAuthenticated = false;
+            state.isRegisteredModalOpened = false;
+            state.closeRegisterInfoModalForever = false;
 
             state.accessToken = null;
             state.refreshToken = null;
@@ -60,6 +74,19 @@ const authSlice = createSlice({
         },
         updateNickName: (state, action: PayloadAction<string>) => {
             state.nickname = action.payload;
+        },
+        registerInfo: (state) => {
+            state.isRegistered = true;
+        },
+        openRegisterInfoModal: (state) => {
+            state.isRegisteredModalOpened = true;
+        },
+        closeRegisterInfoModal: (state) => {
+            state.isRegisteredModalOpened = false;
+        },
+        closeRegisterInfoModalForever: (state) => {
+            state.isRegisteredModalOpened = false;
+            state.closeRegisterInfoModalForever = true;
         },
     },
 });

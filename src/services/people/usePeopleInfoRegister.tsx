@@ -1,17 +1,24 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { authAction } from "@/store/slice/auth.slice";
+import { RootDispatch } from "@/store/store";
 
 import { queryClient } from "@/config/query";
 
 import { PEOPLE_QUERY_KEYS } from "./keys";
 import { peopleService } from "./service";
-import { PeopleType } from "./types";
 import { useMutation } from "@tanstack/react-query";
 
 export const usePeopleInfoRegister = () => {
+    const dispatch: RootDispatch = useDispatch();
+
     const emailRef = useRef<HTMLInputElement | null>(null);
     const nicknameRef = useRef<HTMLInputElement | null>(null);
     const phoneNumberRef = useRef<HTMLInputElement | null>(null);
-    const [peopleType, setPeopleType] = useState<PeopleType | null>(null);
+
+    const navigate = useNavigate();
 
     const mutation = useMutation({
         mutationFn: () =>
@@ -19,20 +26,13 @@ export const usePeopleInfoRegister = () => {
                 nickname: nicknameRef.current?.value as string,
                 email: emailRef.current?.value as string,
                 phoneNumber: phoneNumberRef.current?.value as string,
-                peopleType: peopleType as string,
             }),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: PEOPLE_QUERY_KEYS.PEOPLE() });
+            dispatch(authAction.registerInfo());
+            navigate("/");
         },
     });
-
-    const handleIndividualClick = useCallback(() => {
-        setPeopleType(PeopleType.INDIVIDUAL);
-    }, []);
-
-    const handleTeamClick = useCallback(() => {
-        setPeopleType(PeopleType.TEAM);
-    }, []);
 
     const handleNextClick = useCallback(() => {
         mutation.mutate();
@@ -42,10 +42,7 @@ export const usePeopleInfoRegister = () => {
         nicknameRef,
         emailRef,
         phoneNumberRef,
-        handleIndividualClick,
-        handleTeamClick,
         handleNextClick,
-        peopleType,
         ...mutation,
     };
 };

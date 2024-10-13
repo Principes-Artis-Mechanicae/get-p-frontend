@@ -1,48 +1,40 @@
 # GET-P : Get your People, Get your Projects!
 
-[![Compile & Linting](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/test-static.yml/badge.svg)](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/test-static.yml)
-[![Run e2e Test](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/test-e2e.yml/badge.svg)](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/test-e2e.yml)
-[![Deploy Storybook](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/deploy-storybook.yml/badge.svg)](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/deploy-storybook.yml)<br/>
-[![Deploy On Netlify (beta-get-p.netlify.app)](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/deploy-netlify.yml/badge.svg)](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/deploy-netlify.yml)
-[![Deploy On Production Server](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/depoly-production.yml/badge.svg)](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/actions/workflows/depoly-production.yml)
+<span>
+<img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/>
+<img src="https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white"/>
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"/>
+<img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white"/>
+<img src="https://img.shields.io/badge/tanstack_query-FF4154?style=for-the-badge&logo=reactquery&logoColor=white"/>
+<img src="https://img.shields.io/badge/emotion_styled-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"/>
+<img src="https://img.shields.io/badge/storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white"/>
+<img src="https://img.shields.io/badge/jest-C21325?style=for-the-badge&logo=jest&logoColor=white"/>
+<img src="https://img.shields.io/badge/cypress-69D3A7?style=for-the-badge&logo=cypress&logoColor=white"/>
+<img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
+<img src="https://img.shields.io/badge/github_actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white"/>
+<img src="https://img.shields.io/badge/jira-0052CC?style=for-the-badge&logo=jira&logoColor=white"/>
+</span>
 
-
-![ViteSSR](https://shields.io/badge/Vite_SSR-black?logo=vite&style=flat&color=512BD4)
-![PM2](https://shields.io/badge/PM2-black?logo=pm2&style=flat&color=2B037A)
-![ts](https://shields.io/badge/TypeScript-black?logo=typescript&style=flat&color=033963)
 <br/>
-![react-js](https://shields.io/badge/ReactJS-black?logo=react&style=flat&color=0086CA)
-![redux-toolkit](https://shields.io/badge/Redux_Toolkit-black?logo=redux&style=flat&color=7648BA)
-![react-query](https://shields.io/badge/Tanstack_Query-black?logo=reactquery&style=flat&color=720020)
-![StyledComponents](https://shields.io/badge/Emotion_Styled-black?logo=styledcomponents&style=flat&color=202020)
 
-<br/>
-
-## 프로젝트 소개
+## ✨ 프로젝트 소개
 소프트웨어 인력난을 해결하기 위한 외주 매칭 플랫폼입니다
 
-<br/>
+## 🔗 배포링크
 
-## 시작하기
+🧪 Beta : https://beta-get-p.netlify.app/ <br/>
+🚚 Production : https://get-p.princip.xyz/ <br/>
+🎨 StoryBook : https://6634386e77a428543ec2c482-pksvzlkuph.chromatic.com/ <br/>
 
-### .env 환경변수 설정
-```env
-VITE_API_BASE_URL=백엔드_서버_URL
-```
+## 📖 개발 문서
 
-### 의존성 패키지 설치
-```bash
-npm install
-```
+1. [코드 및 네이밍 컨벤션](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/wiki/%F0%9F%93%96-%EC%BD%94%EB%93%9C-%EB%B0%8F-%EB%84%A4%EC%9D%B4%EB%B0%8D-%EC%BB%A8%EB%B2%A4%EC%85%98)
+2. [디렉토리 구조](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/wiki/%F0%9F%93%96-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EA%B5%AC%EC%A1%B0)
+3. [Git 컨벤션](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/wiki/%F0%9F%93%96-Git-Convention)
+4. [버그 및 트러블 슈팅](https://github.com/Principes-Artis-Mechanicae/get-p-frontend/wiki/%F0%9F%94%A7-%EB%B2%84%EA%B7%B8-%EB%B0%8F-%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85)
 
-### 개발 서버 실행
-```bash
-npm run dev
-```
+## 👩‍👩‍👧‍👦 프론트엔드 팀 구성원
 
-### 배포
-```bash
-npm run build
-pm2 serve dist <PORT> --spa --name=get-p/frontend
-```
-
+|[김대건<br/>(toothlessdev)](https://github.com/toothlessdev)|[김유진<br/>(zladb)](https://github.com/zladb)|[신채원<br/>(chae-won-shin)](https://github.com/chae-won-shin)|[조민주<br/>(chominju02)](https://github.com/chominju02)|
+|---|---|---|---|
+|<img src="https://avatars.githubusercontent.com/u/52105661?v=4" width="160px"/>|<img src="https://avatars.githubusercontent.com/u/68093782?v=4" width="160px"/>|<img src="https://avatars.githubusercontent.com/u/96687276?v=4" width="160px"/>|<img src="https://avatars.githubusercontent.com/u/120126604?v=4" width="160px"/>|

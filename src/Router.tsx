@@ -90,7 +90,7 @@ export const Router = () => {
                     }
                 />
 
-                <Route path="project/:id" element={<ProjectDetailPage />} />
+                <Route path="projects/:id" element={<ProjectDetailPage />} />
 
                 <Route path="project/:id/meetings" element={<MeetingRequestPage />} />
                 <Route path="*" element={<NotFoundPage />} />

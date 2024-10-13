@@ -142,22 +142,34 @@ export const StatusBox = styled.div<{ status: string }>`
     align-items: center;
     gap: 8px;
     border-radius: 10px;
-    background: ${({ status }) =>
-        status === "APPLYING"
-            ? "#f4f4f4" // 회색
-            : status === "ACTIVE"
-              ? "#F1FAFF" // 파란색
-              : "#E2F9E8"};
+    background: ${({ status }) => {
+        switch (status) {
+            case "PREPARING":
+            case "APPLYING":
+            case "CANCELLED":
+                return "#f4f4f4";
+            case "PROGRESSING":
+                return "#F1FAFF";
+            case "COMPLETED":
+                return "#E2F9E8";
+        }
+    }};
     box-sizing: border-box;
 `;
 
 export const StatusText = styled.div<{ status: string }>`
-    color: ${({ status }) =>
-        status === "APPLYING"
-            ? "#818181" // 회색
-            : status === "ACTIVE"
-              ? "#2577C3E5" // 파란색
-              : "#69CA7E"};
+    color: ${({ status }) => {
+        switch (status) {
+            case "PREPARING":
+            case "APPLYING":
+            case "CANCELLED":
+                return "#818181";
+            case "PROGRESSING":
+                return "#2577C3E5";
+            case "COMPLETED":
+                return "#69CA7E";
+        }
+    }};
     text-align: center;
     font-family: Pretendard;
     font-size: 14px;
@@ -205,4 +217,5 @@ export const Price = styled.div`
     font-weight: 600;
     line-height: 24px; /* 100% */
     letter-spacing: -0.96px;
+    white-space: nowrap;
 `;

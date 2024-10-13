@@ -4,7 +4,7 @@ import { Button } from "principes-getp";
 
 import * as Styles from "./index.style";
 
-export interface ProjectCardProps {
+export interface ProjectCardProps extends React.ComponentProps<"button"> {
     title: string;
     payment: number;
     applicantsCount: number;
@@ -27,6 +27,7 @@ export const ProjectCard = ({
     hashtags,
     description,
     status,
+    onClick,
 }: ProjectCardProps) => {
     const isTabletOrMobile = useMediaQuery({
         query: "(max-width: 1200px)",
@@ -35,12 +36,16 @@ export const ProjectCard = ({
     // 상태에 따른 텍스트 변환
     const getStatusText = (status: string) => {
         switch (status) {
+            case "PREPARING":
+                return "준비중";
             case "APPLYING":
                 return "모집중";
-            case "ACTIVE":
+            case "PROGRESSING":
                 return "진행중";
-            case "CLOSE":
+            case "COMPLETED":
                 return "완료";
+            case "CANCELLED":
+                return "취소됨";
             default:
                 return status;
         }
@@ -80,7 +85,7 @@ export const ProjectCard = ({
                         <Styles.Price>{payment / 10000}만원</Styles.Price>
                     </Styles.ProjectCarItemLower>
                 </Styles.ItemContainer>
-                <Button variant="outline" width="100%" height="54px">
+                <Button variant="outline" width="100%" height="54px" onClick={onClick}>
                     프로젝트 상세보기
                 </Button>
             </Styles.Container>

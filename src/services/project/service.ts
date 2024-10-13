@@ -24,7 +24,12 @@ export const projectService = {
         }
 
         const response = await api.get<ReadProjectResponseBody>(`/projects?${params.toString()}`);
-        //console.log(response.data.data);
+        return response.data.data;
+    },
+    readDeadLineProjects: async (size = 4) => {
+        const response = await api.get<ReadProjectResponseBody>(
+            `/projects?page=0&size=${size}&sort=applicationDuration,asc`,
+        );
         return response.data.data;
     },
     readProjectDetail: async (id: number) => {
