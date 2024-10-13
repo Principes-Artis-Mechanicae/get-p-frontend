@@ -1,4 +1,4 @@
-import { PeopleCard } from ".";
+import { PeopleCard, PeopleCardSkeleton } from ".";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -20,4 +20,8 @@ export const Default: Story = {
         hashtags: ["#안녕하세요", "#ENTP"],
         completeProjectsCount: 5,
     },
+};
+
+export const Skeleton = {
+    render: () => <PeopleCardSkeleton />,
 };

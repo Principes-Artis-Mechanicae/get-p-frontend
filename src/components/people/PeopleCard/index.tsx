@@ -47,3 +47,20 @@ export const PeopleCard = ({
         </Styles.Wrapper>
     );
 };
+
+export const PeopleCardSkeleton = () => {
+    return (
+        <Styles.Wrapper>
+            <Styles.SkeletonImage />
+            <Styles.Container>
+                <Styles.Header>
+                    <Styles.SkeletonText width="80px" />
+                    <Styles.SkeletonText width="60px" />
+                </Styles.Header>
+                <Styles.SkeletonText width="120px" />
+                <Styles.SkeletonComment />
+                <Styles.SkeletonText width="100%" />
+            </Styles.Container>
+        </Styles.Wrapper>
+    );
+};
