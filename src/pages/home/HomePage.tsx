@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 
 import { SearchBar } from "principes-getp";
 
-import { Toast } from "@/common/components/overlays/Toast";
 import { Text } from "@/common/components/typography/Text";
 
 import { RegisterInfoModal } from "@/components/auth/RegisterInfoModal";
