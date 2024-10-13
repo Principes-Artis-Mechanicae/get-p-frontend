@@ -5,7 +5,7 @@ import { Pagination } from "principes-getp";
 
 import { Text } from "@/common/components/typography/Text";
 
-import { PeopleCard } from "@/components/people/PeopleCard";
+import { PeopleCard, PeopleCardSkeleton } from "@/components/people/PeopleCard";
 import { PeopleSearchBar } from "@/components/people/PeopleSearchBar";
 
 import { ISortOption } from "@/pages/project/ProjectListPage/ProjectListPage";
@@ -29,8 +29,6 @@ export default function PeopleListPage() {
         setSortOrder(order);
     };
 
-    if (isPending) return <>loading...</>;
-
     return (
         <PeopleListWrapper>
             <PeopleSearchBar
@@ -41,22 +39,24 @@ export default function PeopleListPage() {
                 onSortChange={handleSortOrder}
             />
             <PeopleListContainer>
-                {data && (
-                    <>
-                        {data.content.map((people) => (
-                            <PeopleCard
-                                key={people.peopleId}
-                                profileImageUri={people.profileImageUri}
-                                nickname={people.nickname}
-                                introduction={people.profile.introduction}
-                                activityArea={people.profile.activityArea}
-                                hashtags={people.profile.hashtags}
-                                completeProjectsCount={people.completedProjectsCount}
-                                onClick={() => navigate(`/people/${people.peopleId}`)}
-                            />
-                        ))}
-                    </>
-                )}
+                {isPending
+                    ? Array.from({ length: 10 }).map((_, index) => <PeopleCardSkeleton key={index} />)
+                    : data && (
+                          <>
+                              {data.content.map((people) => (
+                                  <PeopleCard
+                                      key={people.peopleId}
+                                      profileImageUri={people.profileImageUri}
+                                      nickname={people.nickname}
+                                      introduction={people.profile.introduction}
+                                      activityArea={people.profile.activityArea}
+                                      hashtags={people.profile.hashtags}
+                                      completeProjectsCount={people.completedProjectsCount}
+                                      onClick={() => navigate(`/people/${people.peopleId}`)}
+                                  />
+                              ))}
+                          </>
+                      )}
                 {data && data.content.length === 0 && <Text>해당하는 데이터가 존재하지 않습니다.</Text>}
             </PeopleListContainer>
 

@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
     width: 100%;
+    height: 170px;
 
     padding: 24px;
 
@@ -59,4 +60,25 @@ export const Comment = styled.div`
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+`;
+
+export const SkeletonImage = styled.div`
+    width: 100px;
+    aspect-ratio: 1/1;
+    border-radius: 37px;
+    animation: skeleton-loading 1.5s infinite;
+`;
+
+export const SkeletonText = styled.div<{ width: string }>`
+    width: ${(props) => props.width};
+    height: 16px;
+    border-radius: 4px;
+    animation: skeleton-loading 1.5s infinite;
+`;
+
+export const SkeletonComment = styled.div`
+    width: 100%;
+    height: 32px;
+    border-radius: 4px;
+    animation: skeleton-loading 1.5s infinite;
 `;
