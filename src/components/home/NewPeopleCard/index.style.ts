@@ -86,6 +86,8 @@ export const HashTagContainer = styled.div`
     flex-wrap: nowrap;
     gap: 4px;
 
+    height: 20px;
+
     overflow: hidden;
 `;
 
