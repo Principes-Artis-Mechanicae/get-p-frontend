@@ -11,7 +11,7 @@ import { DeadLineProjectCardContainer } from "@/components/home/DeadLineProjectC
 import { NewPeopleCard, NewPeopleCardSkeleton } from "@/components/home/NewPeopleCard";
 import { NewPeopleCardContainer } from "@/components/home/NewPeopleCardContainer";
 import { HomePageSection } from "@/components/home/Section";
-import { PeopleCard } from "@/components/people/PeopleCard";
+import { PeopleCard, PeopleCardSkeleton } from "@/components/people/PeopleCard";
 
 import { useRegisterInfoModal } from "@/hooks/auth/useRegisterInfoModal";
 
@@ -59,7 +59,7 @@ export default function HomePage() {
                 >
                     <NewPeopleCardContainer>
                         {isPending
-                            ? Array.from({ length: 5 }).map(() => <NewPeopleCardSkeleton />)
+                            ? Array.from({ length: 5 }).map((_, index) => <NewPeopleCardSkeleton key={index} />)
                             : data &&
                               data?.content.map((people) => {
                                   return (
@@ -81,10 +81,11 @@ export default function HomePage() {
                 <HomePageSection title="인기 있는 피플" link="/people?page=1&size=10&sort=likesCount,desc">
                     <PopularPeopleContainer>
                         {isPopularPeoplePending
-                            ? "loading"
+                            ? Array.from({ length: 4 }).map((_, index) => <PeopleCardSkeleton key={index} />)
                             : popularPeople?.content.map((people) => {
                                   return (
                                       <PeopleCard
+                                          key={people.peopleId}
                                           profileImageUri={people.profileImageUri}
                                           nickname={people.nickname}
                                           activityArea={people.profile.activityArea}
@@ -101,12 +102,12 @@ export default function HomePage() {
                 <HomePageSection title="마감 임박 프로젝트" link="/projects?page=1&size=6&sort=applicationDuration,asc">
                     <DeadLineProjectCardContainer>
                         {isDeadLineProjectPending
-                            ? Array.from({ length: 4 }).map(() => {
-                                  return <DeadLineProjectCardSkeleton />;
-                              })
+                            ? Array.from({ length: 4 }).map((_, index) => <DeadLineProjectCardSkeleton key={index} />)
                             : deadLineProjects?.content.map((project) => {
                                   return (
                                       <DeadLineProjectCard
+                                          key={project.projectId}
+                                          projectId={project.projectId}
                                           deadline={10}
                                           title={project.title}
                                           hashtags={project.hashtags}
