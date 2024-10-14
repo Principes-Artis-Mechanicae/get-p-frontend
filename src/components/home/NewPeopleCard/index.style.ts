@@ -18,14 +18,6 @@ export const Wrapper = styled.div`
     }
 `;
 
-export const Skeleton = styled(Wrapper)`
-    flex-shrink: 0;
-    width: 200px;
-    height: 100px;
-
-    animation: skeleton-loading 2s infinite;
-`;
-
 export const Contianer = styled.div`
     display: flex;
     flex-direction: column;
@@ -103,4 +95,66 @@ export const HashTag = styled.p`
 
     border-radius: 6px;
     padding: 0px 6px;
+`;
+
+// 스켈레톤 스타일 컴포넌트 정의
+export const SkeletonText = styled.div<{ width: SizeProp; height: SizeProp }>`
+    width: ${(props) => props.width};
+    height: ${(props) => props.height};
+    border-radius: 4px;
+    animation: skeleton-loading 1.5s infinite ease-in-out;
+`;
+
+export const ProfileImgSkeleton = styled.div`
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    animation: skeleton-loading 1.5s infinite ease-in-out;
+`;
+
+export const LikesInfoSkeleton = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 4px 0px;
+    span {
+        margin: 0px 4px;
+    }
+`;
+
+export const LikesIconSkeleton = styled.div`
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    animation: skeleton-loading 1.5s infinite ease-in-out;
+`;
+
+export const ItemSkeleton = styled.div`
+    display: flex;
+    span {
+        flex-shrink: 0;
+        display: block;
+        margin: 0px 4px;
+    }
+`;
+
+export const NameSkeleton = styled.div`
+    margin: 2px 4px;
+`;
+
+export const HashTagContainerSkeleton = styled.div`
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 4px;
+    height: 20px;
+    overflow: hidden;
+`;
+
+export const HashTagSkeleton = styled.div`
+    flex-shrink: 0;
+    border-radius: 6px;
+    padding: 0px 6px;
+    height: 12px;
+    animation: skeleton-loading 1.5s infinite ease-in-out;
 `;
