@@ -30,10 +30,10 @@ export const Image = styled.img`
     display: block;
 
     margin: 0px auto;
-    border-radius: 24px;
+    border-radius: 37px;
 
-    width: 66px;
-    height: 66px;
+    width: 100px;
+    height: 100px;
 `;
 
 export const Body = styled.div`
@@ -60,9 +60,11 @@ export const Right = styled.div`
 `;
 
 export const Info = styled.p`
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    span {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
 `;
 
 export const SkeletonImage = styled.div`
