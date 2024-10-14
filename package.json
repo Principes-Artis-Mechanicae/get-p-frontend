@@ -1,7 +1,7 @@
 {
     "name": "get-p-frontend",
     "private": true,
-    "version": "1.3.0",
+    "version": "1.3.1",
     "type": "module",
     "scripts": {
         "test": "jest",
@@ -9,7 +9,7 @@
         "test:e2e": "cypress run",
         "test:e2e-open": "cypress open",
         "test:e2e-ci": "start-server-and-test start http://localhost:5173 test:e2e",
-        "dev": "vite",
+        "dev": "vite --host",
         "build": "tsc && vite build",
         "start": "serve -s dist -l 5173",
         "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -29,6 +29,7 @@
         "axios": "^1.7.4",
         "compression": "^1.7.4",
         "cross-env": "^7.0.3",
+        "dayjs": "^1.11.13",
         "express": "^4.21.0",
         "framer-motion": "^11.0.25",
         "jest": "^29.7.0",

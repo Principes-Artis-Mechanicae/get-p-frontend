@@ -28,7 +28,7 @@ export const DeadLineProjectCard = (props: DeadLineProjectCardProps) => {
                 <Styles.Image src={props.profileImg || defaultProfile} alt="client-profile" />
                 <Styles.Info>
                     <Text size="s" weight="bold">
-                        우경정보기술
+                        {/* 우경정보기술 */}
                     </Text>
                 </Styles.Info>
             </Styles.Header>
@@ -37,7 +37,8 @@ export const DeadLineProjectCard = (props: DeadLineProjectCardProps) => {
                 <Styles.Left>
                     <Styles.Info>
                         <Text size="s" weight="bolder" color="red">
-                            D-{props.deadline}
+                            D{props.deadline > 0 ? "+" : "-"}
+                            {props.deadline}
                         </Text>{" "}
                         {/* <Text size="s" color="#676F7C">
                             {props.location}
@@ -45,7 +46,7 @@ export const DeadLineProjectCard = (props: DeadLineProjectCardProps) => {
                     </Styles.Info>
                     <Styles.Info>
                         <Text size="m" weight="bold">
-                            사업계획서 Word 작업
+                            {props.title}
                         </Text>
                     </Styles.Info>
                     <Styles.Info>
@@ -65,11 +66,11 @@ export const DeadLineProjectCard = (props: DeadLineProjectCardProps) => {
                 </Styles.Left>
 
                 <Styles.Right>
-                    <Styles.Info>
+                    {/* <Styles.Info>
                         <Text size="xs" color="#F19147">
                             예상작업기간 : {props.expectedDuration}
                         </Text>
-                    </Styles.Info>
+                    </Styles.Info> */}
                     <Styles.Info>
                         <Text size="xs" color="#F19147">
                             {props.meetingType}

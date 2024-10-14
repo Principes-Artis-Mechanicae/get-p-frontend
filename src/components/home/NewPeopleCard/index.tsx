@@ -75,5 +75,35 @@ export const NewPeopleCard = ({
 };
 
 export const NewPeopleCardSkeleton = () => {
-    return <Styles.Skeleton />;
+    return (
+        <Styles.Wrapper>
+            <Styles.Contianer>
+                <Styles.ProfileImgSkeleton />
+                <Styles.LikesInfoSkeleton>
+                    <Styles.LikesIconSkeleton />
+                    <Styles.SkeletonText width="20px" height="12px" />
+                </Styles.LikesInfoSkeleton>
+            </Styles.Contianer>
+
+            <Styles.Contianer>
+                <Styles.ItemSkeleton>
+                    <Styles.SkeletonText width="60px" height="14px" />
+                    <Styles.SkeletonText width="40px" height="12px" />
+                </Styles.ItemSkeleton>
+
+                <Styles.NameSkeleton>
+                    <Styles.SkeletonText width="80px" height="16px" />
+                </Styles.NameSkeleton>
+
+                <Styles.HashTagContainerSkeleton>
+                    <Styles.HashTagSkeleton>
+                        <Styles.SkeletonText width="30px" height="12px" />
+                    </Styles.HashTagSkeleton>
+                    <Styles.HashTagSkeleton>
+                        <Styles.SkeletonText width="40px" height="12px" />
+                    </Styles.HashTagSkeleton>
+                </Styles.HashTagContainerSkeleton>
+            </Styles.Contianer>
+        </Styles.Wrapper>
+    );
 };

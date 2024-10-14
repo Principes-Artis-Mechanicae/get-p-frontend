@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
+import dayjs from "dayjs";
 import { SearchBar } from "principes-getp";
 
 import { Text } from "@/common/components/typography/Text";
@@ -108,7 +109,7 @@ export default function HomePage() {
                                       <DeadLineProjectCard
                                           key={project.projectId}
                                           projectId={project.projectId}
-                                          deadline={10}
+                                          deadline={-dayjs(project.applicationDuration.endDate).diff(dayjs(), "day")}
                                           title={project.title}
                                           hashtags={project.hashtags}
                                           payment={project.payment}

@@ -7,7 +7,8 @@ export const TextElement = styled.span<TextProps>`
     -moz-osx-font-smoothing: antialiased;
     font-smooth: antialiased;
 
-    font-family: "SpoqaHanSansNeo", "sans-serif";
+    font-family: "SpoqaHanSansNeo", "Apple SD Gothic Neo", Sans-serif;
+    font-optical-sizing: auto;
 
     color: ${(props) => {
         switch (props.color) {
