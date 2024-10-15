@@ -1,36 +1,50 @@
 import { useRef, useState } from "react";
+import { toast } from "react-toastify";
 
+import { PortfolioUploadResponseBody } from "@/services/project/types";
 import { useProjectApply } from "@/services/project/useProjectApply";
 
-interface IFile {
+import { api } from "@/config/axios";
+
+interface IPortfolio {
     name: string;
-    url: string;
+    fileUri: string;
 }
 
 const useFileUpload = () => {
     const fileInputRef = useRef<HTMLInputElement | null>(null);
-    const [portfolios, setPortfolios] = useState<IFile[]>([]);
+    const [portfolios, setPortfolios] = useState<IPortfolio[]>([]);
     const { setAttachmentFiles } = useProjectApply();
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFiles = e.target.files;
-        if (selectedFiles) {
-            const newFiles = Array.from(selectedFiles).map((file) => ({
-                name: file.name,
-                url: URL.createObjectURL(file),
-            }));
 
-            setPortfolios((prevFiles) => {
-                const updatedFiles = [...prevFiles, ...newFiles];
-                setAttachmentFiles(updatedFiles.map((file) => file.name));
-                return updatedFiles;
+        if (selectedFiles) {
+            const file: File = selectedFiles[0];
+
+            const formData = new FormData();
+            formData.append("file", file);
+
+            const request = async () => {
+                const response = await api.post<PortfolioUploadResponseBody>("/storage/files", formData, {
+                    headers: { "Content-Type": "multipart/form-data" },
+                });
+                if (response.status !== 201) throw new Error("포트폴리오 파일 업로드 실패");
+                setPortfolios((prev) => [...prev, { name: file.name, fileUri: response.data.data.fileUri }]);
+                setAttachmentFiles((prev) => [...prev, response.data.data.fileUri]);
+            };
+
+            return toast.promise(request, {
+                pending: "포트폴리오 업로드 중입니다",
+                success: "포트폴리오 업로드 완료",
+                error: "포트폴리오 업로드 실패",
             });
         }
     };
 
-    const handleDelete = (url: string) => {
+    const handleDelete = (fileUri: string) => {
         setPortfolios((prevFiles) => {
-            const updatedFiles = prevFiles.filter((file) => file.url !== url);
+            const updatedFiles = prevFiles.filter((file) => file.fileUri !== fileUri);
             setAttachmentFiles(updatedFiles.map((file) => file.name));
             return updatedFiles;
         });

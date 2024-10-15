@@ -147,12 +147,12 @@ const ProjectApplyPage = () => {
                             {portfolios.map((portfolio, index) => (
                                 <PortfolioCard key={index}>
                                     <NameContainer>
-                                        <DeleteButton onClick={() => handleDelete(portfolio.url)}>
+                                        <DeleteButton onClick={() => handleDelete(portfolio.fileUri)}>
                                             <img src={deleteIcon} alt="delete" />
                                         </DeleteButton>
                                         {portfolio.name}
                                     </NameContainer>
-                                    <OpenButton href={portfolio.url} target="_blank" rel="noopener noreferrer">
+                                    <OpenButton href={portfolio.fileUri} target="_blank" rel="noopener noreferrer">
                                         파일 열기
                                     </OpenButton>
                                 </PortfolioCard>
@@ -165,7 +165,7 @@ const ProjectApplyPage = () => {
                     <FileInput
                         placeholder="포트폴리오"
                         type="file"
-                        accept=".pdf"
+                        accept=".pdf,.png"
                         ref={fileInputRef}
                         onChange={handleFileChange}
                     />

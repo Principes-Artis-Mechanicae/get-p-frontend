@@ -103,3 +103,9 @@ export interface ProjectLikeResponseBody {
 export interface ProjectLikeCancelResponseBody {
     status: number;
 }
+
+export interface PortfolioUploadResponseBody {
+    data: {
+        fileUri: string;
+    };
+}
