@@ -18,7 +18,7 @@ import { cloneElement } from "react";
  *      }
  * )
  */
-export const withProviders = <Props extends object>(
+export const withProviders = <Props extends Record<string, unknown>>(
     providers: React.ReactElement[],
     Component: React.ComponentType<Props>,
 ) => {
