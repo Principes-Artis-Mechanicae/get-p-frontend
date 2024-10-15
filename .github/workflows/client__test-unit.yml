@@ -1,0 +1,35 @@
+name: (get-p-client) Compile & Linting
+
+on:
+    pull_request:
+        branches:
+            - develop
+    workflow_dispatch:
+
+env:
+    NODE_VERSION: 20
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Install NodeJS
+              uses: actions/setup-node@v2
+              with:
+                  node-version: ${{env.NODE_VERSION}}
+
+            - name: Install Yarn Package Manager
+              run: npm install -g yarn
+
+            - name: Code Checkout
+              uses: actions/checkout@v4
+
+            - name: Change Directory to get-p-client
+              run: cd get-p-client
+
+            - name: Install Dependencies
+              run: yarn install
+
+            - name: Run Test
+              run: yarn test

@@ -1,0 +1,28 @@
+{
+    "name": "get-p-client",
+    "private": true,
+    "version": "1.3.1",
+    "type": "module",
+    "scripts": {
+        "test": "jest",
+        "test:coverage": "jest --coverage && serve coverage -p 2042",
+        "test:e2e": "cypress run",
+        "test:e2e:open": "cypress open",
+        "test:e2e:ci": "start-server-and-test start http://localhost:5173 test:e2e",
+        "dev": "vite --host",
+        "build": "tsc && vite build",
+        "start": "serve -s dist -l 5173",
+        "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "preview": "vite preview",
+        "storybook": "storybook dev -p 6006",
+        "build-storybook": "storybook build",
+        "compile": "tsc --noEmit",
+        "prettier": "prettier --write '**/*.{ts,tsx}'",
+        "chromatic": "npx chromatic --project-token=chpt_3238fbae3f52346"
+    },
+    "msw": {
+        "workerDirectory": [
+            "public"
+        ]
+    }
+}
