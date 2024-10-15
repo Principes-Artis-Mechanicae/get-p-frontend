@@ -1,20 +1,18 @@
-import { useRef, useState } from "react";
+import { useRef, useState, Dispatch, SetStateAction } from "react";
 import { toast } from "react-toastify";
 
 import { PortfolioUploadResponseBody } from "@/services/project/types";
-import { useProjectApply } from "@/services/project/useProjectApply";
 
 import { api } from "@/config/axios";
 
 interface IPortfolio {
-    name: string;
-    fileUri: string;
+    description: string;
+    url: string;
 }
 
-const useFileUpload = () => {
+const useFileUpload = (setAttachmentFiles: Dispatch<SetStateAction<IPortfolio[]>>) => {
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     const [portfolios, setPortfolios] = useState<IPortfolio[]>([]);
-    const { setAttachmentFiles } = useProjectApply();
 
     const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFiles = e.target.files;
@@ -30,8 +28,8 @@ const useFileUpload = () => {
                     headers: { "Content-Type": "multipart/form-data" },
                 });
                 if (response.status !== 201) throw new Error("포트폴리오 파일 업로드 실패");
-                setPortfolios((prev) => [...prev, { name: file.name, fileUri: response.data.data.fileUri }]);
-                setAttachmentFiles((prev) => [...prev, response.data.data.fileUri]);
+                setPortfolios((prev) => [...prev, { description: file.name, url: response.data.data.fileUri }]);
+                setAttachmentFiles((prev) => [...prev, { description: file.name, url: response.data.data.fileUri }]);
             };
 
             return toast.promise(request, {
@@ -42,10 +40,10 @@ const useFileUpload = () => {
         }
     };
 
-    const handleDelete = (fileUri: string) => {
+    const handleDelete = (url: string) => {
         setPortfolios((prevFiles) => {
-            const updatedFiles = prevFiles.filter((file) => file.fileUri !== fileUri);
-            setAttachmentFiles(updatedFiles.map((file) => file.name));
+            const updatedFiles = prevFiles.filter((file) => file.url !== url);
+            setAttachmentFiles(updatedFiles);
             return updatedFiles;
         });
     };

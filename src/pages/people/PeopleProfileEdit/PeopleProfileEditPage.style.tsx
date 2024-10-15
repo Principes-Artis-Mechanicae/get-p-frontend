@@ -1,4 +1,5 @@
 import { mobile, tablet } from "@/styles/breakpoint";
+import { vertical_center } from "@/styles/utils";
 
 import styled from "@emotion/styled";
 
@@ -60,4 +61,57 @@ export const PeopleProfileEditForm = styled.div`
 
 export const PeopleProfileEditFormItem = styled.div`
     margin: 20px 0px;
+`;
+
+export const FileInput = styled.input`
+    display: none;
+`;
+
+export const PortfolioContainer = styled.div`
+    width: 100%;
+
+    ${vertical_center}
+
+    gap: 12px;
+`;
+
+export const PortfolioCard = styled.li`
+    width: 100%;
+    height: 54px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0px 20px;
+    border-radius: 12px;
+    box-sizing: border-box;
+
+    background-color: #f9fafa;
+
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+
+    cursor: pointer;
+`;
+
+export const NameContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 20px;
+`;
+
+export const DeleteButton = styled.button`
+    background-color: transparent;
+    &:hover {
+        transform: scale(1.15);
+        cursor: pointer;
+    }
+`;
+
+export const OpenButton = styled.a`
+    color: #476ff1;
+    font-weight: bold;
+    text-decoration: none;
 `;
