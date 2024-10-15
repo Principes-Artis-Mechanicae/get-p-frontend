@@ -28,11 +28,8 @@ jobs:
             - name: Install Dependencies
               run: yarn install
 
-            - name: Change Directory to get-p-client
-              run: cd get-p-client
-
             - name: Typescript Compile
-              run: yarn compile
+              run: yarn client compile
 
             - name: Lint Code
               run: yarn lint

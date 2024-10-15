@@ -25,11 +25,8 @@ jobs:
             - name: Code Checkout
               uses: actions/checkout@v4
 
-            - name: Change Directory to get-p-client
-              run: cd get-p-client
-
             - name: Install Dependencies
               run: yarn install
 
             - name: Run Test
-              run: yarn test
+              run: yarn client test

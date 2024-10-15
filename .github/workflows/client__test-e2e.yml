@@ -29,9 +29,10 @@ jobs:
               run: |
                   touch .env
                   echo VITE_API_BASE_URL=${{secrets.VITE_API_BASE_URL}} >> .env
+                  cd ..
 
             - name: Build
-              run: yarn build
+              run: yarn client build
 
             - name: Run e2e Tests
-              run: yarn test:e2e:ci
+              run: yarn client test:e2e:ci
