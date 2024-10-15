@@ -8,8 +8,10 @@ export const useProjectApply = () => {
     const [startDate, setStartDate] = useState<string>("");
     const [endDate, setEndDate] = useState<string>("");
     const descriptionRef = useRef<HTMLTextAreaElement | null>(null);
-    const [attachmentFiles, setAttachmentFiles] = useState<string[]>([]);
+    const [attachmentFiles, setAttachmentFiles] = useState<{ description: string; url: string }[]>([]);
     const [peopleType, setPeopleType] = useState<PeopleType | null>(null);
+
+    console.log(attachmentFiles.map((file) => file.url));
 
     const mutation = useMutation({
         mutationFn: () =>
@@ -19,7 +21,7 @@ export const useProjectApply = () => {
                     endDate: endDate,
                 },
                 description: descriptionRef.current?.value as string,
-                attachmentFiles: attachmentFiles,
+                attachmentFiles: attachmentFiles.map((file) => file.url),
             }),
     });
 

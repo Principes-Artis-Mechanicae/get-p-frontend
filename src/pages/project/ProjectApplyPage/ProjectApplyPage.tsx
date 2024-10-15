@@ -31,11 +31,19 @@ import {
 import { DateInput, FileInput } from "./ProjectApplyPage.style";
 
 const ProjectApplyPage = () => {
-    const { setStartDate, setEndDate, descriptionRef, handleApplyBtnClicked, handlePeopleType, peopleType } =
-        useProjectApply();
+    const {
+        setStartDate,
+        setEndDate,
+        descriptionRef,
+        handleApplyBtnClicked,
+        handlePeopleType,
+        peopleType,
+        setAttachmentFiles,
+    } = useProjectApply();
     const { isPending, isError, data: project } = useProjectById();
 
-    const { fileInputRef, portfolios, handleFileChange, handleDelete, handleButtonClick } = useFileUpload();
+    const { fileInputRef, portfolios, handleFileChange, handleDelete, handleButtonClick } =
+        useFileUpload(setAttachmentFiles);
 
     const selectStartDate = (e: React.ChangeEvent<HTMLInputElement>) => {
         const date = e.target.value;
@@ -150,7 +158,7 @@ const ProjectApplyPage = () => {
                                         <DeleteButton onClick={() => handleDelete(portfolio.url)}>
                                             <img src={deleteIcon} alt="delete" />
                                         </DeleteButton>
-                                        {portfolio.name}
+                                        {portfolio.description}
                                     </NameContainer>
                                     <OpenButton href={portfolio.url} target="_blank" rel="noopener noreferrer">
                                         파일 열기
@@ -165,7 +173,7 @@ const ProjectApplyPage = () => {
                     <FileInput
                         placeholder="포트폴리오"
                         type="file"
-                        accept=".pdf"
+                        accept=".pdf,.png"
                         ref={fileInputRef}
                         onChange={handleFileChange}
                     />

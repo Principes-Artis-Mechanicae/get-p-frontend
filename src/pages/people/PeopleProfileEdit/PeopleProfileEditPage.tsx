@@ -6,12 +6,15 @@ import { withProviders } from "principes-getp";
 
 import { Text } from "@/common/components/typography/Text";
 import { Title } from "@/common/components/typography/Title/Title";
+import useFileUpload from "@/common/hooks/useFileUpload";
 
 import { PeopleProfile } from "@/components/people/PeopleProfile";
 import { PeopleProfileHashTag } from "@/components/people/PeopleProfileHashTag";
 import { TechStackSelector } from "@/components/people/TechStackSelector";
 
 import { usePeopleProfileEdit } from "@/services/people/usePeopleProfileEdit";
+
+import deleteIcon from "@/assets/people/close.svg";
 
 import { techStack } from "@/constants/techstack";
 
@@ -21,7 +24,13 @@ import {
     PeopleProfileEditPageAside,
     PeopleProfileEditPageContainer,
     PeopleProfileEditPageWrapper,
+    PortfolioContainer,
+    PortfolioCard,
+    NameContainer,
+    DeleteButton,
+    OpenButton,
 } from "./PeopleProfileEditPage.style";
+import { FileInput } from "./PeopleProfileEditPage.style";
 import { AccordionProvider } from "@/contexts/AccordionContext";
 import { HashTagProvider } from "@/contexts/HashTagContext";
 import { TechStackProvider } from "@/contexts/TechStackContext";
@@ -30,8 +39,11 @@ import { css } from "@emotion/react";
 const PeopleProfileEditPage = withProviders(
     [<TechStackProvider />, <AccordionProvider />, <HashTagProvider />],
     function PeopleProfileEditPage() {
-        const { schoolRef, majorRef, activityAreaRef, introductionRef, handleAddPortfolio, handleEditBtnClicked } =
+        const { schoolRef, majorRef, activityAreaRef, introductionRef, handleEditBtnClicked, setAttachmentFiles } =
             usePeopleProfileEdit();
+
+        const { fileInputRef, portfolios, handleFileChange, handleDelete, handleButtonClick } =
+            useFileUpload(setAttachmentFiles);
 
         return (
             <PeopleProfileEditPageWrapper>
@@ -81,6 +93,30 @@ const PeopleProfileEditPage = withProviders(
 
                         <PeopleProfileEditFormItem>
                             <Label>포트폴리오</Label>
+                            {portfolios.length > 0 && (
+                                <PortfolioContainer>
+                                    {portfolios.map((portfolio, index) => (
+                                        <PortfolioCard key={index}>
+                                            <NameContainer>
+                                                <DeleteButton onClick={() => handleDelete(portfolio.url)}>
+                                                    <img src={deleteIcon} alt="delete" />
+                                                </DeleteButton>
+                                                {portfolio.description}
+                                            </NameContainer>
+                                            <OpenButton href={portfolio.url} target="_blank" rel="noopener noreferrer">
+                                                파일 열기
+                                            </OpenButton>
+                                        </PortfolioCard>
+                                    ))}
+                                </PortfolioContainer>
+                            )}
+                            <FileInput
+                                placeholder="포트폴리오"
+                                type="file"
+                                accept=".pdf,.png"
+                                ref={fileInputRef}
+                                onChange={handleFileChange}
+                            />
                             <Button
                                 variant="outline"
                                 width="100%"
@@ -88,7 +124,7 @@ const PeopleProfileEditPage = withProviders(
                                 css={css`
                                     margin-top: 5px;
                                 `}
-                                onClick={handleAddPortfolio}
+                                onClick={handleButtonClick}
                             >
                                 + 포트폴리오 파일 첨부하기
                             </Button>

@@ -12,7 +12,7 @@ export const usePeopleProfileEdit = () => {
     const activityAreaRef = useRef<HTMLInputElement | null>(null);
     const introductionRef = useRef<HTMLTextAreaElement | null>(null);
 
-    const [portfolio, setPortFolio] = useState<
+    const [attachmentFiles, setAttachmentFiles] = useState<
         {
             description: string;
             url: string;
@@ -32,7 +32,7 @@ export const usePeopleProfileEdit = () => {
                 activityArea: activityAreaRef.current?.value as string,
                 introduction: introductionRef.current?.value as string,
                 techStacks: state.selected.map((selectedItem) => selectedItem.value),
-                portfolios: portfolio,
+                portfolios: attachmentFiles,
                 hashtags: hashtag,
             }),
         onSuccess: () => {
@@ -45,13 +45,5 @@ export const usePeopleProfileEdit = () => {
         mutation.mutate();
     }, [mutation]);
 
-    const handleAddPortfolio = useCallback(() => {
-        // TODO: 포트폴리오 파일 업로드 API 구현 완료시 수정 필요
-        const description = window.prompt("포트폴리오 내용을 입력해주세요") as string;
-        const url = window.prompt("포트폴리오 URL 을 입력해주세요") as string;
-
-        setPortFolio((portfolio) => [...portfolio, { description: description, url: url }]);
-    }, []);
-
-    return { schoolRef, majorRef, activityAreaRef, introductionRef, handleAddPortfolio, handleEditBtnClicked };
+    return { schoolRef, majorRef, activityAreaRef, introductionRef, setAttachmentFiles, handleEditBtnClicked };
 };
