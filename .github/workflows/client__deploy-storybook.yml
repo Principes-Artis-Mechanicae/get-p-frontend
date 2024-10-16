@@ -17,7 +17,7 @@ jobs:
                   fetch-depth: 0
 
             - name: Install Dependencies
-              run: yarn install
+              run: yarn install --frozen-lockfile
 
             - name: Change Directory to get-p-client
               run: cd get-p-client
