@@ -13,6 +13,8 @@ jobs:
         steps:
             - name: Install NodeJS
               uses: actions/setup-node@v4
+              with:
+                  node-version: 22
 
             - name: Code Checkout
               uses: actions/checkout@v4
