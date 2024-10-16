@@ -22,7 +22,7 @@ export const usePeopleProfileEdit = () => {
     const { state } = useTechStack();
     const { hashtag } = useHashTag();
 
-    const mutation = useMutation({
+    const { mutate } = useMutation({
         mutationFn: () =>
             peopleService.registerPeopleProfile({
                 education: {
@@ -42,8 +42,8 @@ export const usePeopleProfileEdit = () => {
     });
 
     const handleEditBtnClicked = useCallback(() => {
-        mutation.mutate();
-    }, [mutation]);
+        mutate();
+    }, [mutate]);
 
     return { schoolRef, majorRef, activityAreaRef, introductionRef, setAttachmentFiles, handleEditBtnClicked };
 };

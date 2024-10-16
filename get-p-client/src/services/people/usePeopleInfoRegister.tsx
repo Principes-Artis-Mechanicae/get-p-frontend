@@ -20,7 +20,7 @@ export const usePeopleInfoRegister = () => {
 
     const navigate = useNavigate();
 
-    const mutation = useMutation({
+    const { mutate } = useMutation({
         mutationFn: () =>
             peopleService.registerPeopleInfo({
                 nickname: nicknameRef.current?.value as string,
@@ -35,14 +35,13 @@ export const usePeopleInfoRegister = () => {
     });
 
     const handleNextClick = useCallback(() => {
-        mutation.mutate();
-    }, [mutation]);
+        mutate();
+    }, [mutate]);
 
     return {
         nicknameRef,
         emailRef,
         phoneNumberRef,
         handleNextClick,
-        ...mutation,
     };
 };

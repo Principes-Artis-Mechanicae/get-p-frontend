@@ -13,7 +13,7 @@ export const useProjectApply = () => {
 
     console.log(attachmentFiles.map((file) => file.url));
 
-    const mutation = useMutation({
+    const { mutate } = useMutation({
         mutationFn: () =>
             projectService.applyProjectById({
                 expectedDuration: {
@@ -26,8 +26,8 @@ export const useProjectApply = () => {
     });
 
     const handleApplyBtnClicked = useCallback(() => {
-        mutation.mutate();
-    }, [mutation]);
+        mutate();
+    }, [mutate]);
 
     const handlePeopleType = useCallback(
         (type: PeopleType) => {

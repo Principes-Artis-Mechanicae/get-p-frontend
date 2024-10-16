@@ -8,7 +8,7 @@ export const useProjectLike = () => {
     const [isActive, setIsActive] = useState<boolean>(false);
     const { id } = useParams();
 
-    const mutation = useMutation({
+    const { mutate } = useMutation({
         mutationFn: () =>
             isActive ? projectService.registerProjectLike(Number(id)) : projectService.deleteProjectLike(Number(id)),
     });
@@ -16,10 +16,10 @@ export const useProjectLike = () => {
     const handleLikeClick = useCallback(() => {
         setIsActive((prev) => {
             const newLikeClick = !prev;
-            mutation.mutate();
+            mutate();
             return newLikeClick;
         });
-    }, [mutation]);
+    }, [mutate]);
 
     return {
         isActive,
