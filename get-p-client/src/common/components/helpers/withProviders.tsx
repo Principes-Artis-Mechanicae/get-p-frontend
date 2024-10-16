@@ -19,9 +19,9 @@ import { cloneElement } from "react";
  *      }
  * )
  */
-export const withProviders = <Props extends React.ComponentPropsWithoutRef<typeof React.Component> & React.Attributes>(
+export const withProviders = <C extends React.ComponentType, Props extends JSX.LibraryManagedAttributes<C, object>>(
     providers: React.ReactElement[],
-    Component: React.ComponentType<Props>,
+    Component: C,
 ) => {
     return (props: Props) => {
         const ProvidersWrappedComponent = providers.reduceRight(
