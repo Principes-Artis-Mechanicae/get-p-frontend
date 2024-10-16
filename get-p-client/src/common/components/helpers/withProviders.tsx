@@ -1,3 +1,4 @@
+import React from "react";
 import { cloneElement } from "react";
 
 /**
@@ -18,7 +19,7 @@ import { cloneElement } from "react";
  *      }
  * )
  */
-export const withProviders = <Props extends Record<string, unknown>>(
+export const withProviders = <Props extends React.ComponentPropsWithoutRef<typeof React.Component> & React.Attributes>(
     providers: React.ReactElement[],
     Component: React.ComponentType<Props>,
 ) => {

@@ -1,4 +1,4 @@
-name: (get-p-client) Compile & Linting
+name: (get-p-client) Run Unit, Integration Tests
 
 on:
     pull_request:
