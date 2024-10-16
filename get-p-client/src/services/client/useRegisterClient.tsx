@@ -19,7 +19,7 @@ export const useRegisterClient = () => {
     const streetRef = useRef<HTMLInputElement>(null);
     const detailRef = useRef<HTMLInputElement>(null);
 
-    const mutation = useMutation({
+    const { mutate } = useMutation({
         mutationFn: () =>
             clientService.registerClient({
                 nickname: nicknameRef.current?.value as string,
@@ -38,8 +38,8 @@ export const useRegisterClient = () => {
     });
 
     const handleRegisterBtnClick = useCallback(() => {
-        mutation.mutate();
-    }, [mutation]);
+        mutate();
+    }, [mutate]);
 
     return { nicknameRef, emailRef, phoneNumberRef, zipCodeRef, streetRef, detailRef, handleRegisterBtnClick };
 };

@@ -16,7 +16,7 @@ export const useRequestMeeting = () => {
     const phoneNumberRef = useRef<HTMLTextAreaElement | null>(null);
     const requestRef = useRef<HTMLTextAreaElement | null>(null);
 
-    const mutation = useMutation({
+    const { mutate } = useMutation({
         mutationFn: () =>
             clientService.requestMeeting({
                 applicantId: Number(id),
@@ -32,8 +32,8 @@ export const useRequestMeeting = () => {
     });
 
     const handleTransmissionBtnClicked = useCallback(() => {
-        mutation.mutate();
-    }, [mutation]);
+        mutate();
+    }, [mutate]);
 
     return {
         setMeetingDate,
