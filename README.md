@@ -18,6 +18,7 @@
 <br/>
 
 ## ✨ 프로젝트 소개
+
 소프트웨어 인력난을 해결하기 위한 외주 매칭 플랫폼입니다
 
 ## 🔗 배포링크
@@ -35,6 +36,6 @@
 
 ## 👩‍👩‍👧‍👦 프론트엔드 팀 구성원
 
-|[김대건<br/>(toothlessdev)](https://github.com/toothlessdev)|[김유진<br/>(zladb)](https://github.com/zladb)|[신채원<br/>(chae-won-shin)](https://github.com/chae-won-shin)|[조민주<br/>(chominju02)](https://github.com/chominju02)|
-|---|---|---|---|
-|<img src="https://avatars.githubusercontent.com/u/52105661?v=4" width="160px"/>|<img src="https://avatars.githubusercontent.com/u/68093782?v=4" width="160px"/>|<img src="https://avatars.githubusercontent.com/u/96687276?v=4" width="160px"/>|<img src="https://avatars.githubusercontent.com/u/120126604?v=4" width="160px"/>|
+| [김대건<br/>(toothlessdev)](https://github.com/toothlessdev)                    | [김유진<br/>(zladb)](https://github.com/zladb)                                  | [신채원<br/>(chae-won-shin)](https://github.com/chae-won-shin)                  | [조민주<br/>(chominju02)](https://github.com/chominju02)                         |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| <img src="https://avatars.githubusercontent.com/u/52105661?v=4" width="160px"/> | <img src="https://avatars.githubusercontent.com/u/68093782?v=4" width="160px"/> | <img src="https://avatars.githubusercontent.com/u/96687276?v=4" width="160px"/> | <img src="https://avatars.githubusercontent.com/u/120126604?v=4" width="160px"/> |
