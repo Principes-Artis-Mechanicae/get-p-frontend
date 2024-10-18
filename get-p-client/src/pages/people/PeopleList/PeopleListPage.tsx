@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 import { Pagination } from "principes-getp";
 
-import { Text } from "@/common/components/typography/Text";
+import { Text } from "@getp/common/components/typography/Text";
 
-import { PeopleCard, PeopleCardSkeleton } from "@/components/people/PeopleCard";
-import { PeopleSearchBar } from "@/components/people/PeopleSearchBar";
+import { PeopleCard, PeopleCardSkeleton } from "@getp/components/people/PeopleCard";
+import { PeopleSearchBar } from "@getp/components/people/PeopleSearchBar";
 
-import { ISortOption } from "@/pages/project/ProjectListPage/ProjectListPage";
+import { ISortOption } from "@getp/pages/project/ProjectListPage/ProjectListPage";
 
-import { usePeopleList } from "@/services/people/usePeopleList";
+import { usePeopleList } from "@getp/services/people/usePeopleList";
 
 import { PeopleListContainer, PeopleListWrapper } from "./PeopleListPage.style";
 

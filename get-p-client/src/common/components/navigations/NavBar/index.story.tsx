@@ -1,4 +1,4 @@
-import { NavBar } from "@/common/components/navigations/NavBar";
+import { NavBar } from "@getp/common/components/navigations/NavBar";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

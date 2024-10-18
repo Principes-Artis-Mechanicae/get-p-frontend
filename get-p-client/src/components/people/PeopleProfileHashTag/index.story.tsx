@@ -1,6 +1,7 @@
 import { PeopleProfileHashTag } from ".";
 
-import { HashTagProvider } from "@/contexts/HashTagContext";
+import { HashTagProvider } from "@getp/common/contexts/HashTagContext";
+
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

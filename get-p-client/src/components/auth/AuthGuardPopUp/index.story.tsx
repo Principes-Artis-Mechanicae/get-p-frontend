@@ -1,4 +1,4 @@
-import { AuthGuardPopUp } from "@/components/auth/AuthGuardPopUp";
+import { AuthGuardPopUp } from "@getp/components/auth/AuthGuardPopUp";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

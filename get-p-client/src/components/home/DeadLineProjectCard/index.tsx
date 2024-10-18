@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
-import { Text } from "@/common/components/typography/Text";
+import { Text } from "@getp/common/components/typography/Text";
 
-import defaultProfile from "@/assets/common/default-profile.svg";
+import defaultProfile from "@getp/assets/common/default-profile.svg";
 
 import * as Styles from "./index.style";
 

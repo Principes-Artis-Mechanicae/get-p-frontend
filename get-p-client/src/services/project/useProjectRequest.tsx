@@ -1,10 +1,10 @@
 import { ChangeEvent, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { projectAction } from "@/store/slice/project.slice";
-import { RootDispatch, RootState } from "@/store/store";
+import { isValidDuration } from "@getp/common/utils/validation";
 
-import { isValidDuration } from "@/utils/validation";
+import { projectAction } from "@getp/store/slice/project.slice";
+import { RootDispatch, RootState } from "@getp/store/store";
 
 import { projectService } from "./service";
 import { useMutation } from "@tanstack/react-query";

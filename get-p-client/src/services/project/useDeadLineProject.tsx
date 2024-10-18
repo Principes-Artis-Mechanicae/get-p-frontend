@@ -1,5 +1,5 @@
-import { PROJECT_QUERY_KEYS } from "@/services/project/keys";
-import { projectService } from "@/services/project/service";
+import { PROJECT_QUERY_KEYS } from "@getp/services/project/keys";
+import { projectService } from "@getp/services/project/service";
 
 import { useQuery } from "@tanstack/react-query";
 

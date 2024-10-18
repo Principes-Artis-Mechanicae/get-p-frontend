@@ -1,8 +1,8 @@
 import { useRef } from "react";
 
-import { Text } from "@/common/components/typography/Text";
+import { Text } from "@getp/common/components/typography/Text";
 
-import { useHashTag } from "@/hooks/people/useHashTag";
+import { useHashTag } from "@getp/hooks/people/useHashTag";
 
 import * as Styles from "./index.style";
 

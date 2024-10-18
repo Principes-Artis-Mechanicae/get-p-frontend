@@ -1,8 +1,8 @@
 import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { authAction } from "@/store/slice/auth.slice";
-import { RootDispatch, RootState } from "@/store/store";
+import { authAction } from "@getp/store/slice/auth.slice";
+import { RootDispatch, RootState } from "@getp/store/store";
 
 export const useRegisterInfoModal = () => {
     const dispatch: RootDispatch = useDispatch();

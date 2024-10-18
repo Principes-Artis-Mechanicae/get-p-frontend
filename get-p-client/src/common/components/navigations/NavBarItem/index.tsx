@@ -1,9 +1,9 @@
 import { ComponentProps } from "react";
 import { NavLink } from "react-router-dom";
 
-import { Text } from "@/common/components/typography/Text";
+import { Text } from "@getp/common/components/typography/Text";
 
-import { navLinkStyle } from "@/styles/utils";
+import { navLinkStyle } from "@getp/styles/utils";
 
 import * as Styles from "./index.style";
 

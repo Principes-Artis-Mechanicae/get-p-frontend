@@ -2,15 +2,15 @@ import { useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { AuthGuard } from "@/common/components/guards/AuthGuard";
-import { NavAsideButton } from "@/common/components/navigations/NavAsideButton";
-import { NavBarItem } from "@/common/components/navigations/NavBarItem";
-import { NavBarProfileDropDown } from "@/common/components/navigations/NavBarProfileDropDown";
-import { NavProfileItem } from "@/common/components/navigations/NavBarProfileItem";
+import { navItems } from "@getp/apps/constants/navItems";
 
-import { RootState } from "@/store/store";
+import { AuthGuard } from "@getp/common/components/guards/AuthGuard";
+import { NavAsideButton } from "@getp/common/components/navigations/NavAsideButton";
+import { NavBarItem } from "@getp/common/components/navigations/NavBarItem";
+import { NavBarProfileDropDown } from "@getp/common/components/navigations/NavBarProfileDropDown";
+import { NavProfileItem } from "@getp/common/components/navigations/NavBarProfileItem";
 
-import { navItems } from "@/constants/navItems";
+import { RootState } from "@getp/store/store";
 
 import * as Styles from "./index.style";
 

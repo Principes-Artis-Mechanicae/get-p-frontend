@@ -1,13 +1,13 @@
 import { Pagination } from "principes-getp";
 
-import { Text } from "@/common/components/typography/Text";
+import { Text } from "@getp/common/components/typography/Text";
 
-import { PeopleSearchBar } from "@/components/people/PeopleSearchBar";
-import { ProjectCard } from "@/components/project/ProjectCard";
+import { PeopleSearchBar } from "@getp/components/people/PeopleSearchBar";
+import { ProjectCard } from "@getp/components/project/ProjectCard";
 
-import { ProjectListWrapper } from "@/pages/project/ProjectListPage/ProjectListPage.style";
+import { ProjectListWrapper } from "@getp/pages/project/ProjectListPage/ProjectListPage.style";
 
-import { useClientProjectList } from "@/services/client/useClientProjectList";
+import { useClientProjectList } from "@getp/services/client/useClientProjectList";
 
 import { ClientProjectListContainer, ClientProjectListWrapper, TotalProjectCount } from "./ClientProjectListPage.style";
 

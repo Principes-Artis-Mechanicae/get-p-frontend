@@ -3,28 +3,28 @@ import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import { SearchBar } from "principes-getp";
 
-import { Text } from "@/common/components/typography/Text";
+import { carouselImgSrc } from "@getp/apps/constants/carouselImgSrc";
 
-import { RegisterInfoModal } from "@/components/auth/RegisterInfoModal";
-import { Carousel } from "@/components/home/Carousel/Carousel";
-import { DeadLineProjectCard, DeadLineProjectCardSkeleton } from "@/components/home/DeadLineProjectCard";
-import { DeadLineProjectCardContainer } from "@/components/home/DeadLineProjectCardContainer";
-import { NewPeopleCard, NewPeopleCardSkeleton } from "@/components/home/NewPeopleCard";
-import { NewPeopleCardContainer } from "@/components/home/NewPeopleCardContainer";
-import { HomePageSection } from "@/components/home/Section";
-import { PeopleCard, PeopleCardSkeleton } from "@/components/people/PeopleCard";
+import { Text } from "@getp/common/components/typography/Text";
+import { Footer } from "@getp/common/layouts/Footer";
+import { Header } from "@getp/common/layouts/Header";
 
-import { useRegisterInfoModal } from "@/hooks/auth/useRegisterInfoModal";
+import { RegisterInfoModal } from "@getp/components/auth/RegisterInfoModal";
+import { Carousel } from "@getp/components/home/Carousel";
+import { DeadLineProjectCard, DeadLineProjectCardSkeleton } from "@getp/components/home/DeadLineProjectCard";
+import { DeadLineProjectCardContainer } from "@getp/components/home/DeadLineProjectCardContainer";
+import { NewPeopleCard, NewPeopleCardSkeleton } from "@getp/components/home/NewPeopleCard";
+import { NewPeopleCardContainer } from "@getp/components/home/NewPeopleCardContainer";
+import { HomePageSection } from "@getp/components/home/Section";
+import { PeopleCard, PeopleCardSkeleton } from "@getp/components/people/PeopleCard";
 
-import { useNewPeople } from "@/services/people/useNewPeople";
-import { usePopularPeople } from "@/services/people/usePopularPeople";
-import { useDeadLineProject } from "@/services/project/useDeadLineProject";
+import { useRegisterInfoModal } from "@getp/hooks/auth/useRegisterInfoModal";
 
-import { carouselImgSrc } from "@/constants/carouselImgSrc";
+import { useNewPeople } from "@getp/services/people/useNewPeople";
+import { usePopularPeople } from "@getp/services/people/usePopularPeople";
+import { useDeadLineProject } from "@getp/services/project/useDeadLineProject";
 
 import { HomePageMainLayout, NewPeopleBadge, PopularPeopleContainer } from "./HomePage.style";
-import { Footer } from "@/layouts/Footer/Footer";
-import { Header } from "@/layouts/Header/Header";
 
 export default function HomePage() {
     const navigate = useNavigate();

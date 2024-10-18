@@ -1,4 +1,4 @@
-import { ModalProps } from "@/common/components/overlays/Modal";
+import { ModalProps } from "@getp/common/components/overlays/Modal";
 
 import styled from "@emotion/styled";
 

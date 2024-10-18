@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 
-import { Text } from "@/common/components/typography/Text";
+import { Text } from "@getp/common/components/typography/Text";
 
-import defaultProfile from "@/assets/common/default-profile.svg";
-import likeIcon from "@/assets/people/like.png";
+import defaultProfile from "@getp/assets/common/default-profile.svg";
+import likeIcon from "@getp/assets/people/like.png";
 
 import * as Styles from "./index.style";
 

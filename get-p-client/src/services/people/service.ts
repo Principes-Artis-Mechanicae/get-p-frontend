@@ -2,10 +2,10 @@ import { toast } from "react-toastify";
 
 import { AxiosError } from "axios";
 
-import { api } from "@/config/axios";
+import { api } from "@getp/apps/config/axios";
 
-import { ExceptionHandler } from "@/utils/exception";
-import { isRequestBodyValid } from "@/utils/validation";
+import { ExceptionHandler } from "@getp/common/utils/exception";
+import { isRequestBodyValid } from "@getp/common/utils/validation";
 
 import { RenderToastFromDerivedError } from "../exception";
 import {

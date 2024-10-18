@@ -1,6 +1,6 @@
 import { Button } from "principes-getp";
 
-import { StarIcon } from "@/assets/project/StarIcon";
+import { StarIcon } from "@getp/assets/project/StarIcon";
 
 import * as Styles from "./index.style";
 

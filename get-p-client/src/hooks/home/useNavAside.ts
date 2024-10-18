@@ -1,8 +1,8 @@
 import { useLayoutEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { uiActions } from "@/store/slice/ui.slice";
-import { RootDispatch, RootState } from "@/store/store";
+import { uiActions } from "@getp/store/slice/ui.slice";
+import { RootDispatch, RootState } from "@getp/store/store";
 
 import { useDebouncedScreenSize } from "../../common/hooks/useScreenSize";
 

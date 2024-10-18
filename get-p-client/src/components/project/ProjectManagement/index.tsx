@@ -1,8 +1,8 @@
-import { Text } from "@/common/components/typography/Text";
+import { Text } from "@getp/common/components/typography/Text";
 
-import likeIcon from "@/assets/people/like.png";
-import buildingIcon from "@/assets/project/building.png";
-import locationIcon from "@/assets/project/location.png";
+import likeIcon from "@getp/assets/people/like.png";
+import buildingIcon from "@getp/assets/project/building.png";
+import locationIcon from "@getp/assets/project/location.png";
 
 import * as Styles from "./index.style";
 import { SerializedStyles } from "@emotion/react";

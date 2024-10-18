@@ -1,6 +1,6 @@
-import { Text } from "@/common/components/typography/Text";
+import { Text } from "@getp/common/components/typography/Text";
 
-import defaultProfileImage from "@/assets/common/default-profile.svg";
+import defaultProfileImage from "@getp/assets/common/default-profile.svg";
 
 import * as Styles from "./index.style";
 

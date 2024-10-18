@@ -1,18 +1,17 @@
 import { TextArea, Button } from "principes-getp";
 
-import { CheckButton } from "@/common/components/forms/CheckButton";
-import { Text } from "@/common/components/typography/Text";
-import useFileUpload from "@/common/hooks/useFileUpload";
+import { CheckButton } from "@getp/common/components/forms/CheckButton";
+import { Text } from "@getp/common/components/typography/Text";
+import useFileUpload from "@getp/common/hooks/useFileUpload";
+import { calculateDays } from "@getp/common/utils/calculateDays";
 
-import { ProjectOutline } from "@/components/project/ProjectOutline";
+import { ProjectOutline } from "@getp/components/project/ProjectOutline";
 
-import { PeopleType } from "@/services/people/types";
-import { useProjectApply } from "@/services/project/useProjectApply";
-import { useProjectById } from "@/services/project/useProjectById";
+import { PeopleType } from "@getp/services/people/types";
+import { useProjectApply } from "@getp/services/project/useProjectApply";
+import { useProjectById } from "@getp/services/project/useProjectById";
 
-import deleteIcon from "@/assets/people/close.svg";
-
-import { calculateDays } from "@/utils/calculateDays";
+import deleteIcon from "@getp/assets/people/close.svg";
 
 import {
     PeopleDetailWrapper,

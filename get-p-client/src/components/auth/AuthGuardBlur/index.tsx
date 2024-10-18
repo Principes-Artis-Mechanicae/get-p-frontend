@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 
-import { AuthGuardPopUp } from "@/components/auth/AuthGuardPopUp";
+import { AuthGuardPopUp } from "@getp/components/auth/AuthGuardPopUp";
 
-import { RootState } from "@/store/store";
+import { RootState } from "@getp/store/store";
 
 import * as Styles from "./index.style";
 

@@ -1,4 +1,4 @@
-import { DeadLineProjectCard, DeadLineProjectCardSkeleton } from "@/components/home/DeadLineProjectCard";
+import { DeadLineProjectCard, DeadLineProjectCardSkeleton } from "@getp/components/home/DeadLineProjectCard";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

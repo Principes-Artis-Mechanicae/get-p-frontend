@@ -2,8 +2,8 @@ import { useCallback, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { authAction } from "@/store/slice/auth.slice";
-import { RootDispatch } from "@/store/store";
+import { authAction } from "@getp/store/slice/auth.slice";
+import { RootDispatch } from "@getp/store/store";
 
 import { clientService } from "./service";
 import { useMutation } from "@tanstack/react-query";

@@ -2,21 +2,20 @@ import { useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { AuthFilter } from "@/common/components/guards/AuthFilter";
-import { Text } from "@/common/components/typography/Text";
+import { AuthFilter } from "@getp/common/components/guards/AuthFilter";
+import { Text } from "@getp/common/components/typography/Text";
+import { calculateDays } from "@getp/common/utils/calculateDays";
 
-import { AuthGuardBlur } from "@/components/auth/AuthGuardBlur";
-import { ProjectApply } from "@/components/project/ProjectApply";
-import { ProjectInfo } from "@/components/project/ProjectInfo";
-import { ProjectManagement } from "@/components/project/ProjectManagement";
-import { ProjectPayment } from "@/components/project/ProjectPayment";
+import { AuthGuardBlur } from "@getp/components/auth/AuthGuardBlur";
+import { ProjectApply } from "@getp/components/project/ProjectApply";
+import { ProjectInfo } from "@getp/components/project/ProjectInfo";
+import { ProjectManagement } from "@getp/components/project/ProjectManagement";
+import { ProjectPayment } from "@getp/components/project/ProjectPayment";
 
-import { useProjectById } from "@/services/project/useProjectById";
-import { useProjectLike } from "@/services/project/useProjectLike";
+import { useProjectById } from "@getp/services/project/useProjectById";
+import { useProjectLike } from "@getp/services/project/useProjectLike";
 
-import downloadIcon from "@/assets/project/download.png";
-
-import { calculateDays } from "@/utils/calculateDays";
+import downloadIcon from "@getp/assets/project/download.png";
 
 import {
     ProjectDetailWrapper,

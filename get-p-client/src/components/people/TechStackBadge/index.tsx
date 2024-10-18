@@ -1,10 +1,10 @@
 import { useCallback } from "react";
 
-import { Paragraph } from "@/common/components/typography/Paragraph/Paragraph";
+import { Paragraph } from "@getp/common/components/typography/Paragraph/Paragraph";
 
-import { useTechStack } from "@/hooks/people/useTechStack";
+import { useTechStack } from "@getp/hooks/people/useTechStack";
 
-import closeIcon from "@/assets/people/close.svg";
+import closeIcon from "@getp/assets/people/close.svg";
 
 import * as Styles from "./index.style";
 

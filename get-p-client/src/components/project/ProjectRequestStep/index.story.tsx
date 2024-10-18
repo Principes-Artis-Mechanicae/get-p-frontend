@@ -1,4 +1,4 @@
-import { ProjectRequestStep } from "@/components/project/ProjectRequestStep";
+import { ProjectRequestStep } from "@getp/components/project/ProjectRequestStep";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

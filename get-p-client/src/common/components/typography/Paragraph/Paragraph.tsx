@@ -1,5 +1,5 @@
-import { TextProps } from "@/common/components/typography/Text";
-import { Text } from "@/common/components/typography/Text";
+import { TextProps } from "@getp/common/components/typography/Text";
+import { Text } from "@getp/common/components/typography/Text";
 
 export interface ParagraphProps extends TextProps {
     children: React.ReactNode;

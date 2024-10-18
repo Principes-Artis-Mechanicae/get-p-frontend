@@ -1,4 +1,4 @@
-import { PeopleSearchBar } from "@/components/people/PeopleSearchBar";
+import { PeopleSearchBar } from "@getp/components/people/PeopleSearchBar";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

@@ -1,4 +1,4 @@
-import { ProjectMeetingType, ProjectRequestBody } from "@/services/project/types";
+import { ProjectMeetingType, ProjectRequestBody } from "@getp/services/project/types";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 

@@ -5,18 +5,18 @@ import { toast } from "react-toastify";
 
 import { Button } from "principes-getp";
 
-import { AuthGuard } from "@/common/components/guards/AuthGuard";
-import { Text } from "@/common/components/typography/Text";
+import { navItems } from "@getp/apps/constants/navItems";
 
-import { useNavAside } from "@/hooks/home/useNavAside";
+import { AuthGuard } from "@getp/common/components/guards/AuthGuard";
+import { Text } from "@getp/common/components/typography/Text";
 
-import { authAction } from "@/store/slice/auth.slice";
-import { uiActions } from "@/store/slice/ui.slice";
-import { RootDispatch } from "@/store/store";
+import { useNavAside } from "@getp/hooks/home/useNavAside";
 
-import { navItems } from "@/constants/navItems";
+import { authAction } from "@getp/store/slice/auth.slice";
+import { uiActions } from "@getp/store/slice/ui.slice";
+import { RootDispatch } from "@getp/store/store";
 
-import { navLinkStyle } from "@/styles/utils";
+import { navLinkStyle } from "@getp/styles/utils";
 
 import * as Styles from "./index.style";
 

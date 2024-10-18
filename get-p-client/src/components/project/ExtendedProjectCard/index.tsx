@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { ProjectManagement } from "@/components/project/ProjectManagement";
+import { ProjectManagement } from "@getp/components/project/ProjectManagement";
 
 import * as Styles from "./index.style";
 import { css } from "@emotion/react";

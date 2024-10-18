@@ -1,4 +1,4 @@
-import { NavBarProfileDropDown } from "@/common/components/navigations/NavBarProfileDropDown";
+import { NavBarProfileDropDown } from "@getp/common/components/navigations/NavBarProfileDropDown";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

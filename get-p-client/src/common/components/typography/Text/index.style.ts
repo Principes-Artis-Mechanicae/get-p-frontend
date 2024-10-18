@@ -1,4 +1,4 @@
-import { TextProps } from "@/common/components/typography/Text";
+import { TextProps } from "@getp/common/components/typography/Text";
 
 import styled from "@emotion/styled";
 

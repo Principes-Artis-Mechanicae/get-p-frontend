@@ -4,19 +4,19 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-import { Paragraph } from "@/common/components/typography/Paragraph/Paragraph";
-import { Text } from "@/common/components/typography/Text";
+import { profileMenu } from "@getp/apps/constants/profileMenuItems";
 
-import { MemberType } from "@/services/auth/types";
+import { Paragraph } from "@getp/common/components/typography/Paragraph/Paragraph";
+import { Text } from "@getp/common/components/typography/Text";
 
-import { authAction } from "@/store/slice/auth.slice";
-import { uiActions } from "@/store/slice/ui.slice";
-import { RootState } from "@/store/store";
+import { MemberType } from "@getp/services/auth/types";
 
-import defaultProfileImage from "@/assets/common/default-profile.svg";
-import editIcon from "@/assets/common/edit.svg";
+import { authAction } from "@getp/store/slice/auth.slice";
+import { uiActions } from "@getp/store/slice/ui.slice";
+import { RootState } from "@getp/store/store";
 
-import { profileMenu } from "@/constants/profileMenuItems";
+import defaultProfileImage from "@getp/assets/common/default-profile.svg";
+import editIcon from "@getp/assets/common/edit.svg";
 
 import * as Styles from "./index.style";
 

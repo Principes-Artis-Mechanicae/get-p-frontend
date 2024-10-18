@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 
-import { MemberType } from "@/services/auth/types";
+import { MemberType } from "@getp/services/auth/types";
 
-import { RootState } from "@/store/store";
+import { RootState } from "@getp/store/store";
 
 export interface AuthFilterProps {
     forClient: React.ReactNode;

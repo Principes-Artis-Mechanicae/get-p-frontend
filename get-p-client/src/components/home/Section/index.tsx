@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-import { Text } from "@/common/components/typography/Text";
-import { Title } from "@/common/components/typography/Title/Title";
+import { Text } from "@getp/common/components/typography/Text";
+import { Title } from "@getp/common/components/typography/Title/Title";
 
 import * as Styles from "./index.style";
 

@@ -1,4 +1,4 @@
-import { Text } from "@/common/components/typography/Text";
+import { Text } from "@getp/common/components/typography/Text";
 
 import { ProjectManagement } from "../ProjectManagement";
 import * as Styles from "./index.style";

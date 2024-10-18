@@ -1,7 +1,7 @@
 // import { RadioGroup } from "principes-getp";
 import { useSelector } from "react-redux";
 
-import { RootState } from "@/store/store";
+import { RootState } from "@getp/store/store";
 
 import { PostProjectRequestSection } from "./Section/PostProjectRequestSection";
 import { ProjectReqeustCompleteSection } from "./Section/ProjectRequestCompleteSection";

@@ -1,4 +1,4 @@
-import { ProjectTag } from "@/components/project/ProjectTag";
+import { ProjectTag } from "@getp/components/project/ProjectTag";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

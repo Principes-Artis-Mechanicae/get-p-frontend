@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 
 import { Button } from "principes-getp";
 
-import { Paragraph } from "@/common/components/typography/Paragraph/Paragraph";
-import { Text } from "@/common/components/typography/Text";
-import { Title } from "@/common/components/typography/Title/Title";
+import { Paragraph } from "@getp/common/components/typography/Paragraph/Paragraph";
+import { Text } from "@getp/common/components/typography/Text";
+import { Title } from "@getp/common/components/typography/Title/Title";
 
-import { MemberType } from "@/services/auth/types";
+import { MemberType } from "@getp/services/auth/types";
 
-import { authAction } from "@/store/slice/auth.slice";
-import { RootDispatch, RootState } from "@/store/store";
+import { authAction } from "@getp/store/slice/auth.slice";
+import { RootDispatch, RootState } from "@getp/store/store";
 
 import * as Styles from "./index.style";
 import { css } from "@emotion/react";

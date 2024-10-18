@@ -1,8 +1,8 @@
 import { toast } from "react-toastify";
 
-import { API_BASE_URL, api } from "@/config/axios";
+import { API_BASE_URL, api } from "@getp/apps/config/axios";
 
-import { ExceptionHandler } from "@/utils/exception";
+import { ExceptionHandler } from "@getp/common/utils/exception";
 
 import { RefreshTokenExpiredException, RenderToastFromDerivedError } from "../exception";
 import {

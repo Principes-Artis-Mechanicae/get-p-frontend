@@ -2,10 +2,10 @@ import { useCallback, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { authAction } from "@/store/slice/auth.slice";
-import { RootDispatch } from "@/store/store";
+import { queryClient } from "@getp/apps/config/query";
 
-import { queryClient } from "@/config/query";
+import { authAction } from "@getp/store/slice/auth.slice";
+import { RootDispatch } from "@getp/store/store";
 
 import { PEOPLE_QUERY_KEYS } from "./keys";
 import { peopleService } from "./service";

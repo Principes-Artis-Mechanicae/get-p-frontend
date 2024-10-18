@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Button } from "principes-getp";
 
-import { Text } from "@/common/components/typography/Text";
+import { Text } from "@getp/common/components/typography/Text";
 
 import * as Styles from "./index.style";
 

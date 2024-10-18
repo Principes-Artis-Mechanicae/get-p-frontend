@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 import { Pagination } from "principes-getp";
 
-import { Text } from "@/common/components/typography/Text";
+import { Text } from "@getp/common/components/typography/Text";
 
-import { PeopleSearchBar } from "@/components/people/PeopleSearchBar";
-import { ProjectCard, ProjectCardSkeleton } from "@/components/project/ProjectCard";
+import { PeopleSearchBar } from "@getp/components/people/PeopleSearchBar";
+import { ProjectCard, ProjectCardSkeleton } from "@getp/components/project/ProjectCard";
 
-import { useProjectList } from "@/services/project/useProjectList";
+import { useProjectList } from "@getp/services/project/useProjectList";
 
 import { ProjectListContainer, ProjectListWrapper } from "./ProjectListPage.style";
 

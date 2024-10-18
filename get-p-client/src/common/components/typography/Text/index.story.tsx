@@ -1,4 +1,4 @@
-import { Text } from "@/common/components/typography/Text";
+import { Text } from "@getp/common/components/typography/Text";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

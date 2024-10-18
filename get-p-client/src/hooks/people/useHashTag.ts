@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { HashTagContext } from "@/contexts/HashTagContext";
+import { HashTagContext } from "@getp/common/contexts/HashTagContext";
 
 export const useHashTag = () => {
     const hashtagContext = useContext(HashTagContext);

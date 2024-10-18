@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
 
-import App from "./App.tsx";
+import App from "./apps/App.tsx";
 import { register } from "swiper/element/bundle";
 
 register();

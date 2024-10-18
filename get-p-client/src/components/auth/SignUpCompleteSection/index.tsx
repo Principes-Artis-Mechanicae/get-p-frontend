@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "principes-getp";
 
-import { Text } from "@/common/components/typography/Text";
-import { Title } from "@/common/components/typography/Title/Title";
+import { Text } from "@getp/common/components/typography/Text";
+import { Title } from "@getp/common/components/typography/Title/Title";
 
-import { signUpAction } from "@/store/slice/signup.slice";
-import { RootDispatch } from "@/store/store";
+import { signUpAction } from "@getp/store/slice/signup.slice";
+import { RootDispatch } from "@getp/store/store";
 
-import congratsImage from "@/assets/auth/congrats1.png";
+import congratsImage from "@getp/assets/auth/congrats1.png";
 
 import * as Styles from "./index.style";
 

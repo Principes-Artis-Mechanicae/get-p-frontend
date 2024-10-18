@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom";
 
 import { Button } from "principes-getp";
 
-import { Paragraph } from "@/common/components/typography/Paragraph/Paragraph";
-import { Title } from "@/common/components/typography/Title/Title";
+import { Paragraph } from "@getp/common/components/typography/Paragraph/Paragraph";
+import { Title } from "@getp/common/components/typography/Title/Title";
 
-import notFoundImg from "@/assets/home/not_found.svg";
+import notFoundImg from "@getp/assets/home/not_found.svg";
 
 import { NotFoundImg, NotFoundPageWrapper } from "./NotFoundPage.style";
 import { css } from "@emotion/react";

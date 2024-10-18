@@ -1,9 +1,10 @@
-import { TechStackSelector } from "@/components/people/TechStackSelector";
+import { techStack } from "@getp/apps/constants/techstack";
 
-import { techStack } from "@/constants/techstack";
+import { AccordionProvider } from "@getp/common/contexts/AccordionContext";
+import { TechStackProvider } from "@getp/common/contexts/TechStackContext";
 
-import { AccordionProvider } from "@/contexts/AccordionContext";
-import { TechStackProvider } from "@/contexts/TechStackContext";
+import { TechStackSelector } from "@getp/components/people/TechStackSelector";
+
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

@@ -1,6 +1,6 @@
-import { Text } from "@/common/components/typography/Text";
+import { Text } from "@getp/common/components/typography/Text";
 
-import defulatProfileImage from "@/assets/common/default-profile.svg";
+import defulatProfileImage from "@getp/assets/common/default-profile.svg";
 
 import * as Styles from "./index.style";
 

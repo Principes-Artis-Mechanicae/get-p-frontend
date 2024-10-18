@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import { Text } from "@/common/components/typography/Text";
+import { Text } from "@getp/common/components/typography/Text";
 
-import down from "@/assets/common/dropdown.svg";
-import up from "@/assets/common/rollup.svg";
+import down from "@getp/assets/common/dropdown.svg";
+import up from "@getp/assets/common/rollup.svg";
 
 import { DropdownWrapper, DropdownHeader, DropdownContainer, Option } from "./DropdownButton.style";
 

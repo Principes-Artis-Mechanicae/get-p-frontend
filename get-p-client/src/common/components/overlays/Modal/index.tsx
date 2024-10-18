@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 
-import { uiActions } from "@/store/slice/ui.slice";
-import { RootDispatch } from "@/store/store";
+import { uiActions } from "@getp/store/slice/ui.slice";
+import { RootDispatch } from "@getp/store/store";
 
 import * as Styles from "./index.style";
 

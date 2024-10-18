@@ -2,11 +2,11 @@ import { Button } from "principes-getp";
 import { Input } from "principes-getp";
 import { Label } from "principes-getp";
 
-import { ProfileImageEdit } from "@/common/components/displays/ProfileImageEdit";
-import { Text } from "@/common/components/typography/Text";
-import { Title } from "@/common/components/typography/Title/Title";
+import { ProfileImageEdit } from "@getp/common/components/displays/ProfileImageEdit";
+import { Text } from "@getp/common/components/typography/Text";
+import { Title } from "@getp/common/components/typography/Title/Title";
 
-import { usePeopleInfoRegister } from "@/services/people/usePeopleInfoRegister";
+import { usePeopleInfoRegister } from "@getp/services/people/usePeopleInfoRegister";
 
 import {
     PeopleInfoRegisterWrapper,

@@ -2,9 +2,9 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { MemberType } from "@/services/auth/types";
+import { MemberType } from "@getp/services/auth/types";
 
-import { RootState } from "@/store/store";
+import { RootState } from "@getp/store/store";
 
 export interface ProtectedRouteProps {
     role: MemberType;

@@ -8,22 +8,21 @@ import { CheckBox } from "principes-getp";
 import { Input } from "principes-getp";
 import { Label } from "principes-getp";
 
-import { Modal } from "@/common/components/overlays/Modal";
-import { Paragraph } from "@/common/components/typography/Paragraph/Paragraph";
-import { Text } from "@/common/components/typography/Text";
-import { Title } from "@/common/components/typography/Title/Title";
-import { useInputValidation } from "@/common/hooks/useInputValidation";
+import { REGEXP_PASSWORD, REGEXP_EMAIL } from "@getp/apps/constants/regex";
 
-import { authService } from "@/services/auth/service";
+import { Modal } from "@getp/common/components/overlays/Modal";
+import { Paragraph } from "@getp/common/components/typography/Paragraph/Paragraph";
+import { Text } from "@getp/common/components/typography/Text";
+import { Title } from "@getp/common/components/typography/Title/Title";
+import { useInputValidation } from "@getp/common/hooks/useInputValidation";
+import { formatTime } from "@getp/common/utils/format";
 
-import { signUpAction } from "@/store/slice/signup.slice";
-import { uiActions } from "@/store/slice/ui.slice";
-import { RootDispatch, RootState } from "@/store/store";
-import { signUpThunkAction } from "@/store/thunk/signup.thunk";
+import { authService } from "@getp/services/auth/service";
 
-import { REGEXP_EMAIL, REGEXP_PASSWORD } from "@/constants/regex";
-
-import { formatTime } from "@/utils/format";
+import { signUpAction } from "@getp/store/slice/signup.slice";
+import { uiActions } from "@getp/store/slice/ui.slice";
+import { RootDispatch, RootState } from "@getp/store/store";
+import { signUpThunkAction } from "@getp/store/thunk/signup.thunk";
 
 import * as Styles from "./index.style";
 

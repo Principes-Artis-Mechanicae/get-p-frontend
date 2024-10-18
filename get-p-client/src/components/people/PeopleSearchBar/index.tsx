@@ -1,9 +1,9 @@
 import { SearchBar } from "principes-getp";
 
-import { Text } from "@/common/components/typography/Text";
-import { useToggle } from "@/common/hooks/useToggle";
+import { Text } from "@getp/common/components/typography/Text";
+import { useToggle } from "@getp/common/hooks/useToggle";
 
-import { ISortOption } from "@/pages/project/ProjectListPage/ProjectListPage";
+import { ISortOption } from "@getp/pages/project/ProjectListPage/ProjectListPage";
 
 import * as Styles from "./index.style";
 

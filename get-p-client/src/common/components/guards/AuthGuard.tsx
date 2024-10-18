@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { RootState } from "@/store/store";
+import { RootState } from "@getp/store/store";
 
 export interface IAuthGuard {
     forLoginUser?: boolean;

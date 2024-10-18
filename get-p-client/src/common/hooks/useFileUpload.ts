@@ -1,9 +1,9 @@
 import { useRef, useState, Dispatch, SetStateAction } from "react";
 import { toast } from "react-toastify";
 
-import { PortfolioUploadResponseBody } from "@/services/project/types";
+import { api } from "@getp/apps/config/axios";
 
-import { api } from "@/config/axios";
+import { PortfolioUploadResponseBody } from "@getp/services/project/types";
 
 interface IPortfolio {
     description: string;

@@ -1,6 +1,7 @@
 import { TechStackAccordion } from ".";
 
-import { AccordionProvider } from "@/contexts/AccordionContext";
+import { AccordionProvider } from "@getp/common/contexts/AccordionContext";
+
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {

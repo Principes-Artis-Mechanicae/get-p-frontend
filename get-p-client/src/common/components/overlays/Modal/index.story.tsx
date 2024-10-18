@@ -1,4 +1,4 @@
-import { Modal } from "@/common/components/overlays/Modal";
+import { Modal } from "@getp/common/components/overlays/Modal";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

@@ -1,5 +1,5 @@
-import { DeadLineProjectCard } from "@/components/home/DeadLineProjectCard";
-import { DeadLineProjectCardContainer } from "@/components/home/DeadLineProjectCardContainer";
+import { DeadLineProjectCard } from "@getp/components/home/DeadLineProjectCard";
+import { DeadLineProjectCardContainer } from "@getp/components/home/DeadLineProjectCardContainer";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

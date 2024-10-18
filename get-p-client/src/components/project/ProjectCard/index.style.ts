@@ -1,4 +1,4 @@
-import { mobile, tablet } from "@/styles/breakpoint";
+import { mobile, tablet } from "@getp/styles/breakpoint";
 
 import styled from "@emotion/styled";
 

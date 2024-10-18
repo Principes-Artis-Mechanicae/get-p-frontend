@@ -1,4 +1,4 @@
-import { Text } from "../Text";
+import { Text } from "@getp/common/components/typography/Text";
 
 export interface ITitle {
     children: React.ReactNode;

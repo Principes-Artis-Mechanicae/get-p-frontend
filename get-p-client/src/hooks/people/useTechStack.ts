@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { TechStackContext } from "@/contexts/TechStackContext";
+import { TechStackContext } from "@getp/common/contexts/TechStackContext";
 
 export const useTechStack = () => {
     const context = useContext(TechStackContext);

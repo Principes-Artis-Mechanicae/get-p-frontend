@@ -1,4 +1,4 @@
-import { PeopleProfile } from "@/components/people/PeopleProfile";
+import { PeopleProfile } from "@getp/components/people/PeopleProfile";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

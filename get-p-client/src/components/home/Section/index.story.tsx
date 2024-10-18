@@ -1,4 +1,4 @@
-import { HomePageSection } from "@/components/home/Section";
+import { HomePageSection } from "@getp/components/home/Section";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

@@ -1,5 +1,5 @@
-import { mobile } from "@/styles/breakpoint";
-import { place_center, vertical_center } from "@/styles/utils";
+import { mobile } from "@getp/styles/breakpoint";
+import { place_center, vertical_center } from "@getp/styles/utils";
 
 import styled from "@emotion/styled";
 

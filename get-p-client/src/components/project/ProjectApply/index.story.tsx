@@ -1,4 +1,4 @@
-import { ProjectApply } from "@/components/project/ProjectApply";
+import { ProjectApply } from "@getp/components/project/ProjectApply";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

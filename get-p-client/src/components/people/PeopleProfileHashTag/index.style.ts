@@ -1,4 +1,4 @@
-import { PeopleProfileHashTagProps } from "@/components/people/PeopleProfileHashTag";
+import { PeopleProfileHashTagProps } from "@getp/components/people/PeopleProfileHashTag";
 
 import styled from "@emotion/styled";
 

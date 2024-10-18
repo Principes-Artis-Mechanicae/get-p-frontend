@@ -1,9 +1,10 @@
-import { api } from "@/config/axios";
+import { api } from "@getp/apps/config/axios";
 
-import { authService } from "../auth/service";
+import { authService } from "@getp/services/auth/service";
+
 import { AxiosMockResponseBuilder } from "./mockResponse";
 
-jest.mock("@/config/axios", () => ({
+jest.mock("@getp/apps/config/axios", () => ({
     API_BASE_URL: "MOCK_BASE_URL",
     api: {
         get: jest.fn(),

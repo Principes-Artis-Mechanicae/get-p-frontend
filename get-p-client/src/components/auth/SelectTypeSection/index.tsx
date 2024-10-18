@@ -5,14 +5,14 @@ import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { Button } from "principes-getp";
 
-import { Text } from "@/common/components/typography/Text";
+import { Text } from "@getp/common/components/typography/Text";
 
-import { MemberTypeCard } from "@/components/auth/MemberTypeCard";
+import { MemberTypeCard } from "@getp/components/auth/MemberTypeCard";
 
-import { MemberType } from "@/services/auth/types";
+import { MemberType } from "@getp/services/auth/types";
 
-import { signUpAction } from "@/store/slice/signup.slice";
-import { RootDispatch, RootState } from "@/store/store";
+import { signUpAction } from "@getp/store/slice/signup.slice";
+import { RootDispatch, RootState } from "@getp/store/store";
 
 import * as Styles from "./index.style";
 

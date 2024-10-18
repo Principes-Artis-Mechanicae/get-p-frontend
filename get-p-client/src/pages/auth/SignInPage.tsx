@@ -9,13 +9,13 @@ import { CheckBox } from "principes-getp";
 import { Input } from "principes-getp";
 import { Label } from "principes-getp";
 
-import { Text } from "@/common/components/typography/Text";
-import { Title } from "@/common/components/typography/Title/Title";
+import { Text } from "@getp/common/components/typography/Text";
+import { Title } from "@getp/common/components/typography/Title/Title";
 
-import { RootDispatch } from "@/store/store";
-import { signInThunkAction } from "@/store/thunk/auth.thunk";
+import { RootDispatch } from "@getp/store/store";
+import { signInThunkAction } from "@getp/store/thunk/auth.thunk";
 
-import rocketImg from "@/assets/auth/rocket.png";
+import rocketImg from "@getp/assets/auth/rocket.png";
 
 import {
     SignInWrapper,

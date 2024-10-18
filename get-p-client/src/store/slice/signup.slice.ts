@@ -1,4 +1,4 @@
-import { MemberType } from "@/services/auth/types";
+import { MemberType } from "@getp/services/auth/types";
 
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 

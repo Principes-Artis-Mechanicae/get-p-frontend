@@ -1,14 +1,14 @@
 import { ChangeEvent, useCallback, useState } from "react";
 
-import { TechStackAccordion } from "@/components/people/TechStackAccordion";
-import { TechStackBadge } from "@/components/people/TechStackBadge";
+import { ITechStack } from "@getp/apps/constants/techstack";
 
-import { useAccordion } from "@/hooks/people/useAccordion";
-import { useTechStack } from "@/hooks/people/useTechStack";
+import { TechStackAccordion } from "@getp/components/people/TechStackAccordion";
+import { TechStackBadge } from "@getp/components/people/TechStackBadge";
 
-import searchIcon from "@/assets/people/search.svg";
+import { useAccordion } from "@getp/hooks/people/useAccordion";
+import { useTechStack } from "@getp/hooks/people/useTechStack";
 
-import { ITechStack } from "@/constants/techstack";
+import searchIcon from "@getp/assets/people/search.svg";
 
 import * as Styles from "./index.style";
 

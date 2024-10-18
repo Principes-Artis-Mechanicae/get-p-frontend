@@ -2,12 +2,12 @@ import { useNavigate } from "react-router-dom";
 
 import { Button } from "principes-getp";
 
-import { Paragraph } from "@/common/components/typography/Paragraph/Paragraph";
-import { Title } from "@/common/components/typography/Title/Title";
+import { Paragraph } from "@getp/common/components/typography/Paragraph/Paragraph";
+import { Title } from "@getp/common/components/typography/Title/Title";
 
-import { ProjectRequestPageWrapper } from "@/pages/project/ProjectRequest/ProjectRequestPage.style";
+import { ProjectRequestPageWrapper } from "@getp/pages/project/ProjectRequest/ProjectRequestPage.style";
 
-import congratsImage from "@/assets/auth/congrats1.png";
+import congratsImage from "@getp/assets/auth/congrats1.png";
 
 import { ProjectRequestCompleteContainer, ProjectRequestCompleteImg } from "./ProjectReqeustCompleteSection.style";
 

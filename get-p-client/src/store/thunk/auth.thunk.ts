@@ -2,11 +2,11 @@ import { NavigateFunction } from "react-router-dom";
 
 import { AxiosResponse } from "axios";
 
-import { authService } from "@/services/auth/service";
-import { MemberType, SignInResponseBody } from "@/services/auth/types";
-import { clientService } from "@/services/client/service";
-import { memberService } from "@/services/member/service";
-import { peopleService } from "@/services/people/service";
+import { authService } from "@getp/services/auth/service";
+import { MemberType, SignInResponseBody } from "@getp/services/auth/types";
+import { clientService } from "@getp/services/client/service";
+import { memberService } from "@getp/services/member/service";
+import { peopleService } from "@getp/services/people/service";
 
 import { authAction } from "../slice/auth.slice";
 import { RootDispatch } from "../store";

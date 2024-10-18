@@ -1,4 +1,4 @@
-import { NewPeopleCard, NewPeopleCardSkeleton } from "@/components/home/NewPeopleCard";
+import { NewPeopleCard, NewPeopleCardSkeleton } from "@getp/components/home/NewPeopleCard";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

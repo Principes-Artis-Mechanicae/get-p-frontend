@@ -1,4 +1,4 @@
-import { ProjectOutline } from "@/components/project/ProjectOutline";
+import { ProjectOutline } from "@getp/components/project/ProjectOutline";
 
 import type { Meta, StoryObj } from "@storybook/react";
 

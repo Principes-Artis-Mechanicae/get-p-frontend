@@ -4,19 +4,22 @@ import { Label } from "principes-getp";
 import { TextArea } from "principes-getp";
 import { withProviders } from "principes-getp";
 
-import { Text } from "@/common/components/typography/Text";
-import { Title } from "@/common/components/typography/Title/Title";
-import useFileUpload from "@/common/hooks/useFileUpload";
+import { techStack } from "@getp/apps/constants/techstack";
 
-import { PeopleProfile } from "@/components/people/PeopleProfile";
-import { PeopleProfileHashTag } from "@/components/people/PeopleProfileHashTag";
-import { TechStackSelector } from "@/components/people/TechStackSelector";
+import { Text } from "@getp/common/components/typography/Text";
+import { Title } from "@getp/common/components/typography/Title/Title";
+import { AccordionProvider } from "@getp/common/contexts/AccordionContext";
+import { HashTagProvider } from "@getp/common/contexts/HashTagContext";
+import { TechStackProvider } from "@getp/common/contexts/TechStackContext";
+import useFileUpload from "@getp/common/hooks/useFileUpload";
 
-import { usePeopleProfileEdit } from "@/services/people/usePeopleProfileEdit";
+import { PeopleProfile } from "@getp/components/people/PeopleProfile";
+import { PeopleProfileHashTag } from "@getp/components/people/PeopleProfileHashTag";
+import { TechStackSelector } from "@getp/components/people/TechStackSelector";
 
-import deleteIcon from "@/assets/people/close.svg";
+import { usePeopleProfileEdit } from "@getp/services/people/usePeopleProfileEdit";
 
-import { techStack } from "@/constants/techstack";
+import deleteIcon from "@getp/assets/people/close.svg";
 
 import {
     PeopleProfileEditForm,
@@ -31,9 +34,6 @@ import {
     OpenButton,
 } from "./PeopleProfileEditPage.style";
 import { FileInput } from "./PeopleProfileEditPage.style";
-import { AccordionProvider } from "@/contexts/AccordionContext";
-import { HashTagProvider } from "@/contexts/HashTagContext";
-import { TechStackProvider } from "@/contexts/TechStackContext";
 import { css } from "@emotion/react";
 
 const PeopleProfileEditPage = withProviders(

@@ -2,13 +2,13 @@ import { useCallback } from "react";
 
 import { Input } from "principes-getp";
 
-import { Text } from "@/common/components/typography/Text";
+import { Text } from "@getp/common/components/typography/Text";
 
-import { AuthGuardBlur } from "@/components/auth/AuthGuardBlur";
-import { PeopleProfile } from "@/components/people/PeopleProfile";
-import { TechStackBadge } from "@/components/people/TechStackBadge";
+import { AuthGuardBlur } from "@getp/components/auth/AuthGuardBlur";
+import { PeopleProfile } from "@getp/components/people/PeopleProfile";
+import { TechStackBadge } from "@getp/components/people/TechStackBadge";
 
-import { usePeopleById } from "@/services/people/usePeopleById";
+import { usePeopleById } from "@getp/services/people/usePeopleById";
 
 import {
     PeopleDetailWrapper,
