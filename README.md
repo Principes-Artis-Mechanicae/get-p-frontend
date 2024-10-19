@@ -1,8 +1,10 @@
 # GET-P : Get your People, Get your Projects!
 
 <span>
+<img src="https://img.shields.io/badge/yarn_workspace-2c8ebb?style=for-the-badge&logo=yarn&logoColor=white"/>
 <img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/>
 <img src="https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white"/>
+<img src="https://img.shields.io/badge/rollup-ec4a3f?style=for-the-badge&logo=rollupdotjs&logoColor=white"/>
 <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"/>
 <img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white"/>
 <img src="https://img.shields.io/badge/tanstack_query-FF4154?style=for-the-badge&logo=reactquery&logoColor=white"/>

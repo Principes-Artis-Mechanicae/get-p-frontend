@@ -1,4 +1,4 @@
-// export { getpGlobalStyles } from "@/styles/global";
+// export { getpGlobalStyles } from "./styles/global";
 
 export { Button } from "./components/Button";
 export { CheckBox } from "./components/CheckBox";
