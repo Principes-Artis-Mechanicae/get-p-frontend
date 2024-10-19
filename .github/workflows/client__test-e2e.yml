@@ -24,6 +24,9 @@ jobs:
             - name: Install Dependencies
               run: yarn install --frozen-lockfile
 
+            - name: Build get-p-design system
+              run: yarn design build
+
             - name: Change Directory to get-p-client
               run: cd get-p-client
 

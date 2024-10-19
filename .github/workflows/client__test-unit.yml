@@ -25,5 +25,8 @@ jobs:
             - name: Install Dependencies
               run: yarn install --frozen-lockfile
 
+            - name: Build get-p-design system
+              run: yarn design build
+
             - name: Run Test
               run: yarn client test

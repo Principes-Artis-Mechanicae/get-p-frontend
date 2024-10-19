@@ -25,6 +25,9 @@ jobs:
             - name: Install Dependencies
               run: yarn install --frozen-lockfile
 
+            - name: Build get-p-design system
+              run: yarn design build
+
             - name: Typescript Compile
               run: yarn client compile
 
