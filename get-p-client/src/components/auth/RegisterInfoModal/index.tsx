@@ -2,11 +2,10 @@ import { useCallback, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { Button } from "principes-getp";
-
-import { Paragraph } from "@getp/common/components/typography/Paragraph/Paragraph";
-import { Text } from "@getp/common/components/typography/Text";
-import { Title } from "@getp/common/components/typography/Title/Title";
+import { Button } from "get-p-design";
+import { Text } from "get-p-design";
+import { Title } from "get-p-design";
+import { Paragraph } from "get-p-design";
 
 import { MemberType } from "@getp/services/auth/types";
 

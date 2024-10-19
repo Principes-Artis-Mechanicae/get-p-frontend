@@ -3,12 +3,12 @@ import { useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { Button } from "principes-getp";
+import { Button } from "get-p-design";
+import { Text } from "get-p-design";
 
 import { navItems } from "@getp/apps/constants/navItems";
 
 import { AuthGuard } from "@getp/common/components/guards/AuthGuard";
-import { Text } from "@getp/common/components/typography/Text";
 
 import { useNavAside } from "@getp/hooks/home/useNavAside";
 

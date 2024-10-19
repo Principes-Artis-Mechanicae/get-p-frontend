@@ -1,8 +1,7 @@
 import { useCallback } from "react";
 
-import { Input } from "principes-getp";
-
-import { Text } from "@getp/common/components/typography/Text";
+import { Input } from "get-p-design";
+import { Text } from "get-p-design";
 
 import { AuthGuardBlur } from "@getp/components/auth/AuthGuardBlur";
 import { PeopleProfile } from "@getp/components/people/PeopleProfile";

@@ -2,10 +2,10 @@ import { useCallback, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
-import { Button, Input, Label, TextArea } from "principes-getp";
+import { Button, Input, Label, TextArea } from "get-p-design";
+import { Title } from "get-p-design";
+import { Paragraph } from "get-p-design";
 
-import { Paragraph } from "@getp/common/components/typography/Paragraph/Paragraph";
-import { Title } from "@getp/common/components/typography/Title/Title";
 import { isValueAssigned } from "@getp/common/utils/validation";
 
 import { ProjectRequestStep } from "@getp/components/project/ProjectRequestStep";

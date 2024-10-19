@@ -1,4 +1,4 @@
-import { Text } from "@getp/common/components/typography/Text";
+import { Text } from "get-p-design";
 
 import likeIcon from "@getp/assets/people/like.png";
 import buildingIcon from "@getp/assets/project/building.png";

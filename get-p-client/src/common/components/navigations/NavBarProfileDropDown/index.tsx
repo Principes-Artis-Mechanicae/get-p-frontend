@@ -3,11 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
+import { Text } from "get-p-design";
+import { Paragraph } from "get-p-design";
 
 import { profileMenu } from "@getp/apps/constants/profileMenuItems";
-
-import { Paragraph } from "@getp/common/components/typography/Paragraph/Paragraph";
-import { Text } from "@getp/common/components/typography/Text";
 
 import { MemberType } from "@getp/services/auth/types";
 

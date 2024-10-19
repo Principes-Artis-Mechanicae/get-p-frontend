@@ -3,17 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 import { motion } from "framer-motion";
-import { Button } from "principes-getp";
-import { CheckBox } from "principes-getp";
-import { Input } from "principes-getp";
-import { Label } from "principes-getp";
+import { Button } from "get-p-design";
+import { CheckBox } from "get-p-design";
+import { Input } from "get-p-design";
+import { Label } from "get-p-design";
+import { Text } from "get-p-design";
+import { Title } from "get-p-design";
+import { Paragraph } from "get-p-design";
 
 import { REGEXP_PASSWORD, REGEXP_EMAIL } from "@getp/apps/constants/regex";
 
 import { Modal } from "@getp/common/components/overlays/Modal";
-import { Paragraph } from "@getp/common/components/typography/Paragraph/Paragraph";
-import { Text } from "@getp/common/components/typography/Text";
-import { Title } from "@getp/common/components/typography/Title/Title";
 import { useInputValidation } from "@getp/common/hooks/useInputValidation";
 import { formatTime } from "@getp/common/utils/format";
 

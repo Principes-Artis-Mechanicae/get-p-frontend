@@ -1,6 +1,6 @@
 import { useMediaQuery } from "react-responsive";
 
-import { Button } from "principes-getp";
+import { Button } from "get-p-design";
 
 import * as Styles from "./index.style";
 

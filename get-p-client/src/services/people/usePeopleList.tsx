@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
-import { usePagination } from "principes-getp";
+import { usePagination } from "get-p-design";
 
 import { PEOPLE_QUERY_KEYS } from "./keys";
 import { peopleService } from "./service";

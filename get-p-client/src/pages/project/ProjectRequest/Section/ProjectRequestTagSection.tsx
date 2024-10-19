@@ -1,10 +1,9 @@
 import { useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Button, Input, Label } from "principes-getp";
-
-import { Paragraph } from "@getp/common/components/typography/Paragraph/Paragraph";
-import { Title } from "@getp/common/components/typography/Title/Title";
+import { Button, Input, Label } from "get-p-design";
+import { Title } from "get-p-design";
+import { Paragraph } from "get-p-design";
 
 import { ProjectRequestStep } from "@getp/components/project/ProjectRequestStep";
 import { ProjectTag, ProjectTagContainer } from "@getp/components/project/ProjectTag";

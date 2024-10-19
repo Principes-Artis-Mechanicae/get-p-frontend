@@ -2,10 +2,9 @@ import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
-import { Button, DropDown, DropDownContextProvider, DropDownItem, RadioGroup, RadioItem } from "principes-getp";
-
-import { Paragraph } from "@getp/common/components/typography/Paragraph/Paragraph";
-import { Title } from "@getp/common/components/typography/Title/Title";
+import { Button, DropDown, DropDownContextProvider, DropDownItem, RadioGroup, RadioItem } from "get-p-design";
+import { Title } from "get-p-design";
+import { Paragraph } from "get-p-design";
 
 import { ProjectRequestPageWrapper } from "@getp/pages/project/ProjectRequest/ProjectRequestPage.style";
 

@@ -1,6 +1,5 @@
-import { Pagination } from "principes-getp";
-
-import { Text } from "@getp/common/components/typography/Text";
+import { Pagination } from "get-p-design";
+import { Text } from "get-p-design";
 
 import { PeopleSearchBar } from "@getp/components/people/PeopleSearchBar";
 import { ProjectCard } from "@getp/components/project/ProjectCard";

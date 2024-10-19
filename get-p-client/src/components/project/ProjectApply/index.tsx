@@ -1,4 +1,4 @@
-import { Button } from "principes-getp";
+import { Button } from "get-p-design";
 
 import { StarIcon } from "@getp/assets/project/StarIcon";
 

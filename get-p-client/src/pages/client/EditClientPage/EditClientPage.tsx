@@ -1,9 +1,9 @@
-import { Button } from "principes-getp";
-import { Input } from "principes-getp";
-import { Label } from "principes-getp";
+import { Button } from "get-p-design";
+import { Input } from "get-p-design";
+import { Label } from "get-p-design";
+import { Title } from "get-p-design";
 
 import { ProfileImageEdit } from "@getp/common/components/displays/ProfileImageEdit";
-import { Title } from "@getp/common/components/typography/Title/Title";
 
 import { useEditClient } from "@getp/services/client/useEditClient";
 

@@ -3,10 +3,9 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
-import { Button } from "principes-getp";
-
-import { Text } from "@getp/common/components/typography/Text";
-import { Title } from "@getp/common/components/typography/Title/Title";
+import { Button } from "get-p-design";
+import { Text } from "get-p-design";
+import { Title } from "get-p-design";
 
 import { signUpAction } from "@getp/store/slice/signup.slice";
 import { RootDispatch } from "@getp/store/store";

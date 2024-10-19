@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Pagination } from "principes-getp";
-
-import { Text } from "@getp/common/components/typography/Text";
+import { Pagination } from "get-p-design";
+import { Text } from "get-p-design";
 
 import { PeopleCard, PeopleCardSkeleton } from "@getp/components/people/PeopleCard";
 import { PeopleSearchBar } from "@getp/components/people/PeopleSearchBar";

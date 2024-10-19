@@ -1,9 +1,8 @@
-import { Button } from "principes-getp";
-import { Label } from "principes-getp";
-import { TextArea } from "principes-getp";
-
-import { Text } from "@getp/common/components/typography/Text";
-import { Title } from "@getp/common/components/typography/Title/Title";
+import { Button } from "get-p-design";
+import { Label } from "get-p-design";
+import { TextArea } from "get-p-design";
+import { Text } from "get-p-design";
+import { Title } from "get-p-design";
 
 import { DateInput } from "@getp/pages/project/ProjectApplyPage/ProjectApplyPage.style";
 

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { Text } from "@getp/common/components/typography/Text";
+import { Text } from "get-p-design";
 
 import { useHashTag } from "@getp/hooks/people/useHashTag";
 

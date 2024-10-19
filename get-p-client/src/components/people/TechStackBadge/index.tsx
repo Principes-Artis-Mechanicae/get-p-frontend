@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-import { Paragraph } from "@getp/common/components/typography/Paragraph/Paragraph";
+import { Paragraph } from "get-p-design";
 
 import { useTechStack } from "@getp/hooks/people/useTechStack";
 

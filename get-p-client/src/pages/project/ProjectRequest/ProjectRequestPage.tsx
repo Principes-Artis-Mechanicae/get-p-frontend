@@ -1,4 +1,3 @@
-// import { RadioGroup } from "principes-getp";
 import { useSelector } from "react-redux";
 
 import { RootState } from "@getp/store/store";

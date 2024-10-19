@@ -1,13 +1,13 @@
-import { Button } from "principes-getp";
-import { Input } from "principes-getp";
-import { Label } from "principes-getp";
-import { TextArea } from "principes-getp";
-import { withProviders } from "principes-getp";
+import { Button } from "get-p-design";
+import { Input } from "get-p-design";
+import { Label } from "get-p-design";
+import { TextArea } from "get-p-design";
+import { Text } from "get-p-design";
+import { Title } from "get-p-design";
 
 import { techStack } from "@getp/apps/constants/techstack";
 
-import { Text } from "@getp/common/components/typography/Text";
-import { Title } from "@getp/common/components/typography/Title/Title";
+import { withProviders } from "@getp/common/components/helpers/withProviders";
 import { AccordionProvider } from "@getp/common/contexts/AccordionContext";
 import { HashTagProvider } from "@getp/common/contexts/HashTagContext";
 import { TechStackProvider } from "@getp/common/contexts/TechStackContext";

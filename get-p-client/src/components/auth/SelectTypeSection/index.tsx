@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 import { motion } from "framer-motion";
-import { Button } from "principes-getp";
-
-import { Text } from "@getp/common/components/typography/Text";
+import { Button } from "get-p-design";
+import { Text } from "get-p-design";
 
 import { MemberTypeCard } from "@getp/components/auth/MemberTypeCard";
 

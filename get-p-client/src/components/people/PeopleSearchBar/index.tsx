@@ -1,6 +1,6 @@
-import { SearchBar } from "principes-getp";
+import { SearchBar } from "get-p-design";
+import { Text } from "get-p-design";
 
-import { Text } from "@getp/common/components/typography/Text";
 import { useToggle } from "@getp/common/hooks/useToggle";
 
 import { ISortOption } from "@getp/pages/project/ProjectListPage/ProjectListPage";

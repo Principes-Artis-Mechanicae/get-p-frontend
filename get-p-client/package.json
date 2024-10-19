@@ -20,6 +20,9 @@
         "prettier": "prettier --write '**/*.{ts,tsx}'",
         "chromatic": "npx chromatic --project-token=chpt_3238fbae3f52346"
     },
+    "dependencies": {
+        "get-p-design": "*"
+    },
     "msw": {
         "workerDirectory": [
             "public"

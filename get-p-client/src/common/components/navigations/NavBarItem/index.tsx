@@ -1,7 +1,7 @@
 import { ComponentProps } from "react";
 import { NavLink } from "react-router-dom";
 
-import { Text } from "@getp/common/components/typography/Text";
+import { Text } from "get-p-design";
 
 import { navLinkStyle } from "@getp/styles/utils";
 

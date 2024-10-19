@@ -2,8 +2,9 @@ import { useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
+import { Text } from "get-p-design";
+
 import { AuthFilter } from "@getp/common/components/guards/AuthFilter";
-import { Text } from "@getp/common/components/typography/Text";
 import { calculateDays } from "@getp/common/utils/calculateDays";
 
 import { AuthGuardBlur } from "@getp/components/auth/AuthGuardBlur";

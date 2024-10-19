@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
 import dayjs from "dayjs";
-import { SearchBar } from "principes-getp";
+import { SearchBar } from "get-p-design";
+import { Text } from "get-p-design";
 
 import { carouselImgSrc } from "@getp/apps/constants/carouselImgSrc";
 
-import { Text } from "@getp/common/components/typography/Text";
 import { Footer } from "@getp/common/layouts/Footer";
 import { Header } from "@getp/common/layouts/Header";
 

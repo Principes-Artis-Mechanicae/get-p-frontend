@@ -1,7 +1,7 @@
-import { TextArea, Button } from "principes-getp";
+import { TextArea, Button } from "get-p-design";
+import { Text } from "get-p-design";
 
 import { CheckButton } from "@getp/common/components/forms/CheckButton";
-import { Text } from "@getp/common/components/typography/Text";
 import useFileUpload from "@getp/common/hooks/useFileUpload";
 import { calculateDays } from "@getp/common/utils/calculateDays";
 
