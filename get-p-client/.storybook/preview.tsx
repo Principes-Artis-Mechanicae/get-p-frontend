@@ -2,9 +2,8 @@ import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
-import { getpGlobalStyles } from "../../get-p-design/packages/styles";
 import { store } from "../src/store/store";
-import { Global } from "@emotion/react";
+import { GlobalStyles } from "../src/styles/styles";
 import type { Preview } from "@storybook/react";
 
 const preview: Preview = {
@@ -21,7 +20,7 @@ const preview: Preview = {
             <BrowserRouter>
                 <Provider store={store}>
                     <Story />
-                    <Global styles={[...getpGlobalStyles]} />
+                    <GlobalStyles />
                 </Provider>
             </BrowserRouter>
         ),
