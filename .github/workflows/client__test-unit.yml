@@ -1,0 +1,32 @@
+name: (get-p-client) Run Unit, Integration Tests
+
+on:
+    pull_request:
+        branches:
+            - develop
+    workflow_dispatch:
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Install NodeJS
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 22
+
+            - name: Install Yarn Package Manager
+              run: npm install -g yarn
+
+            - name: Code Checkout
+              uses: actions/checkout@v4
+
+            - name: Install Dependencies
+              run: yarn install --frozen-lockfile
+
+            - name: Build get-p-design system
+              run: yarn design build
+
+            - name: Run Test
+              run: yarn client test

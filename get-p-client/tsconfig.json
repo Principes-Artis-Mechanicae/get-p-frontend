@@ -1,0 +1,17 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "jsx": "react-jsx",
+
+        /* Emotion React (css prop) */
+        "jsxImportSource": "@emotion/react",
+
+        /* Import Alias */
+        "baseUrl": "src",
+        "paths": {
+            "@getp/*": ["*"]
+        }
+    },
+    "include": ["src"],
+    "references": [{ "path": "./tsconfig.node.json" }]
+}

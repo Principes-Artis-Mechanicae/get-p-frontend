@@ -1,0 +1,43 @@
+name: (get-p-client) Run e2e Test
+
+on:
+    pull_request:
+        branches: ["main", "release"]
+    workflow_dispatch:
+
+jobs:
+    e2e:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Install NodeJS
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+
+            - name: Checkout Code
+              uses: actions/checkout@v4
+
+            - name: Install Yarn Package Manager
+              run: npm install -g yarn
+
+            - name: Install Dependencies
+              run: yarn install --frozen-lockfile
+
+            - name: Build get-p-design system
+              run: yarn design build
+
+            - name: Change Directory to get-p-client
+              run: cd get-p-client
+
+            - name: Setup Environment Variables
+              run: |
+                  touch .env
+                  echo VITE_API_BASE_URL=${{secrets.VITE_API_BASE_URL}} >> .env
+                  cd ..
+
+            - name: Build
+              run: yarn client build
+
+            - name: Run e2e Tests
+              run: yarn client test:e2e:ci

@@ -26,10 +26,11 @@ dist-ssr
 
 *storybook.log
 
-
-.env
 # Local Netlify folder
 .netlify
 
 # Rollup Bundle Analyzer
 .stats
+
+# Env Variables
+.env

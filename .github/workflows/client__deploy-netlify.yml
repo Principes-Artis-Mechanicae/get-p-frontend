@@ -1,0 +1,43 @@
+name: (get-p-client) Deploy On Netlify
+
+on:
+    pull_request:
+        branches: [release]
+        types: [closed]
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Install NodeJS
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+
+            - name: Code Checkout
+              uses: actions/checkout@v4
+
+            - name: Install Yarn Package Manager
+              run: npm install -g yarn
+
+            - name: Configure Netlify
+              run: yarn global add netlify-cli
+
+            - name: Install Dependencies
+              run: yarn install --frozen-lockfile
+
+            - name: Build get-p-design system
+              run: yarn design build
+
+            - name: Build Project
+              run: VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }} yarn client build
+
+            - name: Release Beta Server
+              run: |
+                  netlify deploy \
+                      --prod \
+                      --dir get-p-client/dist \
+                      --site ${{ secrets.NETLIFY_SITE_ID }} \
+                      --auth ${{ secrets.NETLIFY_API_TOKEN }}
