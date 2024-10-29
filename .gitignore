@@ -34,3 +34,7 @@ dist-ssr
 
 # Env Variables
 .env
+
+# Lighthouse
+lighthouse
+.lighthouseci

@@ -18,7 +18,8 @@
         "build-storybook": "storybook build",
         "compile": "tsc --noEmit",
         "prettier": "prettier --write '**/*.{ts,tsx}'",
-        "chromatic": "npx chromatic --project-token=chpt_3238fbae3f52346"
+        "chromatic": "npx chromatic --project-token=chpt_3238fbae3f52346",
+        "lighthouse": "lhci autorun"
     },
     "dependencies": {
         "get-p-design": "*"

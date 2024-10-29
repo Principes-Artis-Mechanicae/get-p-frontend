@@ -9,17 +9,20 @@
     "workspaces": [
         "get-p-client",
         "get-p-admin",
-        "get-p-design"
+        "get-p-design",
+        "get-p-utils"
     ],
     "scripts": {
         "client": "yarn workspace get-p-client",
         "admin": "yarn workspace get-p-admin",
         "design": "yarn workspace get-p-design",
+        "utils": "yarn workspace get-p-utils",
         "format": "prettier --write \"**/*.{ts,tsx}\""
     },
     "dependencies": {
         "@emotion/react": "^11.11.4",
         "@emotion/styled": "^11.11.0",
+        "@lhci/cli": "^0.14.0",
         "@reduxjs/toolkit": "^2.2.1",
         "@tanstack/react-query": "^5.49.2",
         "@types/jest": "^29.5.12",

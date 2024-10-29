@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { Global } from "@emotion/react";
 import type { Preview } from "@storybook/react";
 
-import { getpGlobalStyles } from "../packages/styles";
+import { getpGlobalStyles } from "../packages/styles/global";
 
 const preview: Preview = {
     parameters: {
