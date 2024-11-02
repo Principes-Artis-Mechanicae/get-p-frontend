@@ -26,6 +26,9 @@ import { signUpThunkAction } from "@getp/store/thunk/signup.thunk";
 
 import * as Styles from "./index.style";
 
+const MINUTES_IN_MS = 5 * 60 * 1000;
+const INTERVAL = 1000;
+
 export default function SignUpInputSection() {
     const dispatch: RootDispatch = useDispatch();
     const { isModalOpened } = useSelector((state: RootState) => state.ui);
@@ -37,8 +40,6 @@ export default function SignUpInputSection() {
     const infoAgreementRef = useRef<HTMLInputElement>(null);
     const verificationRef = useRef<HTMLInputElement>(null);
 
-    const MINUTES_IN_MS = 5 * 60 * 1000;
-    const INTERVAL = 1000;
     const [isEmailVerificationFieldVisible, setIsEmailVerificationFieldVisible] = useState<boolean>(false);
     const [isPasswordCorrect, setIsPasswordCorrect] = useState<boolean>(false);
     const [timeLeft, setTimeLeft] = useState<number>(MINUTES_IN_MS);
@@ -55,6 +56,11 @@ export default function SignUpInputSection() {
         isValid: isPasswordValid,
         onChange: onPasswordChange,
     } = useInputValidation(REGEXP_PASSWORD);
+
+    const startTimer = useCallback(() => {
+        setTimeLeft(MINUTES_IN_MS);
+        setRunningTimer(true);
+    }, []);
 
     useEffect(() => {
         let intervalId: NodeJS.Timeout;
@@ -77,11 +83,6 @@ export default function SignUpInputSection() {
             }
         };
     }, [runningTimer, timeLeft]);
-
-    const startTimer = () => {
-        setTimeLeft(MINUTES_IN_MS);
-        setRunningTimer(true);
-    };
 
     const handleEmailVerificationBtnClick = useCallback(async () => {
         if (!REGEXP_EMAIL.test(email)) toast.error("올바른 형식이 아닙니다!");
@@ -191,7 +192,7 @@ export default function SignUpInputSection() {
                                         <Button variant="side" width="50px" height="38px">
                                             {runningTimer !== null && (
                                                 <Text weight="bold" color="point">
-                                                    {formatTime(timeLeft)}
+                                                    {formatTime(timeLeft / 1000)}
                                                 </Text>
                                             )}
                                         </Button>
