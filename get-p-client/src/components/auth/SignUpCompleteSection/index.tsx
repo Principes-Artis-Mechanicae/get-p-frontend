@@ -62,13 +62,6 @@ export default function SignUpCompleteSection() {
                             </Text>
                         </Button>
                     </Styles.Item>
-                    <Styles.Item>
-                        <Button variant="primary" width="100%" height="54px" onClick={handleRegisterInfoBtnClick}>
-                            <Text size="s" color="white" weight="bold">
-                                내 정보 등록하러 가기
-                            </Text>
-                        </Button>
-                    </Styles.Item>
                 </Styles.Container>
             </Styles.SectionWrapper>
         </motion.div>
