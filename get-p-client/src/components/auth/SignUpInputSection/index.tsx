@@ -39,7 +39,7 @@ export default function SignUpInputSection() {
 
     const [isEmailVerificationFieldVisible, setIsEmailVerificationFieldVisible] = useState<boolean>(false);
     const [isPasswordCorrect, setIsPasswordCorrect] = useState<boolean>(false);
-    const [timer, setTimer] = useState<number>(240);
+    const [timer, setTimer] = useState<number>(300);
     const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
 
     const {
@@ -55,7 +55,7 @@ export default function SignUpInputSection() {
     } = useInputValidation(REGEXP_PASSWORD);
 
     const startTimer = () => {
-        setTimer(240);
+        setTimer(300);
         setIsTimerRunning(true);
         const intervalId = setInterval(() => {
             setTimer((prevTimer) => {
