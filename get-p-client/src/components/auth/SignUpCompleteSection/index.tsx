@@ -23,11 +23,6 @@ export default function SignUpCompleteSection() {
         navigate("/auth/signin");
     }, [navigate, dispatch]);
 
-    const handleRegisterInfoBtnClick = useCallback(() => {
-        dispatch(signUpAction.initializeSection());
-        navigate("/");
-    }, [navigate, dispatch]);
-
     return (
         <motion.div
             initial={{ x: -200, opacity: 0 }}
