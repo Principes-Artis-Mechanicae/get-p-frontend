@@ -76,7 +76,7 @@ export default function SignUpInputSection() {
                 clearInterval(intervalId);
             }
         };
-    }, [runningTimer]);
+    }, [runningTimer, timeLeft]);
 
     const startTimer = () => {
         setTimeLeft(MINUTES_IN_MS);
@@ -94,7 +94,7 @@ export default function SignUpInputSection() {
                 console.error(error);
             }
         }
-    }, [email]);
+    }, [email, startTimer]);
 
     const handlePasswordChange = useCallback(
         (e: ChangeEvent<HTMLInputElement>) => {
