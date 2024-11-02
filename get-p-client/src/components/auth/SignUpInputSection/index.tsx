@@ -68,12 +68,16 @@ export default function SignUpInputSection() {
         }, 1000);
     };
 
-    const handleEmailVerificationBtnClick = useCallback(() => {
+    const handleEmailVerificationBtnClick = useCallback(async () => {
         if (!REGEXP_EMAIL.test(email)) toast.error("올바른 형식이 아닙니다!");
         else {
-            authService.verifyEmail({ email });
-            setIsEmailVerificationFieldVisible(true);
-            startTimer();
+            try {
+                await authService.verifyEmail({ email });
+                setIsEmailVerificationFieldVisible(true);
+                startTimer();
+            } catch (error) {
+                console.error(error);
+            }
         }
     }, [email]);
 
