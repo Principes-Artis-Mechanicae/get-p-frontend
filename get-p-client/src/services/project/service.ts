@@ -6,7 +6,7 @@ import { ExceptionHandler } from "@getp/common/utils/exception";
 import { isRequestBodyValid } from "@getp/common/utils/validation";
 
 import { RenderToastFromDerivedError } from "../exception";
-import { ReadProjectResponseBody } from "./types";
+import { PortfolioUploadResponseBody, ReadProjectResponseBody } from "./types";
 import { ApplyProjectRequestBody } from "./types";
 import { ProjectRequestBody, ProjectRequestResponseBody } from "./types";
 import { ReadProjectDetailResponseBody } from "./types";
@@ -97,6 +97,26 @@ export const projectService = {
             pending: "프로젝트 지원 정보를 등록 중입니다.",
             success: "프로젝트에 성공적으로 지원되었습니다.",
             error: "프로젝트 지원에 실패하였습니다. 다시 시도해 주세요.",
+        });
+    },
+    portfolioChange: async (formData: FormData) => {
+        const request = async () => {
+            const response = await api.post<PortfolioUploadResponseBody>("/storage/files", formData, {
+                headers: { "Content-Type": "multipart/form-data" },
+            });
+
+            return new ExceptionHandler.Builder(response)
+                .addCase(400, "잘못된 요청입니다. 다시 시도해주세요.")
+                .addCase(404, "해당 파일을 찾을 수 없습니다.")
+                .addCase(409, "이미 업로드된 파일입니다.")
+                .addCase(500, "서버 오류입니다. 나중에 다시 시도해주세요.")
+                .activate();
+        };
+
+        return toast.promise(request, {
+            pending: "포트폴리오 업로드 중입니다.",
+            success: "포트폴리오 업로드 완료",
+            error: RenderToastFromDerivedError,
         });
     },
 };
