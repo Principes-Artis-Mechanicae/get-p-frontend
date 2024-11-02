@@ -1,6 +1,9 @@
 {
-  "name": "get-p-utils",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+    "name": "get-p-utils",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "start": "ts-node index.ts"
+    }
 }
