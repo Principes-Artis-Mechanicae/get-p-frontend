@@ -1,8 +1,9 @@
 import { isValueAssigned } from "./validation";
 
 export const formatTime = (time: number): string => {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
+    const total = Math.floor(time / 1000);
+    const minutes = Math.floor(total / 60);
+    const seconds = total % 60;
     return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 };
 

@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useRef, useState } from "react";
+import { ChangeEvent, useCallback, useRef, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
@@ -37,10 +37,12 @@ export default function SignUpInputSection() {
     const infoAgreementRef = useRef<HTMLInputElement>(null);
     const verificationRef = useRef<HTMLInputElement>(null);
 
+    const MINUTES_IN_MS = 5 * 60 * 1000;
+    const INTERVAL = 1000;
     const [isEmailVerificationFieldVisible, setIsEmailVerificationFieldVisible] = useState<boolean>(false);
     const [isPasswordCorrect, setIsPasswordCorrect] = useState<boolean>(false);
-    const [timer, setTimer] = useState<number>(300);
-    const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
+    const [timeLeft, setTimeLeft] = useState<number>(MINUTES_IN_MS);
+    const [runningTimer, setRunningTimer] = useState<boolean>(false);
 
     const {
         value: email,
@@ -54,18 +56,31 @@ export default function SignUpInputSection() {
         onChange: onPasswordChange,
     } = useInputValidation(REGEXP_PASSWORD);
 
+    useEffect(() => {
+        let intervalId: NodeJS.Timeout;
+
+        if (runningTimer && timeLeft > 0) {
+            intervalId = setInterval(() => {
+                setTimeLeft((prevTime) => {
+                    if (prevTime <= 1000) {
+                        setRunningTimer(false);
+                        return 0;
+                    }
+                    return prevTime - INTERVAL;
+                });
+            }, INTERVAL);
+        }
+
+        return () => {
+            if (intervalId) {
+                clearInterval(intervalId);
+            }
+        };
+    }, [runningTimer]);
+
     const startTimer = () => {
-        setTimer(300);
-        setIsTimerRunning(true);
-        const intervalId = setInterval(() => {
-            setTimer((prevTimer) => {
-                if (prevTimer === 0) {
-                    clearInterval(intervalId);
-                    return 0;
-                }
-                return prevTimer - 1;
-            });
-        }, 1000);
+        setTimeLeft(MINUTES_IN_MS);
+        setRunningTimer(true);
     };
 
     const handleEmailVerificationBtnClick = useCallback(async () => {
@@ -174,9 +189,9 @@ export default function SignUpInputSection() {
                                         placeholder="인증번호를 입력해주세요"
                                     >
                                         <Button variant="side" width="50px" height="38px">
-                                            {isTimerRunning && (
+                                            {runningTimer !== null && (
                                                 <Text weight="bold" color="point">
-                                                    {formatTime(timer)}
+                                                    {formatTime(timeLeft)}
                                                 </Text>
                                             )}
                                         </Button>
