@@ -1,9 +1,6 @@
 import { useRef, useState, Dispatch, SetStateAction } from "react";
-import { toast } from "react-toastify";
 
-import { api } from "@getp/apps/config/axios";
-
-import { PortfolioUploadResponseBody } from "@getp/services/project/types";
+import { projectService } from "@getp/services/project/service";
 
 interface IPortfolio {
     description: string;
@@ -23,20 +20,24 @@ const useFileUpload = (setAttachmentFiles: Dispatch<SetStateAction<IPortfolio[]>
             const formData = new FormData();
             formData.append("file", file);
 
-            const request = async () => {
-                const response = await api.post<PortfolioUploadResponseBody>("/storage/files", formData, {
-                    headers: { "Content-Type": "multipart/form-data" },
-                });
-                if (response.status !== 201) throw new Error("포트폴리오 파일 업로드 실패");
-                setPortfolios((prev) => [...prev, { description: file.name, url: response.data.data.fileUri }]);
-                setAttachmentFiles((prev) => [...prev, { description: file.name, url: response.data.data.fileUri }]);
-            };
-
-            return toast.promise(request, {
-                pending: "포트폴리오 업로드 중입니다",
-                success: "포트폴리오 업로드 완료",
-                error: "포트폴리오 업로드 실패",
-            });
+            try {
+                const response = await projectService.portfolioChange(formData);
+                if (response && "data" in response) {
+                    setPortfolios((prev) => [...prev, { description: file.name, url: response.data.data.fileUri }]);
+                    setAttachmentFiles((prev) => [
+                        ...prev,
+                        { description: file.name, url: response.data.data.fileUri },
+                    ]);
+                } else {
+                    throw new Error("응답에 데이터가 없습니다.");
+                }
+            } catch (error) {
+                if (error instanceof Error) {
+                    console.error(error.message);
+                } else {
+                    console.error("알 수 없는 오류 발생", error);
+                }
+            }
         }
     };
 
