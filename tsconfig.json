@@ -18,17 +18,12 @@
         "strict": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true,
-
-        /* Import Alias */
-        "baseUrl": "src",
-        "paths": {
-            "@/*": ["*"]
-        },
-
-        /* Emotion React (css prop) */
-        "jsxImportSource": "@emotion/react"
+        "noFallthroughCasesInSwitch": true
     },
-    "include": ["src"],
-    "references": [{ "path": "./tsconfig.node.json" }]
+
+    "references": [
+        { "path": "./get-p-client/tsconfig.json" },
+        { "path": "./get-p-admin/tsconfig.json" },
+        { "path": "./get-p-design/tsconfig.json" }
+    ]
 }

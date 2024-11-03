@@ -1,0 +1,11 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "ESNext",
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "lib": ["ESNext"]
+    },
+    "include": ["index.ts"]
+}

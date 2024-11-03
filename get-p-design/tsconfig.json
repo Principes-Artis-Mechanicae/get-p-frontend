@@ -1,0 +1,61 @@
+{
+    "compilerOptions": {
+        // d.ts 파일 dist 디렉토리에 생성
+        "declaration": true,
+        "declarationDir": "../dist/types",
+        // 타입에 대한 결과파일 (js, d.ts 파일 emit 여부)
+        "noEmit": false,
+
+        // https://www.typescriptlang.org/ko/docs/handbook/jsx.html
+        // presrve : 출력 확장자(json), jsx 와 동일한 포맷으로 컴파일, 이후 babel 에 의해 트랜스파일 가능
+        // react : 출력 확장자(js), React.createElement 로 컴파일
+        "jsx": "react-jsx",
+
+        // "noImplicitAny": true,
+        // "strictNullChecks": true,
+        // "strictFunctionTypes": true,
+        // "strictBindCallApply": true,
+        // "strictPropertyInitialization": true,
+        // "noImplicitThis": true,
+        // "alwaysStrict": true,
+        "strict": true,
+
+        // TS Compiler 가 출력할 JS 버전을 지정
+        "target": "ES2020",
+
+        // TS Compiler 가 어떤 모듈 시스템을 활용하여 모듈을 컴파일할지 결정
+        // 코드의 구성방식과 로드 방식 결정
+        // https://stackoverflow.com/questions/41993811/understanding-target-and-module-in-tsconfig
+        "module": "ESNext",
+
+        // Built In JS API 들에 대한 타입 정의
+        // DOM, DOM.Iterable : 브라우저 API 에 대한 타입 정의 (ex. document, window ...)
+        /// ESNext : ESNext 의 Built In JS API 에 대한 타입 정의
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+
+        // .d.ts 타입 검사 생략 (외부 라이브러리에 대한.. )
+        "skipLibCheck": true,
+
+        // TS 가 Bundler (Rollup) 과 호환 되도록 해석
+        "moduleResolution": "Bundler",
+
+        // true : TS 파일을 독립적인 모듈로 처리, 개별 컴파일됨 (단 export 한 type 은 외부 파일에서 사용가능)
+        // false : 프로젝트 전체를 한꺼번에 컴파일 (파일끼리 타입 공유가능)
+        "isolatedModules": true,
+
+        // Linting Options
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+
+        "typeRoots": ["./node_modules/@types", "@types"]
+
+        // "baseUrl": "packages",
+        // "paths": {
+        //     "@/*": ["*"]
+        // }
+    },
+    "include": ["packages", "./packages/index.d.ts"]
+}
