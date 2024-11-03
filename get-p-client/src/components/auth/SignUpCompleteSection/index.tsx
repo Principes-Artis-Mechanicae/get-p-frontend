@@ -23,11 +23,6 @@ export default function SignUpCompleteSection() {
         navigate("/auth/signin");
     }, [navigate, dispatch]);
 
-    const handleRegisterInfoBtnClick = useCallback(() => {
-        dispatch(signUpAction.initializeSection());
-        navigate("/");
-    }, [navigate, dispatch]);
-
     return (
         <motion.div
             initial={{ x: -200, opacity: 0 }}
@@ -59,13 +54,6 @@ export default function SignUpCompleteSection() {
                         <Button variant="secondary" width="100%" height="54px" onClick={handleLoginBtnClick}>
                             <Text size="s" color="point" weight="bold">
                                 로그인하기
-                            </Text>
-                        </Button>
-                    </Styles.Item>
-                    <Styles.Item>
-                        <Button variant="primary" width="100%" height="54px" onClick={handleRegisterInfoBtnClick}>
-                            <Text size="s" color="white" weight="bold">
-                                내 정보 등록하러 가기
                             </Text>
                         </Button>
                     </Styles.Item>

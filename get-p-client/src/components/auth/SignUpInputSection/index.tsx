@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useRef, useState } from "react";
+import { ChangeEvent, useCallback, useRef, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
@@ -26,6 +26,9 @@ import { signUpThunkAction } from "@getp/store/thunk/signup.thunk";
 
 import * as Styles from "./index.style";
 
+const MINUTES_IN_MS = 5 * 60 * 1000;
+const INTERVAL = 1000;
+
 export default function SignUpInputSection() {
     const dispatch: RootDispatch = useDispatch();
     const { isModalOpened } = useSelector((state: RootState) => state.ui);
@@ -39,8 +42,8 @@ export default function SignUpInputSection() {
 
     const [isEmailVerificationFieldVisible, setIsEmailVerificationFieldVisible] = useState<boolean>(false);
     const [isPasswordCorrect, setIsPasswordCorrect] = useState<boolean>(false);
-    const [timer, setTimer] = useState<number>(240);
-    const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
+    const [timeLeft, setTimeLeft] = useState<number>(MINUTES_IN_MS);
+    const [runningTimer, setRunningTimer] = useState<boolean>(false);
 
     const {
         value: email,
@@ -54,28 +57,45 @@ export default function SignUpInputSection() {
         onChange: onPasswordChange,
     } = useInputValidation(REGEXP_PASSWORD);
 
-    const startTimer = () => {
-        setTimer(240);
-        setIsTimerRunning(true);
-        const intervalId = setInterval(() => {
-            setTimer((prevTimer) => {
-                if (prevTimer === 0) {
-                    clearInterval(intervalId);
-                    return 0;
-                }
-                return prevTimer - 1;
-            });
-        }, 1000);
-    };
+    const startTimer = useCallback(() => {
+        setTimeLeft(MINUTES_IN_MS);
+        setRunningTimer(true);
+    }, []);
 
-    const handleEmailVerificationBtnClick = useCallback(() => {
+    useEffect(() => {
+        let intervalId: NodeJS.Timeout;
+
+        if (runningTimer && timeLeft > 0) {
+            intervalId = setInterval(() => {
+                setTimeLeft((prevTime) => {
+                    if (prevTime <= 1000) {
+                        setRunningTimer(false);
+                        return 0;
+                    }
+                    return prevTime - INTERVAL;
+                });
+            }, INTERVAL);
+        }
+
+        return () => {
+            if (intervalId) {
+                clearInterval(intervalId);
+            }
+        };
+    }, [runningTimer, timeLeft]);
+
+    const handleEmailVerificationBtnClick = useCallback(async () => {
         if (!REGEXP_EMAIL.test(email)) toast.error("올바른 형식이 아닙니다!");
         else {
-            authService.verifyEmail({ email });
-            setIsEmailVerificationFieldVisible(true);
-            startTimer();
+            try {
+                await authService.verifyEmail({ email });
+                setIsEmailVerificationFieldVisible(true);
+                startTimer();
+            } catch (error) {
+                console.error(error);
+            }
         }
-    }, [email]);
+    }, [email, startTimer]);
 
     const handlePasswordChange = useCallback(
         (e: ChangeEvent<HTMLInputElement>) => {
@@ -170,9 +190,9 @@ export default function SignUpInputSection() {
                                         placeholder="인증번호를 입력해주세요"
                                     >
                                         <Button variant="side" width="50px" height="38px">
-                                            {isTimerRunning && (
+                                            {runningTimer !== null && (
                                                 <Text weight="bold" color="point">
-                                                    {formatTime(timer)}
+                                                    {formatTime(timeLeft / 1000)}
                                                 </Text>
                                             )}
                                         </Button>
