@@ -22,3 +22,5 @@ export const Default: Story = {
     args: {},
 };
 `;
+
+export const createTestFileContent = (name: string) => `describe("${name} 컴포넌트", () => {})`;
