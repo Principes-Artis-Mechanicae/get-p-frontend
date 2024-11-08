@@ -9,6 +9,7 @@ export interface ProjectOutlineProps {
     remainedDays: number;
     title: string;
     hashtags: string[];
+    nickname: string;
     clientAddress: {
         detail: string;
         street: string;
@@ -27,6 +28,7 @@ export const ProjectOutline = ({
     remainedDays,
     title,
     hashtags,
+    nickname,
     clientAddress,
     likesCount,
     payment,
@@ -71,6 +73,7 @@ export const ProjectOutline = ({
                 additionalStyles={css`
                     padding: 0;
                 `}
+                nickname={nickname}
                 clientAddress={clientAddress}
                 likesCount={likesCount}
             ></ProjectManagement>

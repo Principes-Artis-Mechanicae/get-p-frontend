@@ -12,9 +12,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
+        nickname: "경북대학교",
         clientAddress: {
-            detail: "경북대학교",
-            street: "대구광역시 북구",
+            detail: "북구",
+            street: "대구광역시",
         },
         likesCount: 0,
     },
