@@ -145,13 +145,16 @@ export const StatusBox = styled.div<{ status: string }>`
     background: ${({ status }) => {
         switch (status) {
             case "PREPARING":
-            case "APPLYING":
             case "CANCELLED":
                 return "#f4f4f4";
-            case "PROGRESSING":
-                return "#F1FAFF";
+            case "APPLICATION_OPENED":
+                return "#e3f7c5";
+            case "APPLICATION_CLOSED":
             case "COMPLETED":
-                return "#E2F9E8";
+                return "#fdeaec";
+            case "MEETING_CONFIRMED":
+            case "PROGRESSING":
+                return "#ecf0fe";
         }
     }};
     box-sizing: border-box;
@@ -161,13 +164,16 @@ export const StatusText = styled.div<{ status: string }>`
     color: ${({ status }) => {
         switch (status) {
             case "PREPARING":
-            case "APPLYING":
             case "CANCELLED":
                 return "#818181";
-            case "PROGRESSING":
-                return "#2577C3E5";
+            case "APPLICATION_OPENED":
+                return "#33b200";
+            case "APPLICATION_CLOSED":
             case "COMPLETED":
-                return "#69CA7E";
+                return "#fe4a5e";
+            case "MEETING_CONFIRMED":
+            case "PROGRESSING":
+                return "#476ff1";
         }
     }};
     text-align: center;
