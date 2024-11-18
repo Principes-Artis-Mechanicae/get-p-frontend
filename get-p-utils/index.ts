@@ -22,11 +22,15 @@ program
             },
         ]);
         switch (answer.select) {
-            case GET_P_CLIENT:
+            case GET_P_CLIENT.CREATE_NEW_COMPONENT:
                 await createNewComponent("get-p-client");
                 break;
-            case GET_P_ADMIN:
+            case GET_P_ADMIN.CREATE_NEW_COMPONENT:
                 await createNewComponent("get-p-admin");
+                break;
+            case GET_P_CLIENT.ADD_API_ENDPOINT:
+                break;
+            case GET_P_ADMIN.ADD_API_ENDPOINT:
                 break;
         }
     });
