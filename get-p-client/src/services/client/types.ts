@@ -2,12 +2,12 @@ import { BaseResponse, PaginatedResponse } from "../types";
 
 export type RegisterClientRequestBody = {
     nickname: string;
-    email: string;
     phoneNumber: string;
-    address: {
-        zipcode: string;
-        street: string;
-        detail: string;
+    email?: string;
+    address?: {
+        zipcode?: string;
+        street?: string;
+        detail?: string;
     };
 };
 export interface ProjectData {
@@ -24,6 +24,21 @@ export interface ProjectData {
     description: string;
     status: string;
 }
+
+export type ReadMyClientInfoResponseBody = BaseResponse<{
+    clientId: number;
+    nickname: string;
+    phoneNumber: string;
+    email: string;
+    profileImageUri: string;
+    address: {
+        zipcode: string;
+        street: string;
+        detail: string;
+    };
+    createdAt: string;
+    updatedAt: string;
+}>;
 
 export type ReadProjectResponseBody = PaginatedResponse<ProjectData[]>;
 
