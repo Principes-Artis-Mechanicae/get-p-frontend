@@ -26,6 +26,7 @@ export type ProjectRequestBody = {
     category: keyof typeof ProjectCategory | null;
     attachmentFiles: string[];
     hashtags: string[];
+    recruitmentCount: number;
 };
 
 export type ProjectRequestResponseBody = BaseResponse<{
