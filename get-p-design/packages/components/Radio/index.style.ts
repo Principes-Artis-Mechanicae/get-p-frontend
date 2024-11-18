@@ -56,7 +56,7 @@ export const RadioItemLabel = styled.label`
     margin-left: 40px;
 
     & > :checked::before {
-        content: url(${checkActive});
+        content: ${checkActive};
 
         ${vertical_center};
         width: 20px;
@@ -67,7 +67,7 @@ export const RadioItemLabel = styled.label`
     }
 
     & > :not(:checked)::before {
-        content: url(${checkInActive});
+        content: ${checkInActive};
 
         ${vertical_center};
         width: 20px;
