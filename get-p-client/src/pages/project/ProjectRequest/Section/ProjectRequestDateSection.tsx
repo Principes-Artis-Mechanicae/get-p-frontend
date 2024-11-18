@@ -45,22 +45,42 @@ export const ProjectRequestDateSection = () => {
 
             <ProjectRequestDateSectionContainer>
                 <Label>지원자 모집 시작일</Label>
-                <DatePicker onChange={handleApplicationStartDateChange} width="100%" height="54px" />
+                <DatePicker
+                    onChange={handleApplicationStartDateChange}
+                    width="100%"
+                    height="54px"
+                    data-test-id="project-request-application-start-date"
+                />
             </ProjectRequestDateSectionContainer>
 
             <ProjectRequestDateSectionContainer>
                 <Label>지원자 모집 마감일</Label>
-                <DatePicker onChange={handleApplicationEndDateChange} width="100%" height="54px" />
+                <DatePicker
+                    onChange={handleApplicationEndDateChange}
+                    width="100%"
+                    height="54px"
+                    data-test-id="project-request-application-end-date"
+                />
             </ProjectRequestDateSectionContainer>
 
             <ProjectRequestDateSectionContainer>
                 <Label>예상 작업 시작일</Label>
-                <DatePicker onChange={handleEstimatedStartDateChange} width="100%" height="54px" />
+                <DatePicker
+                    onChange={handleEstimatedStartDateChange}
+                    width="100%"
+                    height="54px"
+                    data-test-id="project-request-estimated-start-date"
+                />
             </ProjectRequestDateSectionContainer>
 
             <ProjectRequestDateSectionContainer>
                 <Label>예상 작업 마감일</Label>
-                <DatePicker onChange={handleEstimatedEndDateChange} width="100%" height="54px" />
+                <DatePicker
+                    onChange={handleEstimatedEndDateChange}
+                    width="100%"
+                    height="54px"
+                    data-test-id="project-request-estimated-end-date"
+                />
             </ProjectRequestDateSectionContainer>
 
             <ProjectRequestDateSectionContainer>
