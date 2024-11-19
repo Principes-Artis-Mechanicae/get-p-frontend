@@ -14,6 +14,8 @@ import {
     RegisterPeopleInfoRequestBody,
     RegisterPeopleProfileRequestBody,
     RegisterPeopleProfileResponseBody,
+    EditPeopleInfoRequestBody,
+    ReadMyPeopleInfoResponseBody,
 } from "./types";
 
 export const peopleService = {
@@ -45,6 +47,13 @@ export const peopleService = {
         const response = await api.get<ReadPeopleResponseBody>(`/people?page=0&size=4&sort=likesCount,desc`);
         return response.data.data;
     },
+    readMyPeopleInfo: async () => {
+        const request = async () => {
+            const response = await api.get<ReadMyPeopleInfoResponseBody>("/people/me");
+            return response.data.data;
+        };
+        return request();
+    },
     registerPeopleInfo: async (body: RegisterPeopleInfoRequestBody) => {
         const request = async () => {
             if (!isRequestBodyValid(body)) throw new Error("모든 정보를 입력해주세요.");
@@ -60,6 +69,21 @@ export const peopleService = {
         return toast.promise(request, {
             pending: "피플 정보 등록 중입니다.",
             success: "피플 정보 등록이 완료되었습니다.",
+            error: RenderToastFromDerivedError,
+        });
+    },
+    editPeopleInfo: async (body: EditPeopleInfoRequestBody) => {
+        const request = async () => {
+            const response = await api.put("/people/me", body);
+
+            return new ExceptionHandler.Builder(response)
+                .addCase(400, "잘못된 입력 형식입니다")
+                .addCase(500, "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.")
+                .activate();
+        };
+        return toast.promise(request, {
+            pending: "피플 정보 수정 중입니다.",
+            success: "피플 정보 수정이 완료되었습니다.",
             error: RenderToastFromDerivedError,
         });
     },
