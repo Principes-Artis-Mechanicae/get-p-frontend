@@ -38,18 +38,19 @@ export const Router = () => {
                 <Route path="people/:id" element={<PeopleDetailPage />}></Route>
 
                 <Route
-                    path="people/me/edit"
-                    element={
-                        <RouteGuard role={MemberType.ROLE_PEOPLE}>
-                            <PeopleProfileEditPage />
-                        </RouteGuard>
-                    }
-                />
-                <Route
-                    path="people/me/register"
+                    path="people/me/info"
                     element={
                         <RouteGuard role={MemberType.ROLE_PEOPLE}>
                             <PeopleInfoRegisterPage />
+                        </RouteGuard>
+                    }
+                />
+
+                <Route
+                    path="people/me/profile/edit"
+                    element={
+                        <RouteGuard role={MemberType.ROLE_PEOPLE}>
+                            <PeopleProfileEditPage />
                         </RouteGuard>
                     }
                 />

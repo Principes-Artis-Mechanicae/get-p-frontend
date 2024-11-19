@@ -12,11 +12,11 @@ export const profileMenu = (memberType: MemberType | null): IProfileMenuItem[] =
             {
                 id: 1,
                 text: "의뢰자 정보",
-                to: "/",
+                to: "/client/me/edit",
             },
             {
                 id: 2,
-                text: "관심피플",
+                text: "좋아요한 피플",
                 to: "/people?page=1&size=10&sort=peopleId,desc&liked=true",
             },
             {
@@ -40,12 +40,12 @@ export const profileMenu = (memberType: MemberType | null): IProfileMenuItem[] =
             {
                 id: 1,
                 text: "피플 정보",
-                to: "/",
+                to: "/people/me/info?mode=edit",
             },
             {
                 id: 2,
                 text: "피플 프로필",
-                to: "/",
+                to: "/people/me/profile/edit",
             },
             {
                 id: 3,
