@@ -1,13 +1,30 @@
-import { CLIENT_QUERY_KEYS } from "@getp/services/client/keys";
+import { useEffect, useState } from "react";
+
 import { clientService } from "@getp/services/client/service";
 
-import { useQuery } from "@tanstack/react-query";
+export type InitialMyClientInfo = {
+    clientId: number;
+    nickname: string;
+    phoneNumber: string;
+    email: string;
+    profileImageUri: string;
+    address: {
+        zipcode: string;
+        street: string;
+        detail: string;
+    };
+    createdAt: string;
+    updatedAt: string;
+};
 
 export const useMyClient = () => {
-    const query = useQuery({
-        queryFn: () => clientService.readMyClientInfo(),
-        queryKey: CLIENT_QUERY_KEYS.READ_MY_CLIENT_INFO(),
-    });
+    const [initialMyClientInfo, setInitialMyClientInfo] = useState<InitialMyClientInfo | null>(null);
 
-    return { ...query };
+    useEffect(function fetchInitialMyClientInfo() {
+        clientService.readMyClientInfo().then((data) => {
+            setInitialMyClientInfo(data);
+        });
+    }, []);
+
+    return { initialMyClientInfo };
 };

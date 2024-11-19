@@ -20,7 +20,7 @@ export default function EditClientPage() {
     const { nicknameRef, emailRef, phoneNumberRef, zipCodeRef, streetRef, detailRef, handleRegisterBtnClick } =
         useEditClient();
 
-    const { data } = useMyClient();
+    const { initialMyClientInfo } = useMyClient();
 
     return (
         <EditClientPageWrapper>
@@ -38,7 +38,7 @@ export default function EditClientPage() {
                         width="100%"
                         height="40px"
                         placeholder="닉네임을 입력해주세요"
-                        value={data?.nickname}
+                        defaultValue={initialMyClientInfo?.nickname}
                     />
                 </EditClientPageFormItem>
 
@@ -49,7 +49,7 @@ export default function EditClientPage() {
                         width="100%"
                         height="40px"
                         placeholder="전화번호를 입력해주세요('-' 빼고 숫자만 입력)"
-                        value={data?.phoneNumber}
+                        defaultValue={initialMyClientInfo?.phoneNumber}
                     />
                 </EditClientPageFormItem>
 
@@ -60,7 +60,7 @@ export default function EditClientPage() {
                         width="100%"
                         height="40px"
                         placeholder="의뢰 연락을 받을 다른 이메일이 있는 경우 입력해주세요"
-                        value={data?.email}
+                        defaultValue={initialMyClientInfo?.email}
                     />
                 </EditClientPageFormItem>
 
@@ -71,7 +71,7 @@ export default function EditClientPage() {
                         height="45px"
                         placeholder="우편번호"
                         ref={zipCodeRef}
-                        value={data?.address.zipcode}
+                        defaultValue={initialMyClientInfo?.address.zipcode}
                     >
                         <Button variant="outline" width="100px" height="40px">
                             우편번호 찾기
@@ -82,14 +82,14 @@ export default function EditClientPage() {
                         height="45px"
                         placeholder="도로명주소"
                         ref={streetRef}
-                        value={data?.address.street}
+                        defaultValue={initialMyClientInfo?.address.street}
                     />
                     <Input
                         width="100%"
                         height="45px"
                         placeholder="상세주소"
                         ref={detailRef}
-                        value={data?.address.detail}
+                        defaultValue={initialMyClientInfo?.address.detail}
                     />
                 </EditClientPageFormItem>
             </EditClientPageForm>
