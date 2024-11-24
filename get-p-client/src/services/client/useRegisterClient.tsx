@@ -2,6 +2,8 @@ import { useCallback, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import { RegisterClientRequestBody } from "@getp/services/client/types";
+
 import { authAction } from "@getp/store/slice/auth.slice";
 import { RootDispatch } from "@getp/store/store";
 
@@ -20,17 +22,22 @@ export const useRegisterClient = () => {
     const detailRef = useRef<HTMLInputElement>(null);
 
     const { mutate } = useMutation({
-        mutationFn: () =>
-            clientService.registerClient({
+        mutationFn: () => {
+            const requestBody: RegisterClientRequestBody = {
                 nickname: nicknameRef.current?.value as string,
-                email: emailRef.current?.value as string,
                 phoneNumber: phoneNumberRef.current?.value as string,
-                address: {
-                    zipcode: zipCodeRef.current?.value as string,
-                    street: streetRef.current?.value as string,
-                    detail: detailRef.current?.value as string,
-                },
-            }),
+            };
+            const address = {
+                zipcode: zipCodeRef.current?.value,
+                street: streetRef.current?.value,
+                detail: detailRef.current?.value,
+            };
+
+            if (emailRef.current?.value) requestBody.email = emailRef.current.value;
+            if (address.zipcode || address.street || address.detail) requestBody.address = address;
+
+            return clientService.registerClient(requestBody);
+        },
         onSuccess: () => {
             dispatch(authAction.registerInfo());
             navigate("/");

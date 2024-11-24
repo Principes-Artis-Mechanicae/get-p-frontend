@@ -50,6 +50,24 @@ export interface RegisterPeopleInfoRequestBody {
     phoneNumber: string;
 }
 
+export type ReadMyPeopleInfoResponseBody = BaseResponse<{
+    peopleId: number;
+    email: string;
+    nickname: string;
+    phoneNumber: string;
+    profileImageUri: string;
+    completedProjectsCount: number;
+    likesCount: number;
+    createdAt: string;
+    updatedAt: string;
+}>;
+
+export interface EditPeopleInfoRequestBody {
+    nickname: string;
+    email: string;
+    phoneNumber: string;
+}
+
 export type RegisterPeopleInfoResponseBody = BaseResponse<{
     peopleId: number;
 }>;

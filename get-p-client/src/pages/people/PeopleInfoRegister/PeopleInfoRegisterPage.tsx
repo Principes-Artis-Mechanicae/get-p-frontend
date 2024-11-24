@@ -5,7 +5,9 @@ import { Text } from "get-p-design";
 import { Title } from "get-p-design";
 
 import { ProfileImageEdit } from "@getp/common/components/displays/ProfileImageEdit";
+import { Mode, useMode } from "@getp/common/hooks/useMode";
 
+import { useMyPeople } from "@getp/services/people/useMyPeople";
 import { usePeopleInfoRegister } from "@getp/services/people/usePeopleInfoRegister";
 
 import {
@@ -17,13 +19,15 @@ import {
 } from "./PeopleInfoRegisterPage.style";
 
 export default function PeopleInfoRegisterPage() {
-    const { nicknameRef, emailRef, phoneNumberRef, isPhoneNumberValid, onPhoneNumberChange, handleNextClick } =
-        usePeopleInfoRegister();
+    const { nicknameRef, emailRef, phoneNumberRef, handleNextClick } = usePeopleInfoRegister();
+    const { initialMyPeopleInfo } = useMyPeople();
+
+    const { mode } = useMode(Mode.REGISTER);
 
     return (
         <PeopleInfoRegisterWrapper>
             <PeopleInfoRegisterHeader>
-                <Title>피플 정보 등록</Title>
+                <Title>피플 정보 {mode === Mode.EDIT ? "수정" : "등록"} </Title>
                 <br />
                 <Text size="16px" weight="bold" color="point">
                     GET-P
@@ -46,7 +50,8 @@ export default function PeopleInfoRegisterPage() {
                         width="100%"
                         height="40px"
                         placeholder="닉네임을 입력해주세요."
-                    ></Input>
+                        defaultValue={initialMyPeopleInfo?.nickname}
+                    />
                 </PeopleInfoRegisterItem>
 
                 <PeopleInfoRegisterItem>
@@ -57,9 +62,8 @@ export default function PeopleInfoRegisterPage() {
                         width="100%"
                         height="40px"
                         placeholder="전화번호를 입력해주세요('-'빼고 숫자만 입력)."
-                        onChange={onPhoneNumberChange}
-                        error={!isPhoneNumberValid ? "올바른 형식이 아닙니다('-' 빼고 입력)" : ""}
-                    ></Input>
+                        defaultValue={initialMyPeopleInfo?.phoneNumber}
+                    />
                 </PeopleInfoRegisterItem>
 
                 <PeopleInfoRegisterItem>
@@ -70,7 +74,8 @@ export default function PeopleInfoRegisterPage() {
                         width="100%"
                         height="40px"
                         placeholder="의뢰 연락을 받을 다른 이메일이 있는 경우 입력해주세요."
-                    ></Input>
+                        defaultValue={initialMyPeopleInfo?.email}
+                    />
                 </PeopleInfoRegisterItem>
 
                 <PeopleInfoRegisterItem>

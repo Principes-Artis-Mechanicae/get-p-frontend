@@ -12,7 +12,7 @@ export const profileMenu = (memberType: MemberType | null): IProfileMenuItem[] =
             {
                 id: 1,
                 text: "의뢰자 정보",
-                to: "/",
+                to: "/client/me/edit",
             },
             {
                 id: 2,
@@ -40,12 +40,12 @@ export const profileMenu = (memberType: MemberType | null): IProfileMenuItem[] =
             {
                 id: 1,
                 text: "피플 정보",
-                to: "/",
+                to: "/people/me/info?mode=edit",
             },
             {
                 id: 2,
                 text: "피플 프로필",
-                to: "/",
+                to: "/people/me/profile/edit",
             },
             {
                 id: 3,
