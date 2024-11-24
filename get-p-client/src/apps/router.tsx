@@ -92,7 +92,14 @@ export const Router = () => {
 
                 <Route path="projects/:id" element={<ProjectDetailPage />} />
 
-                <Route path="project/:id/meetings" element={<MeetingRequestPage />} />
+                <Route
+                    path="project/:id/meetings"
+                    element={
+                        <RouteGuard role={MemberType.ROLE_CLIENT}>
+                            <MeetingRequestPage />
+                        </RouteGuard>
+                    }
+                />
                 <Route path="*" element={<NotFoundPage />} />
             </Route>
         </Routes>

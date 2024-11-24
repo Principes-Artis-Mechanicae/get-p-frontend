@@ -18,7 +18,8 @@
         "design": "yarn workspace get-p-design",
         "utils": "yarn workspace get-p-utils",
         "format": "prettier --write \"**/*.{ts,tsx}\"",
-        "getp": "yarn workspace get-p-utils start"
+        "getp": "yarn workspace get-p-utils start",
+        "build:client": "yarn workspace get-p-design build && yarn workspace get-p-client build"
     },
     "dependencies": {
         "@emotion/react": "^11.11.4",
