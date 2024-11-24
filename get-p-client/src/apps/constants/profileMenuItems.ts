@@ -16,7 +16,7 @@ export const profileMenu = (memberType: MemberType | null): IProfileMenuItem[] =
             },
             {
                 id: 2,
-                text: "관심피플",
+                text: "좋아요한 피플",
                 to: "/people?page=1&size=10&sort=peopleId,desc&liked=true",
             },
             {
@@ -49,7 +49,7 @@ export const profileMenu = (memberType: MemberType | null): IProfileMenuItem[] =
             },
             {
                 id: 3,
-                text: "관심 프로젝트",
+                text: "좋아요한 프로젝트",
                 to: "/projects?page=1&size=6&sort=projectId,desc&liked=true",
             },
             {
