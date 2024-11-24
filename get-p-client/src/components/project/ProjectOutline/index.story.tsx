@@ -16,8 +16,9 @@ export const Default: Story = {
         remainedDays: 3,
         title: "프로젝트 명",
         hashtags: ["#풀스택", "#웹개발"],
+        nickname: "경북대학교",
         clientAddress: {
-            detail: "경북대학교",
+            detail: "",
             street: "대구광역시 북구 경대로",
         },
         likesCount: 10,

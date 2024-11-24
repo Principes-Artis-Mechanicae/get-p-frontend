@@ -77,6 +77,7 @@ const ProjectApplyPage = () => {
                     remainedDays={remainedDays}
                     title={project.title}
                     hashtags={project.hashtags}
+                    nickname={project.client.nickname}
                     clientAddress={project.client.address}
                     likesCount={project.likesCount}
                     payment={project.payment}

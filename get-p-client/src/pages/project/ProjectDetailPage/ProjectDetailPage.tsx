@@ -79,7 +79,11 @@ export default function ProjectDetailPage() {
                 />
 
                 <AuthGuardBlur width="100%" height="fit-content" withButton={false}>
-                    <ProjectManagement clientAddress={project.client.address} likesCount={project.likesCount} />
+                    <ProjectManagement
+                        nickname={project.client.nickname}
+                        clientAddress={project.client.address}
+                        likesCount={project.likesCount}
+                    />
                 </AuthGuardBlur>
 
                 <ProjectPayment payment={project.payment} />
