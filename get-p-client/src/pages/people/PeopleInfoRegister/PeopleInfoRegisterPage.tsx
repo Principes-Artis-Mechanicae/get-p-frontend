@@ -17,7 +17,8 @@ import {
 } from "./PeopleInfoRegisterPage.style";
 
 export default function PeopleInfoRegisterPage() {
-    const { nicknameRef, emailRef, phoneNumberRef, handleNextClick } = usePeopleInfoRegister();
+    const { nicknameRef, emailRef, phoneNumberRef, isPhoneNumberValid, onPhoneNumberChange, handleNextClick } =
+        usePeopleInfoRegister();
 
     return (
         <PeopleInfoRegisterWrapper>
@@ -56,6 +57,8 @@ export default function PeopleInfoRegisterPage() {
                         width="100%"
                         height="40px"
                         placeholder="전화번호를 입력해주세요('-'빼고 숫자만 입력)."
+                        onChange={onPhoneNumberChange}
+                        error={!isPhoneNumberValid ? "올바른 형식이 아닙니다('-' 빼고 입력)" : ""}
                     ></Input>
                 </PeopleInfoRegisterItem>
 
