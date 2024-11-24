@@ -20,6 +20,7 @@ export const useProjectRequest = () => {
         applicationDuration,
         estimatedDuration,
         payment,
+        recruitmentCount,
     } = useSelector((state: RootState) => state.project);
 
     const dispatch: RootDispatch = useDispatch();
@@ -36,9 +37,9 @@ export const useProjectRequest = () => {
                 applicationDuration,
                 estimatedDuration,
                 meetingType,
+                recruitmentCount,
             }),
         onSuccess: () => {
-            // queryClient.invalidateQueries()
             dispatch(projectAction.nextStep());
         },
     });
@@ -57,10 +58,8 @@ export const useProjectRequest = () => {
             return "아직 입력하지 않은 항목이 존재합니다";
 
         if (
-            !(
-                isValidDuration(applicationDuration.startDate, applicationDuration.endDate) &&
-                isValidDuration(estimatedDuration.startDate, estimatedDuration.endDate)
-            )
+            !isValidDuration(applicationDuration.startDate, applicationDuration.endDate) ||
+            !isValidDuration(estimatedDuration.startDate, estimatedDuration.endDate)
         )
             return "시작 날짜는 마감 날짜보다 앞서야 합니다";
 

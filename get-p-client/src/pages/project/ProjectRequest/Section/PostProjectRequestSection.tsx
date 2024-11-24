@@ -69,8 +69,9 @@ export const PostProjectRequestSection = () => {
                         onValueChange={(selected) => {
                             dispatch(projectAction.setCategory(selected.value));
                         }}
+                        data-test-id="category-dropdown"
                     >
-                        <DropDownItem index={1} value={"프론트엔드 개발"} />
+                        <DropDownItem index={1} value={"프론트엔드 개발"} data-test-id="project-category-fe" />
                         <DropDownItem index={2} value={"백엔드 개발"} />
                         <DropDownItem index={3} value={"앱 개발"} />
                         <DropDownItem index={4} value={"프로그램 개발"} />
@@ -84,6 +85,7 @@ export const PostProjectRequestSection = () => {
                 width="100%"
                 height="54px"
                 onClick={handleNextBtnClick}
+                data-test-id="next-btn"
             >
                 다음으로
             </Button>

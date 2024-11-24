@@ -16,6 +16,7 @@ const initialState: IProjectState = {
     attachmentFiles: [],
     hashtags: [],
     payment: 0,
+    recruitmentCount: 0,
 
     applicationDuration: {
         startDate: "",
@@ -34,6 +35,7 @@ const projectSlice = createSlice({
     reducers: {
         nextStep: (state) => {
             state.step++;
+            if (state.step === 5) state.step = 0;
         },
         prevStep: (state) => {
             state.step--;
@@ -81,6 +83,9 @@ const projectSlice = createSlice({
         },
         setPayment: (state, action: PayloadAction<number>) => {
             state.payment = action.payload;
+        },
+        setRecruitmentCount: (state, action: PayloadAction<number>) => {
+            state.recruitmentCount = action.payload;
         },
         addAttachmentFile: (state, action: PayloadAction<string>) => {
             state.attachmentFiles.push(action.payload);

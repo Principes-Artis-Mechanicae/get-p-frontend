@@ -33,10 +33,8 @@ export const ProjectRequestTagSection = () => {
     }, [dispatch]);
 
     const handleRegisterProjectBtnClick = useCallback(() => {
-        dispatch(projectAction.nextStep());
-        dispatch(projectAction.initializeState());
         mutate();
-    }, [dispatch, mutate]);
+    }, [mutate]);
 
     return (
         <ProjectRequestPageWrapper>

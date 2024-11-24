@@ -20,7 +20,7 @@ export const NavProfileItem = ({ imgSrc }: NavProfileItemProps) => {
     }, [dispatch]);
 
     return (
-        <Styles.Container onClick={handleNavProfileClick}>
+        <Styles.Container onClick={handleNavProfileClick} data-test-id="nav-dropdown-btn">
             <Styles.Image src={imgSrc || defaultProfileImage} alt="nav-profile-image" />
         </Styles.Container>
     );

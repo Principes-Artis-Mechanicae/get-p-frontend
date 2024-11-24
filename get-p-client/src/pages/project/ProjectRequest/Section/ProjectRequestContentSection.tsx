@@ -33,6 +33,7 @@ export const ProjectRequestContentSection = () => {
         const title = projectTitleRef.current?.value as string;
         const description = projectDescriptionRef.current?.value as string;
         const payment = Number(projectPaymentRef.current?.value);
+        const recruitmentCount = Number(projectNumsOfPeople.current?.value);
 
         if (!isValueAssigned([title, description, payment])) {
             toast.error("필수 입력항목을 입력해주세요");
@@ -43,6 +44,7 @@ export const ProjectRequestContentSection = () => {
         dispatch(projectAction.setDescription(description));
         dispatch(projectAction.setPayment(payment));
         dispatch(projectAction.nextStep());
+        dispatch(projectAction.setRecruitmentCount(recruitmentCount));
     }, [dispatch]);
 
     return (
@@ -101,7 +103,11 @@ export const ProjectRequestContentSection = () => {
 
             <ProjectRequestContentContainer>
                 <Label>프로젝트 보수금</Label>
-                <ProjectPayment ref={projectPaymentRef} type="number"></ProjectPayment>
+                <ProjectPayment
+                    ref={projectPaymentRef}
+                    type="number"
+                    data-test-id="project-payment-input"
+                ></ProjectPayment>
                 <ProjectPaymentUnit>원</ProjectPaymentUnit>
             </ProjectRequestContentContainer>
 
