@@ -38,8 +38,12 @@ export const ProjectCard = ({
         switch (status) {
             case "PREPARING":
                 return "준비중";
-            case "APPLYING":
+            case "APPLICATION_OPENED":
                 return "모집중";
+            case "APPLICATION_CLOSED":
+                return "모집 마감";
+            case "MEETING_CONFIRMED":
+                return "미팅 확정";
             case "PROGRESSING":
                 return "진행중";
             case "COMPLETED":

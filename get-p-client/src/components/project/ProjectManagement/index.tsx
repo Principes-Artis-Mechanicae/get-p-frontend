@@ -8,6 +8,7 @@ import * as Styles from "./index.style";
 import { SerializedStyles } from "@emotion/react";
 
 export interface ProjectManagementProps {
+    nickname: string;
     clientAddress: {
         detail: string;
         street: string;
@@ -16,7 +17,12 @@ export interface ProjectManagementProps {
     additionalStyles?: SerializedStyles;
 }
 
-export const ProjectManagement = ({ clientAddress, likesCount, additionalStyles }: ProjectManagementProps) => {
+export const ProjectManagement = ({
+    nickname,
+    clientAddress,
+    likesCount,
+    additionalStyles,
+}: ProjectManagementProps) => {
     console.log(clientAddress);
     return (
         <Styles.Wrapper additionalStyles={additionalStyles}>
@@ -24,7 +30,7 @@ export const ProjectManagement = ({ clientAddress, likesCount, additionalStyles 
                 <Styles.Item>
                     <Styles.Icon src={buildingIcon}></Styles.Icon>
                     <Text size="m" color="secondary" weight="normal">
-                        {clientAddress.detail}
+                        {nickname}
                     </Text>
                 </Styles.Item>
 
@@ -39,7 +45,7 @@ export const ProjectManagement = ({ clientAddress, likesCount, additionalStyles 
             <Styles.Item>
                 <Styles.Icon src={locationIcon}></Styles.Icon>
                 <Text size="m" color="secondary" weight="normal">
-                    {clientAddress.street}
+                    {`${clientAddress.street} ${clientAddress.detail ? clientAddress.detail : ""}`}
                 </Text>
             </Styles.Item>
         </Styles.Wrapper>

@@ -9,6 +9,7 @@ import { isRequestBodyValid } from "@getp/common/utils/validation";
 
 import { RenderToastFromDerivedError } from "../exception";
 import {
+    ReadMyClientInfoResponseBody,
     ReadProjectResponseBody,
     RegisterClientRequestBody,
     RegisterClientResponseBody,
@@ -17,6 +18,14 @@ import {
 } from "./types";
 
 export const clientService = {
+    readMyClientInfo: async () => {
+        const request = async () => {
+            const response = await api.get<ReadMyClientInfoResponseBody>("/client/me");
+            return response.data.data;
+        };
+        return request();
+    },
+
     registerClient: async (body: RegisterClientRequestBody) => {
         const request = async () => {
             const response = await api.post<RegisterClientResponseBody>("/client/me", body);

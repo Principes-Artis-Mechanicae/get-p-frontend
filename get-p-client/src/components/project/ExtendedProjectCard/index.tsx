@@ -76,9 +76,10 @@ export const ExtendedProjectCard: React.FC<IProjectCard> = ({
 
                                     <Styles.ProjectInfoWrapper>
                                         <ProjectManagement
+                                            nickname="루트코어"
                                             clientAddress={{
-                                                detail: "루트코어",
-                                                street: "대구광역시, 북구",
+                                                detail: "북구",
+                                                street: "대구광역시",
                                             }}
                                             likesCount={14}
                                             additionalStyles={css`

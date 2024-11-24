@@ -6,6 +6,7 @@ import { Title } from "get-p-design";
 import { ProfileImageEdit } from "@getp/common/components/displays/ProfileImageEdit";
 
 import { useEditClient } from "@getp/services/client/useEditClient";
+import { useMyClient } from "@getp/services/client/useMyClient";
 
 import {
     EditClientPageForm,
@@ -19,6 +20,8 @@ export default function EditClientPage() {
     const { nicknameRef, emailRef, phoneNumberRef, zipCodeRef, streetRef, detailRef, handleRegisterBtnClick } =
         useEditClient();
 
+    const { initialMyClientInfo } = useMyClient();
+
     return (
         <EditClientPageWrapper>
             <Title>의뢰자 정보 수정</Title>
@@ -30,7 +33,13 @@ export default function EditClientPage() {
 
                 <EditClientPageFormItem>
                     <Label>닉네임(필수)</Label>
-                    <Input ref={nicknameRef} width="100%" height="40px" placeholder="닉네임을 입력해주세요"></Input>
+                    <Input
+                        ref={nicknameRef}
+                        width="100%"
+                        height="40px"
+                        placeholder="닉네임을 입력해주세요"
+                        defaultValue={initialMyClientInfo?.nickname}
+                    />
                 </EditClientPageFormItem>
 
                 <EditClientPageFormItem>
@@ -40,7 +49,8 @@ export default function EditClientPage() {
                         width="100%"
                         height="40px"
                         placeholder="전화번호를 입력해주세요('-' 빼고 숫자만 입력)"
-                    ></Input>
+                        defaultValue={initialMyClientInfo?.phoneNumber}
+                    />
                 </EditClientPageFormItem>
 
                 <EditClientPageFormItem>
@@ -50,18 +60,37 @@ export default function EditClientPage() {
                         width="100%"
                         height="40px"
                         placeholder="의뢰 연락을 받을 다른 이메일이 있는 경우 입력해주세요"
-                    ></Input>
+                        defaultValue={initialMyClientInfo?.email}
+                    />
                 </EditClientPageFormItem>
 
                 <EditClientPageFormItem>
                     <Label>주소(선택)</Label>
-                    <Input width="100%" height="45px" placeholder="우편번호" ref={zipCodeRef}>
+                    <Input
+                        width="100%"
+                        height="45px"
+                        placeholder="우편번호"
+                        ref={zipCodeRef}
+                        defaultValue={initialMyClientInfo?.address.zipcode}
+                    >
                         <Button variant="outline" width="100px" height="40px">
                             우편번호 찾기
                         </Button>
                     </Input>
-                    <Input width="100%" height="45px" placeholder="도로명주소" ref={streetRef}></Input>
-                    <Input width="100%" height="45px" placeholder="상세주소" ref={detailRef}></Input>
+                    <Input
+                        width="100%"
+                        height="45px"
+                        placeholder="도로명주소"
+                        ref={streetRef}
+                        defaultValue={initialMyClientInfo?.address.street}
+                    />
+                    <Input
+                        width="100%"
+                        height="45px"
+                        placeholder="상세주소"
+                        ref={detailRef}
+                        defaultValue={initialMyClientInfo?.address.detail}
+                    />
                 </EditClientPageFormItem>
             </EditClientPageForm>
 

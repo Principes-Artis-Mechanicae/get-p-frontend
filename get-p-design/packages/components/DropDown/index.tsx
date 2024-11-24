@@ -25,6 +25,7 @@ export const DropDown = ({
     placeholder,
     itemContainerHeight,
     onValueChange,
+    ...rest
 }: DropDownProps) => {
     const [isOpened, setIsOpened] = useState<boolean>(false);
     const { selected } = useDropDown();
@@ -34,7 +35,7 @@ export const DropDown = ({
     }, [selected]);
 
     return (
-        <DropDownWrapper width={width}>
+        <DropDownWrapper width={width} {...rest}>
             <DropDownContainer height={height} isOpened={isOpened} onClick={() => setIsOpened((isOpened) => !isOpened)}>
                 <Text size="l">{selected.index === -1 ? placeholder : selected.value}</Text>
                 <img src={chevronDown} />
@@ -46,10 +47,11 @@ export const DropDown = ({
     );
 };
 
-export const DropDownItem = ({ index, value }: DropDownItemProps) => {
+export const DropDownItem = ({ index, value, ...rest }: DropDownItemProps) => {
     const { selected, setSelected } = useDropDown();
     return (
         <DropDownItemWrapper
+            {...rest}
             active={selected.index === index}
             onClick={() => setSelected({ ...selected, index, value })}
         >
