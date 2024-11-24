@@ -36,7 +36,7 @@ export const usePeopleInfoRegister = () => {
             const payload = {
                 nickname: nicknameRef.current?.value as string,
                 email: emailRef.current?.value as string,
-                phoneNumber: phoneNumberRef.current?.value as string,
+                phoneNumber,
             };
 
             return mode === Mode.REGISTER
