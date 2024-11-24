@@ -23,7 +23,14 @@ export const projectService = {
             params.append("liked", liked ? "true" : "false");
         }
 
-        const response = await api.get<ReadProjectResponseBody>(`/projects?${params.toString()}`);
+        const response = await api.get<ReadProjectResponseBody>(`/projects`, {
+            params: {
+                page,
+                size,
+                sort,
+                liked,
+            },
+        });
         return response.data.data;
     },
     readDeadLineProjects: async (size = 4) => {
