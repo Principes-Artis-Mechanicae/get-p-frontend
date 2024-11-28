@@ -1,5 +1,5 @@
 /* eslint-disable no-case-declarations */
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useEffect } from "react";
 
 export interface TechStackItem {
     value: string;
@@ -61,8 +61,21 @@ const reducer: React.Reducer<TechStackState, TechStackAction> = (state, action) 
     }
 };
 
-export const TechStackProvider = ({ children }: { children?: React.ReactNode }) => {
+export const TechStackProvider = ({
+    children,
+    initialTechStacks,
+}: {
+    children?: React.ReactNode;
+    initialTechStacks: string[];
+}) => {
     const [state, dispatch] = useReducer(reducer, techStackState);
-
+    useEffect(() => {
+        initialTechStacks.forEach((item) => {
+            dispatch({
+                type: "ADD_TECH_STACK",
+                payload: { value: item },
+            });
+        });
+    }, [initialTechStacks]);
     return <TechStackContext.Provider value={{ state, dispatch }}>{children}</TechStackContext.Provider>;
 };
