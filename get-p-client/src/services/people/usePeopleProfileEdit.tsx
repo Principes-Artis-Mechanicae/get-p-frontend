@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useRef, useState, useEffect } from "react";
 
 import { useHashTag } from "@getp/hooks/people/useHashTag";
 import { useTechStack } from "@getp/hooks/people/useTechStack";
@@ -6,12 +6,25 @@ import { useTechStack } from "@getp/hooks/people/useTechStack";
 import { peopleService } from "./service";
 import { useMutation } from "@tanstack/react-query";
 
+export type MyPeopleProfile = {
+    introduction: string;
+    activityArea: string;
+    education: {
+        school: string;
+        major: string;
+    };
+    techStacks: string[];
+    hashtags: string[];
+    portfolios: { description: string; url: string }[];
+};
+
 export const usePeopleProfileEdit = () => {
     const schoolRef = useRef<HTMLInputElement | null>(null);
     const majorRef = useRef<HTMLInputElement | null>(null);
     const activityAreaRef = useRef<HTMLInputElement | null>(null);
     const introductionRef = useRef<HTMLTextAreaElement | null>(null);
 
+    const [initialMyPeopleProfile, setInitialMyPeopleProfile] = useState<MyPeopleProfile | null>(null);
     const [attachmentFiles, setAttachmentFiles] = useState<
         {
             description: string;
@@ -21,6 +34,12 @@ export const usePeopleProfileEdit = () => {
 
     const { state } = useTechStack();
     const { hashtag } = useHashTag();
+
+    useEffect(function fetchInitailMyPeopleProfile() {
+        peopleService.readPeopleProfile().then((data) => {
+            setInitialMyPeopleProfile(data);
+        });
+    }, []);
 
     const { mutate } = useMutation({
         mutationFn: () =>
@@ -45,5 +64,13 @@ export const usePeopleProfileEdit = () => {
         mutate();
     }, [mutate]);
 
-    return { schoolRef, majorRef, activityAreaRef, introductionRef, setAttachmentFiles, handleEditBtnClicked };
+    return {
+        schoolRef,
+        majorRef,
+        activityAreaRef,
+        introductionRef,
+        setAttachmentFiles,
+        handleEditBtnClicked,
+        initialMyPeopleProfile,
+    };
 };

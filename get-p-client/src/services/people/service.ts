@@ -12,6 +12,7 @@ import {
     ReadPeopleResponseBody,
     ReadPeopleDetailResponseBody,
     RegisterPeopleInfoRequestBody,
+    ReadPeopleProfileResponseBody,
     RegisterPeopleProfileRequestBody,
     RegisterPeopleProfileResponseBody,
     EditPeopleInfoRequestBody,
@@ -31,12 +32,10 @@ export const peopleService = {
         }
 
         const response = await api.get<ReadPeopleResponseBody>(`/people?${params.toString()}`);
-        //console.log(response.data.data);
         return response.data.data;
     },
     readPeopleById: async (id: number) => {
         const response = await api.get<ReadPeopleDetailResponseBody>(`/people/${id}`);
-        console.log(response.data);
         return response.data.data;
     },
     readNewPeople: async (page = 0, size = 5) => {
@@ -93,6 +92,10 @@ export const peopleService = {
         if (response instanceof AxiosError) {
             if (response.status === 404) return false;
         }
+    },
+    readPeopleProfile: async () => {
+        const response = await api.get<ReadPeopleProfileResponseBody>("/people/me/profile");
+        return response.data.data;
     },
     registerPeopleProfile: async (body: RegisterPeopleProfileRequestBody) => {
         const request = async () => {

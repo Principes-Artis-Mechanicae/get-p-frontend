@@ -17,6 +17,7 @@ import { PeopleProfile } from "@getp/components/people/PeopleProfile";
 import { PeopleProfileHashTag } from "@getp/components/people/PeopleProfileHashTag";
 import { TechStackSelector } from "@getp/components/people/TechStackSelector";
 
+import { peopleService } from "@getp/services/people/service";
 import { usePeopleProfileEdit } from "@getp/services/people/usePeopleProfileEdit";
 
 import deleteIcon from "@getp/assets/people/close.svg";
@@ -39,8 +40,15 @@ import { css } from "@emotion/react";
 const PeopleProfileEditPage = withProviders(
     [<TechStackProvider />, <AccordionProvider />, <HashTagProvider />],
     function PeopleProfileEditPage() {
-        const { schoolRef, majorRef, activityAreaRef, introductionRef, handleEditBtnClicked, setAttachmentFiles } =
-            usePeopleProfileEdit();
+        const {
+            schoolRef,
+            majorRef,
+            activityAreaRef,
+            introductionRef,
+            handleEditBtnClicked,
+            setAttachmentFiles,
+            initialMyPeopleProfile,
+        } = usePeopleProfileEdit();
 
         const { fileInputRef, portfolios, handleFileChange, handleDelete, handleButtonClick } =
             useFileUpload(setAttachmentFiles);
@@ -68,22 +76,43 @@ const PeopleProfileEditPage = withProviders(
                     <PeopleProfileEditForm>
                         <PeopleProfileEditFormItem>
                             <Label>학교명</Label>
-                            <Input ref={schoolRef} width="100%" height="35px"></Input>
+                            <Input
+                                ref={schoolRef}
+                                width="100%"
+                                height="35px"
+                                defaultValue={initialMyPeopleProfile?.education.school}
+                            ></Input>
                         </PeopleProfileEditFormItem>
 
                         <PeopleProfileEditFormItem>
                             <Label>전공명</Label>
-                            <Input ref={majorRef} width="100%" height="35px"></Input>
+                            <Input
+                                ref={majorRef}
+                                width="100%"
+                                height="35px"
+                                defaultValue={initialMyPeopleProfile?.education.major}
+                            ></Input>
                         </PeopleProfileEditFormItem>
 
                         <PeopleProfileEditFormItem>
                             <Label>활동지역</Label>
-                            <Input ref={activityAreaRef} width="100%" height="35px"></Input>
+                            <Input
+                                ref={activityAreaRef}
+                                width="100%"
+                                height="35px"
+                                defaultValue={initialMyPeopleProfile?.activityArea}
+                            ></Input>
                         </PeopleProfileEditFormItem>
 
                         <PeopleProfileEditFormItem>
                             <Label>소개</Label>
-                            <TextArea ref={introductionRef} variant="primary" width="100%" height="240px"></TextArea>
+                            <TextArea
+                                ref={introductionRef}
+                                variant="primary"
+                                width="100%"
+                                height="240px"
+                                value={initialMyPeopleProfile?.introduction}
+                            ></TextArea>
                         </PeopleProfileEditFormItem>
 
                         <PeopleProfileEditFormItem>
