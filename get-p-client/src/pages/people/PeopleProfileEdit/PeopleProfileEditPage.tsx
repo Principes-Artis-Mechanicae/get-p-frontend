@@ -49,8 +49,10 @@ const PeopleProfileEditPage = withProviders(
             initialMyPeopleProfile,
         } = usePeopleProfileEdit();
 
-        const { fileInputRef, portfolios, handleFileChange, handleDelete, handleButtonClick } =
-            useFileUpload(setAttachmentFiles);
+        const { fileInputRef, portfolios, handleFileChange, handleDelete, handleButtonClick } = useFileUpload(
+            setAttachmentFiles,
+            initialMyPeopleProfile?.portfolios,
+        );
 
         return (
             <TechStackProvider initialTechStacks={initialMyPeopleProfile?.techStacks || []}>
