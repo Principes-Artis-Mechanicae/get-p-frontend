@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export interface ITextAreaElement {
+export interface ITextAreaElement extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
     variant: "primary" | "secondary";
 
     width: string;
@@ -13,8 +13,6 @@ export const TextAreaContainer = styled.div`
     width: auto;
 
     display: flex;
-
-    border-bottom: 1px solid #ebedef;
 `;
 
 export const TextAreaElement = styled.textarea<ITextAreaElement>`
@@ -31,16 +29,48 @@ export const TextAreaElement = styled.textarea<ITextAreaElement>`
     }};
 
     font-size: 16px;
+    font-family: inherit;
 
     border: none;
-    border-radius: 12px;
-    padding: 10px 0px;
+    outline: none;
+    border-radius: ${(props) => {
+        switch (props.variant) {
+            case "primary":
+                return "0px";
+            case "secondary":
+                return "12px";
+        }
+    }};
+    border-bottom: ${(props) => {
+        switch (props.variant) {
+            case "primary":
+                return "1px solid #EBEDEF";
+            case "secondary":
+                return "none";
+        }
+    }};
+
+    padding: ${(props) => {
+        switch (props.variant) {
+            case "primary":
+                return "10px 0px";
+            case "secondary":
+                return "10px 15px";
+        }
+    }};
 
     resize: none;
-    line-height: 200%;
+    line-height: 150%;
 
     &:focus {
-        outline: none;
+        border-bottom: ${(props) => {
+            switch (props.variant) {
+                case "primary":
+                    return "1.5px solid #476FF1";
+                case "secondary":
+                    return "none";
+            }
+        }};
     }
 `;
 
