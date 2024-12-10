@@ -1,0 +1,43 @@
+name: Setup Runner Instance
+
+concurrency:
+    group: get-p-frontend
+    cancel-in-progress: true
+
+on:
+    workflow_dispatch:
+
+    pull_request:
+        branches:
+            - develop
+
+jobs:
+    check-node-version:
+        runs-on: self-hosted
+
+        steps:
+            - name: Check Node Version
+              run: |
+                  cd ~/get-p-frontend
+                  if [[ "$(node --version)" != v20* ]]; then
+                    echo "Node.js major version should be 20"
+                    exit 1
+                  fi
+
+    setup:
+        runs-on: self-hosted
+        needs: check-node-version
+
+        steps:
+            - name: Checkout Source Code
+              run: |
+                  cd ~/get-p-frontend
+                  git reset --hard
+                  git clean -fd
+                  git checkout ${{ github.ref_name }}
+                  git pull origin ${{ github.ref_name }}
+
+            - name: Install Dependencies
+              run: |
+                  cd ~/get-p-frontend
+                  yarn install --frozen-lockfile

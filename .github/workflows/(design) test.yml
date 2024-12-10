@@ -1,0 +1,24 @@
+name: (get-p-design) Run Tests
+
+concurrency:
+    group: get-p-frontend
+    cancel-in-progress: true
+
+on:
+    workflow_dispatch:
+
+    workflow_run:
+        workflows: ["Setup Runner Instance"]
+        types: completed
+
+    pull_request:
+        branches:
+            - develop
+
+jobs:
+    build:
+        runs-on: self-hosted
+
+        steps:
+            - name: Build Design System
+              run: yarn design build

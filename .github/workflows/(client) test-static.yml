@@ -1,0 +1,26 @@
+name: (get-p-client) Compile & Linting
+
+concurrency:
+    group: get-p-frontend
+    cancel-in-progress: true
+
+on:
+    workflow_dispatch:
+
+    workflow_run:
+        workflows: ["Setup Runner Instance", "(get-p-design) Build"]
+
+    pull_request:
+        branches:
+            - develop
+
+jobs:
+    compile-and-lint:
+        runs-on: self-hosted
+
+        steps:
+            - name: Typescript Compile
+              run: yarn client compile
+
+            - name: Lint Code
+              run: yarn client lint
