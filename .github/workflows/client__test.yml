@@ -20,6 +20,7 @@ jobs:
                   fi
 
     setup:
+        needs: check-env
         runs-on: self-hosted
 
         steps:
@@ -42,6 +43,7 @@ jobs:
                   yarn install --frozen-lockfile
 
     compile-and-lint:
+        needs: [check-env, setup]
         runs-on: self-hosted
 
         steps:
@@ -51,6 +53,7 @@ jobs:
                   yarn client lint
 
     unit-test:
+        needs: [compile-and-lint]
         runs-on: self-hosted
 
         steps:
@@ -59,6 +62,7 @@ jobs:
                   yarn client test
 
     setup-e2e-test:
+        needs: [unit-test]
         runs-on: self-hosted
 
         steps:
