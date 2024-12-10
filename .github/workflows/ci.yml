@@ -1,0 +1,140 @@
+name: CI
+
+on:
+    pull_request:
+        branches: ["develop"]
+
+    workflow_dispatch:
+
+env:
+    WORKDIR: ~/get-p-frontend
+    NODE_VERSION: 20
+    STORYBOOK_TOKEN: ${{ secrets.STORYBOOK_TOKEN }}
+
+jobs:
+    health-check:
+        runs-on: self-hosted
+
+        steps:
+            - name: Check Node Version
+              run: |
+                  cd ~/get-p-frontend
+                  if [[ "$(node --version)" != v${{env.NODE_VERSION}}* ]]; then
+                    echo "Node.js major version should be ${{env.NODE_VERSION}}"
+                    exit 1
+                  fi
+
+    checkout:
+        runs-on: self-hosted
+        needs: health-check
+
+        steps:
+            - name: Checkout Source Code
+              run: |
+                  cd ${{env.WORKDIR}}
+                  git reset --hard
+                  git clean -fd
+                  git checkout ${{ github.ref_name }}
+                  git pull origin ${{ github.ref_name }}
+
+            - name: Install Dependencies
+              run: |
+                  cd ${{env.WORKDIR}}
+                  yarn install --frozen-lockfile
+
+    # design system
+    test-design-system:
+        runs-on: self-hosted
+        needs: checkout
+
+        steps:
+            - name: Run Test Design System
+              run: |
+                  cd ${{env.WORKDIR}}
+                  echo run tests
+
+    build-design-system:
+        runs-on: self-hosted
+        needs: checkout
+
+        steps:
+            - name: Build Design System
+              run: |
+                  cd ${{env.WORKDIR}}
+                  yarn design build
+
+    # client
+    compile-and-lint:
+        runs-on: self-hosted
+        needs: build-design-system
+
+        steps:
+            - name: Run Compile and Lint
+              run: |
+                  cd ${{env.WORKDIR}}
+                  yarn client compile
+                  yarn client lint
+
+    # unit-test
+    unit-test:
+        runs-on: self-hosted
+        needs: build-design-system
+
+        steps:
+            - name: Run Unit Test
+              run: |
+                  cd ${{env.WORKDIR}}
+                  yarn client test
+
+    # e2e-test (TODO)
+    setup-e2e:
+        runs-on: self-hosted
+        needs: health-check
+
+        steps:
+            - name: Checkout Backend Code
+              run: echo checkout server code, run dockerfile
+
+    e2e-test:
+        runs-on: self-hosted
+        needs: setup-e2e
+
+        steps:
+            - name: Run e2e Test
+              run: |
+                  cd ${{env.WORKDIR}}
+                  yarn client test:e2e:ci
+
+    cleanup-e2e:
+        runs-on: self-hosted
+        needs: setup-e2e
+
+        steps:
+            - name: Cleanup
+              run: echo cleanup
+
+    # storybook
+    ui-test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+
+            - name: Install Dependencies
+              run: yarn install --frozen-lockfile
+
+            - name: Build Storybook
+              run: yarn build-storybook
+
+            - name: Deploy Storybook
+              uses: chromaui/action@v1
+              with:
+                  projectToken: ${{ secrets.STORYBOOK_TOKEN }}
