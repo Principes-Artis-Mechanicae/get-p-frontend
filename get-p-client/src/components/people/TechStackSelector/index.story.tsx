@@ -23,7 +23,7 @@ export const Default: Story = {
     },
     render: ({ techStack, width, height }) => {
         return (
-            <TechStackProvider>
+            <TechStackProvider initialTechStacks={[]}>
                 <AccordionProvider>
                     <TechStackSelector techStack={techStack} width={width} height={height} />
                 </AccordionProvider>

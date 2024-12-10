@@ -87,4 +87,16 @@ export interface RegisterPeopleProfileRequestBody {
     hashtags: string[];
 }
 
+export type ReadPeopleProfileResponseBody = BaseResponse<{
+    introduction: string;
+    activityArea: string;
+    education: {
+        school: string;
+        major: string;
+    };
+    techStacks: string[];
+    hashtags: string[];
+    portfolios: { description: string; url: string }[];
+}>;
+
 export type RegisterPeopleProfileResponseBody = BaseResponse;

@@ -1,4 +1,4 @@
-import { useRef, useState, Dispatch, SetStateAction } from "react";
+import { useRef, useState, useEffect, Dispatch, SetStateAction } from "react";
 
 import { projectService } from "@getp/services/project/service";
 
@@ -7,9 +7,16 @@ interface IPortfolio {
     url: string;
 }
 
-const useFileUpload = (setAttachmentFiles: Dispatch<SetStateAction<IPortfolio[]>>) => {
+const useFileUpload = (
+    setAttachmentFiles: Dispatch<SetStateAction<IPortfolio[]>>,
+    initialPortfolios: IPortfolio[] = [],
+) => {
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     const [portfolios, setPortfolios] = useState<IPortfolio[]>([]);
+
+    useEffect(() => {
+        setPortfolios(initialPortfolios);
+    }, [initialPortfolios]);
 
     const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFiles = e.target.files;
