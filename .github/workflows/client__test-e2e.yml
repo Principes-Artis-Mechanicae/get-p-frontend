@@ -1,13 +1,28 @@
 name: (get-p-client) Run e2e Test
 
 on:
-    pull_request:
-        branches: ["main", "release"]
     workflow_dispatch:
 
+    pull_request:
+        branches: ["main", "release"]
+
+    workflow_run:
+        workflows: ["(get-p-client) Compile & Linting", "(get-p-client) Run Unit, Integration Tests"]
+        types: completed
+
 jobs:
+    setup-e2e:
+        runs-on: self-hosted
+
+        steps:
+            - name: Checkout Backend Code
+              uses: actions/checkout@v4
+              with:
+                  repository: get-p/get-p-backend
+                  ref: develop
+
     e2e:
-        runs-on: ubuntu-latest
+        runs-on: self-hosted
 
         steps:
             - name: Install NodeJS

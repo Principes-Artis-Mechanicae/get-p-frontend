@@ -1,14 +1,19 @@
 name: (get-p-client) Compile & Linting
 
+concurrency:
+    group: (get-p-client) Test
+    cancel-in-progress: true
+
 on:
+    workflow_dispatch:
+
     pull_request:
         branches:
             - develop
-    workflow_dispatch:
 
 jobs:
     compile_and_lint:
-        runs-on: ubuntu-latest
+        runs-on: self-hosted
 
         steps:
             - name: Install NodeJS
