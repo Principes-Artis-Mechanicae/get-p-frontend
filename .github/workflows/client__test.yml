@@ -13,8 +13,8 @@ jobs:
 
         steps:
             - name: Check Node Version
-              working-directory: ~/get-p-frontend
               run: |
+                  cd ~/get-p-frontend
                   if [[ "$(node --version)" != v20* ]]; then
                     echo "Node.js major version should be 20"
                     exit 1
