@@ -25,22 +25,22 @@ jobs:
 
         steps:
             - name: Update Source Code
-              working-directory: ~/get-p-frontend
               run: |
+                  cd ~/get-p-frontend
                   git reset --hard
                   git clean -fd
                   git pull origin main
 
             - name: Checkout Specific Branch
-              working-directory: ~/get-p-frontend
               run: |
+                  cd ~/get-p-frontend
                   git fetch origin
                   git checkout ${{ github.ref_name }}
                   git pull origin ${{ github.ref_name }}
 
             - name: Install Dependencies
-              working-directory: ~/get-p-frontend
               run: |
+                  cd ~/get-p-frontend
                   yarn install --frozen-lockfile
 
     compile-and-lint:
@@ -49,8 +49,8 @@ jobs:
 
         steps:
             - name: Run Compile and Lint
-              working-directory: ~/get-p-frontend
               run: |
+                  cd ~/get-p-frontend
                   yarn client compile
                   yarn client lint
 
@@ -60,8 +60,8 @@ jobs:
 
         steps:
             - name: Run Unit Test
-              working-directory: ~/get-p-frontend
               run: |
+                  cd ~/get-p-frontend
                   yarn client test
 
     setup-e2e-test:
@@ -70,5 +70,6 @@ jobs:
 
         steps:
             - name: Setup e2e Test Server
-              working-directory: ~/get-p-server
-              run: git clone https://github.com/Principes-Artis-Mechanicae/get-p-server.git
+              run: |
+                  cd ~/get-p-server
+                  git clone https://github.com/Principes-Artis-Mechanicae/get-p-server.git
