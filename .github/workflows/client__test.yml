@@ -1,0 +1,66 @@
+name: (get-p-client) Run Tests
+
+on:
+    workflow_dispatch:
+
+    pull_request:
+        branches:
+            - develop
+
+jobs:
+    check-env:
+        runs-on: self-hosted
+
+        steps:
+            - name: Check Node Version
+              run: |
+                  if [[ "$(node --version)" != v20* ]]; then
+                    echo "Node.js major version should be 20"
+                    exit 1
+                  fi
+
+    setup:
+        runs-on: self-hosted
+
+        steps:
+            - name: Update Source Code
+              run: |
+                  cd ~/get-p-frontend
+                  git reset --hard
+                  git clean -fd
+                  git pull origin main
+
+            - name: Checkout Specific Branch
+              run: |
+                  cd ~/get-p-frontend
+                  git fetch origin
+                  git checkout ${{ github.ref_name }}
+                  git pull origin ${{ github.ref_name }}
+
+            - name: Install Dependencies
+              run: |
+                  yarn install --frozen-lockfile
+
+    compile-and-lint:
+        runs-on: self-hosted
+
+        steps:
+            - name: Run Compile and Lint
+              run: |
+                  yarn client compile
+                  yarn client lint
+
+    unit-test:
+        runs-on: self-hosted
+
+        steps:
+            - name: Run Unit Test
+              run: |
+                  yarn client test
+
+    setup-e2e-test:
+        runs-on: self-hosted
+
+        steps:
+            - name: Setup e2e Test Server
+              run: git clone https://github.com/Principes-Artis-Mechanicae/get-p-server.git
