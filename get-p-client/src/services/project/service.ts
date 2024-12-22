@@ -126,4 +126,13 @@ export const projectService = {
             error: RenderToastFromDerivedError,
         });
     },
+    readAppliedProjects: async () => {
+        const response = await api.get<ReadProjectResponseBody>("/projects", {
+            params: {
+                applied: true,
+            },
+        });
+
+        return response.data.data;
+    },
 };
