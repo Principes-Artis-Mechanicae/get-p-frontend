@@ -7,7 +7,7 @@ import { useAppliedProjects } from "@getp/services/project/useAppliedProjects";
 import * as Styles from "./PeopleProjectListPage.style";
 
 export default function PeopleProjectListPage() {
-    const { isPending, data } = useAppliedProjects();
+    const { isPending, data, nickname } = useAppliedProjects();
 
     if (isPending) return <>loading...</>;
 
@@ -15,7 +15,7 @@ export default function PeopleProjectListPage() {
         <Styles.Wrapper>
             <Styles.Header>
                 <Text size="xl" weight="bold" style={{ margin: "75px 0px 75px" }}>
-                    피플 {"유지훈"}님의 지원 내역 리스트
+                    피플 {nickname}님의 지원 내역 리스트
                 </Text>
             </Styles.Header>
 
