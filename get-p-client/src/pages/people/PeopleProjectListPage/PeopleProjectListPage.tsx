@@ -1,4 +1,4 @@
-import { Text } from "get-p-design";
+import { Pagination, Text } from "get-p-design";
 
 import { ProjectCard } from "@getp/components/project/ProjectCard";
 
@@ -40,6 +40,9 @@ export default function PeopleProjectListPage() {
                         );
                     })}
             </Styles.Body>
+            <Styles.Footer>
+                <Pagination totalPages={data?.pageInfo.totalPages as number} pageGroupSize={6} />
+            </Styles.Footer>
         </Styles.Wrapper>
     );
 }
