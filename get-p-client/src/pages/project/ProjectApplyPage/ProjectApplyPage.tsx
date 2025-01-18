@@ -39,6 +39,7 @@ const ProjectApplyPage = () => {
         peopleType,
         setAttachmentFiles,
     } = useProjectApply();
+
     const { isPending, isError, data: project } = useProjectById();
 
     const { fileInputRef, portfolios, handleFileChange, handleDelete, handleButtonClick } =

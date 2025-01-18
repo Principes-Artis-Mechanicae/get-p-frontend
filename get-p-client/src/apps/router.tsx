@@ -16,6 +16,7 @@ import PeopleDetailPage from "@getp/pages/people/PeopleDetail/PeopleDetailPage";
 import PeopleInfoRegisterPage from "@getp/pages/people/PeopleInfoRegister/PeopleInfoRegisterPage";
 import PeopleListPage from "@getp/pages/people/PeopleList/PeopleListPage";
 import PeopleProfileEditPage from "@getp/pages/people/PeopleProfileEdit/PeopleProfileEditPage";
+import PeopleProjectListPage from "@getp/pages/people/PeopleProjectListPage/PeopleProjectListPage";
 import ProjectApplyPage from "@getp/pages/project/ProjectApplyPage/ProjectApplyPage";
 import ProjectDetailPage from "@getp/pages/project/ProjectDetailPage/ProjectDetailPage";
 import ProjectListPage from "@getp/pages/project/ProjectListPage/ProjectListPage";
@@ -38,6 +39,7 @@ export const Router = () => {
                 <Route path="people/:id" element={<PeopleDetailPage />}></Route>
 
                 <Route
+                    // 피플 정보 등록 및 수정
                     path="people/me/info"
                     element={
                         <RouteGuard role={MemberType.ROLE_PEOPLE}>
@@ -47,6 +49,7 @@ export const Router = () => {
                 />
 
                 <Route
+                    // 피플 프로필 등록 및 수정
                     path="people/me/profile/edit"
                     element={
                         <RouteGuard role={MemberType.ROLE_PEOPLE}>
@@ -56,6 +59,16 @@ export const Router = () => {
                 />
 
                 <Route
+                    path="people/me/projects"
+                    element={
+                        <RouteGuard role={MemberType.ROLE_PEOPLE}>
+                            <PeopleProjectListPage />
+                        </RouteGuard>
+                    }
+                />
+
+                <Route
+                    // 의뢰자 정보 등록
                     path="client/me/register"
                     element={
                         <RouteGuard role={MemberType.ROLE_CLIENT}>
@@ -64,6 +77,7 @@ export const Router = () => {
                     }
                 />
                 <Route
+                    // 의뢰자 정보 수정
                     path="client/me/edit"
                     element={
                         <RouteGuard role={MemberType.ROLE_CLIENT}>
@@ -72,6 +86,7 @@ export const Router = () => {
                     }
                 />
                 <Route
+                    // 의뢰자가 의뢰중인 프로젝트
                     path="client/me/projects"
                     element={
                         <RouteGuard role={MemberType.ROLE_CLIENT}>
@@ -79,9 +94,14 @@ export const Router = () => {
                         </RouteGuard>
                     }
                 />
-                <Route path="project/apply/:id" element={<ProjectApplyPage />} />
+                <Route
+                    // 프로젝트 지원하기
+                    path="project/apply/:id"
+                    element={<ProjectApplyPage />}
+                />
 
                 <Route
+                    // 프로젝트 의뢰하기
                     path="project/request"
                     element={
                         <RouteGuard role={MemberType.ROLE_CLIENT}>
@@ -90,7 +110,11 @@ export const Router = () => {
                     }
                 />
 
-                <Route path="projects/:id" element={<ProjectDetailPage />} />
+                <Route
+                    // 프로젝트 상세 페이지
+                    path="projects/:id"
+                    element={<ProjectDetailPage />}
+                />
 
                 <Route
                     path="project/:id/meetings"

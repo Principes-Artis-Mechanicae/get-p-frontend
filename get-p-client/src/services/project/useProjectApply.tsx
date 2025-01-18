@@ -1,4 +1,5 @@
 import { useCallback, useState, useRef } from "react";
+import { useParams } from "react-router-dom";
 
 import { PeopleType } from "../people/types";
 import { projectService } from "./service";
@@ -11,18 +12,24 @@ export const useProjectApply = () => {
     const [attachmentFiles, setAttachmentFiles] = useState<{ description: string; url: string }[]>([]);
     const [peopleType, setPeopleType] = useState<PeopleType | null>(null);
 
+    const { id } = useParams();
+
     console.log(attachmentFiles.map((file) => file.url));
 
     const { mutate } = useMutation({
         mutationFn: () =>
-            projectService.applyProjectById({
-                expectedDuration: {
-                    startDate: startDate,
-                    endDate: endDate,
+            projectService.applyProjectById(
+                {
+                    type: peopleType as PeopleType,
+                    expectedDuration: {
+                        startDate: startDate,
+                        endDate: endDate,
+                    },
+                    description: descriptionRef.current?.value as string,
+                    attachmentFiles: attachmentFiles.map((file) => file.url),
                 },
-                description: descriptionRef.current?.value as string,
-                attachmentFiles: attachmentFiles.map((file) => file.url),
-            }),
+                Number(id),
+            ),
     });
 
     const handleApplyBtnClicked = useCallback(() => {
