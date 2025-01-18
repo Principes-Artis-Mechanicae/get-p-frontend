@@ -94,7 +94,7 @@ export const projectService = {
             error: RenderToastFromDerivedError,
         });
     },
-    applyProjectById: async (body: ApplyProjectRequestBody, id = 1) => {
+    applyProjectById: async (body: ApplyProjectRequestBody, id: number) => {
         if (!isRequestBodyValid(body)) throw new Error("모든 정보를 입력해주세요.");
         const request = async () => {
             return await api.post<ApplyProjectRequestBody>(`/projects/${id}/applications`, body);
@@ -126,10 +126,13 @@ export const projectService = {
             error: RenderToastFromDerivedError,
         });
     },
-    readAppliedProjects: async () => {
+    readAppliedProjects: async (page = 0, size = 1, sort = "projectId,desc") => {
         const response = await api.get<ReadProjectResponseBody>("/projects", {
             params: {
                 applied: true,
+                page,
+                size,
+                sort,
             },
         });
 
