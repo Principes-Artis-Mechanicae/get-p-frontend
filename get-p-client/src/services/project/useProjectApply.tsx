@@ -16,6 +16,7 @@ export const useProjectApply = () => {
     const { mutate } = useMutation({
         mutationFn: () =>
             projectService.applyProjectById({
+                type: peopleType as PeopleType,
                 expectedDuration: {
                     startDate: startDate,
                     endDate: endDate,

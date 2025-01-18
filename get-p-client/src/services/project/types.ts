@@ -1,3 +1,5 @@
+import { PeopleType } from "@getp/services/people/types";
+
 import { BaseResponse } from "../types";
 import { PaginatedResponse } from "../types";
 
@@ -50,12 +52,14 @@ export interface ProjectData {
 
 export type ReadProjectResponseBody = PaginatedResponse<ProjectData[]>;
 export interface ApplyProjectRequestBody {
+    type: PeopleType;
     expectedDuration: {
         startDate: string;
         endDate: string;
     };
     description: string;
     attachmentFiles: string[];
+    teammates?: number[];
 }
 
 export interface ReadProjectDetailRequestBody {
