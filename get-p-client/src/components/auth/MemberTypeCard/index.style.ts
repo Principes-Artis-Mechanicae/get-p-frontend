@@ -1,6 +1,6 @@
-import { MemberTypeCardProps } from "@getp/components/auth/MemberTypeCard";
+import { place_center } from "@getp/apps/styles/utils";
 
-import { place_center } from "@getp/styles/utils";
+import { MemberTypeCardProps } from "@getp/components/auth/MemberTypeCard";
 
 import styled from "@emotion/styled";
 

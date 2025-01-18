@@ -4,7 +4,7 @@ import { FaChevronRight } from "react-icons/fa6";
 
 import { Button } from "get-p-design";
 
-import { mobile, tablet } from "@getp/styles/breakpoint";
+import { mobile, tablet } from "@getp/apps/styles/breakpoint";
 
 import {
     CarouselBackDropWrapper,

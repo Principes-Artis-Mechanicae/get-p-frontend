@@ -7,6 +7,7 @@ import { Button } from "get-p-design";
 import { Text } from "get-p-design";
 
 import { navItems } from "@getp/apps/constants/navItems";
+import { navLinkStyle } from "@getp/apps/styles/utils";
 
 import { AuthGuard } from "@getp/common/components/guards/AuthGuard";
 
@@ -15,8 +16,6 @@ import { useNavAside } from "@getp/hooks/home/useNavAside";
 import { authAction } from "@getp/store/slice/auth.slice";
 import { uiActions } from "@getp/store/slice/ui.slice";
 import { RootDispatch } from "@getp/store/store";
-
-import { navLinkStyle } from "@getp/styles/utils";
 
 import * as Styles from "./index.style";
 

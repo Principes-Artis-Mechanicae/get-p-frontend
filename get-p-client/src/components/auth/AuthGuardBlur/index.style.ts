@@ -1,6 +1,6 @@
-import { AuthGuardBlurProps } from "@getp/components/auth/AuthGuardBlur";
+import { place_center } from "@getp/apps/styles/utils";
 
-import { place_center } from "@getp/styles/utils";
+import { AuthGuardBlurProps } from "@getp/components/auth/AuthGuardBlur";
 
 import styled from "@emotion/styled";
 

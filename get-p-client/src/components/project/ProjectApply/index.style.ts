@@ -1,4 +1,4 @@
-import { place_center } from "@getp/styles/utils";
+import { place_center } from "@getp/apps/styles/utils";
 
 import styled from "@emotion/styled";
 

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import { Text } from "get-p-design";
 
-import { navLinkStyle } from "@getp/styles/utils";
+import { navLinkStyle } from "@getp/apps/styles/utils";
 
 import * as Styles from "./index.style";
 

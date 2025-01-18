@@ -5,10 +5,9 @@ import { AnimatePresence } from "framer-motion";
 
 import { queryClient } from "@getp/apps/config/query";
 import { Router } from "@getp/apps/router";
+import { GlobalStyles } from "@getp/apps/styles/styles";
 
 import { persistor, store } from "@getp/store/store";
-
-import { GlobalStyles } from "@getp/styles/styles";
 
 import { QueryClientProvider } from "@tanstack/react-query";
 import { PersistGate } from "redux-persist/lib/integration/react";

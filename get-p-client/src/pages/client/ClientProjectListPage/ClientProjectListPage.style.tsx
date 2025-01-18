@@ -1,6 +1,6 @@
-import { ProjectListContainer } from "@getp/pages/project/ProjectListPage/ProjectListPage.style";
+import { mobile, tablet } from "@getp/apps/styles/breakpoint";
 
-import { mobile, tablet } from "@getp/styles/breakpoint";
+import { ProjectListContainer } from "@getp/pages/project/ProjectListPage/ProjectListPage.style";
 
 import styled from "@emotion/styled";
 
