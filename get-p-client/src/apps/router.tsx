@@ -12,6 +12,7 @@ import MeetingRequestPage from "@getp/pages/client/MeetingRequest/MeetingRequest
 import RegisterClientPage from "@getp/pages/client/RegisterClientPage/RegisterClientPage";
 import NotFoundPage from "@getp/pages/error/NotFoundPage";
 import HomePage from "@getp/pages/home/HomePage";
+import AppliedProjectDetailPage from "@getp/pages/people/AppliedProjectDetail/AppliedProjectDetailPage";
 import PeopleDetailPage from "@getp/pages/people/PeopleDetail/PeopleDetailPage";
 import PeopleInfoRegisterPage from "@getp/pages/people/PeopleInfoRegister/PeopleInfoRegisterPage";
 import PeopleListPage from "@getp/pages/people/PeopleList/PeopleListPage";
@@ -123,6 +124,12 @@ export const Router = () => {
                             <MeetingRequestPage />
                         </RouteGuard>
                     }
+                />
+
+                <Route
+                    // 프로젝트 지원 내역 조회
+                    path="applications/me/:id"
+                    element={<AppliedProjectDetailPage />}
                 />
                 <Route path="*" element={<NotFoundPage />} />
             </Route>
