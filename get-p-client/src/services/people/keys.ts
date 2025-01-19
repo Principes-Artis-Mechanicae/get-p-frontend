@@ -5,4 +5,5 @@ export const PEOPLE_QUERY_KEYS = {
         { page, size, sort, liked },
     ],
     READ_PEOPLE_BY_ID: (id: number) => ["people", { id }],
+    READ_APPLIED_PROJECT_BY_ID: (id: number) => ["people", "applied-project", { id }],
 };

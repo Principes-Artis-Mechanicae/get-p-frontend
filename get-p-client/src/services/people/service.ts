@@ -1,11 +1,14 @@
 import { toast } from "react-toastify";
 
 import { AxiosError } from "axios";
+import Exception from "axios-exception-handler";
 
 import { api } from "@getp/apps/config/axios";
 
 import { ExceptionHandler } from "@getp/common/utils/exception";
 import { isRequestBodyValid } from "@getp/common/utils/validation";
+
+import { BaseResponse } from "@getp/services/types";
 
 import { RenderToastFromDerivedError } from "../exception";
 import {
@@ -17,6 +20,7 @@ import {
     RegisterPeopleProfileResponseBody,
     EditPeopleInfoRequestBody,
     ReadMyPeopleInfoResponseBody,
+    ReadAppliedProjectByIdResponseBody,
 } from "./types";
 
 export const peopleService = {
@@ -113,5 +117,12 @@ export const peopleService = {
             success: "피플 프로필 등록 성공!",
             error: RenderToastFromDerivedError,
         });
+    },
+
+    readAppliedProjectById: async (id: number) => {
+        const { data: response } = await api.get<BaseResponse<ReadAppliedProjectByIdResponseBody>>(
+            `/applications/me/${id}`,
+        );
+        return response.data;
     },
 };
