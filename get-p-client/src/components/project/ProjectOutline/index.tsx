@@ -34,7 +34,7 @@ export const ProjectOutline = ({
     payment,
     description,
     applicationDuration,
-}: ProjectOutlineProps) => {
+}: Partial<ProjectOutlineProps>) => {
     return (
         <Styles.Wrapper>
             <Styles.HeaderContainer>
