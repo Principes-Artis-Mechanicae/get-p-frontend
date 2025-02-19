@@ -10,8 +10,6 @@ export const ItemWrapper = styled.div`
     display: flex;
     align-items: center;
 
-    margin: 5px;
-
     border: 1px solid #ebedef;
     border-radius: 12px;
 

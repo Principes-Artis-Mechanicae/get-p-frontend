@@ -100,3 +100,53 @@ export type ReadPeopleProfileResponseBody = BaseResponse<{
 }>;
 
 export type RegisterPeopleProfileResponseBody = BaseResponse;
+
+export type ReadAppliedProjectByIdResponseBody = {
+    applicationId: number;
+    type: PeopleType;
+    project: {
+        projectId: number;
+        title: string;
+        payment: number;
+        recruitmentCount: number;
+        applicantsCount: number;
+        applicationDuration: {
+            startDate: string;
+            endDate: string;
+        };
+        estimatedDuration: {
+            startDate: string;
+            endDate: string;
+        };
+        description: string;
+        meetingType: string;
+        category: string;
+        status: string;
+        attachmentFiles: string[];
+        hashtags: string[];
+        likesCount: number;
+        liked: boolean;
+        client: {
+            clientId: number;
+            nickname: string;
+            address: {
+                zipcode: string;
+                street: string;
+                detail: string;
+            };
+        };
+    };
+    expectedDuration: {
+        startDate: string;
+        endDate: string;
+    };
+    status: string;
+    description: string;
+    attachmentFiles: string[];
+    teammates: {
+        peopleId: number;
+        nickname: string;
+        status: string;
+        profileImageUrl: string;
+    }[];
+};
