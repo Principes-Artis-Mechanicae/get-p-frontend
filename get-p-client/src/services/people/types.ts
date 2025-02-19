@@ -46,7 +46,7 @@ export type ReadPeopleDetailResponseBody = BaseResponse<{
 }>;
 export interface RegisterPeopleInfoRequestBody {
     nickname: string;
-    email: string;
+    email: string | null;
     phoneNumber: string;
 }
 
@@ -64,7 +64,7 @@ export type ReadMyPeopleInfoResponseBody = BaseResponse<{
 
 export interface EditPeopleInfoRequestBody {
     nickname: string;
-    email: string;
+    email: string | null;
     phoneNumber: string;
 }
 
