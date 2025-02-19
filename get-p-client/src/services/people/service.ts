@@ -1,7 +1,6 @@
 import { toast } from "react-toastify";
 
 import { AxiosError } from "axios";
-import Exception from "axios-exception-handler";
 
 import { api } from "@getp/apps/config/axios";
 
@@ -99,7 +98,10 @@ export const peopleService = {
     },
     readPeopleProfile: async () => {
         const response = await api.get<ReadPeopleProfileResponseBody>("/people/me/profile");
-        return response.data.data;
+        if (response.status === 200) return response.data.data;
+        if (response instanceof AxiosError) {
+            if (response.status === 404) return false;
+        }
     },
     registerPeopleProfile: async (body: RegisterPeopleProfileRequestBody) => {
         const request = async () => {
@@ -125,7 +127,7 @@ export const peopleService = {
             return new ExceptionHandler.Builder(response)
                 .addCase(400, "필수 항목을 입력해주세요")
                 .addCase(404, "등록된 피플정보가 없습니다. 피플 정보를 먼저 등록해주세요")
-                .addCase(409, "Conflict")
+                .addCase(409, "자기소개는 필수 입력 란입니다")
                 .activate();
         };
 
