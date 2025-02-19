@@ -34,7 +34,7 @@ export const RegisterInfoModal = () => {
 
     const navigateToRegister = useCallback(() => {
         handleClose();
-        navigate(memberType === MemberType.ROLE_CLIENT ? "/client/me/register" : "/people/me/register");
+        navigate(memberType === MemberType.ROLE_CLIENT ? "/client/me/register" : "/people/me/info?mode=edit");
     }, [handleClose, memberType, navigate]);
 
     return (

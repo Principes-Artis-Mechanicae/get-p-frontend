@@ -1,5 +1,5 @@
-import { useCallback, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { ChangeEvent, useCallback, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -12,6 +12,7 @@ import { Mode, useMode } from "@getp/common/hooks/useMode";
 import { authAction } from "@getp/store/slice/auth.slice";
 import { RootDispatch } from "@getp/store/store";
 
+import { IAuthState } from "../../store/slice/auth.slice";
 import { PEOPLE_QUERY_KEYS } from "./keys";
 import { peopleService } from "./service";
 import { useMutation } from "@tanstack/react-query";
@@ -24,6 +25,8 @@ export const usePeopleInfoRegister = () => {
         onChange: onPhoneNumberChange,
     } = useInputValidation(REGEXP_PHONENUMBER);
 
+    const email = useSelector((state: { auth: IAuthState }) => state.auth.email);
+
     const emailRef = useRef<HTMLInputElement | null>(null);
     const nicknameRef = useRef<HTMLInputElement | null>(null);
     const phoneNumberRef = useRef<HTMLInputElement | null>(null);
@@ -35,7 +38,7 @@ export const usePeopleInfoRegister = () => {
         mutationFn: () => {
             const payload = {
                 nickname: nicknameRef.current?.value as string,
-                email: emailRef.current?.value as string,
+                email: (emailRef.current?.value as string) || null,
                 phoneNumber,
             };
 
@@ -51,12 +54,20 @@ export const usePeopleInfoRegister = () => {
     });
 
     const handleNextClick = useCallback(() => {
+        if (phoneNumberRef.current) {
+            onPhoneNumberChange({ target: phoneNumberRef.current } as ChangeEvent<HTMLInputElement>);
+        }
+
         if (!isPhoneNumberValid) {
             toast.error("전화번호를 형식에 맞게 다시 입력해 주세요!");
             return;
         }
+
+        if (emailRef.current && !emailRef.current.value) {
+            emailRef.current.value = email || "";
+        }
         mutate();
-    }, [mutate, isPhoneNumberValid]);
+    }, [mutate, isPhoneNumberValid, onPhoneNumberChange]);
 
     return {
         nicknameRef,
