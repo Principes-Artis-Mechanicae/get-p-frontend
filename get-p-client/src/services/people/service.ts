@@ -1,7 +1,6 @@
 import { toast } from "react-toastify";
 
 import { AxiosError } from "axios";
-import Exception from "axios-exception-handler";
 
 import { api } from "@getp/apps/config/axios";
 
@@ -51,11 +50,8 @@ export const peopleService = {
         return response.data.data;
     },
     readMyPeopleInfo: async () => {
-        const request = async () => {
-            const response = await api.get<ReadMyPeopleInfoResponseBody>("/people/me");
-            return response.data.data;
-        };
-        return request();
+        const response = await api.get<ReadMyPeopleInfoResponseBody>("/people/me");
+        return response.data.data;
     },
     registerPeopleInfo: async (body: RegisterPeopleInfoRequestBody) => {
         const request = async () => {
@@ -77,7 +73,7 @@ export const peopleService = {
     },
     editPeopleInfo: async (body: EditPeopleInfoRequestBody) => {
         const request = async () => {
-            const response = await api.put("/people/me", body);
+            const response = await api.post("/people/me", body);
 
             return new ExceptionHandler.Builder(response)
                 .addCase(400, "잘못된 입력 형식입니다")

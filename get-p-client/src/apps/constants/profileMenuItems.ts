@@ -12,7 +12,7 @@ export const profileMenu = (memberType: MemberType | null): IProfileMenuItem[] =
             {
                 id: 1,
                 text: "의뢰자 정보",
-                to: "/client/me/edit",
+                to: "/client/me/register",
             },
             {
                 id: 2,
