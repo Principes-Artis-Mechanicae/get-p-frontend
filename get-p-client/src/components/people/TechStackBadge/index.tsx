@@ -10,10 +10,10 @@ import * as Styles from "./index.style";
 
 export interface ITechStackBadge {
     text: string;
-    isInput: boolean;
+    isInput?: boolean;
 }
 
-export const TechStackBadge: React.FC<ITechStackBadge> = ({ text, isInput }) => {
+export const TechStackBadge: React.FC<ITechStackBadge> = ({ text, isInput = false }) => {
     const { dispatch } = useTechStack();
 
     const handleBadgeClick = useCallback(() => {
