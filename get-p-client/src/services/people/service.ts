@@ -1,7 +1,6 @@
 import { toast } from "react-toastify";
 
 import { AxiosError } from "axios";
-import Exception from "axios-exception-handler";
 
 import { api } from "@getp/apps/config/axios";
 
@@ -99,7 +98,10 @@ export const peopleService = {
     },
     readPeopleProfile: async () => {
         const response = await api.get<ReadPeopleProfileResponseBody>("/people/me/profile");
-        return response.data.data;
+        if (response.status === 200) return response.data.data;
+        if (response instanceof AxiosError) {
+            if (response.status === 404) return false;
+        }
     },
     registerPeopleProfile: async (body: RegisterPeopleProfileRequestBody) => {
         const request = async () => {
@@ -115,6 +117,23 @@ export const peopleService = {
         return toast.promise(request, {
             pending: "피플 프로필 등록 중입니다",
             success: "피플 프로필 등록 성공!",
+            error: RenderToastFromDerivedError,
+        });
+    },
+    editPeopleProfile: async (body: RegisterPeopleProfileRequestBody) => {
+        const request = async () => {
+            const response = await api.put<RegisterPeopleProfileResponseBody>(`/people/me/profile`, body);
+
+            return new ExceptionHandler.Builder(response)
+                .addCase(400, "필수 항목을 입력해주세요")
+                .addCase(404, "등록된 피플정보가 없습니다. 피플 정보를 먼저 등록해주세요")
+                .addCase(409, "자기소개는 필수 입력 란입니다")
+                .activate();
+        };
+
+        return toast.promise(request, {
+            pending: "피플 프로필 수정 중입니다",
+            success: "피플 프로필 수정 성공!",
             error: RenderToastFromDerivedError,
         });
     },

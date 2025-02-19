@@ -35,15 +35,22 @@ export const usePeopleProfileEdit = () => {
     const { state } = useTechStack();
     const { hashtag } = useHashTag();
 
-    useEffect(function fetchInitailMyPeopleProfile() {
-        peopleService.readPeopleProfile().then((data) => {
-            setInitialMyPeopleProfile(data);
-        });
+    useEffect(() => {
+        async function fetchInitialMyPeopleProfile() {
+            const response = await peopleService.readPeopleProfile();
+            if (response) {
+                setInitialMyPeopleProfile(response);
+            } else if (response === false) {
+                setInitialMyPeopleProfile(null);
+            }
+        }
+
+        fetchInitialMyPeopleProfile();
     }, []);
 
     const { mutate } = useMutation({
-        mutationFn: () =>
-            peopleService.registerPeopleProfile({
+        mutationFn: async () => {
+            const profileData = {
                 education: {
                     school: schoolRef.current?.value as string,
                     major: majorRef.current?.value as string,
@@ -53,7 +60,14 @@ export const usePeopleProfileEdit = () => {
                 techStacks: state.selected.map((selectedItem) => selectedItem.value),
                 portfolios: attachmentFiles,
                 hashtags: hashtag,
-            }),
+            };
+
+            if (!initialMyPeopleProfile) {
+                return await peopleService.registerPeopleProfile(profileData);
+            } else {
+                return await peopleService.editPeopleProfile(profileData);
+            }
+        },
         onSuccess: () => {
             // TODO: 피플 프로필 관련 Query Key Invalidation
             // queryClient.invalidateQueries();
