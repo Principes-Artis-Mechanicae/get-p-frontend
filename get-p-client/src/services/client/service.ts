@@ -88,9 +88,14 @@ export const clientService = {
         });
     },
     readClientProjects: async (page = 0, size = 1, sort = "projectId,desc") => {
-        const response = await api.get<ReadProjectResponseBody>(
-            `/client/me/projects?page=${page}&size=${size}&sort=${sort}`,
-        );
+        const response = await api.get<ReadProjectResponseBody>(`/projects`, {
+            params: {
+                commissioned: true,
+                page,
+                size,
+                sort,
+            },
+        });
         return response.data.data;
     },
 };
