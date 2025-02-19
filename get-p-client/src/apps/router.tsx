@@ -6,6 +6,7 @@ import { MainLayout } from "@getp/common/layouts/RootLayout";
 import FindPasswordPage from "@getp/pages/auth/FindPasswordPage";
 import SignInPage from "@getp/pages/auth/SignInPage";
 import SignUpPage from "@getp/pages/auth/SignUpPage";
+import ClientProjectDetailPage from "@getp/pages/client/ClientProjectDetailPage/ClientProjectDetailPage";
 import ClientProjectListPage from "@getp/pages/client/ClientProjectListPage/ClientProjectListPage";
 import EditClientPage from "@getp/pages/client/EditClientPage/EditClientPage";
 import MeetingRequestPage from "@getp/pages/client/MeetingRequest/MeetingRequestPage";
@@ -95,6 +96,16 @@ export const Router = () => {
                         </RouteGuard>
                     }
                 />
+
+                <Route
+                    path="client/me/projects/:id"
+                    element={
+                        <RouteGuard role={MemberType.ROLE_CLIENT}>
+                            <ClientProjectDetailPage />
+                        </RouteGuard>
+                    }
+                />
+
                 <Route
                     // 프로젝트 지원하기
                     path="project/apply/:id"
