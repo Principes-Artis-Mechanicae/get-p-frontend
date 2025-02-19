@@ -118,6 +118,23 @@ export const peopleService = {
             error: RenderToastFromDerivedError,
         });
     },
+    editPeopleProfile: async (body: RegisterPeopleProfileRequestBody) => {
+        const request = async () => {
+            const response = await api.put<RegisterPeopleProfileResponseBody>(`/people/me/profile`, body);
+
+            return new ExceptionHandler.Builder(response)
+                .addCase(400, "필수 항목을 입력해주세요")
+                .addCase(404, "등록된 피플정보가 없습니다. 피플 정보를 먼저 등록해주세요")
+                .addCase(409, "Conflict")
+                .activate();
+        };
+
+        return toast.promise(request, {
+            pending: "피플 프로필 수정 중입니다",
+            success: "피플 프로필 수정 성공!",
+            error: RenderToastFromDerivedError,
+        });
+    },
 
     readAppliedProjectById: async (id: number) => {
         const { data: response } = await api.get<BaseResponse<ReadAppliedProjectByIdResponseBody>>(

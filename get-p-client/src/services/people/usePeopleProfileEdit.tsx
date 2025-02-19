@@ -43,7 +43,7 @@ export const usePeopleProfileEdit = () => {
 
     const { mutate } = useMutation({
         mutationFn: () =>
-            peopleService.registerPeopleProfile({
+            peopleService.editPeopleProfile({
                 education: {
                     school: schoolRef.current?.value as string,
                     major: majorRef.current?.value as string,
